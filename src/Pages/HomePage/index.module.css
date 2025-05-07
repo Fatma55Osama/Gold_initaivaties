@@ -1,0 +1,52 @@
+#parent {
+  min-height: 100vh;
+}
+#imgparent {
+  background-image: url(../../assets/div22.png);
+  background-position: 50%;
+  background-size: 100% 67%;
+  /* height: 70%; */
+  background-repeat: no-repeat;
+  top: 0 !important;
+
+}
+#sectionBaby {
+  /* background-color: #734079; */
+  height: 230px;
+  /* margin-top: -200px; */
+  overflow: hidden;
+  z-index: 3;
+  position: relative;
+
+  h3 {
+    font-size: 14px;
+    font-family: "GE SS Two";
+    font-weight: 500;
+  }
+  /* p {
+    font-size: 1rem;
+    margin: 0;
+  } */
+  #cardbaby {
+    width: 166px;
+    height: 176px;
+    padding: 20px;
+    background-color: var(--purpleColor);
+    box-shadow: 11px 13px 1px #d9d9d9;
+    /* transition: all 0.4s ease-in-out;
+    background-color: transparent;
+    overflow: hidden; */
+  }
+
+  /* #cardbaby:hover {
+    background-color: #e8b33c;
+    transform: scale(1.2);
+    padding: 20px;
+  } */
+
+  img,
+  h3,
+  p {
+    transition: none;
+  }
+}

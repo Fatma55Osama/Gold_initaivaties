@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css?family=Geist:700|Inter:700");
+
+@font-face {
+  font-family: "GE SS-Medium";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/5fc777008bcf4fecae01d001/files/ge-ss-text-medium.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "GE SS Two-Light";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/64479ca0e8b410463cd57e73/fonts/arbfonts-ge_ss_two_medium_5.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "GE SS Two-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/601f41636077fed6857827c0/fonts/ge-ss-two-bold.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "GE SS-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/600db17abeab17c2f8e1b1cb/fonts/125063e353c1f65c55ba1e3811969217.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "GE SS Two-Medium";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/653789f8438d734126781512/fonts/ge-ss-two-medium.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "Geist", sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+}
+:root{
+  --purpleColor:#724780;
+  --yellowColor:#c48d2b;
+  --fontyelowColor:#b58a35;
+  --grayColor:#d9d9d980;
+  --fontgrayColor:#00000080;
+
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,.App,.root{
+  min-height: 100vh !important;
+}

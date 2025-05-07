@@ -1,0 +1,19 @@
+.TopicHour{
+    min-height: 334px;
+    max-height: 90%;
+    background: rgba(217, 217, 217, 0.5);
+    margin-top: 30px;
+    h2{
+        color: var(--fontyelowColor);
+        font-size: 29px;
+        font-weight: 500;
+        font-family: "GE SS-Medium";
+
+    }
+    p{
+        font-size: 16px;
+        font-family: "Geist", sans-serif;
+        font-weight: 200;
+        line-height: 43px;
+    }
+}

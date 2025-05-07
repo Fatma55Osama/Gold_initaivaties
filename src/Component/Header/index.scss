@@ -1,0 +1,56 @@
+/* أولًا نضمن إن القائمة مخفية افتراضيًا */
+.custom-dropdown {
+  position: relative; /* لازم عشان الـ absolute menu يتسنّب */
+  padding-bottom: 8px; /* المسافة اللي تبغيها بين الزر والقائمة */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.custom-dropdown .dropdown-menu {
+  display: none;
+  margin-top: 0;
+  left: 0;
+  position: absolute !important;     
+  top: 5px !important;
+  text-align: end;
+  color: #000;  
+  font-size: 18px ;
+  font-weight: 600;
+}
+.dropdown-item{
+  color: #212529;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+/* لما الـ dropdown نفسه يتعرض للـ hover، نظهر القائمة */
+.custom-dropdown:hover .dropdown-menu,
+.custom-dropdown .dropdown-menu:hover {
+  display: block !important;
+}
+
+/* نجعل الزر شفاف بالكامل، ونتحكم في لونه عند الـ hover لو حبيتي */
+.custom-dropdown .custom-toggle {
+  display: inline-block;
+  padding: 0; /* إذا تريدين تضيفي padding جانبي أو سفلي، ضعيه هنا */
+  text-decoration-line: underline; /* فعلّي الخطّ تحت النص */
+  text-decoration-color: transparent; /* اجعليه شفافاً في الحالة العادية */
+  text-underline-offset: 35px; /* المسافة بين النص والخطّ */
+ 
+}
+
+.custom-dropdown .custom-toggle:hover {
+  color: #e8b33c;
+  text-decoration-color: #e8b33c; /* يظهر الخطّ بلون ذهبي عند الـ hover */
+  text-decoration-thickness: 3px;
+}
+
+/* تخصيص الـ hover على عناصر القائمة */
+.custom-dropdown .dropdown-item:hover {
+  background-color: #f0f0f0; /* لون الخلفية عند الـ hover */
+  color: #000; /* لون النص عند الـ hover */
+}
+.dropdown-item:active {
+    background-color: purple !important;  /* اللون البنفسجي عند الضغط */
+    color: white;
+}

@@ -1,0 +1,141 @@
+.overlap {
+  min-height: 600px;
+  max-height: 90%;
+  left: 216px;
+  top: 2474px;
+  width: 100%;
+  position:relative; 
+  left: 0;
+  top: 0;
+}
+
+.overlap-group {
+  height:600px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  // position: absolute;
+  z-index: 3;
+}
+
+.isolation-mode {
+  height: 530px;
+  left: 0;
+  top: 77px;
+  width: 595px;
+}
+.divmap{
+  margin-left: 10%;
+  position: relative;
+}
+.vector1{
+  left: 33%;
+  bottom:28%;
+}
+.vector2{
+  left: 28%;
+  bottom:50%;
+}
+
+.p {
+  color:rgba(156, 153, 153, 1);
+  direction: rtl;
+  font-family: "GE SS-Medium", Helvetica;
+  font-size:31px;
+  font-weight: 500;
+  // left: 228px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  //  max-width: 80%;
+  top: 15px;
+}
+
+.group {
+  height: 449px;
+  left: 11px;
+  top: 0;
+  width: 493px;
+}
+
+.overlap-3 {
+  height: 36px;
+  left: 211px;
+  top: 92px;
+  width: 49px;
+}
+
+.overlap-4 {
+  height: 69px;
+  left: 256px;
+  top: 243px;
+  width: 99px;
+}
+
+.overlap-5 {
+  height: 69px;
+  left: 0;
+  top: 0;
+  width: 86px;
+}
+
+.overlap-6 {
+  height: 54px;
+  left: 0;
+  top: 0;
+  width: 57px;
+}
+
+.frame .rectangle {
+  background-color: #878787;
+  border-radius: 4px;
+  height: 17px;
+  left: 15px;
+  top: 2px;
+  width: 42px;
+}
+
+.text-wrapper-6 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "GE SS Two-Light", Helvetica;
+  font-size: 10px;
+  font-weight: 300;
+  left: 21px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  top: 5px;
+  white-space: nowrap;
+}
+
+.text-wrapper-53 {
+  color: var(--fontyelowColor);
+  direction: rtl;
+  font-family: "GE SS-Bold";
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-right: 5%;
+}
+.text-wrapper-centre {
+  color: black;
+  font-family: "GE SS Two-Medium";
+  font-size: 16px;
+  line-height: 80px;
+}
+.divcenter {
+  gap: 180px;
+}
+.egyptlogo {
+  background-image: url(../../assets/egyptlogo.png);
+  background-position: 50%;
+  background-size: cover;
+  width: 558px;
+  height: 100%; 
+  position: absolute;
+  bottom: 0;
+  right:  0;
+  z-index: 1; 
+}

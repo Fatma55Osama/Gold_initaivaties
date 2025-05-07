@@ -1,0 +1,50 @@
+.header {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  z-index: 500;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+  .part1 {
+    /* background-color:#e8b33c; */
+    background-color: #57575d;
+    /* color: rgb(71, 71, 71); */
+
+    /* padding: 8px; */
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    .p {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      outline: none;
+      border: none;
+    }
+  }
+  .header.scrolled {
+    background-color: #e8b33c;
+    color: #2d2d2c;
+  }
+  .part2 {
+    h1 {
+      font-size: 24px;
+      color: #2d2d2c;
+      font-weight: 700;
+      margin-left: 700px;
+    }
+  }
+  .activelink {
+    color: #e8b33c !important;
+    text-decoration-color: #e8b33c !important;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 30px;
+    
+  }
+  .linkfont{
+    font-family: "GE SS Two-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}

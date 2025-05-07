@@ -1,0 +1,57 @@
+.lighteam{
+    min-height: 400px;
+    /* min-height: 90%; */
+    margin-bottom: -150px;
+    padding-top: 50px;
+
+}
+.textWareber{
+    color: var(--fontyelowColor);
+    font-family: "GE SS-Bold";
+    font-size: 32px;
+    font-weight: 500;
+}
+#cardslid{
+    width: 400px !important;
+    height: 330px;  
+}
+.card{
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  .imgCard{
+    border: 5px solid rgba(228, 194, 196, 1);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+  
+  }
+  .textCard{
+    background-color: rgba(217, 217, 217, 1);
+    p{
+        font-family: "GE SS Two-Medium";
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 3px;
+    }
+   
+}
+.Cardtitle{
+    font-family: "GE SS Two-Medium";
+    font-size: 16px;
+    font-weight: 700;
+    width: 150px;
+    text-align: center;
+}
+
+}
+.mySwiper :global(.swiper-wrapper) {
+    display: flex;
+    justify-content: space-around;
+  }

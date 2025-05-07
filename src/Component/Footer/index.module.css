@@ -1,0 +1,37 @@
+.parentfooter{
+    min-height: 500px;
+    max-height: 90%;
+    color: white;
+    font-family: "Tajawal", sans-serif !important;
+    background: url(../../assets/rectangle-187.svg);
+    background-position: 50%;
+    background-size:cover ;  
+    background-repeat: no-repeat;  
+    ul{
+        padding: 0;
+        li{
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 50px;
+            list-style-type: none;
+            font-family: "GE SS Two-Light";
+
+        }
+    }
+    input{
+        background-color: transparent;
+        border: 1px solid #82c419;
+    }
+    button{
+        background-color: #82c419;
+        border: none;
+    }
+    #nav{
+        font-size: 18px;
+        border-top: 1px solid rgba(256, 256, 256, .1);
+        span{
+            color: #e8b33c;
+            border-bottom: 1px solid #dee2e6 ;
+        }
+    }
+}
