@@ -10,20 +10,21 @@ export default function Infograph() {
   const { infograph, setInfograph } = useInfograph()
   const [filterinfo, setfilterinfo] = useState([])
   useEffect(() => {
-    let copyfilterinfo = infograph.filter((el) => { return el.onMainPage && el.orderView != undefined }).sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)).slice(0, 2)
+    let copyfilterinfo = [...infograph].filter((el) => { return el.onMainPage && el.orderView != undefined }).sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)).slice(0, 2)
     setfilterinfo(copyfilterinfo)
-  }, [])
+  }, [infograph])
   return (
     <div className=''>
-      <div className="overlap-27 d-flex flex-column justify-content-center align-items-end " data-aos="fade-up"
-        data-aos-offset="10" data-aos-delay={30}>
+      <div className="overlap-27 d-flex flex-column justify-content-center align-items-end " 
+      >
         <div className="text-wrapper-49">إنفوجراف</div>
 
         {/* <div className="rectangle-18" /> */}
 
-        <div className='d-flex justify-content-between gap-4'>
+        <div className='d-flex justify-content-between gap-4' data-aos="fade-up"
+              data-aos-offset="10" data-aos-delay={50}>
           {
-            filterinfo.map((el, index) => {
+            filterinfo?.map((el, index) => {
               const shortText = el.infoTitle.split(/\s+/).slice(0, 10).join(' ') + '...';
 
               return (

@@ -10,17 +10,18 @@ export default function NumberInitiative2() {
     useEffect(() => {
         let copyfilterednumber = [...allinitivenumber].filter((el) => { return el.onMainPage }).slice(0, 3)
         setFilterednumber(copyfilterednumber)
-    }, [])
+    }, [allinitivenumber])
     return (
         <div className='col-12 d-flex align-items-center' id={styles.number}>
-            <div className='container d-flex flex-column justify-content-between gap-4 mt-5 ' id={styles.numbercontainer}>
+            <div className='container d-flex flex-column justify-content-between gap-4 mt-5 ' id={styles.numbercontainer} >
                 <h2>المبادرة في أرقام</h2>
-                <div className='d-flex  justify-content-between align-items-center'>
+                <div className='d-flex  justify-content-between align-items-center'data-aos="fade-up"
+              data-aos-offset="100" data-aos-delay={50}>
                     {
-                        filterednumber.map((el) => {
+                        filterednumber?.map((el) => {
                             return (
-                                <div key={el.initId} className='col-3 d-flex flex-column justify-content-center align-items-center' data-aos="fade-up"
-                                    data-aos-offset="20" data-aos-delay={100}>
+                                <div key={el.initId} className='col-3 d-flex flex-column justify-content-center align-items-center'
+                                    >
                                     {/* <img src={femal} width={88} alt="" /> */}
                                     <h3>{el.indNumber}</h3>
                                     <span>{el.indTitle}</span>
