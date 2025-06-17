@@ -1,0 +1,298 @@
+#Lines {
+  min-height: 250px;
+  max-height: 100%;
+  vertical-align: central;
+  /* border: 5px solid  red;*/
+  margin-top: 50px;
+  margin-bottom: 50px;
+  p{
+
+  }
+}
+
+#LinesImg {
+
+  width: 268px;
+  height: 176px;
+
+  img{
+    height: 100%;
+    width: 100%;
+  }
+}
+#PresImg {
+  /* background-image: url(../../assets//DrAbla.png);
+  background-size: cover;
+  border: none; */
+  width: 268px;
+  height: 176px;
+  /* top: 833px;
+  left: 92px; */
+   img{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#MinisterImg {
+  /* background-image: url(../../assets//DrKhaled.png);
+  background-size: cover;
+  border: none; */
+  width: 268px;
+  height: 179px;
+  /* top: 1103px;
+  left: 92px; */
+   img{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#StructImg {
+  /* background-image: url(../../assets//Structure.png);
+  background-size: cover;
+  border: none; */
+  width: 266px;
+  height: 167px;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  /* top: 1380px;
+  left: 94px; */
+}
+
+#BgPillar1 {
+  background-image: url(../../assets//Pillars.png);
+  background-size: cover;
+  border: none;
+  width: 124px;
+  height: 124px;
+  top: 1671px;
+  left: 380px;
+}
+
+#Pillar1 {
+  background-image: url(../../assets//parents.png);
+  background-size: cover;
+  border: none;
+  width: 65px;
+  height: 65px;
+  top: 1701px;
+  left: 409px;
+}
+
+#BgPillar2 {
+  background-image: url(../../assets//Pillars.png);
+  background-size: cover;
+  border: none;
+  width: 124px;
+  height: 124px;
+  top: 1671px;
+  left: 249px;
+}
+
+#Pillar2 {
+  background-image: url(../../assets//pediatrics.png);
+  background-size: cover;
+  border: none;
+  width: 65px;
+  height: 65px;
+  top: 1701px;
+  left: 278px;
+}
+#BgPillar3 {
+  background-image: url(../../assets//Pillars.png);
+  background-size: cover;
+  border: none;
+  width: 124px;
+  height: 124px;
+  top: 1671px;
+  left: 119px;
+}
+
+#Pillar3 {
+  background-image: url(../../assets//pregnant.png);
+  background-size: cover;
+  border: none;
+  width: 65px;
+  height: 65px;
+  top: 1701px;
+  left: 148px;
+}
+
+h3 {
+  color: #000000;
+  /* font-family: "GE SS Two-Medium", Helvetica;
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;*/
+  vertical-align: middle;
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  vertical-align: middle;
+}
+p {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "GE SS Two-Light";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  vertical-align: middle;
+}
+
+#CRegtangle {
+  background-color: rgba(217, 217, 217, 0.3);
+  /* border-top: 2px solid #cba15f; */
+  min-height: 220px;
+  background-size: cover;
+  /* width: 1440px; */
+  border: none;
+  /* border-radius: 10px; */
+  vertical-align: middle;
+}
+
+#About {
+  min-height: 304px;
+  max-height: 90%;
+  #AboutLogo {
+    background-image: url(../../assets//rectangle-6.png);
+    background-position: 50%;
+    background-size: cover;
+    width: 456px;
+    height: 304px;
+    opacity: 30%;
+  }
+  #bgColor {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.54) 3.85%,
+      rgba(175, 229, 255, 0.54) 34.13%,
+      rgba(114, 71, 128, 0.54) 100%
+    );
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    h2 {
+      color: var(--purpleColor);
+      font-family: "GE SS Two-Medium", Helvetica;
+      font-size: 46px;
+      font-weight: 700;
+      margin: 0;
+      /*vertical-align:top;*/
+    }
+    #regtangle {
+      /* background-color: transparent; */
+      background-color:  rgba(217, 217, 217, 0.3);
+      border-top: 2px solid #cba15f;
+      /* height: 157px; */
+      p {
+        color: rgba(0, 0, 0, 0.5);
+        font-family: "GE SS Two-Light";
+        font-size: 16px !important;
+        font-weight: 500;
+        line-height: 30px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.sectionlink {
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+  &:hover{
+  color: var(--purpleColor) !important;
+  text-decoration: underline;
+   text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+}
+}
+
+#accordion{
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  --bs-accordion-bg: transparent !important;
+  --bs-accordion-border-color:none !important;
+  --bs-accordion-border-width: none !important;
+  --bs-accordion-border-radius: none !important;
+  --bs-accordion-inner-border-radius: none !important;
+  /* --bs-accordion-btn-active-icon: none !important; */
+  --bs-accordion-active-color:none !important;
+     --bs-accordion-active-bg:none !important;
+     padding: 0 !important;
+     --bs-accordion-btn-focus-box-shadow::none !important
+}
+#accordionheader{
+  margin-right: 0;
+  .accordion-button{
+    border-top-left-radius:0 !important;
+    border-top-left-radius:0 !important;
+    .accordion-button:not(.collapsed) {
+      color: black !important;
+      background-color: transparent !important;
+      
+    }
+  }
+ 
+  .accordion-button::after{
+    /* background-color: transparent !important; */
+    width: 0 !important;
+    background-image: none !important;
+  }
+}
+button{
+
+  background-color: var(--purpleColor);
+  border: none;
+  color: white;
+  font-size: 18px !important;
+  font-weight: 500;
+  transition: 0.3s ease;
+
+
+}
+.btnback{
+   transition: transform 0.3s ease;
+      &:hover{
+    color: white !important;
+    background-color: var(--purpleColor);
+    border-radius: 8px;
+    .iconarrow{
+          color: white !important;
+ transform: translateX(20px); 
+    }
+}
+}
+.iconarrow{
+   font-size: 40px !important;
+   font-weight: 1000 !important;
+   color: var(--purpleColor);
+   transition: transform 0.3s ease;
+  
+}
+ 
+#custompurpleoutline {
+  color: var(--purpleColor);
+  border: 1px solid var(--purpleColor);
+  border-radius: 8px;
+  background-color: transparent;
+  transition: 0.3s ease;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#custompurpleoutline:hover {
+  background-color: var(--purpleColor);
+  color: white;
+}

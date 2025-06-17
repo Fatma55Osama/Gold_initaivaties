@@ -1,15 +1,18 @@
 import { create } from "zustand";
 
-
 export const usepathes = create(() => ({
   path: [
-    { name: "تواصل معنا", path: "/contactus"},
-    { name: "الركن الإعلامي", path: "/mediacorner"},
-    { name: "نتائج المبادرة", path: "/resultinitiative"},
-    { name: "مؤشرات المبادرة", path: "/indicators"},
-    { name: "خدمات المبادرة", path: "/serviceinitiative"},
-    { name: "عن المبادرة", path: "/about"},
-    { name: "الرئيسية", path: "/"},
+    { name: "تواصل معنا", path: "/contactus" },
+    {
+      name: "الركن الإعلامي",
+      path: "/mediacorner",
+      includes: ["/messages", "/infograph", "/video", "/Photo", "/mediacorner"],
+    },
+    { name: "نماذج مضيئة", path: "/lightteam" },
+    { name: "مؤشرات المبادرة", path: "/indicators" },
+    { name: "خدمات المبادرة", path: "/Services" },
+    { name: "عن المبادرة", path: "/about" },
+    { name: "الرئيسية", path: "/" },
   ],
 }));
 // export const useData = create(() => ({
@@ -22,7 +25,7 @@ export const usepathes = create(() => ({
 //   setphoto: (photo) => set(() => ({ dataphotos: photo })),
 // }));
 export const usedomain = create(() => ({
-  domain: "https://localhost:7091",
+  domain: "https://localhost:7220",
 }));
 export const useallActiveEmployees = create((set) => ({
   Employees: [
@@ -47,6 +50,10 @@ export const useNews = create((set) => ({
   allnews: [],
   setInews: (newwes) => set(() => ({ allnews: newwes })),
 }));
+export const usedetailsnew = create((set) => ({
+  detailnew: {},
+  setdetailsnew: (val) => set(() => ({ detailnew: val })),
+}));
 export const useAbout = create((set) => ({
   allabout: [],
   setallabout: (about) => set(() => ({ allabout: about })),
@@ -66,4 +73,30 @@ export const useGovs = create((set) => ({
 export const useinitiativenumber = create((set) => ({
   allinitivenumber: [],
   setinitivenumber: (number) => set(() => ({ allinitivenumber: number })),
+}));
+export const useVedio = create((set) => ({
+  allvedio: [],
+  setallvedio: (value) => set(() => ({ allvedio: value })),
+}));
+export const usePhotoo = create((set) => ({
+  allphoto: [],
+  setallphoto: (value) => set(() => ({ allphoto: value })),
+}));
+export const usedetailsinfo = create((set) => ({
+  detailinfo: {},
+  setdetailsinfo: (val) => set(() => ({ detailinfo: val })),
+}));
+export const useModal = create((set) => ({
+  modalindex: false,
+  openModal: () => set(() => ({ modalindex: true })),
+  closeModal: () => set(() => ({ modalindex: false })),
+}));
+export const useModalpdf = create((set) => ({
+  modalpdf: false,
+  openModalpdf: () => set(() => ({ modalpdf: true })),
+  closeModalpdf: () => set(() => ({ modalpdf: false })),
+}));
+export const usedetailsservice = create((set) => ({
+  detailservice: {},
+  setdetailsservice: (val) => set(() => ({ detailservice: val })),
 }));

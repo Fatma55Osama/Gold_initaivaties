@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useAbout, useallActiveEmployees, useAwarnessMsg, usedomain, useGovs, useImportantlink, useInfograph, useinitiativenumber, useNews, useServicemain } from '../Store'
+import { useAbout, useallActiveEmployees, useAwarnessMsg, usedomain, useGovs, useImportantlink, useInfograph, useinitiativenumber, useNews, useServicemain, useVedio } from '../Store'
 import { getAllData } from '../Data/Repo/dataRepo'
 
 export default function Employeeloader() {
@@ -13,6 +13,8 @@ export default function Employeeloader() {
   const { setservice } = useServicemain()
   const { setgovs } = useGovs()
   const { setinitivenumber } = useinitiativenumber()
+  const { setallvedio } = useVedio()
+
   useEffect(() => {
     getAllData.get_all_employess(domain).then((res) => {
       setallEmployees(res)
@@ -37,6 +39,7 @@ export default function Employeeloader() {
   useEffect(() => {
     getAllData.get_allnews(domain).then((res) => {
       setInews(res)
+      console.log(res)
     })
   }, [])
   useEffect(() => {
@@ -64,6 +67,13 @@ export default function Employeeloader() {
       setinitivenumber(res)
     })
   }, [])
+  useEffect(() => {
+    getAllData.get_all_vedio(domain).then((res) => {
+      setallvedio(res)
+    })
+  }, [])
+  
+
   return (
     null
   )

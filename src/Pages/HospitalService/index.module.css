@@ -1,0 +1,15 @@
+.containerhospital {
+  h2 {
+    font-family: GE SS Two;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--purpleColor);
+  }
+  p {
+    font-family: GE SS Two;
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+    margin-right: 6%;
+  }
+}

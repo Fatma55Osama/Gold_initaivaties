@@ -36,7 +36,28 @@
   left: 28%;
   bottom:50%;
 }
-
+// .msg-pos1{
+//   left: 150px;
+//   top: 200px;
+//   transform: translateY(10px);
+//   transition: all 0.3s ease-in-out;}
+// .msg-pos2{
+//   left:50px;
+//   top:50px;
+// }
+.message-box {
+  top: 50px; /* تطلع فوق الأيقونة */
+  left: 50px; /* تبعد شوية يمين */
+  opacity: 0;
+  // transform: translateY(10px);
+  // transition: all 0.3s ease-in-out;
+  // white-space: nowrap;
+  z-index: 10;
+}
+.message-box.show {
+  opacity: 1;
+  // transform: translateY(0);
+}
 .p {
   color:rgba(156, 153, 153, 1);
   direction: rtl;

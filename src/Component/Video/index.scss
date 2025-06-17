@@ -35,8 +35,8 @@
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 492px;
-    width: 581px;
+    top: 430px;
+    width: 580px;
   }
   
  .rectangle-19 {
@@ -61,7 +61,7 @@
     height: 316px;
     left: 66px;
     position: absolute;
-    top: 135px;
+    top: 105px;
     width: 579px;
   }
   
@@ -72,4 +72,33 @@
     top: 248px;
     width: 70px;
   }
-  
+  /********************* hend *******************/
+#number {
+    min-height: 400px;
+    max-height: 90%;
+    background-image: url(../../assets//section-before.png);
+    /* background-position: 50%; */
+    background-size: cover;
+
+    #numbercontainer {
+        padding-top: 70px;
+    }
+    }
+
+h2 {
+    font-family: "GE SS-Medium";
+    color: var(--fontyelowColor);
+    font-size: 32px;
+    font-weight: 500;
+    text-align: end;
+    margin-right: 6%;
+}
+
+h3 {
+    font-family: "Geist", sans-serif;
+    font-size: 50px;
+}
+#imgvedio{
+  border: 20px solid black;
+  border-radius: 20px;
+}

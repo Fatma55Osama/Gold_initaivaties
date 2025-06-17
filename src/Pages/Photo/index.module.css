@@ -1,0 +1,214 @@
+#CRegtangle {
+  /* width:1440px; */
+  /* height: 1212px;*/
+  top: 556px;
+  background: #d9d9d933;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+}
+#Img {
+  /* background-image: url(../../assets//president.png);
+    background-size: cover;
+    background-position: 50%;
+    border: none; */
+  /* object-fit: cover; */
+  width: 341px;
+  height: 312px;
+  /* text-align: center;
+    vertical-align: middle;  */
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.25);
+  /* align-items: center;
+    text-align: center; */
+  border-radius: 10px;
+  img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+}
+
+#regtangle {
+  background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+  border-top: 2px solid #cba15f;
+  height: 157px;
+
+  P {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "GE SS Two-Light";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    vertical-align: middle;
+  }
+}
+
+#h3 {
+  color: #000000;
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  vertical-align: top;
+  /*direction:rtl;*/
+}
+
+#phdiv {
+  width: 384px;
+  text-align: center;
+  direction: rtl;
+  #h55 {
+    color: #000000;
+    font-family: GE SS Two;
+    font-weight: 500;
+    font-size: 22px;
+    /* line-height: 100%; */
+    /* letter-spacing: 0%; */
+    /* vertical-align: top; */
+    /* flex-wrap: wrap; */
+    text-align: center !important;
+    /* margin: 50px 30px 4px 30px; */
+    margin-right: 0 !important;
+  }
+
+  #h66 {
+    font-family: GE SS Two;
+    font-weight: 300;
+    font-size: 14px;
+    /* line-height: 100%; */
+    /* letter-spacing: 0%;*/
+    color: #c48d2b;
+    /* vertical-align: top; */
+    /* flex-wrap: wrap; */
+    text-align: center !important;
+    /* margin: 20px 30px 4px 30px; */
+    margin-right: 0 !important;
+  }
+}
+
+#Lines {
+  min-height: 320px;
+  max-height: 100%;
+  vertical-align: top;
+
+  /* border: 5px solid  red;*/
+  margin-top: 50px;
+  margin-bottom: 50px;
+  direction: rtl;
+}
+
+p {
+  /*color: rgba(0, 0, 0, 0.5);*/
+  font-family: "GE SS Two-Light";
+  font-size: 18px;
+  font-weight: 500px;
+  line-height: 30px;
+  vertical-align: top;
+  direction: rtl;
+}
+
+#About {
+  min-height: 304px;
+  max-height: 90%;
+  #AboutLogo {
+    background-image: url(../../assets//rectangle-6.png);
+    background-position: 50%;
+    background-size: cover;
+    width: 456px;
+    height: 304px;
+    opacity: 30%;
+  }
+  #bgColor {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.54) 3.85%,
+      rgba(175, 229, 255, 0.54) 34.13%,
+      rgba(114, 71, 128, 0.54) 100%
+    );
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /*width: 1440px;*/
+    h2 {
+      color: var(--purpleColor);
+      font-family: "GE SS Two-Medium", Helvetica;
+      font-size: 46px;
+      font-weight: 700;
+      margin: 0;
+      /*vertical-align:top;*/
+    }
+  }
+}
+.active {
+  color: #007bff;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+  transition: color 0.3s ease, border 0.3s ease;
+}
+.sectionlink {
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px;
+  &:hover {
+    color: var(--purpleColor) !important;
+    text-decoration: underline;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+  }
+  /* color: rgba(0, 0, 0, 1);*/
+}
+#search {
+  button {
+    background-color: #724780;
+    color: white;
+  }
+}
+.currentactive {
+  background-color: #724780 !important;
+  color: white !important;
+  border: none !important;
+}
+.noncurrentactive {
+  color: #724780 !important;
+  border: 1px solid #724780 !important;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.806);
+  img {
+    width: 900px;
+    height: 600px;
+  }
+  .slider {
+    /* background: #fff; */
+    padding: 20px;
+    img {
+      width: 900px;
+      height: 600px;
+      object-fit: fill;
+    }
+
+    /* overflow-y: auto; */
+    border-radius: 10px;
+  }
+}
+.button2 {
+  border-radius: 50% !important;
+  width: 30px;
+  height: 30px;
+  border: none;
+  .iconclose {
+    font-size: 20px;
+    color: white;
+  }
+}

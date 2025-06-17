@@ -4,9 +4,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from './index.module.css'
 import { Pagination, Autoplay } from 'swiper/modules';
-import slid2 from '../../assets/Larg4.jpg'
-import slid3 from '../../assets/Larg2.jpg'
-import slid1 from '../../assets/slider-bg-CMZC28H3.jpg'
+import slid2 from '../../assets/1000Logo-WNOvseAe.png'
+import slid3 from '../../assets/1000Logo-WNOvseAe.png'
+import slid1 from '../../assets/1000Logo-WNOvseAe.png'
 import logo from '../../assets/1000Logo-WNOvseAe.png'
 
 export default function SildeSwiper() {

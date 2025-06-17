@@ -1,146 +1,273 @@
-// .overlap {
-//   min-height: 600px;
-//   max-height: 90%;
-//   left: 216px;
-//   top: 2474px;
-//   width: 100%;
-//   position: relative; 
-//   left: 0;
-//   top: 0;
-// }
+.overlap {
+  min-height: 600px;
+  max-height: 90%;
+  left: 216px;
+  top: 2474px;
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+}
 
-// .overlap-group {
-//   height: 520px;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   position: absolute; 
-//   z-index: 3;
-// }
+.overlap-group {
+  height: 600px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
 
-// .isolation-mode {
-//   height: 530px;
-//   left: 0;
-//   top: 77px;
-//   width: 595px;
-  
-// }
-// .divmap{
-//   margin-left: 10%;
+.isolation-mode {
+  height: 530px;
+  left: 0;
+  top: 77px;
+  width: 595px;
+}
+.divmap {
+  margin-left: 10%;
+}
+.vector1 {
+  /*الوادي الجديد*/
+  left: 28%;
+  bottom: 32%;
+}
+.vector2 {
+  /*الجيزة*/
+  left: 36%;
+  bottom: 56%;
+}
+.vector3 {
+  /*مرسى مطروح*/
+  left: 18%;
+  bottom: 65%;
+}
+.vector4 {
+  /*أسوان*/
+  left: 64%;
+  bottom: 20%;
+}
+.vector5 {
+  /*القاهرة*/
+  left: 55%;
+  bottom: 67.5%;
+}
+.vector6 {
+  /*المنيا*/
+  left: 46%;
+  bottom: 52%;
+}
+.vector7 {
+  /*بني سويف*/
+  left: 52%;
+  bottom: 58%;
+}
+.vector8 {
+  /*البحر الأحمر*/
+  left: 75%;
+  bottom: 25%;
+}
+.vector9 {
+  /*قنا*/
+  left: 65%;
+  bottom: 35%;
+}
+.vector10 {
+  /*سوهاج*/
+  left: 59%;
+  bottom: 40%;
+}
+.vector11 {
+  /*الفيوم*/
+  left: 48%;
+  bottom: 62%;
+}
+.vector12 {
+  /*الاسكندرية*/
+  left: 41.5%;
+  bottom: 74%;
+}
+.vector13 {
+  /*شمال سيناء*/
+  left: 70%;
+  bottom: 72%;
+}
+.vector14 {
+  /*البحيرة*/
+  left: 45%;
+  bottom: 72%;
+}
+.vector15 {
+  /*أسيوط*/
+  left: 55%;
+  bottom: 45%;
+}
+.vector16 {
+  /*دمياط*/
+  left: 57%;
+  bottom: 79.5%;
+}
+.vector17 {
+  /*الشرقية*/
+  left: 57%;
+  bottom: 74%;
+}
+.vector18 {
+  /*المنوفية*/
+  left: 51%;
+  bottom: 72%;
+}
+.vector19 {
+  /*الغربية*/
+  left: 51%;
+  bottom: 75%;
+}
+.vector20 {
+  /*كفر الشيخ*/
+  left: 50%;
+  bottom: 79%;
+}
+.vector21 {
+  /*القليوبية*/
+  left: 53%;
+  bottom: 70%;
+}
+.vector22 {
+  /*الدقهلية*/
+  left: 54.5%;
+  bottom: 76%;
+}
+.message-box {
+  top: 50px; /* تطلع فوق الأيقونة */
+  left: 50px; /* تبعد شوية يمين */
+  opacity: 0;
+  background-color: #dbdbdb;
+  direction: rtl;
+  // transform: translateY(10px);
+  // transition: all 0.3s ease-in-out;
+  // white-space: nowrap;
+  z-index: 10;
+  h5{
+    span{
+      font-size: 15px;
+    }
+  }
 
-// }
-// .vector1{
-//   left: 25%;
-//   bottom:20%;
-// }
-// .vector2{
-//   left: 25%;
-//   bottom:50%;
-// }
-// .vector3 {
-//     left: 18%;
-//     bottom: 60%;
-// }
-// .p {
-//   color:rgba(156, 153, 153, 1);
-//   direction: rtl;
-//   font-family: "GE SS-Medium", Helvetica;
-//   font-size:31px;
-//   font-weight: 500;
-//   // left: 228px;
-//   letter-spacing: 0;
-//   line-height: normal;
-//   text-align: center;
-//   /* max-width: 80%;*/
-//   top: 15px;
-// }
 
-// .group {
-//   height: 449px;
-//   left: 11px;
-//   top: 0;
-//   width: 493px;
-// }
+}
+.message-box.show {
+    opacity: 1;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 440px;
+    width:270px;
+    // transform: translateY(0);
+}
+#ddr {
+  direction: rtl;
+}
+.p {
+  color: rgba(156, 153, 153, 1);
+  direction: rtl;
+  font-family: "GE SS-Medium", Helvetica;
+  font-size: 31px;
+  font-weight: 500;
+  // left: 228px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  /* max-width: 80%;*/
+  top: 15px;
+}
 
-// .overlap-3 {
-//   height: 36px;
-//   left: 211px;
-//   top: 92px;
-//   width: 49px;
-// }
+.group {
+  height: 449px;
+  left: 11px;
+  top: 0;
+  width: 493px;
+}
 
-// .overlap-4 {
-//   height: 69px;
-//   left: 256px;
-//   top: 243px;
-//   width: 99px;
-// }
+.overlap-3 {
+  height: 36px;
+  left: 211px;
+  top: 92px;
+  width: 49px;
+}
 
-// .overlap-5 {
-//   height: 69px;
-//   left: 0;
-//   top: 0;
-//   width: 86px;
-// }
+.overlap-4 {
+  height: 69px;
+  left: 256px;
+  top: 243px;
+  width: 99px;
+}
 
-// .overlap-6 {
-//   height: 54px;
-//   left: 0;
-//   top: 0;
-//   width: 57px;
-// }
+.overlap-5 {
+  height: 69px;
+  left: 0;
+  top: 0;
+  width: 86px;
+}
 
-// .frame .rectangle {
-//   background-color: #878787;
-//   border-radius: 4px;
-//   height: 17px;
-//   left: 15px;
-//   top: 2px;
-//   width: 42px;
-// }
+.overlap-6 {
+  height: 54px;
+  left: 0;
+  top: 0;
+  width: 57px;
+}
 
-// .text-wrapper-6 {
-//   color: #ffffff;
-//   direction: rtl;
-//   font-family: "GE SS Two-Light", Helvetica;
-//   font-size: 10px;
-//   font-weight: 300;
-//   left: 21px;
-//   letter-spacing: 0;
-//   line-height: normal;
-//   text-align: center;
-//   top: 5px;
-//   white-space: nowrap;
-// }
+.frame .rectangle {
+  background-color: #878787;
+  border-radius: 4px;
+  height: 17px;
+  left: 15px;
+  top: 2px;
+  width: 42px;
+}
 
-// .text-wrapper-53 {
-//   color: var(--fontyelowColor);
-//   direction: rtl;
-//   font-family: "GE SS-Bold";
-//   font-size: 30px;
-//   font-weight: 500;
-//   letter-spacing: 0;
-//   line-height: normal;
-//   margin-right:5%;
-// }
-// .text-wrapper-centre {
-//   color: black;
-//   font-family: "GE SS Two-Medium";
-//   font-size: 16px;
-//   line-height: 80px;
-// }
-// .divcenter {
-//   gap: 180px;
-// }
-// .egyptlogo {
-//   background-image: url(../../assets/egyptlogo.png);
-//   background-position: 50%;
-//   background-size: cover;
-//  /* opacity: 0.48;*/
-//   width: 558px;
-//   height: 100%; 
-//   position: absolute;
-//   bottom: 0;
-//   right:  0;
-//   z-index: 1; 
-// }
+.text-wrapper-6 {
+  color: #ffffff;
+  direction: rtl;
+  font-family: "GE SS Two-Light", Helvetica;
+  font-size: 10px;
+  font-weight: 300;
+  left: 21px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  top: 5px;
+  white-space: nowrap;
+}
+
+.text-wrapper-53 {
+  color: var(--fontyelowColor);
+  direction: rtl;
+  font-family: "GE SS-Bold";
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-right: 5%;
+}
+.text-wrapper-centre {
+  color: black;
+  font-family: "GE SS Two-Medium";
+  font-size: 16px;
+  line-height: 80px;
+}
+.divcenter {
+  gap: 180px;
+}
+.egyptlogo {
+  background-image: url(../../assets/egyptlogo.png);
+  background-position: 50%;
+  background-size: cover;
+  /* opacity: 0.48;*/
+  width: 558px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}

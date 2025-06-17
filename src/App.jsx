@@ -3,31 +3,53 @@ import { Route, Routes } from 'react-router-dom'
 import MainLayout from './Component/MainLayout'
 import HomePage from './Pages/HomePage'
 import AOS from 'aos';
+import AboutIndex from './Pages/About/AboutIndex';
+import AllNews from './Pages/AllNews/NewsIndex';
+import Photo from './Pages/Photo';
+import AllVideo from './Pages/AllVideo';
+import DetailsNews from './Pages/DetailsNews';
+import AllInfograph from './Pages/AllInfograph';
+import Messages from './Pages/Messages';
+import DetailsInfograph from './Pages/DetailsInfograph';
+import HospitalService from './Pages/HospitalService';
+import Alllightteam from './Pages/Alllightteam';
+import ContactUs from './Pages/Contactus';
 
 export default function App() {
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      offset: 100, 
+      offset: 100,
       once: false,
     });
     return () => {
-      AOS.refresh(); 
-  };
+      AOS.refresh();
+    };
   }, []);
   return (
     <div className="App d-flex flex-column">
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
-           <Route path='about' element={<h1>about</h1>}/>
-           <Route path='indicators' element={<h1>indicators</h1>}/>
-           <Route path='serviceinitiative' element={<h1>serviceinitiative</h1>}/>
-           <Route path='resultinitiative' element={<h1>resultinitiative</h1>}/>
-           <Route path='mediacorner' element={<h1>mediacorner</h1>}/>
-           <Route path='contactus' element={<h1>contactus</h1>}/>
+          <Route path='/about' element={<AboutIndex />} />
+          <Route path='indicators' element={<h1>indicators</h1>} />
+          <Route path='Services' element={<HospitalService />} />
 
-           
+          <Route path='Services/:id' element={<HospitalService />} />
+          <Route path='mediacorner' element={<AllNews />} />
+          <Route path='contactus' element={<ContactUs />} />
+          <Route path='photo' element={<Photo />} />
+          <Route path='video' element={<AllVideo />} />
+          <Route path='detailsnews/:id' element={<DetailsNews />} />
+          <Route path='detailsinfograph/:id' element={<DetailsInfograph />} />
+          <Route path='infograph' element={<AllInfograph />} />
+          <Route path='messages' element={<Messages />} />
+          <Route path='lightteam' element={<Alllightteam />} />
+
+        </Route>
+        <Route path='/'>
+          <Route path='*' element={<h1>404 Not Found</h1>} />
+
         </Route>
       </Routes>
     </div>

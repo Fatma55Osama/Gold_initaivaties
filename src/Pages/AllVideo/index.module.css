@@ -1,0 +1,191 @@
+#CRegtangle {
+  width: 600px;
+  /* height: 1212px;*/
+  top: 556px;
+  height: 560px;
+  background: #ffffff;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #cba15f;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.25);
+}
+#phdiv {
+  width: 100%;
+  text-align: center;
+  direction: rtl;
+  margin: 0px 0px 0px 0px;
+}
+#Img {
+  background-image: url(../../assets//president.png);
+  background-size: cover;
+  /* background-position: 50%;*/
+  border: none;
+  /* object-fit: cover;*/
+  width: 100%;
+  height: 312px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0px 0px 0px 0px;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+}
+
+#regtangle {
+  background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+  border-top: 2px solid #cba15f;
+  height: 157px;
+
+  P {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "GE SS Two-Light";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    vertical-align: middle;
+  }
+}
+
+#h3 {
+  color: #000000;
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  vertical-align: top;
+  /*direction:rtl;*/
+}
+
+h5 {
+  color: #000000;
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px !important;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: top;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 50px 30px 4px 30px;
+}
+
+h6 {
+  color: #c48d2b;
+  font-family: GE SS Two;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 100%;
+  /* letter-spacing: 0%;*/
+  text-align: center;
+
+  vertical-align: top;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 20px 30px 4px 30px;
+}
+
+#Lines {
+  min-height: 320px;
+  max-height: 100%;
+  vertical-align: top;
+
+  /* border: 5px solid  red;*/
+  margin-top: 10px;
+  margin-bottom: 50px;
+  direction: rtl;
+}
+
+p {
+  /*color: rgba(0, 0, 0, 0.5);*/
+  font-family: "GE SS Two-Light";
+  font-size: 18px;
+  font-weight: 500px;
+  line-height: 30px;
+  vertical-align: top;
+  direction: rtl;
+}
+
+#About {
+  min-height: 304px;
+  max-height: 90%;
+  #AboutLogo {
+    background-image: url(../../assets//rectangle-6.png);
+    background-position: 50%;
+    background-size: cover;
+    width: 456px;
+    height: 304px;
+    opacity: 30%;
+  }
+  #bgColor {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.54) 3.85%,
+      rgba(175, 229, 255, 0.54) 34.13%,
+      rgba(114, 71, 128, 0.54) 100%
+    );
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    top: 0;
+    /*left: 0;*/
+    height: 100%;
+    /*width: 1440px;*/
+    h2 {
+      color: var(--purpleColor);
+      font-family: "GE SS Two-Medium", Helvetica;
+      font-size: 46px;
+      font-weight: 700;
+      margin: 0;
+      /*vertical-align:top;*/
+    }
+  }
+}
+.active {
+  color: #007bff;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+  transition: color 0.3s ease, border 0.3s ease;
+}
+.sectionlink {
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px;
+  /* color: rgba(0, 0, 0, 1);*/
+    &:hover{
+  color: var(--purpleColor) !important;
+  text-decoration: underline;
+   text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+}
+}
+#search {
+  button {
+    background-color: #724780;
+    color: white;
+  }
+}
+#imgrayse {
+  width: 100%;
+  height: 304px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: fill;
+  }
+}
+#iconvedio{
+  margin-top: -150px!important;
+}
+.currentactive{
+   background-color: #724780 !important;
+  color: white !important;
+  border: none !important;
+}
+.noncurrentactive{
+  color: #724780 !important;
+  border:1px solid #724780 !important;
+}

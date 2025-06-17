@@ -31,14 +31,14 @@ export default function Header2() {
                         </div>
                     </div>
                     <div>العاصمة الادارية _ الحي الحكومي <MdLocationPin className={styles.icon} /></div>
-                    <div className='text-end me-5 pe-4'>05 مايو 2025</div>
+                    <div  className='text-end me-5 pe-4 '>  {new Date().toISOString().split('T')[0]}</div>
                 </div>
                 <div className={styles.part2}>
                 <div className=' col-12 me-5 container pe-5 py-3 d-flex justify-content-between align-items-center  h-100 '>
                     {
                         path.map((el,index)=>{
                             return(
-                               <Link className={` nav-link ${styles.linkfont}  ${el.path==activePath? styles.activelink:null} `} to={el.path}>{el.name} </Link>
+                               <Link key={index} className={` nav-link ${styles.linkfont}  ${el.path==activePath? styles.activelink:null} `} to={el.path}>{el.name} </Link>
                             )
                         })
                     }

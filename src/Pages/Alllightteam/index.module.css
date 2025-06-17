@@ -1,0 +1,242 @@
+/* #Lines {
+    min-height: 250px;
+    max-height: 100%;
+    vertical-align: central;
+    margin-top: 50px;
+    margin-bottom: 50px;
+} */
+
+/* #LinesImg {
+    background-image: url(../../assets//rectangle-6.png);
+    background-size: cover;
+    border: none;
+    object-fit:cover;
+    width: 268px;
+    height: 156px;
+    top: 575px;
+    left: 92px;
+} */
+/* #PresImg {
+    background-image: url(../../assets//DrAbla.png);
+    background-size: cover;
+    border: none;
+    width: 268px;
+    height: 176px;
+    top: 833px;
+    left: 92px;
+} */
+/* 
+#MinisterImg {
+    background-image: url(../../assets//DrKhaled.png);
+    background-size: cover;
+    border: none;
+    width: 268px;
+    height: 179px;
+    top: 1103px;
+    left: 92px;
+}
+
+#StructImg {
+    background-image: url(../../assets//Structure.png);
+    background-size: cover;
+    border: none;
+    width: 266px;
+    height: 167px;
+    top: 1380px;
+    left: 94px;
+}
+
+#BgPillar1 {
+    background-image: url(../../assets//Pillars.png);
+    background-size: cover;
+    border: none;
+    width: 124px;
+    height: 124px;
+    top: 1671px;
+    left: 380px;
+}
+
+#Pillar1 {
+    background-image: url(../../assets//parents.png);
+    background-size: cover;
+    border: none;
+    width: 65px;
+    height: 65px;
+    top: 1701px;
+    left: 409px;
+}
+
+#BgPillar2 {
+    background-image: url(../../assets//Pillars.png);
+    background-size: cover;
+    border: none;
+    width: 124px;
+    height: 124px;
+    top: 1671px;
+    left: 249px;
+} */
+
+/* #Pillar2 {
+    background-image: url(../../assets//pediatrics.png);
+    background-size: cover;
+    border: none;
+    width: 65px;
+    height: 65px;
+    top: 1701px;
+    left: 278px;
+} */
+/* #BgPillar3 {
+    background-image: url(../../assets//Pillars.png);
+    background-size: cover;
+    border: none;
+    width: 124px;
+    height: 124px;
+    top: 1671px;
+    left: 119px;
+} */
+
+/* #Pillar3 {
+    background-image: url(../../assets//pregnant.png);
+    background-size: cover;
+    border: none;
+    width: 65px;
+    height: 65px;
+    top: 1701px;
+    left: 148px;
+} */
+
+/* h3 {
+    color: #000000;
+   
+    vertical-align: middle;
+    font-family: GE SS Two;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+    vertical-align: middle;
+} */
+/* p {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "GE SS Two-Light";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    vertical-align: middle;
+} */
+/* 
+#CRegtangle {
+    background-color: rgba(217, 217, 217, 0.3);
+    height: 200px;
+    background-size: cover;
+    width: 1440px;
+    border: none;
+    vertical-align:middle;
+} */
+
+#About {
+  min-height: 304px;
+  max-height: 90%;
+  #AboutLogo {
+    background-image: url(../../assets//rectangle-6.png);
+    background-position: 50%;
+    background-size: cover;
+    width: 456px;
+    height: 304px;
+    opacity: 30%;
+  }
+  #bgColor {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.54) 3.85%,
+      rgba(175, 229, 255, 0.54) 34.13%,
+      rgba(114, 71, 128, 0.54) 100%
+    );
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    h2 {
+      color: var(--purpleColor);
+      font-family: "GE SS Two-Medium", Helvetica;
+      font-size: 46px;
+      font-weight: 700;
+      margin: 0;
+      /*vertical-align:top;*/
+    }
+    #regtangle {
+      background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+      border-top: 2px solid #cba15f;
+      height: 157px;
+      p {
+        color: rgba(0, 0, 0, 0.5);
+        font-family: "GE SS Two-Light";
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+#search {
+  button {
+    background-color: #724780;
+    color: white;
+  }
+}
+.sectionlinkservice {
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px !important;
+  color: rgba(0, 0, 0, 1);
+}
+#cardslid {
+  width: 400px !important;
+  height: 330px;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  .imgCard {
+    border: 5px solid rgba(228, 194, 196, 1);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .textCard {
+    background-color: rgba(217, 217, 217, 1);
+    p {
+      font-family: "GE SS Two-Medium";
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 3px;
+    }
+  }
+  .Cardtitle {
+    font-family: "GE SS Two-Medium";
+    font-size: 16px;
+    font-weight: 700;
+    width: 150px;
+    text-align: center;
+  }
+}
+.currentactive {
+  background-color: #724780 !important;
+  color: white !important;
+  border: none !important;
+}
+.noncurrentactive {
+  color: #724780 !important;
+  border: 1px solid #724780 !important;
+}
