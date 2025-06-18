@@ -8,10 +8,11 @@ import logo3 from '../../assets/img/log3.png'
 import logo4 from '../../assets/img/log4.png'
 import logo5 from '../../assets/img/logo5.png'
 import logo6 from '../../assets/img/logo6.png'
-import { useImportantlink } from '../../Store';
+import { useImportantlink, usepathimg } from '../../Store';
 
 export default function ImportentLink() {
   const { importantlink } = useImportantlink()
+  const { pathimg } = usepathimg()
   const [filterImportant, setfilterImportant] = useState([])
   useEffect(() => {
     let copyfilterImportant = importantlink.sort((a, b) => (a.linkOrder ?? Infinity) - (b.linkOrder ?? Infinity));
@@ -35,7 +36,7 @@ export default function ImportentLink() {
               delay: 5000,
               disableOnInteraction: false
             }}
-            className="mySwiper"
+            className={styles.mySwipeerr + " mySwiper"}
 
 
           >
@@ -44,53 +45,15 @@ export default function ImportentLink() {
               filterImportant.map((el, index) => {
                 return (
                   <SwiperSlide key={el.linkId}>
-                    <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-                      <img src={`/src/assets/Upfiles/Links/${el.linkImage}`} alt="" />
-                    </div>
+                    
+                    <a  rel="noopener noreferrer" href={el.linkURL} target='_blank' className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
+                      <img src={`${pathimg}/Links/${el.linkImage}`} alt="" />
+                    </a>
                   </SwiperSlide>
                 )
               })
             }
-            {/* <SwiperSlide >
-          <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-            <img src={logo1} alt="" />
-          </div>
-          
-        </SwiperSlide>
         
-        <SwiperSlide >
-          <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-            <img src={logo2} alt="" />
-          </div>
-          
-        </SwiperSlide>
-
-        <SwiperSlide >
-          <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-            <img src={logo3} alt="" />
-          </div>
-          
-        </SwiperSlide> */}
-
-            {/*<SwiperSlide >*/}
-            {/*  <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>*/}
-            {/*    <img src={logo4} alt="" />*/}
-            {/*  </div>*/}
-
-            {/*</SwiperSlide>*/}
-
-            {/* <SwiperSlide >
-          <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-            <img src={logo5} alt="" />
-          </div>
-          
-        </SwiperSlide>
-        <SwiperSlide >
-          <div className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-            <img src={logo6} alt="" />
-          </div>
-          
-        </SwiperSlide> */}
           </Swiper>
 
         </div>

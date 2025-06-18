@@ -19,7 +19,7 @@ export default function About() {
         <div className="div-3" data-aos="fade-up"
           data-aos-offset="5" data-aos-delay={400}>
 
-          <div className="text-wrapper-30">المبادرة في سطور</div>
+          <Link to={'/about'} className="text-wrapper-30">المبادرة في سطور</Link>
           <Link to={'/about'} className='element-4 nav-link'>
             {allabout?.[0]?.aboutText}
           </Link>

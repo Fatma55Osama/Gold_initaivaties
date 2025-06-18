@@ -5,7 +5,7 @@ import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
 import { Element } from 'react-scroll'
-import { useNews } from '../../Store';
+import { useNews, usepathimg } from '../../Store';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import cc from '../../assets/president.png'
 import { useState } from 'react';
@@ -19,6 +19,8 @@ export default function AllNews() {
         { label: "ألبومات الصور", to: "/Photo" },
         { label: "أخبار المبادرة", to: "/mediacorner" },
     ];
+    const { pathimg } = usepathimg()
+
     const { allnews } = useNews()
     const [currentPage, setCurrentPage] = useState(1);
     const newsPerPage = 5; // عدد الأخبار في كل صفحة
@@ -127,7 +129,7 @@ export default function AllNews() {
                                                 </div>
                                             </div>
                                             <div className='col-12 container d-flex flex-column align-items-center  ' id={styles.NewsImg} >
-                                                <img src={`/src/assets/Upfiles/News/${el.smallPhoto}`} className='' alt="" id={styles.NewsImg} />
+                                                <img src={`${pathimg}/News/${el.smallPhoto}`} className='' alt="" id={styles.NewsImg} />
                                             </div>
                                         </div>
                                     )

@@ -100,3 +100,6 @@ export const usedetailsservice = create((set) => ({
   detailservice: {},
   setdetailsservice: (val) => set(() => ({ detailservice: val })),
 }));
+export const usepathimg = create(() => ({
+  pathimg: "/src/assets/Upfiles",
+}));

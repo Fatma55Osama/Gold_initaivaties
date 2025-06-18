@@ -20,7 +20,7 @@ export default function Messages() {
     const indexOfFirstawarness = indexOfLastawarness - awarnessPerPage;
     const filteredawarness = allawarness?.filter(awarness =>
         awarness.msgText.toLowerCase().includes(searchTerm.toLowerCase())
-    ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+    ).sort((a, b) => b.orderView - a.orderView);
     const filteredNewsPerPage = filteredawarness.slice(indexOfFirstawarness, indexOfLastawarness);
     const totalPages = Math.ceil(
         (searchTerm ? filteredawarness.length : allawarness.length) / awarnessPerPage
@@ -99,24 +99,26 @@ export default function Messages() {
                 <div className='col-11 d-flex  flex-column pb-3 align-items-end'>
                     <h3>الرسائل التوعوية</h3>
                 </div>
+                <div className='d-flex flex-column gap-5'>
+                    {
+                        (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
+                            <p style={{ textAlign: 'center', marginTop: '20px' }}>لا يوجد نتائج مطابقة للبحث</p>
+                        ) : filteredNewsPerPage.map((el, index) => {
+                            return (
+                                <div className='col-12 container  d-flex  pb-2 ' id={styles.CRegtangle}  >
+                                    <div className='container text-end d-flex justify-content-end '>
+                                        <div className='col-12 container d-flex flex-column gap-2 '>
+                                            <h7>   {el.msgText}  </h7>
+                                        </div>
 
-
-                {
-                    (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
-                        <p style={{ textAlign: 'center', marginTop: '20px' }}>لا يوجد نتائج مطابقة للبحث</p>
-                    ) : filteredNewsPerPage.map((el, index) => {
-                        return (
-                            <div className='col-12 container  d-flex  pb-2 ' id={styles.CRegtangle}  >
-                                <div className='container text-end d-flex justify-content-end '>
-                                    <div className='col-12 container d-flex flex-column gap-2 '>
-                                        <h7>   {el.msgText}  </h7>
                                     </div>
-
                                 </div>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
+
+
 
                 {/* <div className='col-12 container bg-success d-flex  pb-2 ' id={styles.CRegtangle}  >
                     {

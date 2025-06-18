@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import styles from './index.module.css'
 import { IoMdArrowDropdown } from 'react-icons/io';
-import { useallActiveEmployees } from '../../Store';
+import { useallActiveEmployees, usepathimg } from '../../Store';
 import { useState } from 'react';
 
 
@@ -18,6 +18,8 @@ export default function Alllightteam() {
         // { label: " مشورة الإعاقة والدمج", to: "/#" },
         { label: " نماذج مضيئة", to: "/Services" },
     ];
+    const { pathimg } = usepathimg()
+
     const { Employees } = useallActiveEmployees()
     const [Searchterm, setSearchterm] = useState('')
     const lightperpage = 9
@@ -25,10 +27,14 @@ export default function Alllightteam() {
     let indexofLastteam = currentPage * lightperpage
     let indexofFirsteam = indexofLastteam - lightperpage
     let filteredteam = Employees.filter((team) => {
-        return team.empName.toLowerCase().includes(Searchterm.toLowerCase())}).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate))
+        return team.empName.toLowerCase().includes(Searchterm.toLowerCase())
+    }).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate))
 
     let filteredteamPerPage = filteredteam.slice(indexofFirsteam, indexofLastteam)
-    let totalpages = Math.ceil(Searchterm ? filteredteam.length : Employees.length) / lightperpage
+    let totalpages = Math.ceil((Searchterm ? filteredteam.length : Employees.length) / lightperpage);
+    const paginate = (pageNumber) => {
+        setCurrentpage(pageNumber);
+    };
     const handleSearch = (e) => {
         setSearchterm(e.target.value);
         setCurrentpage(1);
@@ -107,7 +113,7 @@ export default function Alllightteam() {
                                         >
                                             <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
                                                 <div className={styles.imgCard}>
-                                                    <img src={`/src/assets/Upfiles/Photo/${el.empImage}`} alt="" />
+                                                    <img src={`${pathimg}/Photo/${el.empImage}`} alt="" />
                                                 </div>
                                                 <span className={styles.Cardtitle}>
                                                     {el.empName}
@@ -125,23 +131,25 @@ export default function Alllightteam() {
 
 
                     </div>
+                    <div className=" d-flex justify-content-center my-3" dir="rtl">
+                        {Array.from({ length: totalpages }, (_, i) => {
+                            const pageNum = i + 1;
+                            const arabicNum = pageNum.toLocaleString('ar-EG');
+                            return (
+                                <button
+                                    key={pageNum}
+                                    className={`btn mx-1 ${currentPage === pageNum ? styles.currentactive : styles.noncurrentactive}`}
+                                    onClick={() => paginate(pageNum)}
+                                >
+                                    {arabicNum}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
-                <div className="d-flex justify-content-center my-3" dir="rtl">
-                    {Array.from({ length: totalpages }, (_, i) => {
-                        const pageNum = i + 1;
-                        const arabicNum = pageNum.toLocaleString('ar-EG');
-                        return (
-                            <button
-                                key={pageNum}
-                                className={`btn mx-1 ${currentPage === pageNum ? styles.currentactive : styles.noncurrentactive}`}
-                                onClick={() => paginate(pageNum)}
-                            >
-                                {arabicNum}
-                            </button>
-                        );
-                    })}
-                </div>
+
             </div>
+
         </div >
 
 

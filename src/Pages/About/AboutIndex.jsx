@@ -5,7 +5,7 @@ import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
 import { Element, Link } from 'react-scroll'
-import { useAbout, useModal, useModalpdf } from '../../Store';
+import { useAbout, useModal, useModalpdf, usepathimg } from '../../Store';
 import { Accordion } from 'react-bootstrap';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import ModalAbout from '../../Component/ModalAbout';
@@ -23,6 +23,8 @@ import Modalpdf from '../../Component/Modalpdf';
 
 export default function AboutIndex() {
     const { allabout, setallabout } = useAbout()
+    const { pathimg } = usepathimg()
+
     const navLinks = [
         { label: "آليات التنفيذ", to: "section7" },
         { label: "محاور المبادرة", to: "section1" },
@@ -79,7 +81,7 @@ export default function AboutIndex() {
                     <div className='d-flex  container '>
                         <div className=' col-3 container d-flex flex-column justify-content-center' >
                             <div className='' id={styles.LinesImg}>
-                                <img src={`/src/assets/Upfiles/About/${allabout?.[0]?.aboutImg}`} alt="" />
+                                <img src={`${pathimg}/About/${allabout?.[0]?.aboutImg}`} alt="" />
                             </div>
                         </div>
 
@@ -107,7 +109,7 @@ export default function AboutIndex() {
                     <div className='d-flex container'>
                         <div className=' col-3 container d-flex flex-column justify-content-center' >
                             <div className='d-flex justify-content-center  flex-column ' id={styles.PresImg}>
-                                <img src={`/src/assets/Upfiles/About/${allabout?.[0]?.chairmanImg}`} alt="" />
+                                <img src={`${pathimg}/About/${allabout?.[0]?.chairmanImg}`} alt="" />
                             </div>
                         </div>
 
@@ -140,7 +142,7 @@ export default function AboutIndex() {
                     <div className='container d-flex'>
                         <div className=' col-3 container d-flex flex-column justify-content-center' >
                             <div className='d-flex justify-content-center  flex-column  ' id={styles.MinisterImg}>
-                                <img src={`/src/assets/Upfiles/About/${allabout?.[0]?.ministerImg}`} alt="" />
+                                <img src={`${pathimg}/About/${allabout?.[0]?.ministerImg}`} alt="" />
                             </div>
                         </div>
 
@@ -174,7 +176,7 @@ export default function AboutIndex() {
                             <div onClick={() => openModal()} className={styles.btnback + '  rounded-3 '}>
 
                                 <IoIosArrowRoundBack className={styles.iconarrow} />
-                                <button  className='rounded-3 py-1 px-4'> عرض </button>
+                                <button className='rounded-3 py-1 px-4'> عرض </button>
                             </div>
                         </div>
                     </div>
@@ -182,7 +184,7 @@ export default function AboutIndex() {
                 </div>
             </div>
             {
-                modalindex && (<ModalAbout img={`/src/assets/Upfiles/About/${allabout?.[0]?.structureImg}`} />)
+                modalindex && (<ModalAbout img={`${pathimg}/About/${allabout?.[0]?.structureImg}`} />)
             }
             {/* ---------------------- End الهيكل التنظيمي------------------------- */}
 
@@ -280,7 +282,7 @@ export default function AboutIndex() {
                     </div>
 
                     {modalpdf && (
-                        <Modalpdf file={allabout?.[0]?.mechanismsFile} />
+                        <Modalpdf file={allabout?.[0]?.mechanismsFile}  folder="About" />
                     )}
 
                 </div>

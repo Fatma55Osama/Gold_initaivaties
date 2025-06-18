@@ -1,5 +1,5 @@
 
-import { useInfograph } from '../../Store';
+import { useInfograph, usepathimg } from '../../Store';
 import styles from './index.module.css'
 
 import { Link } from 'react-router-dom'
@@ -14,11 +14,20 @@ export default function AllInfograph() {
     const [currentPage, setCurrentPage] = useState(1);
     const infoPerPage = 4; // عدد الأخبار في كل صفحة
     const [searchTerm, setSearchTerm] = useState('');
+    const { pathimg } = usepathimg()
+
     const indexOfLastinfo = currentPage * infoPerPage;
     const indexOfFirstinfo = indexOfLastinfo - infoPerPage;
     const filteredinfo = infograph?.filter(info =>
-        info.infoTitle.toLowerCase().includes(searchTerm.toLowerCase())).sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate))
-    ;
+        info.infoTitle.toLowerCase().includes(searchTerm.toLowerCase()))  .sort((a, b) => {
+    // أولا الترتيب حسب orderView (تصاعدي مثلاً)
+    if (a.orderView !== b.orderView) {
+      return b.orderView - a.orderView;
+    }
+    // ثم الترتيب حسب تاريخ النشر تنازليًا
+    return new Date(b.publicationDate) - new Date(a.publicationDate);
+  });
+        ;
     const filteredNewsPerPage = filteredinfo.slice(indexOfFirstinfo, indexOfLastinfo);
     const totalPages = Math.ceil(
         (searchTerm ? filteredinfo.length : infograph.length) / infoPerPage
@@ -97,7 +106,7 @@ export default function AllInfograph() {
                 <div className=' col-12  d-flex flex-column pb-3 align-items-end mt-5'>
                     <h3>الإنفوجراف</h3>
                 </div>
-                <div className='col-12 d-flex flex-wrap  container justify-content-end ' id={styles.allinfodiv}>
+                <div className='col-12 d-flex flex-wrap  container justify-content-center ' id={styles.allinfodiv}>
                     {
                         (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
                             <div className=' text-center col-12'>
@@ -117,7 +126,7 @@ export default function AllInfograph() {
                                     <div className='   d-flex  flex-column  ' id={styles.CRegtangleinfo}  >
                                         <Link to={`/detailsinfograph/${el.infoId}`} className=' text-wrap flex-column nav-link' id={styles.phdivinfo}>
                                             <div className='   flex-column '  >
-                                                <img src={`/src/assets/Upfiles/Infograph/${el.infoPhoto}`} id={styles.Imginfo} alt="" />
+                                                <img src={`${pathimg}/Infograph/${el.infoPhoto}`} id={styles.Imginfo} alt="" />
                                             </div>
                                             <div className=' text-wrap  ' id={styles.Titleinfo}>
                                                 <h5 id={styles.infoTitle}>{shortText} </h5>

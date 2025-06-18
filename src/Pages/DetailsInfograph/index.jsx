@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import { Link, useParams } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { getAllData } from '../../Data/Repo/dataRepo';
-import { usedetailsinfo, usedomain } from '../../Store';
+import { usedetailsinfo, usedomain, usepathimg } from '../../Store';
 export default function DetailsInfograph() {
     const navLinks = [
         { label: "الرسائل التوعوية", to: "/messages" },
@@ -14,6 +14,7 @@ export default function DetailsInfograph() {
     ];
     const { detailinfo, setdetailsinfo } = usedetailsinfo()
 
+    const { pathimg } = usepathimg()
 
 
     const { domain } = usedomain()
@@ -103,7 +104,7 @@ export default function DetailsInfograph() {
                                 ))}
                                 <div className='col-12 d-flex justify-content-center align-items-center '>
                                     <img
-                                        src={`/src/assets/Upfiles/Infograph/${detailinfo?.infoPhoto}`}
+                                        src={`${pathimg}/Infograph/${detailinfo?.infoPhoto}`}
                                         alt=""
                                         width={550}
                                         height={661}

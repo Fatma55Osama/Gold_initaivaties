@@ -5,10 +5,11 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import team1 from '../../assets/nusring (1).png'
 import team2 from '../../assets/doctor.png'
 import team3 from '../../assets/staff.png'
-import { useallActiveEmployees } from '../../Store';
+import { useallActiveEmployees, usepathimg } from '../../Store';
 
 export default function Lightteam() {
     const { Employees } = useallActiveEmployees()
+    const { pathimg } = usepathimg()
     const [filteremployess, setFilteremployess] = useState([])
     useEffect(() => {
         let copyfilteremploy = Employees.filter((el) => { return el.onMainPage }).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate))
@@ -36,7 +37,7 @@ export default function Lightteam() {
                                 data-aos-offset="30" data-aos-delay={100}>
                                 <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
                                     <div className={styles.imgCard}>
-                                        <img src={`/src/assets/Upfiles/Photo/${el.empImage}`} alt="" />
+                                        <img src={`${pathimg}/Photo/${el.empImage}`} alt="" />
                                     </div>
                                     <span className={styles.Cardtitle}>
                                         {el.empName}

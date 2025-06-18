@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './index.module.css'
-import { useModalpdf } from '../../Store'
+import { useModalpdf, usepathimg } from '../../Store'
 
 export default function Modalpdf(props) {
     const { closeModalpdf } = useModalpdf()
+    const { pathimg } = usepathimg()
 
     return (
         <div
@@ -11,16 +12,18 @@ export default function Modalpdf(props) {
             onClick={() => closeModalpdf()}
             id={styles.modalstyle}
         >
+            
             <div className="" onClick={(e) => e.stopPropagation()}>
                 
                     <iframe
-                        src={`/src/assets/Upfiles/About/${props.file}`}
+                        src={`${pathimg}/${props.folder}/${props.file}`}
                         width="100%"
                         height="600px"
                         title="PDF Viewer"
                     />
                
             </div>
+            
         </div>
     )
 }

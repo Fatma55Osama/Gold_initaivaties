@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import { IoMdArrowDropdown, IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import reyse from '../../assets/Upfiles/Video/president.png'
-import { usedomain, usePhotoo } from '../../Store';
+import { usedomain, usepathimg, usePhotoo } from '../../Store';
 import { useEffect, useState } from 'react';
 import { getAllData } from '../../Data/Repo/dataRepo';
 
@@ -21,6 +21,8 @@ export default function Photo() {
         { label: "أخبار المبادرة", to: "/mediacorner" },
     ];
     const { allphoto, setallphoto } = usePhotoo()
+    const { pathimg } = usepathimg()
+
     const [filterphoto, setfilterphoto] = useState([])
     const { domain } = usedomain()
     useEffect(() => {
@@ -135,10 +137,10 @@ export default function Photo() {
                     <div className='  col-12  d-flex flex-column  pb-3'>
                         <h3 id={styles.h3}>ألبومات الصور</h3>
                     </div>
-                    <div className='  pb-4 d-flex  ' id={styles.CRegtangle}  >
+                    <div className='  pb-4 d-flex   ' id={styles.CRegtangle}  >
                         {/**هنا هنعمل الmap */}
 
-                        <div className='d-flex flex-wrap justify-content-between col-12'>
+                        <div className='d-flex flex-wrap justify-content-between align-items-center  col-12 pt-4 pe-4'>
                             {
                                 filteredNewsPerPage.length === 0 ? (
                                     <div className=' text-center col-12'>
@@ -153,7 +155,7 @@ export default function Photo() {
                                     return (
                                         <div onClick={() => openAlbum(el.albumId)} id={styles.phdiv} key={el.albumId}>
                                             <div id={styles.Img}>
-                                                <img src={`/src/assets/Upfiles/Photo/${el.coverPhoto}`} alt="" />
+                                                <img src={`${pathimg}/Photo/${el.coverPhoto}`} alt="" />
                                             </div>
                                             <div className='mt-3'>
                                                 <h5 id={styles.h55}>{el.albumTitle}</h5>
@@ -170,7 +172,7 @@ export default function Photo() {
                             <div className={styles.modal}>
                                 <div className='d-flex justify-content-start align-items-start my-3 mx-4'>
 
-                                <button className={styles.button2 + ' bg-danger'} onClick={closeModal}><IoMdClose className={styles.iconclose} /></button>
+                                    <button className={styles.button2 + ' bg-danger'} onClick={closeModal}><IoMdClose className={styles.iconclose} /></button>
                                 </div>
                                 {/* <div>
                                     {selectedAlbumPhotos.map(photo => (
@@ -180,7 +182,7 @@ export default function Photo() {
                                 <Swiper className={styles.slider + " mySwiper"} navigation={true} modules={[Navigation]}>
                                     {selectedAlbumPhotos.map(photo => (
                                         <SwiperSlide key={photo.id}>
-                                            <img src={`/src/assets/Upfiles/Photo/${photo.photo}`} alt="" />
+                                            <img src={`${pathimg}/Photo/${photo.photo}`} alt="" />
                                         </SwiperSlide>
                                     ))}
 
@@ -194,21 +196,21 @@ export default function Photo() {
 
             {/* ---------------------- End ألبوم الصور------------------------- */}
 
-                <div className="d-flex justify-content-center my-3" dir="rtl">
-                           {Array.from({ length: totalPages }, (_, i) => {
-                               const pageNum = i + 1;
-                               const arabicNum = pageNum.toLocaleString('ar-EG');
-                               return (
-                                   <button
-                                       key={pageNum}
-                                       className={`btn mx-1 ${currentPage === pageNum ? styles.currentactive : styles.noncurrentactive}`}
-                                       onClick={() => paginate(pageNum)}
-                                   >
-                                       {arabicNum}
-                                   </button>
-                               );
-                           })}
-                       </div>
+            <div className="d-flex justify-content-center my-3" dir="rtl">
+                {Array.from({ length: totalPages }, (_, i) => {
+                    const pageNum = i + 1;
+                    const arabicNum = pageNum.toLocaleString('ar-EG');
+                    return (
+                        <button
+                            key={pageNum}
+                            className={`btn mx-1 ${currentPage === pageNum ? styles.currentactive : styles.noncurrentactive}`}
+                            onClick={() => paginate(pageNum)}
+                        >
+                            {arabicNum}
+                        </button>
+                    );
+                })}
+            </div>
 
         </div >
 

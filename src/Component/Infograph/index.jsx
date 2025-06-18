@@ -3,26 +3,28 @@ import './index.scss'
 import info from '../../assets/info-1.png'
 import info1 from '../../assets/Upfiles/Infograph/Info1-1.png'
 import info2 from '../../assets/Upfiles/Infograph/Info1-2.png'
-import { useInfograph } from '../../Store'
+import { useInfograph, usepathimg } from '../../Store'
 import { Link } from 'react-router-dom'
 
 export default function Infograph() {
   const { infograph, setInfograph } = useInfograph()
   const [filterinfo, setfilterinfo] = useState([])
+  const { pathimg } = usepathimg()
+
   useEffect(() => {
     let copyfilterinfo = [...infograph].filter((el) => { return el.onMainPage && el.orderView != undefined }).sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate)).slice(0, 2)
     setfilterinfo(copyfilterinfo)
   }, [infograph])
   return (
     <div className=''>
-      <div className="overlap-27 d-flex flex-column justify-content-center align-items-end " 
+      <div className="overlap-27 d-flex flex-column justify-content-center align-items-end "
       >
         <div className="text-wrapper-49">إنفوجراف</div>
 
         {/* <div className="rectangle-18" /> */}
 
         <div className='d-flex justify-content-between gap-4' data-aos="fade-up"
-              data-aos-offset="10" data-aos-delay={50}>
+          data-aos-offset="10" data-aos-delay={50}>
           {
             filterinfo?.map((el, index) => {
               const shortText = el.infoTitle.split(/\s+/).slice(0, 10).join(' ') + '...';
@@ -31,7 +33,7 @@ export default function Infograph() {
 
                 <div key={el.infoId}>
                   <Link to={`/detailsinfograph/${el.infoId}`} className='nav-link' >
-                    <img className="info" alt="Info" src={`/src/assets/Upfiles/Infograph/${el.infoPhoto}`} />
+                    <img className="info" alt="Info" src={`${pathimg}/Infograph/${el.infoPhoto}`} />
                     <p className="text-wrapper-50 mt-3  ">
                       {shortText}
                     </p>

@@ -6,23 +6,34 @@
   background-size: cover;
   #numbercontainer {
     padding-top: 70px;
-      h2 {
-    font-family: "GE SS-Medium";
-    color: var(--fontyelowColor);
-    font-size: 32px;
-    font-weight: 500;
-    text-align: end;
-    margin-right: 6%;
+    h2 {
+      font-family: "GE SS-Medium";
+      color: var(--fontyelowColor);
+      font-size: 32px;
+      font-weight: 500;
+      text-align: end;
+      margin-right: 6%;
+    }
+    h3 {
+      font-family: "Geist", sans-serif;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    span {
+      font-weight: 500;
+      font-size: 16px;
+    }
   }
-  h3 {
-    font-family: "Geist", sans-serif;
-    font-size: 50px;
-    font-weight: 600;
+  .mySwiperr {
+    .swiper-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: black !important;
+      z-index: 20;
+    }
   }
-  span {
-    font-weight: 500;
-    font-size: 16px;
-  }
-  }
-
 }

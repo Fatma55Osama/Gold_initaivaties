@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import { Link, useParams } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { getAllData } from '../../Data/Repo/dataRepo';
-import { usedetailsnew, usedomain } from '../../Store';
+import { usedetailsnew, usedomain, usepathimg } from '../../Store';
 export default function DetailsNews() {
      const navLinks = [
         { label: "الرسائل التوعوية", to: "/messages" },
@@ -13,6 +13,7 @@ export default function DetailsNews() {
         { label: "أخبار المبادرة", to: "/mediacorner" },
     ];
     const { detailnew, setdetailsnew } = usedetailsnew()
+    const { pathimg } = usepathimg()
 
     const { domain } = usedomain()
     const params = useParams();
@@ -96,7 +97,7 @@ export default function DetailsNews() {
                         <div className='d-flex justify-content-end' id={styles.newscontainer}>
                             <div style={{ overflow: 'hidden' }}>
                                 <img
-                                    src={`/src/assets/Upfiles/News/${detailnew?.smallPhoto}`}
+                                    src={`${pathimg}/News/${detailnew?.smallPhoto}`}
                                     alt=""
                                     width={285}
                                     height={291}

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
-import { useNews } from '../../Store'
+import { useNews, usepathimg } from '../../Store'
 import new1 from '../../assets/president.png'
 import new2 from '../../assets/image-19.png'
 import new3 from '../../assets/plan.jpg'
 import new4 from '../../assets/meet.jpg'
+import { Link } from 'react-router-dom'
 export default function News() {
     const [filternews, setFilternews] = useState([])
     const { allnews } = useNews()
+    const {pathimg} = usepathimg()
     // console.log("allnews",allnews)
     useEffect(() => {
         const filteredNew = allnews.filter((el) => { return el.onMainPage }).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate)).slice(0, 4);
@@ -33,12 +35,12 @@ export default function News() {
                                     <div key={el.newsId} className=' d-flex align-items-center justify-content-between gap-5' data-aos="fade-up"
                                         data-aos-offset="5" data-aos-delay={500}>
                                         {/* <div className="overlap-224" /> */}
-                                        <img src={`/src/assets/Upfiles/News/${el.smallPhoto}`} width={258} height={264} alt="" />
+                                        <img src={`${pathimg}/News/${el.smallPhoto}`} width={258} height={264} alt="" />
                                         <div className=' col-5 d-flex flex-column justify-content-between gap-3 text-center'>
                                             <span className='date'>{formattedDate}</span>
-                                            <p className="text-wrapper-47">
+                                            <Link to={`/detailsnews/${el.newsId}`} className="text-wrapper-47 nav-link">
                                                 {el.title}
-                                            </p>
+                                            </Link>
                                         </div>
                                     </div>)
 
@@ -78,13 +80,13 @@ export default function News() {
                                         <div className='d-flex flex-column justify-content-between gap-3 text-center'>
                                             <span className='date'>{formattedDate}</span>
 
-                                            <p className="text-wrapper-46">
+                                            <Link to={`/detailsnews/${el.newsId}`} className="text-wrapper-46 nav-link">
                                                 {el.title}
-                                            </p>
+                                            </Link>
                                         </div>
 
 
-                                        <img src={`/src/assets/Upfiles/News/${el.smallPhoto}`} width={258} height={264} alt="" />
+                                        <img src={`${pathimg}/News/${el.smallPhoto}`} width={258} height={264} alt="" />
                                     </div>
                                 )
 

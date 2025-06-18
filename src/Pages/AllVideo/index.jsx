@@ -7,7 +7,7 @@ import HomePage from '../..//Pages/HomePage'
 import { Element } from 'react-scroll'
 import { Link } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io';
-import { useVedio } from '../../Store';
+import { usepathimg, useVedio } from '../../Store';
 import iconvedio from '../../assets/Frame.png'
 import { useState } from 'react';
 export default function AllVideo() {
@@ -42,6 +42,8 @@ export default function AllVideo() {
         { label: "ألبومات الصور", to: "/Photo" },
         { label: "أخبار المبادرة", to: "/mediacorner" },
     ];
+    const { pathimg } = usepathimg()
+
     return (
         <div className='col-12'>
             <div className='col-12 position-relative ' id={styles.About}>
@@ -112,12 +114,14 @@ export default function AllVideo() {
                                     month: 'long',
                                     year: 'numeric',
                                 });
+                                const shortText = el.vedioTitle.split(/\s+/).slice(0, 100).join(' ') + '...';
+
                                 return (
                                     <div key={el.vedioId} className=' flex-column  col-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                                         <div className='   d-flex  flex-column ' id={styles.CRegtangle}  >
                                             <div className=' text-wrap flex-column ' id={styles.phdiv}>
                                                 <div className=' flex-column position-relative' id={styles.imgrayse} >
-                                                    <img src={`/src/assets/Upfiles/Video/${el.vCoverPhoto}`} className='' alt="" />
+                                                    <img src={`${pathimg}/Video/${el.vCoverPhoto}`} className='' alt="" />
                                                 </div>
                                                 <div className='  position-absolute  col-10 d-flex justify-content-center' id={styles.iconvedio}>
                                                     <a
@@ -130,7 +134,7 @@ export default function AllVideo() {
                                                     </a>
                                                 </div>
                                                 <div className=' text-wrap mt-3 ' >
-                                                    <h5>{el.vedioTitle}</h5>
+                                                    <h5>{shortText}</h5>
                                                     <h6>{formattedDate}</h6>
                                                 </div>
                                             </div>

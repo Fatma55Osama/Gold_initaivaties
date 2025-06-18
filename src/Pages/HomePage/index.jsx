@@ -59,7 +59,7 @@ export default function HomePage() {
 
   const [Baby, setBaby] = useState([]);
   useEffect(() => {
-    let copyfilterAwarness = allawarness.filter((el) => { return el.orderView })
+    let copyfilterAwarness = ([...allawarness].sort((a, b) => b.orderView - a.orderView)).slice(0,1); 
     setFilterawarness(copyfilterAwarness)
   }, [allawarness])
   const { allservice, setservice } = useServicemain()

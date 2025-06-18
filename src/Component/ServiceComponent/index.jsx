@@ -14,7 +14,7 @@ import pr5 from '../../assets/wheelchair 2 (4).png'
 import pr7 from '../../assets/wheelchair6.png'
 import pr8 from '../../assets/wheelchair 2.png'
 import pr9 from '../../assets/wheelchair 2 (5).png'
-import { useServicemain } from '../../Store'
+import { usepathimg, useServicemain } from '../../Store'
 import { Link } from 'react-router-dom'
 export default function ServiceComponent() {
     const imageMap = {

@@ -5,10 +5,11 @@ import video from '../../assets/mask-group-2.png'
 import regtangel from '../../assets/rectangle-206.svg'
 import group1 from '../../assets/group-1.png'
 import logovideo from '../../assets/Frame.png'
-import { useVedio } from '../../Store'
+import { usepathimg, useVedio } from '../../Store'
 
 export default function Video() {
   const { allvedio, setallvedio } = useVedio()
+    const {pathimg} = usepathimg()
 
   const [filterVedio, setFilterVedio] = useState([])
 
@@ -44,7 +45,7 @@ export default function Video() {
                 className="mask-group-2"
                 alt=""
                 id='imgvedio'
-                src={`/src/assets/Upfiles/Video/${el.vCoverPhoto}`}
+                src={`${pathimg}/Video/${el.vCoverPhoto}`}
               />
 
               <a

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
 
 import logohealth from '../../assets/log3.png'
-import { useNews } from '../../Store'
+import { useNews, usepathimg } from '../../Store'
 import { Link } from 'react-router-dom'
 export default function TopicHour() {
     const [filteredhour, setFilterhour] = useState([])
+    const { pathimg } = usepathimg()
+
     const { allnews } = useNews()
     // console.log("allnews",allnews)
     useEffect(() => {
@@ -24,7 +26,7 @@ export default function TopicHour() {
                         className="container col-9 d-flex justify-content-between text-end align-items-center"
                     >
                         <div id={styles.bglogo} className="d-flex justify-content-center align-items-center">
-                            <img src={`/src/assets/Upfiles/News/${el.smallPhoto}`} alt="" />
+                            <img src={`${pathimg}/News/${el.smallPhoto}`} alt="" />
                         </div>
                         <Link to={`/detailsnews/${el.newsId}`} className="col-8 nav-link d-flex flex-column gap-3 py-5">
                             <h2>موضوع الساعة</h2>
