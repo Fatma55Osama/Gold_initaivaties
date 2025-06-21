@@ -12,7 +12,7 @@
   background-size: cover;
   background-position: 50%;
   border: none; */
-  object-fit: cover;
+  object-fit: fill;
   width: 304px;
   height: 312px;
   border-radius: 20px;
@@ -177,3 +177,11 @@ h6 {
   color: #724780 !important;
   border:1px solid #724780 !important;
 }
+.activelink {
+    color:var(--purpleColor) !important;
+    text-decoration-color:var(--purpleColor) !important;
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+    
+  }

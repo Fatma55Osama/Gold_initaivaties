@@ -95,3 +95,6 @@
 
     }
   }
+.active{
+  color: var(--fontyelowColor);
+}

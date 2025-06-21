@@ -4,7 +4,7 @@ import logo from '../../assets/rectangle-6.png'
 import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
-import { Element, Link } from 'react-scroll'
+import { Element, Link, scroller } from 'react-scroll'
 import { useAbout, useModal, useModalpdf, usepathimg } from '../../Store';
 import { Accordion } from 'react-bootstrap';
 import { IoIosArrowRoundBack } from 'react-icons/io';
@@ -12,6 +12,8 @@ import ModalAbout from '../../Component/ModalAbout';
 import structer from '../../assets//Structure.png'
 import { FaFilePdf } from 'react-icons/fa';
 import Modalpdf from '../../Component/Modalpdf';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 //const myImg = () => {
 //    return (
 //        <div className='col-12 ' >
@@ -24,7 +26,17 @@ import Modalpdf from '../../Component/Modalpdf';
 export default function AboutIndex() {
     const { allabout, setallabout } = useAbout()
     const { pathimg } = usepathimg()
+const location = useLocation();
 
+useEffect(() => {
+  if (location.state?.targetSection) {
+    scroller.scrollTo(location.state.targetSection, {
+      duration: 500,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    });
+  }
+}, [location]);
     const navLinks = [
         { label: "آليات التنفيذ", to: "section7" },
         { label: "محاور المبادرة", to: "section1" },

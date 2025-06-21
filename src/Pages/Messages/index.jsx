@@ -5,13 +5,16 @@ import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
 import { Element } from 'react-scroll'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io';
-import { useAwarnessMsg } from '../../Store';
+import { useAwarnessMsg, usepathes } from '../../Store';
 import { useState } from 'react';
 
 export default function Messages() {
     const { allawarness } = useAwarnessMsg()
+    const { path } = usepathes()
+
+    const location = useLocation()
 
     const [currentPage, setCurrentPage] = useState(1);
     const awarnessPerPage = 10; // عدد الأخبار في كل صفحة
@@ -30,7 +33,7 @@ export default function Messages() {
     const currentNews = allawarness.slice(indexOfFirstawarness, indexOfLastawarness);
 
     // تغيير الصفحة
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => { setCurrentPage(pageNumber); window.scrollTo(0, 0); }
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -77,19 +80,25 @@ export default function Messages() {
                 </div>
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    {navLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            to={link.to}
-                            activeClass={styles.active}
-                            className={" nav-link " + styles.sectionlink}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {
+                        path
+                            .filter(el => el.name === "الركن الإعلامي")
+                            .flatMap((el, index) => {
+                                return el.links.map((link, idx) => {
+                                    const isActive = link.path === location.pathname;
+
+                                    return (
+                                        <Link
+                                            key={`${index}-${idx}`}
+                                            to={link.path}
+                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    );
+                                });
+                            })
+                    }
                 </div>
 
 

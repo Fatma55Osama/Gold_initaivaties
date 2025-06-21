@@ -12,7 +12,7 @@ export default function Interlocuter() {
         <h2>محاور المبادرة</h2>
         {about && (
           <div className='col-12 d-flex justify-content-between gap-4'>
-            <Link to={'/about/#section1'} className='nav-link container d-flex' id={styles.imgbg1} data-aos="fade-up"
+            <Link to="/about" state={{ targetSection: 'section1' }} className='nav-link container d-flex' id={styles.imgbg1} data-aos="fade-up"
               data-aos-offset="5" data-aos-delay={400} >
               <div className=' col-12 my-2' id={styles.border}>
                 <div className='col-12 d-flex flex-column text-center justify-content-between h-100 '>
@@ -22,7 +22,7 @@ export default function Interlocuter() {
               </div>
             </Link>
 
-            <Link to={'/about/#section1'} className='container d-flex nav-link' data-aos="fade-up"
+            <Link to="/about" state={{ targetSection: 'section1' }}className='container d-flex nav-link' data-aos="fade-up"
               data-aos-offset="30" data-aos-delay={500} id={styles.imgbg2}>
               <div className=' col-12 my-2' id={styles.border}>
                 <div className='col-12 d-flex flex-column text-center justify-content-between h-100 '>
@@ -32,7 +32,7 @@ export default function Interlocuter() {
               </div>
             </Link>
 
-            <Link to={'/about/#section1'} className='nav-link container d-flex' data-aos="fade-up"
+            <Link to="/about" state={{ targetSection: 'section1' }} className='nav-link container d-flex' data-aos="fade-up"
               data-aos-offset="5" data-aos-delay={600} id={styles.imgbg3}>
               <div className=' col-12 my-2' id={styles.border}>
                 <div className='col-12 d-flex flex-column text-center justify-content-between h-100 '>

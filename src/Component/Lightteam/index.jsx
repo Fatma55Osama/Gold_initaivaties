@@ -37,7 +37,7 @@ export default function Lightteam() {
                                 data-aos-offset="30" data-aos-delay={100}>
                                 <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
                                     <div className={styles.imgCard}>
-                                        <img src={`${pathimg}/Photo/${el.empImage}`} alt="" />
+                                        <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
                                     </div>
                                     <span className={styles.Cardtitle}>
                                         {el.empName}

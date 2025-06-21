@@ -34,6 +34,7 @@ export default function Alllightteam() {
     let totalpages = Math.ceil((Searchterm ? filteredteam.length : Employees.length) / lightperpage);
     const paginate = (pageNumber) => {
         setCurrentpage(pageNumber);
+        window.scrollTo(0, 0);
     };
     const handleSearch = (e) => {
         setSearchterm(e.target.value);
@@ -113,7 +114,7 @@ export default function Alllightteam() {
                                         >
                                             <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
                                                 <div className={styles.imgCard}>
-                                                    <img src={`${pathimg}/Photo/${el.empImage}`} alt="" />
+                                                    <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
                                                 </div>
                                                 <span className={styles.Cardtitle}>
                                                     {el.empName}

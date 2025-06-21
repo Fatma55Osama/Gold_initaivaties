@@ -1,8 +1,8 @@
 
-import { useInfograph, usepathimg } from '../../Store';
+import { useInfograph, usepathes, usepathimg } from '../../Store';
 import styles from './index.module.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import info from '../../assets/Info1-1.png'
 import { IoMdArrowDropdown } from 'react-icons/io';
@@ -15,29 +15,30 @@ export default function AllInfograph() {
     const infoPerPage = 4; // عدد الأخبار في كل صفحة
     const [searchTerm, setSearchTerm] = useState('');
     const { pathimg } = usepathimg()
-
+    const { path } = usepathes()
+    const location = useLocation()
     const indexOfLastinfo = currentPage * infoPerPage;
     const indexOfFirstinfo = indexOfLastinfo - infoPerPage;
     const filteredinfo = infograph?.filter(info =>
-        info.infoTitle.toLowerCase().includes(searchTerm.toLowerCase()))  .sort((a, b) => {
-    // أولا الترتيب حسب orderView (تصاعدي مثلاً)
-    if (a.orderView !== b.orderView) {
-      return b.orderView - a.orderView;
-    }
-    // ثم الترتيب حسب تاريخ النشر تنازليًا
-    return new Date(b.publicationDate) - new Date(a.publicationDate);
-  });
-        ;
+        info.infoTitle.toLowerCase().includes(searchTerm.toLowerCase())).sort((a, b) => {
+
+            if (a.orderView !== b.orderView) {
+                return b.orderView - a.orderView;
+            }
+
+            return new Date(b.publicationDate) - new Date(a.publicationDate);
+        });
+    ;
     const filteredNewsPerPage = filteredinfo.slice(indexOfFirstinfo, indexOfLastinfo);
     const totalPages = Math.ceil(
         (searchTerm ? filteredinfo.length : infograph.length) / infoPerPage
     );
-    // حساب البداية والنهاية
+
 
     const currentNews = infograph.slice(indexOfFirstinfo, indexOfLastinfo);
 
-    // تغيير الصفحة
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const paginate = (pageNumber) => { setCurrentPage(pageNumber); window.scrollTo(0, 0); }
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -84,19 +85,24 @@ export default function AllInfograph() {
                 </div>
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    {navLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            to={link.to}
-                            activeClass={styles.active}
-                            className={" nav-link " + styles.sectionlink}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+      
+                    {
+                        path.filter(el => el.name === "الركن الإعلامي")
+                            .flatMap((el, index) => {
+                                return el.links.map((link, idx) => {
+                                    const isActive = link.path === location.pathname
+                                    return (
+                                       <Link
+                                            key={`${index}-${idx}`}
+                                            to={link.path}
+                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    )
+                                })
+                            })
+                    }
                 </div>
 
 

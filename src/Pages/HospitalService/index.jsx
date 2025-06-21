@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import styles from './index.module.css'
 import ServiceComponent from '../../Component/ServiceComponent'
 import pdfimg from '../../assets/pdfimg.png'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { usedetailsservice, usedomain, useModalpdf } from '../../Store'
 import { getAllData } from '../../Data/Repo/dataRepo'
 import Modalpdf from '../../Component/Modalpdf'
 export default function HospitalService() {
     const parmas = useParams()
+  
     let id = parmas.id
     const { domain } = usedomain()
     const { modalpdf, openModalpdf, closeModalpdf } = useModalpdf()

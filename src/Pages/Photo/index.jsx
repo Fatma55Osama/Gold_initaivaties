@@ -1,9 +1,9 @@
 
 import styles from './index.module.css'
 import { IoMdArrowDropdown, IoMdClose } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import reyse from '../../assets/Upfiles/Video/president.png'
-import { usedomain, usepathimg, usePhotoo } from '../../Store';
+import { usedomain, usepathes, usepathimg, usePhotoo } from '../../Store';
 import { useEffect, useState } from 'react';
 import { getAllData } from '../../Data/Repo/dataRepo';
 
@@ -13,6 +13,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function Photo() {
+        const { path } = usepathes()
+    
+        const location = useLocation()
+    
     const navLinks = [
         { label: "الرسائل التوعوية", to: "/messages" },
         { label: "قائمة الإنفوجراف", to: "/infograph" },
@@ -78,7 +82,7 @@ export default function Photo() {
     // const currentNews = filterphoto.slice(indexOfFirstphoto, indexOfLastphoto);
 
     // تغيير الصفحة
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => { setCurrentPage(pageNumber); window.scrollTo(0, 0); }
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -117,16 +121,25 @@ export default function Photo() {
                 </div>
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    {navLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            to={link.to}
-                            activeClass={styles.active}
-                            className={" nav-link " + styles.sectionlink}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {
+                        path
+                            .filter(el => el.name === "الركن الإعلامي")
+                            .flatMap((el, index) => {
+                                return el.links.map((link, idx) => {
+                                    const isActive = link.path === location.pathname;
+
+                                    return (
+                                        <Link
+                                            key={`${index}-${idx}`}
+                                            to={link.path}
+                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    );
+                                });
+                            })
+                    }
                 </div>
 
 

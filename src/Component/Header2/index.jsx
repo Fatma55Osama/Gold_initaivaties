@@ -9,14 +9,14 @@ import { PiInstagramLogoFill } from 'react-icons/pi'
 import { usepathes } from '../../Store'
 import { Link, useLocation } from 'react-router-dom'
 export default function Header2() {
-       const { path } = usepathes()
-        const [activePath, setActivePath] = useState()
-        const location = useLocation()
-        useEffect(() => {
-            setActivePath(location.pathname)
-           
-        }, [location])
-    
+    const { path } = usepathes()
+    const [activePath, setActivePath] = useState()
+    const location = useLocation()
+    useEffect(() => {
+        setActivePath(location.pathname)
+
+    }, [location])
+
     return (
         <div className='col-12  align-items-start d-flex justify-content-start'>
             <div className='col-7 ' id={styles.halfheader}>
@@ -31,18 +31,26 @@ export default function Header2() {
                         </div>
                     </div>
                     <div>العاصمة الادارية _ الحي الحكومي <MdLocationPin className={styles.icon} /></div>
-                    <div  className='text-end me-5 pe-4 '>  {new Date().toISOString().split('T')[0]}</div>
+                    <div className='text-end me-5 pe-4 '>  {new Date().toISOString().split('T')[0]}</div>
                 </div>
                 <div className={styles.part2}>
-                <div className=' col-12 me-5 container pe-5 py-3 d-flex justify-content-between align-items-center  h-100 '>
-                    {
-                        path.map((el,index)=>{
-                            return(
-                               <Link key={index} className={` nav-link ${styles.linkfont}  ${el.path==activePath? styles.activelink:null} `} to={el.path}>{el.name} </Link>
-                            )
-                        })
-                    }
-                </div>
+                    <div className=' col-12 me-5 container pe-5 py-3 d-flex justify-content-between align-items-center  h-100 '>
+                        {
+                            path.map((el, index) => {
+                                const isActive = el.links.some(link => location.pathname.startsWith(link.path));
+
+                                return (
+                                    <Link
+                                        key={index}
+                                       to={el.mainPath || el.links[0].path}
+                                        className={`nav-link ${styles.linkfont} ${isActive ? styles.activelink : ""}`}
+                                    >
+                                        {el.name}
+                                    </Link>
+                                );
+                            })
+                        }
+                    </div>
                 </div>
             </div>
             <div className={styles.rotat + "  col-2"}></div>

@@ -15,7 +15,7 @@ import pr7 from '../../assets/wheelchair6.png'
 import pr8 from '../../assets/wheelchair 2.png'
 import pr9 from '../../assets/wheelchair 2 (5).png'
 import { usepathimg, useServicemain } from '../../Store'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 export default function ServiceComponent() {
     const imageMap = {
         'مشورة الإعاقة والدمج': { img: pr9, hoverimg: pr9hover },
@@ -26,6 +26,8 @@ export default function ServiceComponent() {
         'مشورة ما قبل الزواج': { img: pr3, hoverimg: pr3hover },
         'المشورة الأسرية بالمستشفيات': { img: pr5, hoverimg: pr5hover },
     };
+    const location = useLocation()
+    console.log("location", location)
     const [hoverimgMouse, setHoverimgMouse] = useState(null)
     const [Baby, setBaby] = useState([])
     const { allservice, setservice } = useServicemain()
@@ -66,16 +68,21 @@ export default function ServiceComponent() {
 
                 <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between  '>
                     {
-                        Baby.map((el, index) => (
-                            <Link to={`/Services/${el.mashoraId}`} key={el.mashoraId} className=' text-white nav-link text-center d-flex flex-column align-items-center gap-3 justify-content-center' data-aos="fade-up"
-                                data-aos-offset="5" data-aos-delay={`${index * 100}`} id={styles.cardbaby} onMouseEnter={() => setHoverimgMouse(index)} onMouseLeave={() => setHoverimgMouse(null)} >
+                        Baby.map((el, index) => {
+                            const isCurrent = location.pathname === `/Services/${el.mashoraId}`;
+                            const isHovering = hoverimgMouse === index;
+                            return (
+                                <Link to={`/Services/${el.mashoraId}`} key={el.mashoraId} className=' text-white nav-link text-center d-flex flex-column align-items-center gap-3 justify-content-center' data-aos="fade-up"
+                                    data-aos-offset="5" data-aos-delay={`${index * 100}`} id={styles.cardbaby} onMouseEnter={() => setHoverimgMouse(index)} onMouseLeave={() => setHoverimgMouse(null)} >
 
-                                <img src={hoverimgMouse == index ? el.hoverimg : el.img} width={70} height={70} style={{ objectFit: "contain" }} alt="" />
-                                <h3 className='text-center'>{el.mashoraDesc}</h3>
+                                    <img src={isHovering || isCurrent ? el.hoverimg : el.img} width={70} height={70} style={{ objectFit: "contain" }} alt="" />
+                                    <h3 className={`${isCurrent ? styles.active : null} text-center`} >{el.mashoraDesc}</h3>
 
-                            </Link>
+                                </Link>
+                            )
 
-                        ))
+
+                        })
                     }
 
                 </div>

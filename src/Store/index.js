@@ -1,20 +1,58 @@
 import { create } from "zustand";
 
 export const usepathes = create(() => ({
+  // path: [
+  //   { name: "تواصل معنا", path: "/contactus" },
+  //   {
+  //     name: "الركن الإعلامي",
+  //     path: "/mediacorner",
+  //     includes: ["/messages", "/infograph", "/video", "/Photo", "/mediacorner"],
+  //   },
+  //   { name: "نماذج مضيئة", path: "/lightteam" },
+  //   { name: "مؤشرات المبادرة", path: "/indicators" },
+  //   { name: "خدمات المبادرة", path: "/Services" },
+  //   { name: "عن المبادرة", path: "/about" },
+  //   { name: "الرئيسية", path: "/" },
+  // ],
   path: [
-    { name: "تواصل معنا", path: "/contactus" },
+    {
+      name: "تواصل معنا",
+      links: [{ label: "تواصل معنا", path: "/contactus" }],
+    },
     {
       name: "الركن الإعلامي",
-      path: "/mediacorner",
-      includes: ["/messages", "/infograph", "/video", "/Photo", "/mediacorner"],
+      mainPath: "/mediacorner",
+      links: [
+        { label: "الرسائل التوعوية", path: "/messages" },
+        { label: "قائمة الإنفوجراف", path: "/infograph" },
+        { label: "مكتبة الفيديو", path: "/video" },
+        { label: "ألبومات الصور", path: "/Photo" },
+        { label: "أخبار المبادرة", path: "/mediacorner" },
+      ],
     },
-    { name: "نماذج مضيئة", path: "/lightteam" },
-    { name: "مؤشرات المبادرة", path: "/indicators" },
-    { name: "خدمات المبادرة", path: "/Services" },
-    { name: "عن المبادرة", path: "/about" },
-    { name: "الرئيسية", path: "/" },
+    {
+      name: "نماذج مضيئة",
+      links: [{ label: "نماذج مضيئة", path: "/lightteam" }],
+    },
+    {
+      name:"مؤشرات المبادرة",
+      links: [{ label: "مؤشرات المبادرة", path: "/indicators"}],
+    },
+     {
+      name: "خدمات المبادرة",
+      links: [{ label: "خدمات المبادرة", path: "/Services"}],
+    },
+     {
+      name: "عن المبادرة",
+      links: [{ label: "عن المبادرة",  path: "/about"}],
+    },
+    {
+      name: "الرئيسية ",
+      links: [{ label: " الرئيسية",  path: "/"}],
+    },
   ],
 }));
+
 // export const useData = create(() => ({
 //   dataphotos: [
 //     { img: meet1, text: "إجتماع المجلس الاقليمى للسكان برئاسة محافظ المنوفية" },

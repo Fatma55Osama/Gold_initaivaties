@@ -5,13 +5,15 @@ import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
 import { Element } from 'react-scroll'
-import { useNews, usepathimg } from '../../Store';
+import { useNews, usepathes, usepathimg } from '../../Store';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import cc from '../../assets/president.png'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function AllNews() {
+    const { path } = usepathes()
+    const location = useLocation()
     const navLinks = [
         { label: "الرسائل التوعوية", to: "/messages" },
         { label: "قائمة الإنفوجراف", to: "/infograph" },
@@ -38,7 +40,7 @@ export default function AllNews() {
     const currentNews = allnews.slice(indexOfFirstNews, indexOfLastNews);
 
     // تغيير الصفحة
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => { setCurrentPage(pageNumber); window.scrollTo(0, 0); };
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -81,7 +83,7 @@ export default function AllNews() {
                 </div>
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    {navLinks.map((link, index) => (
+                    {/* {navLinks.map((link, index) => (
                         <Link
                             key={index}
                             spy={true}
@@ -93,7 +95,26 @@ export default function AllNews() {
                         >
                             {link.label}
                         </Link>
-                    ))}
+                    ))} */}
+                    {
+                        path
+                            .filter(el => el.name === "الركن الإعلامي") 
+                            .flatMap((el, index) => {
+                                return el.links.map((link, idx) => {
+                                    const isActive = link.path === location.pathname;
+
+                                    return (
+                                        <Link
+                                            key={`${index}-${idx}`}
+                                            to={link.path}
+                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    );
+                                });
+                            })
+                    }
                 </div>
 
 

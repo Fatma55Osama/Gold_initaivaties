@@ -23,7 +23,7 @@ export default function News() {
                 <div className="text-wrapper-44">أخر الأخبار</div>
                 <div className='all news col-12'>
 
-                    <div className='part1 col-12 d-flex justify-content-between'>
+                    <div className='part1 col-12 d-flex justify-content-between '>
                         {
                             filternews.slice(0, 2).map((el, index) => {
                                 const formattedDate = new Date(el.publishDate).toLocaleDateString('ar-EG', {
@@ -32,12 +32,12 @@ export default function News() {
                                     year: 'numeric',
                                 });
                                 return (
-                                    <div key={el.newsId} className=' d-flex align-items-center justify-content-between gap-5' data-aos="fade-up"
-                                        data-aos-offset="5" data-aos-delay={500}>
+                                    <div key={el.newsId} className=' d-flex align-items-center newsId 'data-aos="fade-up"
+                                        data-aos-offset="5" data-aos-delay={500} > 
                                         {/* <div className="overlap-224" /> */}
                                         <img src={`${pathimg}/News/${el.smallPhoto}`} width={258} height={264} alt="" />
-                                        <div className=' col-5 d-flex flex-column justify-content-between gap-3 text-center'>
-                                            <span className='date'>{formattedDate}</span>
+                                        <div className=' col-5 d-flex flex-column justify-content-between px-4 gap-3 text-center '>
+                                            <span className='date '>{formattedDate}</span>
                                             <Link to={`/detailsnews/${el.newsId}`} className="text-wrapper-47 nav-link">
                                                 {el.title}
                                             </Link>
@@ -75,9 +75,9 @@ export default function News() {
                                     year: 'numeric',
                                 });
                                 return (
-                                    <div className='d-flex align-items-center justify-content-between gap-3 ' data-aos="fade-up"
+                                    <div className='d-flex align-items-center  ' data-aos="fade-up"
                                         data-aos-offset="5" data-aos-delay={600}>
-                                        <div className='d-flex flex-column justify-content-between gap-3 text-center'>
+                                        <div className='d-flex flex-column justify-content-between gap-3 px-2 text-center'>
                                             <span className='date'>{formattedDate}</span>
 
                                             <Link to={`/detailsnews/${el.newsId}`} className="text-wrapper-46 nav-link">
