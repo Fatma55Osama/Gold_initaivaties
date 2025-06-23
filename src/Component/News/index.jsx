@@ -38,7 +38,7 @@ export default function News() {
                                         <img src={`${pathimg}/News/${el.smallPhoto}`} width={258} height={264} alt="" />
                                         <div className=' col-5 d-flex flex-column justify-content-between px-4 gap-3 text-center '>
                                             <span className='date '>{formattedDate}</span>
-                                            <Link to={`/detailsnews/${el.newsId}`} className="text-wrapper-47 nav-link">
+                                            <Link to={`/mediacorner/detailsnews/${el.newsId}`} className="text-wrapper-47 nav-link">
                                                 {el.title}
                                             </Link>
                                         </div>
@@ -80,7 +80,7 @@ export default function News() {
                                         <div className='d-flex flex-column justify-content-between gap-3 px-2 text-center'>
                                             <span className='date'>{formattedDate}</span>
 
-                                            <Link to={`/detailsnews/${el.newsId}`} className="text-wrapper-46 nav-link">
+                                            <Link to={`/mediacorner/detailsnews/${el.newsId}`} className="text-wrapper-46 nav-link">
                                                 {el.title}
                                             </Link>
                                         </div>

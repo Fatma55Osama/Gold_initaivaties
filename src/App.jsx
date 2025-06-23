@@ -40,8 +40,8 @@ export default function App() {
           <Route path='contactus' element={<ContactUs />} />
           <Route path='photo' element={<Photo />} />
           <Route path='video' element={<AllVideo />} />
-          <Route path='detailsnews/:id' element={<DetailsNews />} />
-          <Route path='detailsinfograph/:id' element={<DetailsInfograph />} />
+          <Route path='/mediacorner/detailsnews/:id' element={<DetailsNews />} />
+          <Route path='/infograph/detailsinfograph/:id' element={<DetailsInfograph />} />
           <Route path='infograph' element={<AllInfograph />} />
           <Route path='messages' element={<Messages />} />
           <Route path='lightteam' element={<Alllightteam />} />

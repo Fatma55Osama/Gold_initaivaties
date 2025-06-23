@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react'
 import styles from './index.module.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { getAllData } from '../../Data/Repo/dataRepo';
-import { usedetailsinfo, usedomain, usepathimg } from '../../Store';
+import { usedetailsinfo, usedomain, usepathes, usepathimg } from '../../Store';
 export default function DetailsInfograph() {
-    const navLinks = [
-        { label: "الرسائل التوعوية", to: "/messages" },
-        { label: "قائمة الإنفوجراف", to: "/infograph" },
-        { label: "مكتبة الفيديو", to: "/video" },
-        { label: "ألبومات الصور", to: "/Photo" },
-        { label: "أخبار المبادرة", to: "/mediacorner" },
-    ];
+
+    const { path } = usepathes()
+    const location = useLocation()
     const { detailinfo, setdetailsinfo } = usedetailsinfo()
 
     const { pathimg } = usepathimg()
@@ -69,19 +65,29 @@ export default function DetailsInfograph() {
                 </div> */}
 
                 <div className='d-flex col-8  gap-4 justify-content-between align-items-center '>
-                    {navLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            to={link.to}
-                            activeClass={styles.active}
-                            className={" nav-link " + styles.sectionlink}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                 {
+                                        path
+                                            .filter(el => el.name === "الركن الإعلامي")
+                                            .flatMap((el, index) => {
+                                                return el.links.map((link, idx) => {
+                                                    const isActive =
+                                                        link.path === '/'
+                                                            ? location.pathname === '/'
+                                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
+                
+                                                    return (
+                                                        <Link
+                                                            key={`${index}-${idx}`}
+                                                            to={link.path}
+                                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                                        >
+                                                            {link.label}
+                                                        </Link>
+                                                    );
+                                                });
+                                            })
+                                    }
+
                 </div>
 
 

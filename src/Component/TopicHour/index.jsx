@@ -28,7 +28,7 @@ export default function TopicHour() {
                         <div id={styles.bglogo} className="d-flex justify-content-center align-items-center">
                             <img src={`${pathimg}/News/${el.smallPhoto}`} alt="" />
                         </div>
-                        <Link to={`/detailsnews/${el.newsId}`} className="col-8 nav-link d-flex flex-column gap-3 py-5">
+                        <Link to={`/mediacorner/detailsnews/${el.newsId}`} className="col-8 nav-link d-flex flex-column gap-3 py-5">
                             <h2>موضوع الساعة</h2>
                             <p>{shortText}</p>
                         </Link>

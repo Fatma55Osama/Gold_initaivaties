@@ -130,7 +130,7 @@ export default function AllInfograph() {
                             return (
                                 <div key={el.infoId} className='' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                                     <div className='   d-flex  flex-column  ' id={styles.CRegtangleinfo}  >
-                                        <Link to={`/detailsinfograph/${el.infoId}`} className=' text-wrap flex-column nav-link' id={styles.phdivinfo}>
+                                        <Link to={`/infograph/detailsinfograph/${el.infoId}`} className=' text-wrap flex-column nav-link' id={styles.phdivinfo}>
                                             <div className='   flex-column '  >
                                                 <img src={`${pathimg}/Infograph/${el.infoPhoto}`} id={styles.Imginfo} alt="" />
                                             </div>

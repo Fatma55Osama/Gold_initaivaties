@@ -37,12 +37,15 @@ export default function Header2() {
                     <div className=' col-12 me-5 container pe-5 py-3 d-flex justify-content-between align-items-center  h-100 '>
                         {
                             path.map((el, index) => {
-                                const isActive = el.links.some(link => location.pathname.startsWith(link.path));
-
+                                const isActive = el.links.some(link =>
+                                    link.path === '/'
+                                        ? location.pathname === '/'
+                                        : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`)
+                                );
                                 return (
                                     <Link
                                         key={index}
-                                       to={el.mainPath || el.links[0].path}
+                                        to={el.mainPath || el.links[0].path}
                                         className={`nav-link ${styles.linkfont} ${isActive ? styles.activelink : ""}`}
                                     >
                                         {el.name}

@@ -81,7 +81,7 @@ export default function HomePage() {
   // }, [allservice]);
   useEffect(() => {
     const merged = allservice
-      .filter(item => imageMap[item.mashoraDesc]) // خدي بس اللي ليهم صور
+      .filter(item => imageMap[item.mashoraDesc])
       .map(item => ({
         ...item,
         img: imageMap[item.mashoraDesc].img,

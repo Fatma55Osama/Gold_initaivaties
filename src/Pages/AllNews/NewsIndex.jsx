@@ -98,10 +98,14 @@ export default function AllNews() {
                     ))} */}
                     {
                         path
-                            .filter(el => el.name === "الركن الإعلامي") 
+                            .filter(el => el.name === "الركن الإعلامي")
                             .flatMap((el, index) => {
                                 return el.links.map((link, idx) => {
-                                    const isActive = link.path === location.pathname;
+                                    const isActive =
+                                        link.path === '/'
+                                            ? location.pathname === '/'
+                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
+
 
                                     return (
                                         <Link
@@ -142,12 +146,12 @@ export default function AllNews() {
                                     return (
                                         <div className='col-12 container d-flex  pb-2 ' id={styles.CRegtangle} key={el.newsId} >
                                             <div className='container text-end d-flex justify-content-end '>
-                                                <div className='col-12 container d-flex flex-column '>
+                                                <Link to={`/mediacorner/detailsnews/${el.newsId}`} className='col-12 container d-flex flex-column nav-link '>
                                                     <h5>{el.title}</h5>
                                                     <h6>{formattedDate}</h6>
-                                                    <p className={styles.p}>{shortText}</p>
-                                                    <Link className='nav-link' id={styles.span} to={`/detailsnews/${el.newsId}`}><span id={styles.span}>إقرأ المزيد</span></Link>
-                                                </div>
+                                                    <p className={styles.p + " me-4 p-0"}>{shortText}</p>
+                                                    <Link className='nav-link' id={styles.span} to={`/mediacorner/detailsnews/${el.newsId}`}><span id={styles.span}>إقرأ المزيد</span></Link>
+                                                </Link>
                                             </div>
                                             <div className='col-12 container d-flex flex-column align-items-center  ' id={styles.NewsImg} >
                                                 <img src={`${pathimg}/News/${el.smallPhoto}`} className='' alt="" id={styles.NewsImg} />

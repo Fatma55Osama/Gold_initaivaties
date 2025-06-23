@@ -32,7 +32,7 @@ export default function Infograph() {
               return (
 
                 <div key={el.infoId}>
-                  <Link to={`/detailsinfograph/${el.infoId}`} className='nav-link' >
+                  <Link to={`/infograph/detailsinfograph/${el.infoId}`} className='nav-link' >
                     <img className="info" alt="Info" src={`${pathimg}/Infograph/${el.infoPhoto}`} />
                     <p className="text-wrapper-50 mt-3  ">
                       {shortText}

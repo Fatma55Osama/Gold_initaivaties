@@ -95,3 +95,11 @@
 
   height: auto;
 }
+.activelink {
+    color:var(--purpleColor) !important;
+    text-decoration-color:var(--purpleColor) !important;
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+    
+  }

@@ -74,7 +74,11 @@ export default function DetailsNews() {
                             .filter(el => el.name === "الركن الإعلامي")
                             .flatMap((el, index) => {
                                 return el.links.map((link, idx) => {
-                                    const isActive = el.links.some(link => location.pathname.startsWith(link.path));
+                                    const isActive =
+                                        link.path === '/'
+                                            ? location.pathname === '/'
+                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
+
                                     return (
                                         <Link
                                             key={`${index}-${idx}`}
