@@ -19,6 +19,10 @@ export const usepathes = create(() => ({
       name: "تواصل معنا",
       links: [{ label: "تواصل معنا", path: "/contactus" }],
     },
+     {
+      name: "رأيك يهمنا",
+      links: [{ label:  "رأيك يهمنا", path: "/opinion" }],
+    },
     {
       name: "الركن الإعلامي",
       mainPath: "/mediacorner",

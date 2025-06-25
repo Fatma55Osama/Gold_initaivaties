@@ -14,6 +14,7 @@ import DetailsInfograph from './Pages/DetailsInfograph';
 import HospitalService from './Pages/HospitalService';
 import Alllightteam from './Pages/Alllightteam';
 import ContactUs from './Pages/Contactus';
+import Opinion from './Pages/Opinion';
 
 export default function App() {
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function App() {
           <Route path='infograph' element={<AllInfograph />} />
           <Route path='messages' element={<Messages />} />
           <Route path='lightteam' element={<Alllightteam />} />
-
+           <Route path='opinion' element={<Opinion/>}/>
         </Route>
         <Route path='/'>
           <Route path='*' element={<h1>404 Not Found</h1>} />
