@@ -1,20 +1,81 @@
 #bgColor {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.54) 24.52%, rgba(175, 229, 255, 0.54) 60.1%, rgba(114, 71, 128, 0.54) 100%);
-    font-size: 24px;
-    line-height: 43px;
-    font-family: "GE SS Two-Light";
-    
-    h3
-{
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.54) 24.52%,
+    rgba(175, 229, 255, 0.54) 60.1%,
+    rgba(114, 71, 128, 0.54) 100%
+  );
+  font-size: 24px;
+  line-height: 43px;
+  font-family: "GE SS Two-Light";
+
+  h3 {
     color: var(--purpleColor);
     font-family: "GE SS Two-Light";
     font-size: 22px;
-    align-self:center;
-}
+    align-self: center;
+  }
 
-h4 {
+  h4 {
     color: var(--yellowColor);
     align-self: center;
+  }
 }
-    
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  #logodiv1 {
+    img {
+      width: 250px;
+      height: 150px;
+    }
+  }
+  #motherbaby {
+    img {
+      width: 180px;
+      height: 260px;
+    }
+  }
+  #bgColor {
+    #textSection {
+      h5 {
+        text-align: center !important;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+   #logodiv1 {
+    img {
+      width: 260px;
+      height: 160px;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+    #logodiv1 {
+    img {
+      width: 130px;
+      height: 100px;
+    }
+  }
+  #motherbaby {
+    img {
+      width: 120px;
+      height: 215px;
+    }
+  }
+  #bgColor {
+    #textSection {
+      h3{
+       font-size: 14px;
+      }
+      h4{
+        font-size: 14px;
+      }
+      h5 {
+        text-align: center !important;
+        font-size: 11px !important;
+        line-height: 16px;
+      }
+    }
+  }
 }

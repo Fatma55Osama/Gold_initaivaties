@@ -9,6 +9,9 @@ import logo4 from '../../assets/img/log4.png'
 import logo5 from '../../assets/img/logo5.png'
 import logo6 from '../../assets/img/logo6.png'
 import { useImportantlink, usepathimg } from '../../Store';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 export default function ImportentLink() {
   const { importantlink } = useImportantlink()
@@ -36,6 +39,24 @@ export default function ImportentLink() {
               delay: 5000,
               disableOnInteraction: false
             }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              576: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              992: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+              }
+            }}
             className={styles.mySwipeerr + " mySwiper"}
 
 
@@ -45,15 +66,15 @@ export default function ImportentLink() {
               filterImportant.map((el, index) => {
                 return (
                   <SwiperSlide key={el.linkId}>
-                    
-                    <a  rel="noopener noreferrer" href={el.linkURL} target='_blank' className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-                      <img src={`${pathimg}/Links/${el.linkImage}`} alt="" />
+
+                    <a rel="noopener noreferrer" href={el.linkURL} target='_blank' className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
+                      <img src={`${pathimg}/Links/${el.linkImage}`}  alt="" />
                     </a>
                   </SwiperSlide>
                 )
               })
             }
-        
+
           </Swiper>
 
         </div>

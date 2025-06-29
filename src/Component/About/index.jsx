@@ -7,7 +7,7 @@ export default function About() {
   const { allabout, setallabout } = useAbout()
   console.log("allabout", allabout);
   return (
-    <div className=''>
+    <div className='aboutsection'>
 
       <div className="overlap-17 d-flex flex-row ">
         <img

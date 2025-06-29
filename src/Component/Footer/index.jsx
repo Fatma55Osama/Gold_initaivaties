@@ -108,14 +108,14 @@ export default function Footer() {
 
         </div> */}
         <div className='mt-5 d-flex flex-column justify-content-between align-items-center gap-5'>
-          <div className='col-12 d-flex justify-content-between'>
-            <div className='col-5 d-flex justify-content-between'>
+          <div className='col-12 d-flex justify-content-between' id={styles.footerdiv}>
+            <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
               <span className='d-flex gap-3 align-items-center'>info@000000000000000000000000.org  <span>©</span> </span>
               <span>
                 تليفون :  00000000(202+)</span>
             </div>
-            <div className='col-5 d-flex justify-content-between'>
-              <span>العاصمة الادارية _ الحي الحكومي  <MdLocationPin style={{ fontSize: "24px" }} /></span>
+            <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
+              <span className={styles.margenstart}>العاصمة الادارية _ الحي الحكومي  <MdLocationPin style={{ fontSize: "24px" }} /></span>
               <span>
                 الرمز البريدي : 11411 <MdEmail style={{ fontSize: "24px" }} /></span>
 
@@ -123,7 +123,7 @@ export default function Footer() {
 
           </div>
           <div className='col-12 d-flex justify-content-center align-items-center'>
-            <div className='col-8 d-flex flex-column align-items-center '>
+            <div className='col-lg-8 d-flex flex-column align-items-center ' id={styles.footerbottom}>
               <span>سياسة حقوق النسخ - إخلاء المسؤولية - سياسة الخصوصية - الشروط و الأحكام - إمكانية الوصول -  اتصل بنا</span>
               <hr className='col-7' />
               <span>حقوق الطبع و النشر 2025 جميع الحقوق محفوظة لمبادرة الألف يوم الذهبية لتنمية الأسرة المصرية - جمهورية مصر العربية</span>

@@ -213,7 +213,7 @@ export default function Center2() {
 
   return (
     <div>
-      <div className="overlap d-flex">
+      <div className="overlap center2overlap d-flex">
 
 
         <div className="overlap-group  container d-flex justify-content-between ">
@@ -283,12 +283,12 @@ export default function Center2() {
             </div>
           </div>
 
-          <div className='d-flex flex-column justify-content-start gap-3 mt-5'>
+          <div className='   d-flex flex-column justify-content-start gap-3 mt-5 mt-md-2 mt-lg-5 textcenterdiv'>
             <h2 className='text-wrapper-53'>مراكز المبادرة</h2>
             {/* <p className="p">
               محافظات المرحلة الأولي (من 23 أغسطس 2023-31 مارس 2024):
             </p> */}
-            <div className='col-12 d-flex justify-content-end  '>
+            <div className='col-12 d-flex justify-content-end  ' id='parentp'>
               <p className="p ">
                 " تم تغطية ٨٥% من محافظات الجمهورية
                 وجاري الاستكمال"

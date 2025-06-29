@@ -16,7 +16,7 @@ export default function Infograph() {
     setfilterinfo(copyfilterinfo)
   }, [infograph])
   return (
-    <div className=''>
+    <div className='Infographsection'>
       <div className="overlap-27 d-flex flex-column justify-content-center align-items-end "
       >
         <div className="text-wrapper-49">إنفوجراف</div>

@@ -138,8 +138,8 @@
   bottom: 76%;
 }
 .message-box {
-  top: 50px; /* تطلع فوق الأيقونة */
-  left: 50px; /* تبعد شوية يمين */
+  top: 50px;
+  left: 50px;
   opacity: 0;
   background-color: #dbdbdb;
   direction: rtl;
@@ -147,23 +147,21 @@
   // transition: all 0.3s ease-in-out;
   // white-space: nowrap;
   z-index: 10;
-  h5{
-    span{
+  h5 {
+    span {
       font-size: 15px;
     }
   }
-
-
 }
 .message-box.show {
-    opacity: 1;
-    direction: rtl;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    top: 440px;
-    width:270px;
-    // transform: translateY(0);
+  opacity: 1;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 440px;
+  width: 270px;
+  // transform: translateY(0);
 }
 #ddr {
   direction: rtl;
@@ -270,4 +268,52 @@
   bottom: 0;
   right: 0;
   z-index: 1;
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .center2overlap {
+    position: relative;
+    min-height: 650px;
+    max-height: 90%;
+  }
+  .divmap {
+    margin-left: 0%;
+    margin-top: 10%;
+    img {
+    }
+  }
+  .isolation-mode {
+  }
+  .textcenterdiv {
+    // width: 500px !important;
+    position: absolute;
+    right: 0;
+    top: 0 !important;
+  }
+  .text-wrapper-53 {
+    text-align: start !important;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .center2overlap {
+    position: relative;
+    min-height: 650px;
+    max-height: 90%;
+  }
+  .divmap {
+    margin-left: 0%;
+    margin-top: 7%;
+    img {
+    }
+  }
+  .isolation-mode {
+  }
+  .textcenterdiv {
+    // width: 500px !important;
+    position: absolute;
+    right: 0;
+    top: 0 !important;
+  }
+  .text-wrapper-53 {
+    text-align: start !important;
+  }
 }

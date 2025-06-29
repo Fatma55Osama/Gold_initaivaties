@@ -51,7 +51,17 @@
 }
 
 }
-.mySwiper :global(.swiper-wrapper) {
+/* .mySwiper :global(.swiper-wrapper) {
     display: flex;
     justify-content: space-around;
+  } */
+  .swiper, .swiper-slide {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+  @media screen and (max-width: 992px) and (min-width: 768px) {
+    #cardslid{
+        width: 350px !important;
+    }
   }

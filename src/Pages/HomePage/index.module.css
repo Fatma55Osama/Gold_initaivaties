@@ -1,110 +1,161 @@
 #parent {
   min-height: 100vh;
- 
 }
 #imgparent {
-    background-image: url(../../assets/div22.png);
-    background-position: 50%;
-    background-size: 100% 67%;
-    /* height: 70%; */
-    background-repeat: no-repeat;
-    top: 0 !important;
-    
+  background-image: url(../../assets/div22.png);
+  background-position: 50%;
+  background-size: 100% 67%;
+  /* height: 70%; */
+  background-repeat: no-repeat;
+  top: 0 !important;
 }
 #sectionBaby {
-    /* background-color: #734079; */
-    height: 230px;
-    /* margin-top: -200px; */
-    overflow: hidden;
-    z-index: 3;
-    position: relative;
+  /* background-color: #734079; */
+  height: 230px;
+  /* margin-top: -200px; */
+  overflow: hidden;
+  z-index: 3;
+  position: relative;
 
-  h3
-{
+  h3 {
     font-size: 14px;
     font-family: "GE SS Two";
     font-weight: 500;
     transition: transform 0.4s ease, color 0.4s ease;
-   
-}
   }
-  /* p {
+}
+/* p {
     font-size: 1rem;
     margin: 0;
   } */
 #cardbaby {
-    width: 166px;
-    height: 176px;
-    padding: 20px;
-    background-color: var(--purpleColor);
-    box-shadow: 11px 13px 1px #d9d9d9;
-    transition: all 0.8s ease-in-out;
-    /* background-color: transparent;
+  width: 166px;
+  height: 176px;
+  padding: 20px;
+  background-color: var(--purpleColor);
+  box-shadow: 11px 13px 1px #d9d9d9;
+  transition: all 0.8s ease-in-out;
+  /* background-color: transparent;
     overflow: hidden; */
-    text-align:center;
-    align-content:center;
-    
+  text-align: center;
+  align-content: center;
 }
-  img{
-    transition: transform 0.4s ease, color 0.4s ease;
-  }
+img {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
 
-  #cardbaby:hover {
-    /* background-color:var(--fontyelowColor); */
-    /* transform: scale(1.2); */
-    transform: translateY(-5px);
-    /* padding: 20px; */
-    h3
-{
+#cardbaby:hover {
+  /* background-color:var(--fontyelowColor); */
+  /* transform: scale(1.2); */
+  transform: translateY(-5px);
+  /* padding: 20px; */
+  h3 {
     transform: scale(1.1);
-   
-    color: var(--fontyelowColor);
-}
-    img{
-      transform: scale(1.1);
 
-    }
+    color: var(--fontyelowColor);
   }
+  img {
+    transform: scale(1.1);
+  }
+}
 
 img,
 h3,
 p {
-    transition: none;
-    
+  transition: none;
 }
-
-
-
 #msg {
   /*  align-items: center;*/
-    min-height: 250px;
-    max-height: 90%;
-    background-color: #ffffff;
-    background-image: url(../../assets//OLO2E30.png);
-    width: 1440px;
-    opacity: 0.9;
-    margin-top: 30px;
-    /* overflow: hidden; */
-   
-    /* position: relative; */
-    h2{
-    color:#ffd800; /*var(--fontyelowColor);*/
+  min-height: 250px;
+  max-height: 90%;
+  background-color: #ffffff;
+  background-image: url(../../assets//OLO2E30.png);
+  width: 1440px;
+  opacity: 0.9;
+  margin-top: 30px;
+  /* overflow: hidden; */
+
+  /* position: relative; */
+  h2 {
+    color: #ffd800; /*var(--fontyelowColor);*/
     font-size: 38px;
     font-weight: 500;
     font-family: "GE SS-Medium";
     /* overflow: hidden; */
     z-index: 3;
     /* position: relative; */
-}
+  }
 
-p {
+  p {
     font-size: 36px;
     font-family: "GE SS-Medium", sans-serif;
     font-weight: 500;
     line-height: 43px;
     direction: rtl;
     color: #d9d9d9;
-    
-}
+  }
 }
 
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  #cardbaby {
+    width: 110px;
+    height: 146px;
+    img {
+      width: 55px;
+      height: 55px;
+    }
+    h3 {
+      font-size: 12px;
+    }
+  }
+  #vedioandinfo {
+    display: flex;
+    flex-direction: column;
+  }
+  #msg {
+    p {
+      font-size: 30px;
+      text-align: center !important;
+    }
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  #cardbaby {
+    width: 146px;
+    height: 156px;
+  }
+
+  #vedioandinfo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-end;
+  }
+  #msg {
+    p {
+      font-size: 26px;
+      text-align: center !important;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  #sectionBaby {
+    height: 350px;
+  }
+  #sectionBabywrap{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+   #cardbaby {
+    width: 100px;
+    height: 136px;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    h3 {
+      font-size: 10px;
+    }
+  }
+}

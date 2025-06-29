@@ -47,3 +47,25 @@
     text-align: start; /* يخلي المحاذاة تتبع اتجاه النص: في حالتنا اليمن للعبارة، والشمال للنقطة */
   }
 }
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  #boxtext {
+    font-size: 13px;
+  }
+  #imgbg1 {
+    width: 550px !important;
+  }
+  #imgbg2 {
+        width: 550px !important;
+
+  }
+  #imgbg3 {
+        width: 550px !important;
+
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  #boxtext {
+    font-size: 13px;
+  }
+  
+}

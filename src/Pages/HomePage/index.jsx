@@ -100,10 +100,10 @@ export default function HomePage() {
             <SectionContainHeader />
           </div>
           <div className='col-12 text-center py-3 align-items-center justify-content-center' id={styles.sectionBaby}>
-            <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between  '>
+            <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between  ' id={styles.sectionBabywrap}>
               {
                 Baby.map((el, index) => (
-                  <Link to={`/Services/${el.mashoraId}`} key={el.mashoraId} className=' text-white nav-link text-center d-flex flex-column align-items-center gap-3 justify-content-center' data-aos="fade-up"
+                  <Link to={`/Services/${el.mashoraId}`} key={el.mashoraId} className=' text-white nav-link text-center d-flex flex-column align-items-center gap-3  justify-content-center' data-aos="fade-up"
                     data-aos-offset="5" data-aos-delay={`${index * 100}`} id={styles.cardbaby} onMouseEnter={() => setHoverimgMouse(index)} onMouseLeave={() => setHoverimgMouse(null)} >
 
                     <img src={hoverimgMouse == index ? el.hoverimg : el.img} width={70} height={70} style={{ objectFit: "contain" }} alt="" />
@@ -124,7 +124,7 @@ export default function HomePage() {
         <Center2 />
         <Lightteam />
         <NumberInitiative2 />
-        <div className='col-12 container  d-flex justify-content-between align-items-center'>
+        <div className='col-12 container  d-flex justify-content-between align-items-center'id={styles.vedioandinfo}>
           <Video />
           <Infograph />
         </div>

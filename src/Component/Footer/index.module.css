@@ -35,3 +35,30 @@
         }
     }
 }
+  @media screen and (max-width: 992px) and (min-width: 768px) {
+    #footerdiv{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .margenstart{
+            margin-left: 110px;
+        }
+    }
+  }
+  @media screen and (max-width: 1024px) and (min-width: 769px) {
+     #footerdiv{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .margenstart{
+            margin-left: 110px;
+        }
+        #parts{
+            width: 100%;
+        }
+       
+    }
+     #footerbottom{
+            width: 100%;
+        }
+  }

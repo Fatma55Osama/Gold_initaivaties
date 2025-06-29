@@ -1,36 +1,74 @@
-#halfheader{
-    overflow: hidden;
-    clip-path: polygon(90% 0%, 100% 100%, 0% 100%, 0% 0%);
+#halfheader {
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(90% 0%, 100% 100%, 0% 100%, 0% 0%);
 }
-.rotat{
-    border-right:2px solid  var(--purpleColor) ;
-    background-color:var(--purpleColor) ;
-    transform: rotate(48.200deg);
-    margin-left: -14%;
-    z-index: 2;
-    height: 2px;
-    top: 0;
-}
-.part1{
 
+.rotat {
+  /* border-right: 2px solid var(--purpleColor); */
+  background-color: var(--purpleColor);
+  transform: rotate(43.3deg);
+  /* margin-left: -14.88%; */
+  z-index: 2;
+  height: 2px;
+  top: 0;
+  right: 31.5%;
+  position: absolute;
+}
+.part1 {
   background-color: var(--purpleColor);
   color: white;
-
-  .icon{
+  /* left: 50%; */
+  /* transform: translateX(50%); */
+  .icon {
     font-size: 20px;
     color: white;
   }
 }
 .activelink {
-    color:var(--purpleColor) !important;
-    text-decoration-color:var(--purpleColor) !important;
-    text-decoration-line: underline !important;
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 10px;
-    
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}
+.linkfont {
+  font-family: "GE SS Two-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 18px;
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .linkfont {
+    font-size: 12px !important;
   }
-  .linkfont{
-    font-family: "GE SS Two-Medium", Helvetica;
-    font-weight: 500;
-    font-size: 18px;
+  .rotat {
+    right: 8.95%;
+
+    transform: rotate(51.9deg);
   }
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  #halfheader {
+    width: 90%;
+  }
+  .rotat {
+    right: 10.4%;
+
+    transform: rotate(48.99999deg);
+  }
+}
+@media screen and (max-width: 767px) {
+  .linkfont {
+    font-size: 9px !important;
+  }
+  #dateday {
+    font-size: 11px;
+  }
+  #asema {
+    font-size: 11px;
+  }
+
+  .icon {
+    font-size: 10px !important;
+  }
+}

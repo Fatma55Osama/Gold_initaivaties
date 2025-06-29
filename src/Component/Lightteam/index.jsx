@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Pagination } from 'swiper/modules';
+import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 import team1 from '../../assets/nusring (1).png'
 import team2 from '../../assets/doctor.png'
 import team3 from '../../assets/staff.png'
@@ -20,21 +20,23 @@ export default function Lightteam() {
         <div className={styles.lighteam}>
             <h3 className={styles.textWareber + " text-center"}>نماذج مضيئة</h3>
             <Swiper
-                slidesPerView={4}
+                slidesPerView={Math.min(filteremployess.length, 3)}
                 spaceBetween={20}
-                FreeMode={true}
-                pagination={{
-                    clickable: true,
-                }}
-                modules={[FreeMode, Pagination]}
-                className={styles.mySwiper + " mySwiper  container d-flex justify-content-between"}
+                freeMode={true}
+                pagination={{ clickable: true }}
+                autoplay={filteremployess.length > 3 ? {
+                    delay: 5000,
+                    disableOnInteraction: false
+                } : false}
+                loop={filteremployess.length > 3}
+                modules={[FreeMode, Pagination, Autoplay]}
+                className={`${styles.mySwiper} mySwiper container`}
             >
                 {
-                    filteremployess.slice(0, 3).map((el, index) => {
+                    filteremployess.slice(0, 6).map((el, index) => {
                         const formattedDate = el.honorDate?.split("T")[0].replace(/-/g, "/");
                         return (
-                            <SwiperSlide key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} data-aos="fade-up"
-                                data-aos-offset="30" data-aos-delay={100}>
+                            <SwiperSlide key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} >
                                 <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
                                     <div className={styles.imgCard}>
                                         <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
@@ -42,7 +44,7 @@ export default function Lightteam() {
                                     <span className={styles.Cardtitle}>
                                         {el.empName}
                                     </span>
-                                    <div className={styles.textCard + " text-end col-7 px-4 py-3"}>
+                                    <div className={styles.textCard + " text-end col-7 col-md-8 col-lg-7 px-4 py-3"}>
                                         <p>المحافظة: {el.govName}</p>
                                         <p>الوظيفة: {el.empJob}</p>
                                         <p>تاريخ التكريم: {formattedDate}</p>

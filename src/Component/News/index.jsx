@@ -18,12 +18,12 @@ export default function News() {
         // console.log('filternews',filternews)
     }, [allnews])
     return (
-        <div className='col-12 d-flex flex-column justify-content-center align-items-center'>
-            <div className="overlap-22  d-flex flex-column justify-content-between mt-5">
-                <div className="text-wrapper-44">أخر الأخبار</div>
-                <div className='all news col-12'>
+        <div className='col-12 d-flex flex-column justify-content-center align-items-center' id='newesdection'>
+            <div className="overlap-22  d-flex flex-column justify-content-between mt-5 col-md-12">
+                <div className="text-wrapper-44  mb-md-5 mb-lg-0">أخر الأخبار</div>
+                <div className='all news col-12 d-flex justify-content-center flex-column align-items-center'>
 
-                    <div className='part1 col-12 d-flex justify-content-between '>
+                    <div className='part1 col-12 col-md-12 col-lg-8 d-flex justify-content-between '>
                         {
                             filternews.slice(0, 2).map((el, index) => {
                                 const formattedDate = new Date(el.publishDate).toLocaleDateString('ar-EG', {
@@ -46,27 +46,10 @@ export default function News() {
 
                             })
                         }
-                        {/* <div className=' d-flex align-items-center justify-content-between gap-5' data-aos="fade-up"
-                            data-aos-offset="5" data-aos-delay={500}>
-                            <img src={new2} width={258} height={264} alt="" />
-                            <div className=' col-5 d-flex flex-column justify-content-between gap-3 text-center'>
-                                <span className='date'>07:30 م الإربعاء 14 أغسطس 2024</span>
-                                <p className="text-wrapper-47">
-                                    الألف يوم الذهبية مبادرة رئاسية أطلقها رئيس الجمهورية في اغسطس ٢٠٢٣                            </p>
-                            </div>
-                        </div>
-                        <div className=' d-flex align-items-center justify-content-between gap-5' data-aos="fade-up"
-                            data-aos-offset="5" data-aos-delay={500}>
-                            <img src={new1} width={258} height={264} alt="" />
-                            <div className='d-flex flex-column justify-content-between gap-3 text-center'>
-                                <span className='date'>07:30 م الإربعاء 14 أغسطس 2024</span>
-                                <p className="text-wrapper-47">
-                                    الألف يوم الذهبية مبادرة رئاسية أطلقها رئيس الجمهورية في اغسطس ٢٠٢٣                            </p>
-                            </div>
-                        </div> */}
+                       
 
                     </div>
-                    <div className='part2 d-flex justify-content-between'>
+                    <div className='part2 col-12 col-md-12 col-lg-8 d-flex justify-content-between '>
                         {
                             filternews.slice(2, 4).map((el, index) => {
                                 const formattedDate = new Date(el.publishDate).toLocaleDateString('ar-EG', {
@@ -75,9 +58,9 @@ export default function News() {
                                     year: 'numeric',
                                 });
                                 return (
-                                    <div className='d-flex align-items-center  ' data-aos="fade-up"
+                                    <div className='d-flex align-items-center newsId ' data-aos="fade-up"
                                         data-aos-offset="5" data-aos-delay={600}>
-                                        <div className='d-flex flex-column justify-content-between gap-3 px-2 text-center'>
+                                        <div className='d-flex flex-column justify-content-between gap-3 px-2 text-center' id='textitems'>
                                             <span className='date'>{formattedDate}</span>
 
                                             <Link to={`/mediacorner/detailsnews/${el.newsId}`} className="text-wrapper-46 nav-link">
@@ -92,65 +75,10 @@ export default function News() {
 
                             })
                         }
-                        {/* <div className='d-flex align-items-center justify-content-between gap-3 ' data-aos="fade-up"
-                            data-aos-offset="5" data-aos-delay={600}>
-                            <div className='d-flex flex-column justify-content-between gap-3 text-center'>
-                                <span className='date'>07:30 م الإربعاء 14 أغسطس 2024</span>
-
-                                <p className="text-wrapper-46">
-                                    الخطة العاجلة لتحسين الخصائص السكانية في المناطق ذات المؤشرات
-                                    المنخفضة تعد نموذجاً رائداً لضمان الحقوق الإنجابية وتعزيز تكامل جهود
-                                    الدولة
-                                </p>
-                            </div>
-
-
-                            <img src={new3} width={258} height={264} alt="" />
-                        </div>
-
-                        <div className='d-flex align-items-center justify-content-between gap-3 ' data-aos="fade-up"
-                            data-aos-offset="5" data-aos-delay={600}>
-                            <div className='d-flex flex-column justify-content-between gap-3 text-center'>
-                                <span className='date'>07:30 م الإربعاء 14 أغسطس 2024</span>
-
-                                <p className="text-wrapper-46">
-                                    إجتماع المجلس الاقليمي للسكان برئاسة محافظ المنوفية وبحضور الدكتورة/ عبلة الألفي
-
-                                </p>
-                            </div>
-
-
-                            <img src={new4} width={258} height={264} alt="" />
-                        </div> */}
-
-
-                        {/* <div className='d-flex align-items-center justify-content-between gap-2' data-aos="fade-up"
-                            data-aos-offset="5" data-aos-delay={700}>
-
-
-                            <p className="text-wrapper-48">
-                                إجتماع المجلس الاقليمي للسكان برئاسة محافظ المنوفية وبحضور الدكتورة/ عبلة الألفي
-                            </p>
-                            <div className="overlap-25" />
-
-
-                        </div> */}
+                   
                     </div>
 
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>

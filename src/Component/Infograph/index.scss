@@ -42,7 +42,7 @@
   font-size: 14px;
   font-weight: 500;
   height: 36px;
-  left: 322px;
+  // left: 322px;
   letter-spacing: 0;
   line-height: 30px;
   text-align: center;
@@ -84,3 +84,35 @@
   top: 571px;
   width: 92px;
 }
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .text-wrapper-49 {
+    margin-bottom: 4%;
+  }
+  .overlap-27 {
+    margin-bottom: 4%;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .Infographsection {
+    width: 100%;
+    .overlap-27 {
+      width: 95%;
+      margin-top: 6%;
+      .text-wrapper-49 {
+        margin-bottom: 4%;
+        text-align: right;
+      }
+    }
+    .overlap-27 > div {
+      width: 90%;
+    }
+.text-wrapper-50{
+  transform: translateX(40px);
+}
+    .info {
+      height: 411px;
+      width: 343px;
+    }
+  }
+}
+// Infographsection
