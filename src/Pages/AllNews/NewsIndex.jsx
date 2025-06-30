@@ -14,23 +14,29 @@ import { Link, useLocation } from 'react-router-dom';
 export default function AllNews() {
     const { path } = usepathes()
     const location = useLocation()
-    const navLinks = [
-        { label: "الرسائل التوعوية", to: "/messages" },
-        { label: "قائمة الإنفوجراف", to: "/infograph" },
-        { label: "مكتبة الفيديو", to: "/video" },
-        { label: "ألبومات الصور", to: "/Photo" },
-        { label: "أخبار المبادرة", to: "/mediacorner" },
-    ];
-    const { pathimg } = usepathimg()
 
+    const { pathimg } = usepathimg()
+    function normalizeArabic(text) {
+        return text
+            .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
+            .replace(/ة/g, 'ه')       // تطبيع التاء المربوطة
+            .replace(/ى/g, 'ي')       // تطبيع الألف المقصورة
+            .replace(/ئ/g, 'ي')       // تطبيع الياء الهمزة
+            .replace(/ؤ/g, 'و')       // تطبيع الواو همزة
+            .replace(/[ًٌٍَُِّْ]/g, '') // إزالة التشكيل
+            .replace(/[^ء-يa-zA-Z0-9\s]/g, '') // إزالة الرموز
+            .trim()
+            .toLowerCase();
+    }
     const { allnews } = useNews()
     const [currentPage, setCurrentPage] = useState(1);
     const newsPerPage = 5; // عدد الأخبار في كل صفحة
     const [searchTerm, setSearchTerm] = useState('');
     const indexOfLastNews = currentPage * newsPerPage;
     const indexOfFirstNews = indexOfLastNews - newsPerPage;
-    const filteredNews = allnews.filter(news =>
-        news.title.toLowerCase().includes(searchTerm.toLowerCase())).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+    const filteredNews = allnews.filter(news => 
+         normalizeArabic(news.title).includes(normalizeArabic(searchTerm))
+    ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
     const filteredNewsPerPage = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
     const totalPages = Math.ceil(
         (searchTerm ? filteredNews.length : allnews.length) / newsPerPage
@@ -68,34 +74,18 @@ export default function AllNews() {
                 </div>
             </div>
             <header className=' col-12 d-flex justify-content-between align-items-center mt-5   container  '>
-                {/* <div className=' d-flex align-items-center '>
-                    <button>بحث</button>
-                    <IoMdArrowDropdown />
-                    <input type="text" />
-                </div> */}
+
                 <div className='d-flex align-items-center gap-3' id={styles.search}>
                     <button className='py-0 px-4 border-0'>بحث</button>
                     <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
 
-                        <span style={{ marginRight: '8px', color: '#aaa' }}><IoMdArrowDropdown style={{ color: "black" }} /></span>
+                        <span style={{ marginRight: '8px', color: '#aaa' }}></span>
                         <input type="text" placeholder="...بحث" value={searchTerm} onChange={handleSearch} className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
                     </div>
                 </div>
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    {/* {navLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            to={link.to}
-                            activeClass={styles.active}
-                            className={" nav-link " + styles.sectionlink}
-                        >
-                            {link.label}
-                        </Link>
-                    ))} */}
+
                     {
                         path
                             .filter(el => el.name === "الركن الإعلامي")
@@ -163,41 +153,10 @@ export default function AllNews() {
                         }
                     </div>
 
-                    {/* <div className='col-12 container d-flex  pb-2 ' id={styles.CRegtangle}  >
 
-
-                        <div className='container text-end d-flex justify-content-end '>
-                            <div className='col-12 container d-flex flex-column '>
-                                <h5>الألف يوم الذهبية مبادرة رئاسية أطلقها رئيس الجمهورية في اغسطس 2023</h5>
-                                <h6>الأربعاء 23 أغسطس 2023</h6>
-                                <p>أطلقت وزارة الصحة والسكان مبادرة الألف يوم الذهبية لتنمية الأسرة المصرية، بهدف تقديم خدمات المشورة وتنظيم الأسرة للأم والطفل منذ ...</p>
-                                <h8>إقرأ المزيد</h8>
-                            </div>
-
-                        </div>
-                        <div className='col-12 container d-flex flex-column align-items-center pb-3 ' id={styles.NewsImg} >
-                            <img src={cc} alt="" id={styles.NewsImg} />
-                        </div>
-                    </div> */}
                 </div>
 
-                {/* <Element name='section5' className='col-12 position-relative ' id={styles.Lines}>
-                    <div className='col-12 container d-flex  pb-2 ' id={styles.CRegtangle}  >
 
-                        <div className='container text-end d-flex justify-content-end '>
-                            <div className='col-12 container d-flex flex-column '>
-                                <h5>الألف يوم الذهبية مبادرة رئاسية أطلقها رئيس الجمهورية في اغسطس 2023</h5>
-                                <h6>الأربعاء 23 أغسطس 2023</h6>
-                                <p>أطلقت وزارة الصحة والسكان مبادرة الألف يوم الذهبية لتنمية الأسرة المصرية، بهدف تقديم خدمات المشورة وتنظيم الأسرة للأم والطفل منذ ...</p>
-                                <h8>إقرأ المزيد</h8>
-                            </div>
-
-                        </div>
-                        <div className='col-12 container d-flex flex-column align-items-center pb-3 ' id={styles.NewsImg} >
-
-                        </div>
-                    </div>
-                </Element> */}
             </div>
 
             <div className="d-flex justify-content-center my-3" dir="rtl">

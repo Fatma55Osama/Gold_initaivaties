@@ -19,6 +19,9 @@
     width: 75%;
   }
 }
+.swiper-pagination{
+  position: static !important;
+}
 /* .mySwipeerr {
   .swiper-pagination {
     margin-top: 200px !important;

@@ -1,7 +1,7 @@
 #About {
-    min-height: 304px;
-    max-height: 90%;
-    #AboutLogo {
+  min-height: 304px;
+  max-height: 90%;
+  #AboutLogo {
     background-image: url(../../assets//rectangle-6.png);
     background-position: 50%;
     background-size: cover;
@@ -9,14 +9,19 @@
     height: 304px;
     opacity: 30%;
   }
-#bgColor {
-    background: linear-gradient( 90deg, rgba(255, 255, 255, 0.54) 3.85%, rgba(175, 229, 255, 0.54) 34.13%, rgba(114, 71, 128, 0.54) 100% );
+  #bgColor {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.54) 3.85%,
+      rgba(175, 229, 255, 0.54) 34.13%,
+      rgba(114, 71, 128, 0.54) 100%
+    );
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     height: 100%;
     top: 0;
     left: 0;
     height: 100%;
-   
+
     h2 {
       color: var(--purpleColor);
       font-family: "GE SS Two-Medium", Helvetica;
@@ -25,35 +30,52 @@
       margin: 0;
       /*vertical-align:top;*/
     }
-#regtangle {
-    background-color: transparent;/* rgba(217, 217, 217, 0.3);*/
-    border-top: 2px solid #cba15f;
-    height:157px;
-  p
-{
-    color: rgba(0, 0, 0, 0.5);
-    font-family: "GE SS Two-Light";
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 30px;
-    vertical-align: middle;
-}
+    #regtangle {
+      background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+      border-top: 2px solid #cba15f;
+      height: 157px;
+      p {
+        color: rgba(0, 0, 0, 0.5);
+        font-family: "GE SS Two-Light";
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+        vertical-align: middle;
+      }
     }
   }
 }
-#contact{
-    ul{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        li{
-            font-size: 20px;
-            font-weight: 500;
-            font-family: GE SS Two;
-            .iconcontact{
-                color: var(--purpleColor);
-                margin: 7px;
-            }
-        }
+#contact {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      font-size: 17px;
+      font-weight: 500;
+      font-family: GE SS Two;
+      .iconcontact {
+        color: var(--purpleColor);
+        margin: 7px;
+      }
     }
+  }
 }
+.activelink {
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}
+.sectionlink {
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+    &:hover{
+  color: var(--purpleColor) !important;
+  text-decoration: underline;
+   text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+}}

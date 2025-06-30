@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom'
 import 'aos/dist/aos.css';
 import 'animate.css';
+
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <App />

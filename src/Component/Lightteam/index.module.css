@@ -12,7 +12,7 @@
     font-weight: 500;
 }
 #cardslid{
-    width: 400px !important;
+    width: 380px !important;
     height: 330px;  
 }
 .card{
@@ -60,6 +60,10 @@
   visibility: visible !important;
   opacity: 1 !important;
 }
+  #mySwiper{
+    max-width: 1200px !important;
+    min-width: 50%;
+  }
   @media screen and (max-width: 992px) and (min-width: 768px) {
     #cardslid{
         width: 350px !important;

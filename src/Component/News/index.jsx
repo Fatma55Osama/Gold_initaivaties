@@ -36,7 +36,7 @@ export default function News() {
                                         data-aos-offset="5" data-aos-delay={500} > 
                                         {/* <div className="overlap-224" /> */}
                                         <img src={`${pathimg}/News/${el.smallPhoto}`} width={258} height={264} alt="" />
-                                        <div className=' col-5 d-flex flex-column justify-content-between px-4 gap-3 text-center '>
+                                        <div className=' col-6 d-flex flex-column justify-content-between px-4 gap-3 text-center '>
                                             <span className='date '>{formattedDate}</span>
                                             <Link to={`/mediacorner/detailsnews/${el.newsId}`} className="text-wrapper-47 nav-link">
                                                 {el.title}
@@ -58,7 +58,7 @@ export default function News() {
                                     year: 'numeric',
                                 });
                                 return (
-                                    <div className='d-flex align-items-center newsId ' data-aos="fade-up"
+                                    <div  key={el.newsId} className='d-flex align-items-center newsId ' data-aos="fade-up"
                                         data-aos-offset="5" data-aos-delay={600}>
                                         <div className='d-flex flex-column justify-content-between gap-3 px-2 text-center' id='textitems'>
                                             <span className='date'>{formattedDate}</span>

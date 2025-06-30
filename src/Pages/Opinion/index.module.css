@@ -62,3 +62,21 @@
     }
   }
 }
+.activelink {
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}
+.sectionlink {
+  font-family: GE SS Two;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+    &:hover{
+  color: var(--purpleColor) !important;
+  text-decoration: underline;
+   text-decoration-thickness: 2px !important;
+    text-underline-offset: 10px;
+}}

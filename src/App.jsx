@@ -15,6 +15,7 @@ import HospitalService from './Pages/HospitalService';
 import Alllightteam from './Pages/Alllightteam';
 import ContactUs from './Pages/Contactus';
 import Opinion from './Pages/Opinion';
+import Indicators from './Pages/Indicators';
 
 export default function App() {
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path='/about' element={<AboutIndex />} />
-          <Route path='indicators' element={<h1>indicators</h1>} />
+          <Route path='indicators' element={<Indicators/>} />
           <Route path='Services' element={<HospitalService />} />
 
           <Route path='Services/:id' element={<HospitalService />} />

@@ -12,7 +12,7 @@ import { useImportantlink, usepathimg } from '../../Store';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-
+import './index.scss'
 export default function ImportentLink() {
   const { importantlink } = useImportantlink()
   const { pathimg } = usepathimg()

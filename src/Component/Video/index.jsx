@@ -6,6 +6,7 @@ import regtangel from '../../assets/rectangle-206.svg'
 import group1 from '../../assets/group-1.png'
 import logovideo from '../../assets/Frame.png'
 import { usepathimg, useVedio } from '../../Store'
+import { Link } from 'react-router-dom'
 
 export default function Video() {
   const { allvedio, setallvedio } = useVedio()
@@ -26,7 +27,7 @@ export default function Video() {
           return (
             <div key={el.vedioId} className="overlap-28 d-flex flex-column align-items-end" data-aos="fade-up"
               data-aos-offset="100" data-aos-delay={50}>
-              <div className="text-wrapper-52 me-5">أحدث الفيديوهات</div>
+              <Link to={'/video'} className="text-wrapper-52 me-5">أحدث الفيديوهات</Link>
 
               <p className="element-6">
                 {shortText}

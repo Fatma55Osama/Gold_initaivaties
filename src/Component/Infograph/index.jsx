@@ -19,7 +19,7 @@ export default function Infograph() {
     <div className='Infographsection'>
       <div className="overlap-27 d-flex flex-column justify-content-center align-items-end "
       >
-        <div className="text-wrapper-49">إنفوجراف</div>
+        <Link className="text-wrapper-49 " to={'/infograph'}>إنفوجراف</Link>
 
         {/* <div className="rectangle-18" /> */}
 

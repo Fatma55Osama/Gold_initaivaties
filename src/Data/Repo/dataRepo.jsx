@@ -12,6 +12,8 @@ import { store_newes } from "../API/store_newes"
 import { store_photo } from "../API/store_photo"
 import { store_servicemains } from "../API/store_servicemains"
 import { store_vedio } from "../API/store_vedio"
+import { store_vindicator } from "../API/store_vindicator"
+import { storecontact } from "../API/storecontact"
 
 export const getAllData = {
     get_all_employess: async (domain) => {
@@ -50,10 +52,16 @@ export const getAllData = {
     get_all_photo: async (domain) => {
         return await store_photo(domain)
     },
-      get_show_singleinfograph: async (domain, id) => {
+    get_show_singleinfograph: async (domain, id) => {
         return await show_singleinfograph(domain, id)
     },
-       get_show_single_service: async (domain, id) => {
+    get_show_single_service: async (domain, id) => {
         return await show_single_service(domain, id)
     },
+    get_storecontact: async (domain) => {
+        return await storecontact(domain)
+    },
+      get_store_vindicator: async (domain) => {
+        return await store_vindicator(domain)
+    }
 }

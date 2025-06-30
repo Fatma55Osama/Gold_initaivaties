@@ -30,7 +30,7 @@ export default function Lightteam() {
                 } : false}
                 loop={filteremployess.length > 3}
                 modules={[FreeMode, Pagination, Autoplay]}
-                className={`${styles.mySwiper} mySwiper container`}
+                className={`${styles.mySwiper} mySwiper `} id={styles.mySwiper}
             >
                 {
                     filteremployess.slice(0, 6).map((el, index) => {

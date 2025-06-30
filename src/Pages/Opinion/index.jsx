@@ -4,13 +4,15 @@ import Charts from '../../Component/Charts'
 import { ErrorMessage, Field, Form, Formik, validateYupSchema } from 'formik'
 import * as Yup from 'yup'
 import { Chart } from 'chart.js'
-import { usedomain } from '../../Store'
+import { usedomain, usepathes } from '../../Store'
 import { ToastContainer } from 'react-toastify'
 import { Bounce, toast } from 'react-toastify'
 import { postopinion } from '../../Data/API/postopinion'
+import { Link, useLocation } from 'react-router-dom'
 export default function Opinion() {
     const { domain } = usedomain()
-
+    const { path } = usepathes()
+    const location = useLocation()
     const validationSchema = Yup.object({
         email: Yup.string().email('يرجى إدخال بريد إلكتروني صالح')
             .notRequired(),
@@ -18,11 +20,11 @@ export default function Opinion() {
         phone: Yup.string().required('رقم الهاتف مطلوب').matches(/^01[0-9]{9}$/, 'رقم الهاتف يجب أن يكون 11 رقم ويبدأ بـ 01'),
         opinion: Yup.string().required('رأيك  مطلوب')
     })
-    const hadleSubmit = (values,{resetForm}) => {
+    const hadleSubmit = (values, { resetForm }) => {
         console.log(values);
         postopinion(domain, values).then((res) => {
             toast.success('تم ارسال رأيك بنجاح')
-              resetForm();
+            resetForm();
         }).catch((err) => {
             console.log(err)
             toast.error('حدث خطأ أثناء إرسال رأيك');
@@ -55,6 +57,38 @@ export default function Opinion() {
                     </div>
                 </div>
             </div>
+            <header className=' col-12 d-flex justify-content-end mt-5   container  '>
+
+
+                <div className='d-flex   gap-4 justify-content-between align-items-center '>
+
+                    {
+                        path
+                            .filter(el => el.name === "تواصل معنا")
+                            .flatMap((el, index) => {
+                                return el.links.map((link, idx) => {
+                                    const isActive =
+                                        link.path === '/'
+                                            ? location.pathname === '/'
+                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
+
+
+                                    return (
+                                        <Link
+                                            key={`${index}-${idx}`}
+                                            to={link.path}
+                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    );
+                                });
+                            })
+                    }
+                </div>
+
+
+            </header>
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -68,7 +102,7 @@ export default function Opinion() {
                 theme="light"
                 transition={Bounce}
             />
-            <div className={`${styles.opinion}  p-4 rounded`}>
+            <div className={`${styles.opinion}  p-5 mt-2 rounded`}>
                 <Formik
                     validationSchema={validationSchema}
                     initialValues={{ name: "", email: "", phone: "", opinion: "" }}

@@ -49,7 +49,7 @@ export default function HomePage() {
   // ];
   const imageMap = {
     'مشورة الإعاقة والدمج': { img: pr9, hoverimg: pr9hover },
-    'الألف يوم الذهبية التالية': { img: pr8, hoverimg: pr8hover },
+    'الألف يوم التالية': { img: pr8, hoverimg: pr8hover },
     'مشورة المباعدة بين الحمل': { img: pr7, hoverimg: pr7hover },
     'مشورة الأطفال': { img: babywalk, hoverimg: babywalkhover },
     'مشورة الحامل': { img: pr4, hoverimg: pr4hover },

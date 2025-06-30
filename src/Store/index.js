@@ -17,12 +17,16 @@ export const usepathes = create(() => ({
   path: [
     {
       name: "تواصل معنا",
-      links: [{ label: "تواصل معنا", path: "/contactus" }],
+      mainPath: "/contactus",
+      links: [
+        { label: "رأيك يهمنا", path: "/opinion" },
+        { label: "تواصل معنا", path: "/contactus" },
+      ],
     },
-     {
-      name: "رأيك يهمنا",
-      links: [{ label:  "رأيك يهمنا", path: "/opinion" }],
-    },
+    //  {
+    //   name: "رأيك يهمنا",
+    //   links: [{ label:  "رأيك يهمنا", path: "/opinion" }],
+    // },
     {
       name: "الركن الإعلامي",
       mainPath: "/mediacorner",
@@ -39,20 +43,20 @@ export const usepathes = create(() => ({
       links: [{ label: "نماذج مضيئة", path: "/lightteam" }],
     },
     {
-      name:"مؤشرات المبادرة",
-      links: [{ label: "مؤشرات المبادرة", path: "/indicators"}],
+      name: "مؤشرات المبادرة",
+      links: [{ label: "مؤشرات المبادرة", path: "/indicators" }],
     },
-     {
+    {
       name: "خدمات المبادرة",
-      links: [{ label: "خدمات المبادرة", path: "/Services"}],
+      links: [{ label: "خدمات المبادرة", path: "/Services" }],
     },
-     {
+    {
       name: "عن المبادرة",
-      links: [{ label: "عن المبادرة",  path: "/about"}],
+      links: [{ label: "عن المبادرة", path: "/about" }],
     },
     {
       name: "الرئيسية ",
-      links: [{ label: " الرئيسية",  path: "/"}],
+      links: [{ label: " الرئيسية", path: "/" }],
     },
   ],
 }));
@@ -144,4 +148,14 @@ export const usedetailsservice = create((set) => ({
 }));
 export const usepathimg = create(() => ({
   pathimg: "/src/assets/Upfiles",
+}));
+export const usecontactfooter = create((set) => ({
+  contactfooter: [],
+  setcontactfooter: (value) => set(() => ({ contactfooter: value })),
+}));
+export const usevindicator = create((set) => ({
+  vindicatorr: [],
+  setvindicator: (value) => set(() => ({ vindicatorr: value })),
+  groupBy: "indicator", // أو 'gov' أو 'month'
+  setGroupBy: (value) => set({ groupBy: value }),
 }));

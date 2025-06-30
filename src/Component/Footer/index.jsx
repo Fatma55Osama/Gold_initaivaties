@@ -4,7 +4,7 @@ import { MdEmail, MdLocalPhone, MdLocationPin } from "react-icons/md";
 import { RiMenu2Fill } from 'react-icons/ri';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import { useServicemain } from '../../Store';
+import { usecontactfooter, usedomain, useServicemain } from '../../Store';
 import babywalk from '../../assets/wheelchair 2 (1).png'
 import pr4 from '../../assets/wheelchair 2 (2).png'
 import pr3 from '../../assets/wheelchair 2 (3).png'
@@ -19,6 +19,7 @@ import babywalkhover from '../../assets/wheelchair 3 (1).png'
 import pr4hover from '../../assets/wheelchair 3 (2).png'
 import pr3hover from '../../assets/wheelchair 3 (3).png'
 import pr5hover from '../../assets/wheelchair 3 (4).png'
+import { getAllData } from '../../Data/Repo/dataRepo';
 export default function Footer() {
   const imageMap = {
     'مشورة الإعاقة والدمج': { img: pr9, hoverimg: pr9hover },
@@ -31,9 +32,9 @@ export default function Footer() {
   };
 
   const [Baby, setBaby] = useState([]);
-
+  const { domain } = usedomain()
   const { allservice, setservice } = useServicemain()
-
+  const { contactfooter, setcontactfooter } = usecontactfooter()
   useEffect(() => {
     const merged = allservice
       .filter(item => imageMap[item.mashoraDesc])
@@ -44,7 +45,17 @@ export default function Footer() {
       }));
 
     setBaby(merged);
+
+
   }, [allservice]);
+  useEffect(() => {
+    getAllData.get_storecontact(domain).then((res) => {
+      setcontactfooter(res)
+      console.log("contactusfooter", res)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }, [])
   return (
     <div className={styles.parentfooter + " col-12"}>
       <div className='container d-flex flex-column justify-content-end text-end py-5 '>
@@ -89,7 +100,7 @@ export default function Footer() {
             <Link id={styles.li} to="/about" state={{ targetSection: 'section3' }} className='d-flex align-items-center nav-link'>كلمة وزير الصحة </Link>
             <Link id={styles.li} to="/about" state={{ targetSection: 'section2' }} className='d-flex align-items-center nav-link'>الهيكل التنظيمي</Link>
             <Link id={styles.li} to="/about" state={{ targetSection: 'section1' }} className='d-flex align-items-center nav-link'>محاور المبادرة</Link>
-            <Link id={styles.li} className='d-flex align-items-center nav-link'  to="/about" state={{ targetSection: 'section7' }}>آليات التنفيذ</Link>
+            <Link id={styles.li} className='d-flex align-items-center nav-link' to="/about" state={{ targetSection: 'section7' }}>آليات التنفيذ</Link>
           </ul>
 
         </div>
@@ -108,20 +119,26 @@ export default function Footer() {
 
         </div> */}
         <div className='mt-5 d-flex flex-column justify-content-between align-items-center gap-5'>
-          <div className='col-12 d-flex justify-content-between' id={styles.footerdiv}>
-            <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
-              <span className='d-flex gap-3 align-items-center'>info@000000000000000000000000.org  <span>©</span> </span>
-              <span>
-                تليفون :  00000000(202+)</span>
-            </div>
-            <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
-              <span className={styles.margenstart}>العاصمة الادارية _ الحي الحكومي  <MdLocationPin style={{ fontSize: "24px" }} /></span>
-              <span>
-                الرمز البريدي : 11411 <MdEmail style={{ fontSize: "24px" }} /></span>
+          {
+            contactfooter.length > 0 && (
+              <div className='col-12 d-flex justify-content-between' id={styles.footerdiv}>
+                <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
+                  <span className='d-flex gap-3 align-items-center'>{contactfooter[0]?.email}  <span>©</span> </span>
+                  <span>
+                    تليفون :{contactfooter[0]?.mobileNum}</span>
+                </div>
+                <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
+                  <span className={styles.margenstart}> {contactfooter[0]?.address} {contactfooter[0]?.location}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
+                  <span>
+                    الرمز البريدي : 11411 <MdEmail style={{ fontSize: "24px" }} /></span>
 
-            </div>
+                </div>
 
-          </div>
+              </div>
+            )
+          }
+
+
           <div className='col-12 d-flex justify-content-center align-items-center'>
             <div className='col-lg-8 d-flex flex-column align-items-center ' id={styles.footerbottom}>
               <span>سياسة حقوق النسخ - إخلاء المسؤولية - سياسة الخصوصية - الشروط و الأحكام - إمكانية الوصول -  اتصل بنا</span>

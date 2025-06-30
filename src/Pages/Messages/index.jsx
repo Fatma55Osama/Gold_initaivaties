@@ -74,7 +74,7 @@ export default function Messages() {
                     <button className='py-0 px-4 border-0'>بحث</button>
                     <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
 
-                        <span style={{ marginRight: '8px', color: '#aaa' }}><IoMdArrowDropdown style={{ color: "black" }} /></span>
+                        <span style={{ marginRight: '8px', color: '#aaa' }}></span>
                         <input type="text" placeholder="...بحث" value={searchTerm} onChange={handleSearch} className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
                     </div>
                 </div>
