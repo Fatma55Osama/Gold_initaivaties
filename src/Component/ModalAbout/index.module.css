@@ -10,4 +10,8 @@
     width: 900px;
     height: 600px;
   }
+  #iconarrowclose{
+    font-size: 30px;
+    color:white;
+  }
 }

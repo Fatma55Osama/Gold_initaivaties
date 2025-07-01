@@ -1,6 +1,6 @@
 
 import styles from './index.module.css'
-import { IoMdArrowDropdown, IoMdClose } from 'react-icons/io';
+import { IoMdArrowDropdown, IoMdClose, IoMdCloseCircle } from 'react-icons/io';
 import { Link, useLocation } from 'react-router-dom';
 import reyse from '../../assets/Upfiles/Video/president.png'
 import { usedomain, usepathes, usepathimg, usePhotoo } from '../../Store';
@@ -158,7 +158,7 @@ export default function Photo() {
                     <div className='  pb-4 d-flex   ' id={styles.CRegtangle}  >
                         {/**هنا هنعمل الmap */}
 
-                        <div className='d-flex flex-wrap justify-content-between align-items-center  col-12 pt-4 pe-4'>
+                        <div className='d-flex flex-wrap justify-content-start gap-4 align-items-start col-12 pt-4 pe-4'>
                             {
                                 filteredNewsPerPage.length === 0 ? (
                                     <div className=' text-center col-12'>
@@ -190,7 +190,9 @@ export default function Photo() {
                             <div className={styles.modal}>
                                 <div className='d-flex justify-content-start align-items-start my-3 mx-4'>
 
-                                    <button className={styles.button2 + ' bg-danger'} onClick={closeModal}><IoMdClose className={styles.iconclose} /></button>
+                                    {/* <button className={styles.button2 + ' bg-danger'} ><IoMdClose className={styles.iconclose} /></button> */}
+                                                                <IoMdCloseCircle onClick={closeModal}id={styles.iconarrowclose} />
+                                    
                                 </div>
                                 {/* <div>
                                     {selectedAlbumPhotos.map(photo => (

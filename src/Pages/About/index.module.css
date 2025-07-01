@@ -144,7 +144,14 @@ p {
   line-height: 30px;
   vertical-align: middle;
 }
-
+#accorddescription{
+    color: rgba(0, 0, 0, 0.5);
+  font-family: "GE SS Two-Light";
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 30px;
+  vertical-align: middle;
+}
 #CRegtangle {
   background-color: rgba(217, 217, 217, 0.3);
   /* border-top: 2px solid #cba15f; */
@@ -210,6 +217,7 @@ p {
   font-weight: 500;
   font-size: 16px;
   color: rgba(0, 0, 0, 1);
+  cursor: pointer;
   &:hover{
   color: var(--purpleColor) !important;
   text-decoration: underline;

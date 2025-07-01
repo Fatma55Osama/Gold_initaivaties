@@ -23,7 +23,7 @@ export default function HospitalService() {
     return (
         <div>
             <ServiceComponent />
-            <div className={" col-12 d-flex flex-column gap-4 pb-3 align-items-end  mt-5 " + styles.containerhospital}>
+            <div className={" col-12 container d-flex flex-column gap-4 pb-3 align-items-end  mt-5 " + styles.containerhospital}>
                 <h2> {detailservice[0]?.mashoraDesc} المشورة الأسرية بالمستشفيات </h2>
                 <div className='col-12 d-flex  justify-content-end my-3 gap-3'>
                     <img onClick={openModalpdf} src={pdfimg} alt="PDF" width={30} height={30} />

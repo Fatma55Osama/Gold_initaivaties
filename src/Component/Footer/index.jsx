@@ -122,15 +122,15 @@ export default function Footer() {
           {
             contactfooter.length > 0 && (
               <div className='col-12 d-flex justify-content-between' id={styles.footerdiv}>
-                <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
-                  <span className='d-flex gap-3 align-items-center'>{contactfooter[0]?.email}  <span>©</span> </span>
+                <div className='col-lg-4 d-flex justify-content-between' id={styles.parts}>
+                  {/* <span className='d-flex gap-3 align-items-center'>{contactfooter[0]?.email}  <span>©</span> </span> */}
                   <span>
                     تليفون :{contactfooter[0]?.mobileNum}</span>
                 </div>
-                <div className='col-lg-5 d-flex justify-content-between' id={styles.parts}>
-                  <span className={styles.margenstart}> {contactfooter[0]?.address} {contactfooter[0]?.location}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
+                <div className='col-lg-8 d-flex justify-content-between' id={styles.parts}>
+                  <span className={styles.margenstart}> {contactfooter[0]?.address}&nbsp;&nbsp; {contactfooter[0]?.location}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
                   <span>
-                    الرمز البريدي : 11411 <MdEmail style={{ fontSize: "24px" }} /></span>
+                  {contactfooter[0]?.email} :  البريد الإلكتروني <MdEmail style={{ fontSize: "24px" }} /></span>
 
                 </div>
 

@@ -119,9 +119,9 @@ export default function Alllightteam() {
                                                 <span className={styles.Cardtitle}>
                                                     {el.empName}
                                                 </span>
-                                                <div className={styles.textCard + " text-end col-7 px-4 py-3"}>
+                                                <div className={styles.textCard + " text-end col-7 px-2 py-3"}>
                                                     <p>المحافظة: {el.govName}</p>
-                                                    <p>الوظيفة: {el.empJob}</p>
+                                                    <p className='lh-base'>الوظيفة: {el.empJob}</p>
                                                     <p>تاريخ التكريم:{formattedDate}</p>
                                                 </div>
                                             </div>

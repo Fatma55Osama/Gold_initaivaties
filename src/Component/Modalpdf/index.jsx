@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 import { useModalpdf, usepathimg } from '../../Store'
+import { IoMdCloseCircle } from 'react-icons/io'
 
 export default function Modalpdf(props) {
     const { closeModalpdf } = useModalpdf()
@@ -13,7 +14,9 @@ export default function Modalpdf(props) {
             id={styles.modalstyle}
         >
             
-            <div className="" onClick={(e) => e.stopPropagation()}>
+            <div className="d-flex flex-column align-items-end " onClick={(e) => e.stopPropagation()}>
+                
+                            <IoMdCloseCircle  onClick={() => closeModalpdf()} id={styles.iconarrowclose} />
                 
                     <iframe
                         src={`${pathimg}/${props.folder}/${props.file}`}

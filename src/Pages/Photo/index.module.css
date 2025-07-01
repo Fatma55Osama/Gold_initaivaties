@@ -7,25 +7,22 @@
   text-align: center;
   border-radius: 8px;
 }
+#iconarrowclose {
+  font-size: 30px;
+  color: white;
+}
+
 #Img {
-  /* background-image: url(../../assets//president.png);
-    background-size: cover;
-    background-position: 50%;
-    border: none; */
-  /* object-fit: cover; */
-  width: 341px;
-  height: 312px;
-  /* text-align: center;
-    vertical-align: middle;  */
-  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.25);
-  /* align-items: center;
-    text-align: center; */
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
   border-radius: 10px;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.25);
+
   img {
-    object-fit: fill;
     width: 100%;
     height: 100%;
-      flex-shrink: 0;
+    object-fit: cover; /* الأفضل من fill */
     border-radius: 10px;
   }
 }
@@ -58,11 +55,25 @@
 }
 
 #phdiv {
-  width: 384px;
+  /* width: 364px;
   text-align: center;
   direction: rtl;
   cursor: pointer;
-    height: 500px;
+  height: 450px; */
+   width: 100%;
+  max-width: 320px;
+  height: 450px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  direction: rtl;
+  cursor: pointer;
+  flex: 1 1 calc(33.333% - 20px); /* خلي 3 ألبومات في السطر */
+  margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   #h55 {
     color: #000000;
     font-family: GE SS Two;
@@ -216,10 +227,9 @@ p {
   }
 }
 .activelink {
-    color:var(--purpleColor) !important;
-    text-decoration-color:var(--purpleColor) !important;
-    text-decoration-line: underline !important;
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 10px;
-    
-  }
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}

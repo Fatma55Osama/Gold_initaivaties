@@ -8,7 +8,12 @@
   background-color: rgba(0, 0, 0, 0.397);
   iframe{
     width: 600px;
-    height: 650px;
+    height: 600px;
     border-radius: 10px;
+
+  }
+   #iconarrowclose{
+    font-size: 30px;
+    color:white;
   }
 }

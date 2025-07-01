@@ -172,14 +172,14 @@ useEffect(() => {
                     <h3>الهيكل التنظيمي للمبادرة</h3>
                 </div>
                 <div className='col-12  d-flex align-items-end pb-4' id={styles.CRegtangle}  >
-                    <div className='container d-flex'>
-                        <div className='col-12 container d-flex flex-column pb-5 ' id={styles.StructImg} >
+                    <div className='container d-flex justify-content-between col-12'>
+                        <div className=' d-flex justify-content-center  flex-column   ' id={styles.StructImg} >
                             <img src={structer} alt="" />
                         </div>
 
                         <div className=' text-end d-flex flex-column justify-content-end align-items-end '>
                             <div className='col-12 container d-flex flex-column pb-5'>
-                                <p >{allabout?.[0]?.structureText}  مبادرة "الألف يوم الذهبية" تندرج ضمن الهيكل التنظيمي لوزارة الصحة والسكان المصرية، وتعتبر جزءًا أساسيًا من استراتيجية الوزارة لتنمية الأسرة وتحسين الصحة العامة.</p>
+                                <p >{allabout?.[0]?.structureText} </p>
                             </div>
                             <div onClick={() => openModal()} className={styles.btnback + '  rounded-3 '}>
 
@@ -229,7 +229,7 @@ useEffect(() => {
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الأول: {allabout?.[0]?.pillar1}</h5></Accordion.Header>
                                         <Accordion.Body>
-                                            <p className='me-4' >{allabout?.[0]?.pillar1Text}    </p>
+                                            <p className='me-4' id={styles.accorddescription}>{allabout?.[0]?.pillar1Text}    </p>
 
                                         </Accordion.Body>
                                     </Accordion.Item>
@@ -239,7 +239,7 @@ useEffect(() => {
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الثاني: {allabout?.[0]?.pillar2}</h5></Accordion.Header>
                                         <Accordion.Body>
-                                            <p className='me-4' >{allabout?.[0]?.pillar2Text}    </p>
+                                            <p className='me-4' id={styles.accorddescription}>{allabout?.[0]?.pillar2Text}    </p>
 
                                         </Accordion.Body>
                                     </Accordion.Item>
@@ -249,7 +249,7 @@ useEffect(() => {
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الثالث: {allabout?.[0]?.pillar3}</h5></Accordion.Header>
                                         <Accordion.Body>
-                                            <p className='me-4' >{allabout?.[0]?.pillar3Text}    </p>
+                                            <p className='me-4' id={styles.accorddescription}>{allabout?.[0]?.pillar3Text}    </p>
 
                                         </Accordion.Body>
                                     </Accordion.Item>
