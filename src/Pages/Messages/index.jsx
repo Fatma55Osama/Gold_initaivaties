@@ -15,14 +15,25 @@ export default function Messages() {
     const { path } = usepathes()
 
     const location = useLocation()
-
+    function normalizeArabic(text) {
+        return text
+            .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
+            .replace(/ة/g, 'ه')       // تطبيع التاء المربوطة
+            .replace(/ى/g, 'ي')       // تطبيع الألف المقصورة
+            .replace(/ئ/g, 'ي')       // تطبيع الياء الهمزة
+            .replace(/ؤ/g, 'و')       // تطبيع الواو همزة
+            .replace(/[ًٌٍَُِّْ]/g, '') // إزالة التشكيل
+            .replace(/[^ء-يa-zA-Z0-9\s]/g, '') // إزالة الرموز
+            .trim()
+            .toLowerCase();
+    }
     const [currentPage, setCurrentPage] = useState(1);
     const awarnessPerPage = 10; // عدد الأخبار في كل صفحة
     const [searchTerm, setSearchTerm] = useState('');
     const indexOfLastawarness = currentPage * awarnessPerPage;
     const indexOfFirstawarness = indexOfLastawarness - awarnessPerPage;
     const filteredawarness = allawarness?.filter(awarness =>
-        awarness.msgText.toLowerCase().includes(searchTerm.toLowerCase())
+       normalizeArabic(awarness.msgText).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => b.orderView - a.orderView);
     const filteredNewsPerPage = filteredawarness.slice(indexOfFirstawarness, indexOfLastawarness);
     const totalPages = Math.ceil(

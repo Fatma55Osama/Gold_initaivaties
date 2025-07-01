@@ -1,119 +1,75 @@
-.overlap-27 {
-  // height: 603px;
-  height: 100%;
-  // left: 730px;
-
-  // top: 3681px;
-  // width: 711px;
+.infograph-section {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.text-wrapper-49 {
-  color: #b58a35;
-  direction: rtl;
+.infograph-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.section-title {
   font-family: "GE SS-Bold", Helvetica;
   font-size: 32px;
   font-weight: 700;
+  color: #b58a35;
   text-decoration: none;
-  // left: 470px;
-  letter-spacing: 0;
-  line-height: normal;
+  margin-bottom: 24px;
+  text-align: right;
+}
+
+.infograph-grid {
+  display: flex;
+  flex-direction: row; 
+  gap: 24px;
+  justify-content: flex-end;
+}
+
+.infograph-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
   text-align: center;
-  margin-bottom: 8%;
-  // top: 18px;
+  text-decoration: none;
 }
 
-.rectangle-18 {
-  background-color: #d9d9d933;
-  height: 603px;
-  left: 0;
-  top: 0;
-  width: 711px;
-}
-
-.group-13 {
-  // height: 36px;
-  // left: 41px;
-  // top: 516px;
-}
-
-.text-wrapper-50 {
-  color: #000000;
-  direction: rtl;
-  font-family: "GE SS Two-Medium", Helvetica;
-  font-size: 14px;
-  font-weight: 500;
-  height: 36px;
-  // left: 322px;
-  letter-spacing: 0;
-  line-height: 30px;
-  text-align: center;
-  top: 0;
-  white-space: normal;
-  width: 277px;
-  overflow-wrap: break-word;
-}
-
-// .text-wrapper-51 {
-//   color: #000000;
-//   direction: rtl;
-//   font-family: "GE SS Two-Medium", Helvetica;
-//   font-size: 14px;
-//   font-weight: 500;
-//   height: 36px;
-//   left: 0;
-//   letter-spacing: 0;
-//   line-height: 30px;
-//   text-align: center;
-//   top: 0;
-//   white-space: nowrap;
-//   width: 286px;
-// }
-
-.info {
-  height: 391px;
-  left: 18px;
+.infograph-img {
+  width: 100%;
+  height: auto;
   object-fit: cover;
-  top: 115px;
-  width: 313px;
-  border: 10px solid black;
+  border: 8px solid black;
   border-radius: 20px;
 }
 
-.group-14 {
-  height: 13px;
-  left: 296px;
-  top: 571px;
-  width: 92px;
+.infograph-text {
+  font-family: "GE SS Two-Medium", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  margin-top: 12px;
+  line-height: 1.5;
+  word-wrap: break-word;
 }
-@media screen and (max-width: 992px) and (min-width: 768px) {
-  .text-wrapper-49 {
-    margin-bottom: 4%;
+
+@media (max-width: 768px) {
+  .infograph-grid {
+    flex-direction: column;
+    align-items: center;
   }
-  .overlap-27 {
-    margin-bottom: 4%;
-  }
-}
-@media screen and (max-width: 1024px) and (min-width: 769px) {
-  .Infographsection {
+
+  .infograph-item {
     width: 100%;
-    .overlap-27 {
-      width: 95%;
-      margin-top: 6%;
-      .text-wrapper-49 {
-        margin-bottom: 4%;
-        text-align: right;
-      }
-    }
-    .overlap-27 > div {
-      width: 90%;
-    }
-.text-wrapper-50{
-  transform: translateX(40px);
-}
-    .info {
-      height: 411px;
-      width: 343px;
-    }
+    max-width: 90%;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 16px;
   }
 }
-// Infographsection

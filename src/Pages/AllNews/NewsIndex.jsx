@@ -1,13 +1,6 @@
 
 import styles from './index.module.css'
-import logo from '../../assets/rectangle-6.png'
-import { create } from "zustand";
-import AOS from 'aos';
-import HomePage from '../..//Pages/HomePage'
-import { Element } from 'react-scroll'
 import { useNews, usepathes, usepathimg } from '../../Store';
-import { IoMdArrowDropdown } from 'react-icons/io';
-import cc from '../../assets/president.png'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 

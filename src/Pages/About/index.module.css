@@ -272,6 +272,10 @@ button{
           color: white !important;
  transform: translateX(20px); 
     }
+     .iconfile{
+          color: white !important;
+ transform: translateX(20px); 
+    }
 }
 }
 .iconarrow{
@@ -281,7 +285,14 @@ button{
    transition: transform 0.3s ease;
   
 }
- 
+ .iconfile{
+  color: var(--purpleColor);
+  margin-right: 10px;
+     font-size: 20px ;
+     transition: transform 0.3s ease;
+  
+
+ }
 #custompurpleoutline {
   color: var(--purpleColor);
   border: 1px solid var(--purpleColor);
@@ -290,9 +301,17 @@ button{
   transition: 0.3s ease;
   font-size: 18px;
   font-weight: 400;
+  button{
+    background-color: transparent;
+    color:var(--purpleColor); ;
+  }
 }
 
 #custompurpleoutline:hover {
   background-color: var(--purpleColor);
   color: white;
+  button:hover{
+    
+    color:white ;
+  }
 }

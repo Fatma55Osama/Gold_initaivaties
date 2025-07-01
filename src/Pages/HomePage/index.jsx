@@ -131,7 +131,7 @@ export default function HomePage() {
         {/*رسائل توعوية*/}
         <div className='col-12 container d-flex align-items-center' id={styles.msg} >
           <div className='container col-12 d-flex  align-items-center'>
-            <div className='col-12 container d-flex flex-column   '>
+            <div className='col-12 container d-flex flex-column align-items-end   '>
               <h2>رسائل توعوية</h2>
               {
                 filterAwarness.map((el, index) => {

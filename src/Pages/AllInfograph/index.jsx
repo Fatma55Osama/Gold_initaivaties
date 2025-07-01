@@ -1,11 +1,7 @@
 
 import { useInfograph, usepathes, usepathimg } from '../../Store';
 import styles from './index.module.css'
-
 import { Link, useLocation } from 'react-router-dom'
-
-import info from '../../assets/Info1-1.png'
-import { IoMdArrowDropdown } from 'react-icons/io';
 import { useState } from 'react';
 
 
@@ -17,10 +13,22 @@ export default function AllInfograph() {
     const { pathimg } = usepathimg()
     const { path } = usepathes()
     const location = useLocation()
+    function normalizeArabic(text) {
+        return text
+            .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
+            .replace(/ة/g, 'ه')       // تطبيع التاء المربوطة
+            .replace(/ى/g, 'ي')       // تطبيع الألف المقصورة
+            .replace(/ئ/g, 'ي')       // تطبيع الياء الهمزة
+            .replace(/ؤ/g, 'و')       // تطبيع الواو همزة
+            .replace(/[ًٌٍَُِّْ]/g, '') // إزالة التشكيل
+            .replace(/[^ء-يa-zA-Z0-9\s]/g, '') // إزالة الرموز
+            .trim()
+            .toLowerCase();
+    }
     const indexOfLastinfo = currentPage * infoPerPage;
     const indexOfFirstinfo = indexOfLastinfo - infoPerPage;
     const filteredinfo = infograph?.filter(info =>
-        info.infoTitle.toLowerCase().includes(searchTerm.toLowerCase())).sort((a, b) => {
+       normalizeArabic(info.infoTitle).includes(normalizeArabic(searchTerm))).sort((a, b) => {
 
             if (a.orderView !== b.orderView) {
                 return b.orderView - a.orderView;
@@ -85,14 +93,14 @@ export default function AllInfograph() {
                 </div>
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-      
+
                     {
                         path.filter(el => el.name === "الركن الإعلامي")
                             .flatMap((el, index) => {
                                 return el.links.map((link, idx) => {
                                     const isActive = link.path === location.pathname
                                     return (
-                                       <Link
+                                        <Link
                                             key={`${index}-${idx}`}
                                             to={link.path}
                                             className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}

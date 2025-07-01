@@ -13,17 +13,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function Photo() {
-        const { path } = usepathes()
-    
-        const location = useLocation()
-    
-    const navLinks = [
-        { label: "الرسائل التوعوية", to: "/messages" },
-        { label: "قائمة الإنفوجراف", to: "/infograph" },
-        { label: "مكتبة الفيديو", to: "/video" },
-        { label: "ألبومات الصور", to: "/Photo" },
-        { label: "أخبار المبادرة", to: "/mediacorner" },
-    ];
+    const { path } = usepathes()
+
+    const location = useLocation()
+    function normalizeArabic(text) {
+        return text
+            .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
+            .replace(/ة/g, 'ه')       // تطبيع التاء المربوطة
+            .replace(/ى/g, 'ي')       // تطبيع الألف المقصورة
+            .replace(/ئ/g, 'ي')       // تطبيع الياء الهمزة
+            .replace(/ؤ/g, 'و')       // تطبيع الواو همزة
+            .replace(/[ًٌٍَُِّْ]/g, '') // إزالة التشكيل
+            .replace(/[^ء-يa-zA-Z0-9\s]/g, '') // إزالة الرموز
+            .trim()
+            .toLowerCase();
+    }
+  
     const { allphoto, setallphoto } = usePhotoo()
     const { pathimg } = usepathimg()
 
@@ -71,7 +76,7 @@ export default function Photo() {
     const indexOfLastphoto = currentPage * photoPerPage;
     const indexOfFirstphoto = indexOfLastphoto - photoPerPage;
     const filteredphoto = filterphoto?.filter(photo =>
-        photo.albumTitle.toLowerCase().includes(searchTerm.toLowerCase())
+        normalizeArabic(photo.albumTitle).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
     const filteredNewsPerPage = filteredphoto.slice(indexOfFirstphoto, indexOfLastphoto);
     const totalPages = Math.ceil(

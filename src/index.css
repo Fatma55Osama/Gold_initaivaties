@@ -50,3 +50,23 @@
 body,.App,.root{
   min-height: 100vh !important;
 }
+.topbtn {
+  position: fixed;
+  bottom: 20px;   
+  right: 20px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 50%;
+  font-size: 60px;
+  cursor: pointer;
+  color: var(--yellowColor);
+  /* background-color: var(--purpleColor); */
+  z-index: 999;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  transition: background 0.3s;
+}
+
+/* .topbtn:hover {
+  background-color: var(--yellowColor);
+  color: white;
+} */

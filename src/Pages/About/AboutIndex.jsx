@@ -1,10 +1,6 @@
 
 import styles from './index.module.css'
-import logo from '../../assets/rectangle-6.png'
-import { create } from "zustand";
-import AOS from 'aos';
-import HomePage from '../..//Pages/HomePage'
-import { Element, Link, scroller } from 'react-scroll'
+import { Link, scroller } from 'react-scroll'
 import { useAbout, useModal, useModalpdf, usepathimg } from '../../Store';
 import { Accordion } from 'react-bootstrap';
 import { IoIosArrowRoundBack } from 'react-icons/io';
@@ -282,14 +278,24 @@ useEffect(() => {
 
 
                     <div className='container text-end d-flex justify-content-end  mt-4'>
-                        <div className='col-12  d-flex flex-column pb-5'>
+                        <div className='col-12  d-flex flex-column align-items-end justify-content-end pb-5'>
                             <p > {allabout?.[0]?.mechanisms} </p>
-                            <button
+                            {/* <button
                                 className="px-2 py-2 mt-3 align-self-end d-flex align-items-center gap-2" id={styles.custompurpleoutline}
                                 onClick={openModalpdf}
                             >
-                                <FaFilePdf /> عرض الملف التوضيحي
-                            </button>
+                                <FaFilePdf /> عرض الملف 
+                            </button> */}
+                            {/* <div onClick={openModalpdf} className={  ' px-3 d-flex justify-content-end align-items-center  rounded-3 '} id={styles.custompurpleoutline}>
+
+                                <FaFilePdf  />
+                                <button className='rounded-3  py-1 px-4'> عرض الملف  </button>
+                            </div> */}
+                              <div onClick={openModalpdf} className={styles.btnback + ' px-1 rounded-3 d-flex align-items-center'}>
+
+                                <FaFilePdf className={styles.iconfile} />
+                                <button className='rounded-3 py-1 px-4'> عرض الملف   </button>
+                            </div>
                         </div>
                     </div>
 

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 import { useNews, usepathimg } from '../../Store'
-import new1 from '../../assets/president.png'
-import new2 from '../../assets/image-19.png'
-import new3 from '../../assets/plan.jpg'
-import new4 from '../../assets/meet.jpg'
+
 import { Link } from 'react-router-dom'
 export default function News() {
     const [filternews, setFilternews] = useState([])

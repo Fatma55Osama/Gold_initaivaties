@@ -24,7 +24,7 @@ export default function ImportentLink() {
   return (
 
     <div className='col-12 d-flex flex-column flex justify-content-center align-items-center' data-aos="fade-up"
-      data-aos-offset="300" data-aos-delay={50} id={styles.parent}>
+      data-aos-offset="200" data-aos-delay={50} id={styles.parent}>
       <div className=' container col-12 text-end'>
         <h2>روابط هامة</h2>
         <div className=' col-12 '>

@@ -55,8 +55,8 @@ export default function Header2() {
                         }
                     </div>
                 </div>
-            </div>
             <div className={styles.rotat + "  col-2"}></div>
+            </div>
         </div>
     )
 }

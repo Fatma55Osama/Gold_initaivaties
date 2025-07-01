@@ -14,7 +14,18 @@ export default function AllVideo() {
     const { path } = usepathes()
 
     const location = useLocation()
-
+    function normalizeArabic(text) {
+        return text
+            .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
+            .replace(/ة/g, 'ه')       // تطبيع التاء المربوطة
+            .replace(/ى/g, 'ي')       // تطبيع الألف المقصورة
+            .replace(/ئ/g, 'ي')       // تطبيع الياء الهمزة
+            .replace(/ؤ/g, 'و')       // تطبيع الواو همزة
+            .replace(/[ًٌٍَُِّْ]/g, '') // إزالة التشكيل
+            .replace(/[^ء-يa-zA-Z0-9\s]/g, '') // إزالة الرموز
+            .trim()
+            .toLowerCase();
+    }
     const { allvedio, setallvedio } = useVedio()
     const [currentPage, setCurrentPage] = useState(1);
     const vedioPerPage = 4; // عدد الأخبار في كل صفحة
@@ -22,7 +33,7 @@ export default function AllVideo() {
     const indexOfLastvedio = currentPage * vedioPerPage;
     const indexOfFirstvedio = indexOfLastvedio - vedioPerPage;
     const filteredvedio = allvedio?.filter(vedio =>
-        vedio.vedioTitle.toLowerCase().includes(searchTerm.toLowerCase())
+       normalizeArabic(vedio.vedioTitle).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
     const filteredNewsPerPage = filteredvedio.slice(indexOfFirstvedio, indexOfLastvedio);
     const totalPages = Math.ceil(
@@ -111,7 +122,7 @@ export default function AllVideo() {
                     <div className=' flex-column mt-5 '>
                         <h3 id={styles.h3}>مكتبة الفيديو</h3>
                     </div>
-                    <div className='d-flex   flex-wrap justify-content-end'>
+                    <div className='d-flex flex-row-reverse flex-wrap justify-content-end'>
                         {
                             (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
                                 <div className=' text-center col-12'>
@@ -124,11 +135,11 @@ export default function AllVideo() {
                                     month: 'long',
                                     year: 'numeric',
                                 });
-                                const shortText = el.vedioTitle.split(/\s+/).slice(0, 100).join(' ') + '...';
+                                const shortText = el.vedioTitle.split(/\s+/).slice(0, 90).join(' ') + '...';
 
                                 return (
-                                    <div key={el.vedioId} className=' flex-column  col-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
-                                        <div className='   d-flex  flex-column ' id={styles.CRegtangle}  >
+                                    <div key={el.vedioId} className='  flex-column  col-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
+                                        <div className='  d-flex  flex-column ' id={styles.CRegtangle}  >
                                             <div className=' text-wrap flex-column ' id={styles.phdiv}>
                                                 <div className=' flex-column position-relative' id={styles.imgrayse} >
                                                     <img src={`${pathimg}/Video/${el.vCoverPhoto}`} className='' alt="" />

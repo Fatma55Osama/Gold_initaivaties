@@ -4,17 +4,28 @@
   clip-path: polygon(90% 0%, 100% 100%, 0% 100%, 0% 0%);
 }
 
-.rotat {
-  /* border-right: 2px solid var(--purpleColor); */
+/* .rotat {
   background-color: var(--purpleColor);
   transform: rotate(44.9deg);
-  /* margin-left: -14.88%; */
   z-index: 2;
   height: 2px;
   top: 0;
   right: 31.5%;
   position: absolute;
+
+} */
+.rotat {
+  position: absolute;
+  top: 70px;
+  right: 0; /* ثبتيه على اليمين */
+  width: clamp(150px, 20vw, 250px);
+  height: 2px;
+  background-color: var(--purpleColor);
+  transform: rotate(44.9deg);
+  transform-origin: right top;
+  z-index: 2;
 }
+
 .part1 {
   background-color: var(--purpleColor);
   color: white;
@@ -42,9 +53,11 @@
     font-size: 12px !important;
   }
   .rotat {
-    right: 8.95%;
+    /* right: 8.95%;
 
-    transform: rotate(51.9deg);
+    transform: rotate(51.9deg); */
+    transform: rotate(57deg);
+    top: 100px !important;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 769px) {
@@ -52,9 +65,11 @@
     width: 90%;
   }
   .rotat {
-    right: 10.4%;
+    transform: rotate(47.99deg);
 
-    transform: rotate(48.99999deg);
+    /* right: 10.4%; */
+
+    /* transform: rotate(48.99999deg); */
   }
 }
 @media screen and (max-width: 767px) {

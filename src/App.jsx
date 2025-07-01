@@ -16,6 +16,7 @@ import Alllightteam from './Pages/Alllightteam';
 import ContactUs from './Pages/Contactus';
 import Opinion from './Pages/Opinion';
 import Indicators from './Pages/Indicators';
+import { FiArrowUpCircle } from 'react-icons/fi';
 
 export default function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function App() {
       AOS.refresh();
     };
   }, []);
+  const top =()=>{window.scrollTo(0,0)}
   return (
     <div className="App d-flex flex-column">
       <Routes>
@@ -54,6 +56,7 @@ export default function App() {
 
         </Route>
       </Routes>
+     <FiArrowUpCircle onClick={top} className='topbtn'/>
     </div>
   )
 }
