@@ -2,12 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
-import logo1 from '../../assets/img/log1.png'
-import logo2 from '../../assets/img/log2.png'
-import logo3 from '../../assets/img/log3.png'
-import logo4 from '../../assets/img/log4.png'
-import logo5 from '../../assets/img/logo5.png'
-import logo6 from '../../assets/img/logo6.png'
 import { useImportantlink, usepathimg } from '../../Store';
 import 'swiper/css';
 import 'swiper/css/free-mode';

@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
-import team1 from '../../assets/nusring (1).png'
-import team2 from '../../assets/doctor.png'
-import team3 from '../../assets/staff.png'
 import { useallActiveEmployees, usepathimg } from '../../Store';
 
 export default function Lightteam() {

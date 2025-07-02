@@ -13,6 +13,11 @@ export default function Indicators() {
         { value: 'doughnut', label: 'Doughnut (دونات)' },
         { value: 'radar', label: 'Radar (رادار)' },
     ];
+    const [selectedIndicator, setSelectedIndicator] = useState('');
+    const [fromYear, setFromYear] = useState('');
+    const [toYear, setToYear] = useState('');
+    const [typeService, setTypeService] = useState('');
+
     // const [byGov, setByGov] = useState(false);
     // const [byDate, setByDate] = useState(false);
     // const [top5, setTop5] = useState(false);
@@ -43,99 +48,19 @@ export default function Indicators() {
         })
 
     }, [])
-    //   const chartData = useMemo(() => {
-    //   if (!Array.isArray(vindicatorr)) return { labels: [], datasets: [] };
 
-    //   const filteredData = vindicatorr.filter(item => item.indValue !== null);
+    const filtered = useMemo(() => {
+        return vindicatorr.filter(item => {
+            const byIndicator = selectedIndicator ? item.indName === selectedIndicator : true;
+            const byService = typeService ? item.mashoraDesc === typeService : true;
+            const byFrom = fromYear ? item.indYear >= parseInt(fromYear) : true;
+            const byTo = toYear ? item.indYear <= parseInt(toYear) : true;
+            return byIndicator && byService && byFrom && byTo && item.indValue !== null;
+        });
+    }, [vindicatorr, selectedIndicator, typeService, fromYear, toYear]);
 
-    //   return {
-    //     labels: filteredData.map(item => `${item.monthDesc} ${item.indYear}`), 
-    //     datasets: [
-    //       {
-    //         label: filteredData[0]?.indName || 'عدد الحالات', 
-    //         data: filteredData.map(item => item.indValue),
-    //         borderColor: 'rgb(75, 192, 192)',
-    //         backgroundColor: 'rgba(75, 192, 192, 0.2)',
-    //         tension: 0.4, 
-    //       },
-    //     ],
-    //   };
-    // }, [vindicatorr]);
-    // const chartData = useMemo(() => {
-    //     if (!Array.isArray(vindicatorr)) return { labels: [], datasets: [] };
 
-    //     const filtered = vindicatorr.filter(item => item.indValue !== null);
-
-    //     // ✅ حالة 1: توزيع حسب المحافظات عبر الوقت
-    //     if (byGov) {
-    //         const labels = [...new Set(filtered.map(i => `${i.monthDesc} ${i.indYear}`))];
-
-    //         // تجميع حسب المحافظة
-    //         const govGroups = {};
-    //         filtered.forEach(item => {
-    //             const dateLabel = `${item.monthDesc} ${item.indYear}`;
-    //             if (!govGroups[item.govName]) govGroups[item.govName] = {};
-    //             govGroups[item.govName][dateLabel] = item.indValue;
-    //         });
-
-    //         let datasets = Object.entries(govGroups).map(([gov, values]) => ({
-    //             label: gov,
-    //             data: labels.map(l => values[l] || 0),
-    //             borderColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-    //             backgroundColor: 'rgba(75,192,192,0.2)',
-    //         }));
-
-    //         // أعلى 5 فقط
-    //         if (top5) {
-    //             datasets = datasets
-    //                 .sort((a, b) => b.data.reduce((s, x) => s + x, 0) - a.data.reduce((s, x) => s + x, 0))
-    //                 .slice(0, 5);
-    //         }
-
-    //         // أقل 5 فقط
-    //         if (bottom5) {
-    //             datasets = datasets
-    //                 .sort((a, b) => a.data.reduce((s, x) => s + x, 0) - b.data.reduce((s, x) => s + x, 0))
-    //                 .slice(0, 5);
-    //         }
-
-    //         return { labels, datasets };
-    //     }
-
-    //     // ✅ حالة 2: توزيع حسب الوقت (بشكل عام لمؤشر واحد فقط)
-    //     if (byDate) {
-    //         const labels = filtered.map(item => `${item.monthDesc} ${item.indYear}`);
-    //         const data = filtered.map(item => item.indValue);
-
-    //         return {
-    //             labels,
-    //             datasets: [
-    //                 {
-    //                     label: filtered[0]?.indName || 'عدد الحالات',
-    //                     data,
-    //                     borderColor: 'rgb(75, 192, 192)',
-    //                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
-    //                 },
-    //             ],
-    //         };
-    //     }
-
-    //     // ✅ افتراضي: أول مؤشر فقط
-    //     return {
-    //         labels: filtered.map(item => `${item.monthDesc} ${item.indYear}`),
-    //         datasets: [
-    //             {
-    //                 label: filtered[0]?.indName || 'عدد الحالات',
-    //                 data: filtered.map(item => item.indValue),
-    //                 borderColor: 'rgb(75, 192, 192)',
-    //                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-    //             },
-    //         ],
-    //     };
-    // }, [vindicatorr, byGov, byDate, top5, bottom5]);
-    // 1. توزيع حسب المحافظات
     const chartByGov = useMemo(() => {
-        const filtered = vindicatorr.filter(i => i.indValue !== null);
         const labels = [...new Set(filtered.map(i => `${i.monthDesc} ${i.indYear}`))];
         const groups = {};
         filtered.forEach(i => {
@@ -150,11 +75,11 @@ export default function Indicators() {
             backgroundColor: 'rgba(75,192,192,0.2)',
         }));
         return { labels, datasets };
-    }, [vindicatorr]);
+    }, [filtered]);
+
 
     // 2. توزيع حسب التاريخ (خط واحد)
     const chartByDate = useMemo(() => {
-        const filtered = vindicatorr.filter(i => i.indValue !== null);
         return {
             labels: filtered.map(i => `${i.monthDesc} ${i.indYear}`),
             datasets: [{
@@ -164,15 +89,14 @@ export default function Indicators() {
                 backgroundColor: 'rgba(75,192,192,0.2)',
             }],
         };
-    }, [vindicatorr]);
+    }, [filtered]);
+
 
     // 3. أعلى 5 محافظات
     const chartTop5 = useMemo(() => {
         const grouped = {};
-        vindicatorr.forEach(i => {
-            if (i.indValue !== null) {
-                grouped[i.govName] = (grouped[i.govName] || 0) + i.indValue;
-            }
+        filtered.forEach(i => {
+            grouped[i.govName] = (grouped[i.govName] || 0) + i.indValue;
         });
         const top5 = Object.entries(grouped)
             .sort((a, b) => b[1] - a[1])
@@ -186,15 +110,13 @@ export default function Indicators() {
                 backgroundColor: 'rgba(0,128,0,0.3)',
             }],
         };
-    }, [vindicatorr]);
+    }, [filtered]);
 
     // 4. أقل 5 محافظات
     const chartBottom5 = useMemo(() => {
         const grouped = {};
-        vindicatorr.forEach(i => {
-            if (i.indValue !== null) {
-                grouped[i.govName] = (grouped[i.govName] || 0) + i.indValue;
-            }
+        filtered.forEach(i => {
+            grouped[i.govName] = (grouped[i.govName] || 0) + i.indValue;
         });
         const bottom5 = Object.entries(grouped)
             .sort((a, b) => a[1] - b[1])
@@ -208,7 +130,7 @@ export default function Indicators() {
                 backgroundColor: 'rgba(255,0,0,0.3)',
             }],
         };
-    }, [vindicatorr]);
+    }, [filtered]);
 
     return (
         <div>
@@ -222,7 +144,7 @@ export default function Indicators() {
                             <h2>مؤشرات المبادرة</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p>يعرض هذا القسم باقة مختارة من مؤشرات المبادرة</p>
+                                    <p>يعرض هذا القسم مجموعة من المؤشرات توضح جهود المبادرة في كافة محافظات الجمهورية. حيث تهدف المبادرة إلى تحسين صحة الأم والطفل وأهمية الرضاعة الطبيعية، توعية الأسرة بضرورة المباعدة بين الولادات، وخفض معدلات الولادات القيصرية، هذا بالإضافة إلى تطوير مهارات الأم للاهتمام بالطفل في مراحل عمره المختلفة. </p>
 
                                 </div>
                             </div>
@@ -234,22 +156,36 @@ export default function Indicators() {
                 <div className='col-12 container p-4 rounded' style={{ direction: 'rtl' }}>
                     <div className='mb-4 d-flex align-items-center gap-2'>
                         <label className='fs-5 fw-bold'>اسم المؤشر:</label>
-                        <select className='form-select w-auto'>
+                        <select className='form-select w-auto' value={selectedIndicator} onChange={(e) => setSelectedIndicator(e.target.value)}>
                             <option>اختار اسم المؤشر</option>
-                            <option>ddfd</option>
+                            {[...new Set(vindicatorr.map(i => i.indName))].map((name, index) => (
+                                <option key={index} value={name}>{name}</option>
+                            ))}
                         </select>
                     </div>
-
+                    <div className='mb-4 d-flex align-items-center gap-2'>
+                        <label className='fs-5 fw-bold'>نوع الخدمة:</label>
+                        <select className='form-select w-auto' value={typeService} onChange={(e) => setTypeService(e.target.value)}>
+                            <option>اختار نوع الخدمة</option>
+                            {[...new Set(vindicatorr.map(i => i.mashoraDesc))].map((type, index) => (
+                                <option key={index} value={type}>{type}</option>
+                            ))}
+                        </select>
+                    </div>
                     <div className='d-flex align-items-center gap-2'>
                         <label className='fs-5 fw-bold'>خلال فترة من:</label>
-                        <select className='form-select w-auto'>
+                        <select className='form-select w-auto' value={fromYear} onChange={(e) => setFromYear(e.target.value)}>
                             <option>سنة</option>
-                            <option>ddfd</option>
+                            {[...new Set(vindicatorr.map(i => i.indYear))].map((year, index) => (
+                                <option key={index} value={year}>{year}</option>
+                            ))}
                         </select>
                         <span className='fs-5 fw-bold'>إلى</span>
-                        <select className='form-select w-auto'>
+                        <select className='form-select w-auto' value={toYear} onChange={(e) => setToYear(e.target.value)}>
                             <option>سنة</option>
-                            <option>ddfd</option>
+                            {[...new Set(vindicatorr.map(i => i.indYear))].map((year, index) => (
+                                <option key={index} value={year}>{year}</option>
+                            ))}
                         </select>
                     </div>
                     <div className='d-flex flex-column gap-3 mt-4'>
@@ -268,9 +204,9 @@ export default function Indicators() {
                         <div>
                             <label className='d-flex gap-2 align-items-center'> <input checked={filters.bottom5} onChange={handleCheckboxChange('bottom5')} className='form-check w-auto' type="checkbox" name="" id="" /> القسم خمس محافظات                            </label>
                         </div>
-                       
+
                         <div className="mb-3">
-                           <div className="mb-3">
+                            <div className="mb-3">
                                 <label className="fw-bold d-block py-3">نوع الرسم البياني:</label>
 
                                 {/* إنشاء radio لكل نوع */}
@@ -315,21 +251,28 @@ export default function Indicators() {
                 {/* <MyChartComponent rawData={vindicatorr} /> */}
                 {/* <Chartscomponent2 data={chartData} /> */}
             </div>
-            <div className="container">
-                {Object.values(filters).every((v) => !v) && (
+            <div className="container mb-5">
+                {filtered.length === 0 ? (
+                    <p className="text-center fs-4 text-danger">لا توجد بيانات متاحة بناءً على الاختيارات الحالية.</p>
+                ) : (
                     <>
-                        <Chartscomponent2 data={chartByGov} type={chartType} />
-                        <Chartscomponent2 data={chartByDate} type={chartType} />
-                        <Chartscomponent2 data={chartTop5} type={chartType} />
-                        <Chartscomponent2 data={chartBottom5} type={chartType} />
+                        {Object.values(filters).every((v) => !v) && (
+                            <>
+                                <Chartscomponent2 data={chartTop5} type={chartType} />
+                                <Chartscomponent2 data={chartBottom5} type={chartType} />
+                                <Chartscomponent2 data={chartByGov} type={chartType} />
+                                <Chartscomponent2 data={chartByDate} type={chartType} />
+                            </>
+                        )}
+
+                        {filters.byGov && <Chartscomponent2 data={chartByGov} type={chartType} />}
+                        {filters.byDate && <Chartscomponent2 data={chartByDate} type={chartType} />}
+                        {filters.top5 && <Chartscomponent2 data={chartTop5} type={chartType} />}
+                        {filters.bottom5 && <Chartscomponent2 data={chartBottom5} type={chartType} />}
                     </>
                 )}
-
-                {filters.byGov && <Chartscomponent2 data={chartByGov} type={chartType} />}
-                {filters.byDate && <Chartscomponent2 data={chartByDate} type={chartType} />}
-                {filters.top5 && <Chartscomponent2 data={chartTop5} type={chartType} />}
-                {filters.bottom5 && <Chartscomponent2 data={chartBottom5} type={chartType} />}
             </div>
+
 
         </div>
     )

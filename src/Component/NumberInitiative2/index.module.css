@@ -38,4 +38,12 @@
   }
 }
   @media screen and (max-width: 992px) and (min-width: 768px) {
+  #numbercontainer {
+    h3{
+      font-size: 40px !important;
+    }
+    span{
+      font-size: 13px !important;
+    }
+  }
   }

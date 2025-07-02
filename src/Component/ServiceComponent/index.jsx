@@ -17,24 +17,25 @@ import pr9 from '../../assets/wheelchair 2 (5).png'
 import { usepathimg, useServicemain } from '../../Store'
 import { Link, useLocation } from 'react-router-dom'
 export default function ServiceComponent() {
+
+    const location = useLocation()
+    const [hoverimgMouse, setHoverimgMouse] = useState(null)
+    const { allservice, setservice } = useServicemain()
+
     const imageMap = {
         'مشورة الإعاقة والدمج': { img: pr9, hoverimg: pr9hover },
-        'الألف يوم الذهبية التالية': { img: pr8, hoverimg: pr8hover },
+        'الألف يوم التالية': { img: pr8, hoverimg: pr8hover },
         'مشورة المباعدة بين الحمل': { img: pr7, hoverimg: pr7hover },
         'مشورة الأطفال': { img: babywalk, hoverimg: babywalkhover },
         'مشورة الحامل': { img: pr4, hoverimg: pr4hover },
         'مشورة ما قبل الزواج': { img: pr3, hoverimg: pr3hover },
         'المشورة الأسرية بالمستشفيات': { img: pr5, hoverimg: pr5hover },
     };
-    const location = useLocation()
-    console.log("location", location)
-    const [hoverimgMouse, setHoverimgMouse] = useState(null)
-    const [Baby, setBaby] = useState([])
-    const { allservice, setservice } = useServicemain()
 
+    const [Baby, setBaby] = useState([]);
     useEffect(() => {
         const merged = allservice
-            .filter(item => imageMap[item.mashoraDesc]) // خدي بس اللي ليهم صور
+            .filter(item => imageMap[item.mashoraDesc])
             .map(item => ({
                 ...item,
                 img: imageMap[item.mashoraDesc].img,
@@ -56,7 +57,7 @@ export default function ServiceComponent() {
                             <h2>خدمات المبادرة</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p >الخدمات</p>
+                                    <p >لأن كل أم وكل طفل يستحق حياة صحية سعيدة، تُقدم مبادرة الألف يوم الذهبية لتنمية الأسرة المصرية مجموعة من الخدمات المتنوعة لخدمة الأسرة بوجه عام، والأم والطفل بشكل خاص. كما تُوفر المبادرة الدعم النفسي والصحي للأم والطفل مجانًا، من خلال فحوصات طبية ونصائح غذائية وصحية.</p>
 
                                 </div>
                             </div>
@@ -65,9 +66,8 @@ export default function ServiceComponent() {
                 </div>
             </div>
             <div className='col-12 text-center py-3 align-items-center justify-content-center' id={styles.sectionBaby}>
-
-                <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between  '>
-                    {
+                <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between gap-4 ' dir="rtl" id={styles.sectionBabywrap}>
+                     {
                         Baby.map((el, index) => {
                             const isCurrent = location.pathname === `/Services/${el.mashoraId}`;
                             const isHovering = hoverimgMouse === index;
@@ -87,7 +87,6 @@ export default function ServiceComponent() {
 
                 </div>
             </div>
-
         </div>
     )
 }

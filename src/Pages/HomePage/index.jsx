@@ -100,7 +100,7 @@ export default function HomePage() {
             <SectionContainHeader />
           </div>
           <div className='col-12 text-center py-3 align-items-center justify-content-center' id={styles.sectionBaby}>
-            <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between  ' id={styles.sectionBabywrap}>
+            <div className='container col-12 col-md-11 text-center d-flex align-items-center mt-4  justify-content-between gap-4 ' dir="rtl" id={styles.sectionBabywrap}>
               {
                 Baby.map((el, index) => (
                   <Link to={`/Services/${el.mashoraId}`} key={el.mashoraId} className=' text-white nav-link text-center d-flex flex-column align-items-center gap-3  justify-content-center' data-aos="fade-up"

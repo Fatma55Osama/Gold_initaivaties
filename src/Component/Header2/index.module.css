@@ -17,7 +17,7 @@
 .rotat {
   position: absolute;
   top: 70px;
-  right: 0; /* ثبتيه على اليمين */
+  right: 0; 
   width: clamp(150px, 20vw, 250px);
   height: 2px;
   background-color: var(--purpleColor);

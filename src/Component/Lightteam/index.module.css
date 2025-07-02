@@ -69,3 +69,9 @@
         width: 350px !important;
     }
   }
+  @media screen and (max-width: 1024px) and (min-width: 769px) {
+    #mySwiper{
+    max-width: 950px !important;
+    min-width: 60%;
+  }
+}

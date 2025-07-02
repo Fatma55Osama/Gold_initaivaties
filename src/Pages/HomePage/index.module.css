@@ -98,7 +98,7 @@ p {
 
 @media screen and (max-width: 992px) and (min-width: 768px) {
   #cardbaby {
-    width: 110px;
+    width: 120px;
     height: 146px;
     img {
       width: 55px;
@@ -117,6 +117,14 @@ p {
       font-size: 30px;
       text-align: center !important;
     }
+  }
+  #sectionBabywrap {
+    display: flex !important;
+    flex-wrap: wrap;
+    margin-inline-start: auto;
+  }
+   #sectionBaby {
+    height: 380px;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 769px) {
@@ -142,12 +150,12 @@ p {
   #sectionBaby {
     height: 350px;
   }
-  #sectionBabywrap{
+  #sectionBabywrap {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
   }
-   #cardbaby {
+  #cardbaby {
     width: 100px;
     height: 136px;
     img {

@@ -7,17 +7,18 @@ import { useState } from 'react';
 
 
 export default function Alllightteam() {
-    const navLinks = [
-        // { label: "  المشورة الأسرية بالمستشفيات", to: "/#" },
-
-        // { label: "   مشورة ما قبل الزواج", to: "/#" },
-        // { label: "  مشورة الحامل", to: "/#" },
-        // { label: " مشورة الأطفال", to: "/#" },
-        // { label: " مشورة المباعدة بين الحمل", to: "/#" },
-        // { label: " الألف يوم الذهبية التالية", to: "/#" },
-        // { label: " مشورة الإعاقة والدمج", to: "/#" },
-        { label: " نماذج مضيئة", to: "/Services" },
-    ];
+    function normalizeArabic(text) {
+        return text
+            .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
+            .replace(/ة/g, 'ه')       // تطبيع التاء المربوطة
+            .replace(/ى/g, 'ي')       // تطبيع الألف المقصورة
+            .replace(/ئ/g, 'ي')       // تطبيع الياء الهمزة
+            .replace(/ؤ/g, 'و')       // تطبيع الواو همزة
+            .replace(/[ًٌٍَُِّْ]/g, '') // إزالة التشكيل
+            .replace(/[^ء-يa-zA-Z0-9\s]/g, '') // إزالة الرموز
+            .trim()
+            .toLowerCase();
+    }
     const { pathimg } = usepathimg()
 
     const { Employees } = useallActiveEmployees()
@@ -27,7 +28,7 @@ export default function Alllightteam() {
     let indexofLastteam = currentPage * lightperpage
     let indexofFirsteam = indexofLastteam - lightperpage
     let filteredteam = Employees.filter((team) => {
-        return team.empName.toLowerCase().includes(Searchterm.toLowerCase())
+        return normalizeArabic(team.empName).includes(normalizeArabic(Searchterm))
     }).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate))
 
     let filteredteamPerPage = filteredteam.slice(indexofFirsteam, indexofLastteam)
@@ -52,7 +53,7 @@ export default function Alllightteam() {
                             <h2>نماذج مضيئة </h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p > نماذج مضيئة</p>
+                                    <p >تهتم المبادرة بإعداد كوادر مدربة لتشغيل غرف المشورة بالوحدات والمستشفيات لنشر الوعي بأهمية الألف يوم الأولى من عمر الطفل. وفي هذا الصدد، فقد تم تدريب صفوة مختارة من أطباء الأسنان والصيادلة وأطباء العلاج الطبيعي والمثقفين الصحيين من وحدات الرعاية الصحية الأولية والمستشفيات. ويعرض هذا الجزء المتميزين من هذه الكوادر تكريماً لهم على الجهد المبذول.</p>
 
                                 </div>
                             </div>
@@ -60,45 +61,27 @@ export default function Alllightteam() {
                     </div>
                 </div>
             </div>
-            <header className=' col-12 d-flex justify-content-between align-items-center mt-5   container  '>
-                {/* <div className=' d-flex align-items-center '>
-                    <button>بحث</button>
-                    <IoMdArrowDropdown />
-                    <input type="text" />
-                </div> */}
-                <div className='d-flex align-items-center gap-3' id={styles.search}>
+            <header className=' col-12 mb-4 d-flex justify-content-between align-items-center mt-5   container  '>
+
+                <div className='d-flex align-items-center  justify-content-between gap-3' id={styles.search}>
                     <button className='py-0 px-4 border-0'>بحث</button>
                     <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
 
                         <span style={{ marginRight: '8px', color: '#aaa' }}></span>
                         <input type="text" value={Searchterm} onChange={handleSearch} placeholder="...بحث" className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
                     </div>
-                </div>
 
-                {/* <div className='d-flex    gap-3 justify-content-between align-items-center '>
-                    {navLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            to={link.to}
-                            activeClass={styles.active}
-                            className={" nav-link " + styles.sectionlinkservice}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                </div> */}
+                </div>
+                <div className=' d-flex flex-column pb-3 align-items-end mt-3'>
+                    <h3> نماذج مضيئة</h3>
+                </div>
 
 
             </header>
             <div className=' col-12 d-flex flex-column align-items-end '>
                 <div className='container'>
-                    <div className='col-12 d-flex flex-column pb-3 align-items-end mt-3'>
-                        <h3> نماذج مضيئة</h3>
-                    </div>
-                    <div className='col-12 d-flex flex-wrap justify-content-end gap-4 mb-5'>
+
+                    <div className={`${styles.cardContainer} col-12 mb-5`}>
                         {
                             (Searchterm ? filteredteamPerPage : currentPage).length === 0 ? (
                                 <div className=' text-center col-12'>
@@ -106,7 +89,7 @@ export default function Alllightteam() {
 
                                 </div>
                             ) :
-                                filteredteamPerPage.map((el, index) => {
+                               filteredteamPerPage.map((el, index) => {
                                     const formattedDate = el.honorDate?.split("T")[0].replace(/-/g, "/");
 
                                     return (

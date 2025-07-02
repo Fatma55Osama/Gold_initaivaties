@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Footer from '../Footer'
-import Header from '../Header'
 import { Outlet, useLocation } from 'react-router-dom'
 import Employeeloader from '../../getCachingData'
 import Header2 from '../Header2'

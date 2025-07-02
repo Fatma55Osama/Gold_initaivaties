@@ -44,7 +44,7 @@ export default function Chartscomponent2(props) {
         responsive: true,
         plugins: {
             legend: { position: 'top' },
-            title: { display: true, text: 'الرسم البياني للمؤشرات' },
+            // title: { display: true, text: 'الرسم البياني للمؤشرات' },
         },
     };
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './index.module.css'
-import logo from '../../assets/rectangle-6.png'
+import logo from '../../assets/rectangle-6empty.png'
 import freepik from '../../assets/freepik__mamy-and-her-baby__199261 1.png'
 export default function SectionContainHeader() {
   return (

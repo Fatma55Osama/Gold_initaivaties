@@ -120,7 +120,7 @@ export default function AllInfograph() {
                 <div className=' col-12  d-flex flex-column pb-3 align-items-end mt-5'>
                     <h3>الإنفوجراف</h3>
                 </div>
-                <div className='col-12 d-flex flex-wrap  container justify-content-center ' id={styles.allinfodiv}>
+                <div className='col-12 d-flex flex-wrap flex-row-reverse container justify-content-center ' id={styles.allinfodiv}>
                     {
                         (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
                             <div className=' text-center col-12'>

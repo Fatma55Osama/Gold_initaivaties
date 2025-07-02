@@ -21,7 +21,8 @@ export default function ContactUs() {
                             <h2> تواصل معنا</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p>يعرض هذا القسم باقة مختارة من التواصل</p>
+                                    <p>
+تهم المبادرة بتحقيق التواصل المستمر مع المستفيدين وذلك لتحقيق أعلى قدر من الخدمات، لذا يمكنكم التواصل مع المبادرة عبر وسائل التواصل التالية:</p>
 
                                 </div>
                             </div>
