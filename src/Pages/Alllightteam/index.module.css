@@ -168,7 +168,7 @@
       /*vertical-align:top;*/
     }
     #regtangle {
-      background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+      background-color: rgba(217, 217, 217, 0.3);; /* rgba(217, 217, 217, 0.3);*/
       border-top: 2px solid #cba15f;
       height: 157px;
       p {
@@ -205,7 +205,7 @@
 #cardslid {
   width: 350px !important;
   height: 330px;
-  margin-inline-start: auto;
+  /* margin-inline-start: auto; */
 }
 
 .card {
@@ -249,4 +249,8 @@
 .noncurrentactive {
   color: #724780 !important;
   border: 1px solid #724780 !important;
+}
+.justifyText {
+  text-align: justify;
+  line-height: 1.6;
 }

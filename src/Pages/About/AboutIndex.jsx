@@ -22,17 +22,17 @@ import { useLocation } from 'react-router-dom';
 export default function AboutIndex() {
     const { allabout, setallabout } = useAbout()
     const { pathimg } = usepathimg()
-const location = useLocation();
+    const location = useLocation();
 
-useEffect(() => {
-  if (location.state?.targetSection) {
-    scroller.scrollTo(location.state.targetSection, {
-      duration: 500,
-      delay: 0,
-      smooth: 'easeInOutQuart'
-    });
-  }
-}, [location]);
+    useEffect(() => {
+        if (location.state?.targetSection) {
+            scroller.scrollTo(location.state.targetSection, {
+                duration: 500,
+                delay: 0,
+                smooth: 'easeInOutQuart'
+            });
+        }
+    }, [location]);
     const navLinks = [
         { label: "آليات التنفيذ", to: "section7" },
         { label: "محاور المبادرة", to: "section1" },
@@ -45,7 +45,10 @@ useEffect(() => {
     const { modalpdf, openModalpdf, closeModalpdf } = useModalpdf()
 
 
-
+    function stripHtmlTags(str) {
+        if (!str) return '';
+        return str.replace(/<[^>]*>/g, '');
+    }
     return (
         <div className='col-12' id={styles.parentalldiv}>
             <div className='col-12 position-relative ' id={styles.About}>
@@ -58,7 +61,7 @@ useEffect(() => {
                             <h2>عن المبادرة</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p >مبادرة "الألف يوم الذهبية لتنمية الأسرة المصرية" هي إحدى المبادرات الهامة لبناء الإنسان المصري حيث تهدف إلى الاهتمام بتحسين الخصائص السكانية لأفراد الأسرة المصرية وتنمية الطفولة المبكرة وخاصة في فترة الألف يوم الذهبية الأولي من العمر نظرا لأهميتها القصوى. وهي واحدة من مبادرات المبادرة الرئاسية "100 مليون صحة". وقد أطلق المبادرة معالي الأستاذ الدكتور/ خالد عبد الغفار –وزير الصحة والسكان- في احتفالية بالعاصمة الإدارية الجديدة يوم 22 أغسطس 2023.</p>
+                                    <p className={styles.justifyText} >مبادرة "الألف يوم الذهبية لتنمية الأسرة المصرية" هي إحدى المبادرات الهامة لبناء الإنسان المصري حيث تهدف إلى الاهتمام بتحسين الخصائص السكانية لأفراد الأسرة المصرية وتنمية الطفولة المبكرة وخاصة في فترة الألف يوم الذهبية الأولي من العمر نظرا لأهميتها القصوى. وهي واحدة من مبادرات المبادرة الرئاسية "100 مليون صحة". وقد أطلق المبادرة معالي الأستاذ الدكتور/ خالد عبد الغفار –وزير الصحة والسكان- في احتفالية بالعاصمة الإدارية الجديدة يوم 22 أغسطس 2023.</p>
 
                                 </div>
                             </div>
@@ -85,17 +88,19 @@ useEffect(() => {
                 <div className='col-12 container d-flex flex-column pb-3'>
                     <h3>المبادرة في سطور</h3>
                 </div>
-                <div className='col-12  d-flex ' id={styles.CRegtangle}  >
-                    <div className='d-flex  container '>
-                        <div className=' col-3 container d-flex flex-column justify-content-center' >
+                <div className='col-12  d-flex   justify-content-between ' id={styles.CRegtangle}  >
+                    <div className='d-flex container justify-content-between'>
+                        <div className=' col-3 align-items-start container d-flex flex-column justify-content-start mt-4' >
                             <div className='' id={styles.LinesImg}>
                                 <img src={`${pathimg}/About/${allabout?.[0]?.aboutImg}`} alt="" />
                             </div>
                         </div>
 
                         <div className=' text-end  d-flex justify-content-center align-items-center '>
-                            <div className='col-12 container d-flex flex-column justify-content-center '>
-                                <p>{allabout?.[0]?.aboutText}</p>
+                            <div className='col-12 container d-flex flex-column justify-content-center py-2 '>
+                                {/* <p>{allabout?.[0]?.aboutText}</p> */}
+                                <div className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.aboutText }} />
+                                {/* <p>{stripHtmlTags(allabout?.[0]?.aboutText)}</p> */}
                             </div>
 
                         </div>
@@ -105,6 +110,30 @@ useEffect(() => {
             </div>
             {/* ---------------------- End المبادرة في سطور------------------------- */}
 
+            {/*---------------------- Start كلمة وزير الصحة-------------------------*/}
+            <div name='section3' className='col-12 ' id={styles.Lines}>
+                <div className='col-12 container d-flex flex-column pb-3'>
+                    <h3>كلمة وزير الصحة</h3>
+                </div>
+                <div className='col-12  d-flex  py-3 ' id={styles.CRegtangle}  >
+                    <div className='container d-flex'>
+                        <div className=' col-3 container d-flex flex-column justify-content-center align-items-end' >
+                            <div className='d-flex justify-content-center   flex-column  ' id={styles.MinisterImg}>
+                                <img src={`${pathimg}/About/${allabout?.[0]?.ministerImg}`} alt="" />
+                            </div>
+                        </div>
+
+                        <div className=' text-end d-flex justify-content-center align-items-center  '>
+                            <div className='col-12 container d-flex flex-column justify-content-center  '>
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.ministerWord }} />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {/* ---------------------- End كلمة وزير الصحة------------------------- */}
 
             {/*---------------------- Start كلمة رئيس المبادرة-------------------------*/}
             <div name='section4' className='col-12  ' id={styles.Lines}>
@@ -115,7 +144,7 @@ useEffect(() => {
                     {/* <div className='col-12 container d-flex flex-column pb-3 ' id={styles.PresImg} >
                     </div> */}
                     <div className='d-flex container'>
-                        <div className=' col-3 container d-flex flex-column justify-content-center' >
+                        <div className=' col-3 container d-flex flex-column justify-content-center align-items-end' >
                             <div className='d-flex justify-content-center  flex-column ' id={styles.PresImg}>
                                 <img src={`${pathimg}/About/${allabout?.[0]?.chairmanImg}`} alt="" />
                             </div>
@@ -126,7 +155,8 @@ useEffect(() => {
 
                         <div className=' text-end d-flex justify-content-center align-items-center  '>
                             <div className='col-12 container d-flex flex-column justify-content-center '>
-                                <p>{allabout?.[0]?.chairmanWord}</p>
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.chairmanWord }} />
+
                             </div>
 
                         </div>
@@ -141,30 +171,6 @@ useEffect(() => {
             </div>
             {/* ---------------------- End كلمة رئيس المبادرة------------------------- */}
 
-            {/*---------------------- Start كلمة وزير الصحة-------------------------*/}
-            <div name='section3' className='col-12 ' id={styles.Lines}>
-                <div className='col-12 container d-flex flex-column pb-3'>
-                    <h3>كلمة وزير الصحة</h3>
-                </div>
-                <div className='col-12  d-flex  py-3 ' id={styles.CRegtangle}  >
-                    <div className='container d-flex'>
-                        <div className=' col-3 container d-flex flex-column justify-content-center' >
-                            <div className='d-flex justify-content-center  flex-column  ' id={styles.MinisterImg}>
-                                <img src={`${pathimg}/About/${allabout?.[0]?.ministerImg}`} alt="" />
-                            </div>
-                        </div>
-
-                        <div className=' text-end d-flex justify-content-center align-items-center  '>
-                            <div className='col-12 container d-flex flex-column justify-content-center  '>
-                                <p>{allabout?.[0]?.ministerWord}</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            {/* ---------------------- End كلمة وزير الصحة------------------------- */}
 
             {/*---------------------- Start الهيكل التنظيمي-------------------------*/}
             <div name='section2' className='col-12' id={styles.Lines}>
@@ -173,13 +179,15 @@ useEffect(() => {
                 </div>
                 <div className='col-12  d-flex align-items-end pb-4' id={styles.CRegtangle}  >
                     <div className='container d-flex justify-content-between col-12'>
-                        <div className=' d-flex justify-content-center  flex-column   ' id={styles.StructImg} >
+                        <div className=' d-flex justify-content-center align-items-end flex-column   ' id={styles.StructImg} >
                             <img src={structer} alt="" />
                         </div>
 
                         <div className=' text-end d-flex flex-column justify-content-end align-items-end '>
                             <div className='col-12 container d-flex flex-column pb-5'>
-                                <p >{allabout?.[0]?.structureText} </p>
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.structureText }} />
+
+
                             </div>
                             <div onClick={() => openModal()} className={styles.btnback + '  rounded-3 '}>
 
@@ -229,7 +237,7 @@ useEffect(() => {
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الأول: {allabout?.[0]?.pillar1}</h5></Accordion.Header>
                                         <Accordion.Body>
-                                            <p className='me-4' id={styles.accorddescription}>{allabout?.[0]?.pillar1Text}    </p>
+                                            <p className='me-4' id={styles.accorddescription} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.pillar1Text }} />
 
                                         </Accordion.Body>
                                     </Accordion.Item>
@@ -239,7 +247,7 @@ useEffect(() => {
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الثاني: {allabout?.[0]?.pillar2}</h5></Accordion.Header>
                                         <Accordion.Body>
-                                            <p className='me-4' id={styles.accorddescription}>{allabout?.[0]?.pillar2Text}    </p>
+                                            <p className='me-4' id={styles.accorddescription} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.pillar2Text }} />
 
                                         </Accordion.Body>
                                     </Accordion.Item>
@@ -249,7 +257,7 @@ useEffect(() => {
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الثالث: {allabout?.[0]?.pillar3}</h5></Accordion.Header>
                                         <Accordion.Body>
-                                            <p className='me-4' id={styles.accorddescription}>{allabout?.[0]?.pillar3Text}    </p>
+                                            <p className='me-4' id={styles.accorddescription} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.pillar3Text }} />
 
                                         </Accordion.Body>
                                     </Accordion.Item>
@@ -279,7 +287,8 @@ useEffect(() => {
 
                     <div className='container text-end d-flex justify-content-end  mt-4'>
                         <div className='col-12  d-flex flex-column align-items-end justify-content-end pb-5'>
-                            <p > {allabout?.[0]?.mechanisms} </p>
+                            <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.mechanisms }} />
+
                             {/* <button
                                 className="px-2 py-2 mt-3 align-self-end d-flex align-items-center gap-2" id={styles.custompurpleoutline}
                                 onClick={openModalpdf}
@@ -291,7 +300,7 @@ useEffect(() => {
                                 <FaFilePdf  />
                                 <button className='rounded-3  py-1 px-4'> عرض الملف  </button>
                             </div> */}
-                              <div onClick={openModalpdf} className={styles.btnback + ' px-1 rounded-3 d-flex align-items-center'}>
+                            <div onClick={openModalpdf} className={styles.btnback + ' px-1 rounded-3 d-flex align-items-center'}>
 
                                 <FaFilePdf className={styles.iconfile} />
                                 <button className='rounded-3 py-1 px-4'> عرض الملف   </button>
@@ -300,7 +309,7 @@ useEffect(() => {
                     </div>
 
                     {modalpdf && (
-                        <Modalpdf file={allabout?.[0]?.mechanismsFile}  folder="About" />
+                        <Modalpdf file={allabout?.[0]?.mechanismsFile} folder="About" />
                     )}
 
                 </div>

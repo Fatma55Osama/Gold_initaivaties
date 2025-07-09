@@ -32,6 +32,10 @@
     overflow: hidden;
     /* border-radius: 50%;*/
   }
+  .justifyText {
+  text-align: justify;
+  line-height: 1.6;
+}
 }
 @media screen and (max-width: 992px) and (min-width: 768px) {
   .TopicHour {

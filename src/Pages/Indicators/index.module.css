@@ -31,7 +31,7 @@
       /*vertical-align:top;*/
     }
     #regtangle {
-      background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+      background-color: rgba(217, 217, 217, 0.3);; /* rgba(217, 217, 217, 0.3);*/
       border-top: 2px solid #cba15f;
       height: 157px;
       p {
@@ -44,4 +44,54 @@
       }
     }
   }
+}
+#indecator{
+  label,span{
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    
+   
+  }
+  select{
+    border: 1px solid #724780;
+    outline: none;
+    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 1rem !important;
+  
+   /* color: rgba(112, 128, 144, 0.736); */
+  }
+  #customselect{
+     position: relative;
+  display: inline-block !important;
+
+  }
+  .customarrow{
+     position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1.5rem !important;
+  color: black;
+  }
+}
+.customarrow2{
+   position: absolute;
+  top: 50%;
+  /* left: 0.5rem; */
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1.5rem !important;
+  color: black;
+  margin-right: -2%;
+}
+.justifyText {
+  text-align: justify;
+  line-height: 1.6;
+}
+.purpleCheck ,input[type="checkbox"]:checked {
+   accent-color: #724780;
+   cursor: pointer;
 }

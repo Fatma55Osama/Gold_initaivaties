@@ -33,7 +33,7 @@
 }
 
 #regtangle {
-  background-color: transparent; /* rgba(217, 217, 217, 0.3);*/
+  background-color: rgba(217, 217, 217, 0.3); /* rgba(217, 217, 217, 0.3);*/
   border-top: 2px solid #cba15f;
   height: 157px;
 

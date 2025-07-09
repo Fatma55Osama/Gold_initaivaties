@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './index.module.css'
-import Charts from '../../Component/Charts'
 import { ErrorMessage, Field, Form, Formik, validateYupSchema } from 'formik'
 import * as Yup from 'yup'
 import { Chart } from 'chart.js'
@@ -49,7 +48,7 @@ export default function Opinion() {
                             <h2> تواصل معنا</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p>
+                                    <p className='justifyText'>
                                         تهم المبادرة بتحقيق التواصل المستمر مع المستفيدين وذلك لتحقيق أعلى قدر من الخدمات، لذا يمكنكم التواصل مع المبادرة عبر وسائل التواصل التالية:</p>
 
                                 </div>
@@ -110,7 +109,7 @@ export default function Opinion() {
                     onSubmit={hadleSubmit}
                 >
                     <Form className='d-flex container flex-column gap-3' id={styles.form}>
-                        <h2 className='text-end p-0 m-0'>رأيك يهمنا</h2>
+                        {/* <h2 className='text-end p-0 m-0'>رأيك يهمنا</h2> */}
 
 
                         <div className='form-group text-end'>
@@ -155,7 +154,6 @@ export default function Opinion() {
                     </Form>
                 </Formik>
             </div>
-            {/* <Charts/> */}
         </div>
     )
 }

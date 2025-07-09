@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './index.module.css'
 import { FaLocationDot } from 'react-icons/fa6'
 import { MdForwardToInbox, MdOutlineEmail } from 'react-icons/md'
 import { LuPhone } from 'react-icons/lu'
 import { SlLocationPin } from 'react-icons/sl'
 import { Link, useLocation } from 'react-router-dom'
-import { usepathes } from '../../Store'
+import { usecontactfooter, usedomain, usepathes } from '../../Store'
+import { getAllData } from '../../Data/Repo/dataRepo'
 export default function ContactUs() {
+    const { contactfooter, setcontactfooter } = usecontactfooter()
     const { path } = usepathes()
+    const { domain } = usedomain()
     const location = useLocation()
+    useEffect(() => {
+        getAllData.get_storecontact(domain).then((res) => {
+            setcontactfooter(res)
+            console.log("contactusfooter", res)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }, [])
     return (
         <div>
             <div className='col-12 position-relative ' id={styles.About}>
@@ -21,8 +32,8 @@ export default function ContactUs() {
                             <h2> تواصل معنا</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p>
-تهم المبادرة بتحقيق التواصل المستمر مع المستفيدين وذلك لتحقيق أعلى قدر من الخدمات، لذا يمكنكم التواصل مع المبادرة عبر وسائل التواصل التالية:</p>
+                                    <p className='justifyText'>
+                                        تهم المبادرة بتحقيق التواصل المستمر مع المستفيدين وذلك لتحقيق أعلى قدر من الخدمات، لذا يمكنكم التواصل مع المبادرة عبر وسائل التواصل التالية:</p>
 
                                 </div>
                             </div>
@@ -31,10 +42,10 @@ export default function ContactUs() {
                 </div>
             </div>
             <header className=' col-12 d-flex justify-content-end mt-5   container  '>
-                
+
 
                 <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    
+
                     {
                         path
                             .filter(el => el.name === "تواصل معنا")
@@ -64,12 +75,17 @@ export default function ContactUs() {
             </header>
             <div className='col-12 my-5' id={styles.contact}>
                 <div className='container d-flex justify-content-end'>
-                    <ul className='d-flex flex-column gap-5  align-items-end'>
-                        <li>  العنوان/ 3 ش مجلس الشعب - القاهرة <SlLocationPin className={styles.iconcontact} /></li>
-                        <li>    صندوق بريد رقم/   11516 <MdForwardToInbox className={styles.iconcontact} /></li>
-                        <li>  nichp@mohp.gov.eg / بريد اليكترونى  <MdOutlineEmail className={styles.iconcontact} /></li>
-                        <li>سويتش الوزارة  27951821  - 27943462  -   27964281<LuPhone className={styles.iconcontact} /></li>
-                    </ul>
+                    {
+                        contactfooter.length > 0 && (
+                            <ul className='col-12 d-flex flex-column gap-5 align-items-end'>
+                                <li className='col-12 d-flex justify-content-end align-items-end'>  العنوان/  {contactfooter[0]?.address}&nbsp;&nbsp; {contactfooter[0]?.location}  <SlLocationPin className={styles.iconcontact} /></li>
+                                {/* <li>    صندوق بريد رقم/   11516 <MdForwardToInbox className={styles.iconcontact} /></li> */}
+                                <li className='col-12  d-flex justify-content-end align-items-end'> {contactfooter[0]?.email} / بريد اليكترونى  <MdOutlineEmail className={styles.iconcontact} /></li>
+                                <li className='col-12  d-flex justify-content-end align-items-end'>سويتش الوزارة &nbsp;&nbsp; {contactfooter[0]?.mobileNum}<LuPhone className={styles.iconcontact} /></li>
+                            </ul>
+                        )
+                    }
+
                 </div>
             </div>
         </div>

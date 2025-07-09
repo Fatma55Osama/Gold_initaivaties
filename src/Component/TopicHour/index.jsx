@@ -30,7 +30,8 @@ export default function TopicHour() {
                         </div>
                         <Link to={`/mediacorner/detailsnews/${el.newsId}`} className="col-8 nav-link d-flex flex-column gap-3 py-5">
                             <h2>موضوع الساعة</h2>
-                            <p>{shortText}</p>
+                            <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: shortText }} />
+
                         </Link>
                     </div>
                 )

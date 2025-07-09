@@ -151,6 +151,8 @@ p {
   font-weight: 500;
   line-height: 30px;
   vertical-align: middle;
+  text-align: justify;
+  line-height: 1.8;
 }
 #CRegtangle {
   background-color: rgba(217, 217, 217, 0.3);
@@ -167,7 +169,7 @@ p {
   min-height: 304px;
   max-height: 90%;
   #AboutLogo {
-    background-image: url(../../assets//rectangle-6.png);
+    background-image: url(../../assets/rectangle-6.png);
     background-position: 50%;
     background-size: cover;
     width: 456px;
@@ -225,7 +227,10 @@ p {
     text-underline-offset: 10px;
 }
 }
-
+.justifyText {
+  text-align: justify;
+  line-height: 1.6;
+}
 #accordion{
   background-color: transparent !important;
   border: none !important;

@@ -65,28 +65,28 @@ export default function DetailsInfograph() {
                 </div> */}
 
                 <div className='d-flex col-8  gap-4 justify-content-between align-items-center '>
-                 {
-                                        path
-                                            .filter(el => el.name === "الركن الإعلامي")
-                                            .flatMap((el, index) => {
-                                                return el.links.map((link, idx) => {
-                                                    const isActive =
-                                                        link.path === '/'
-                                                            ? location.pathname === '/'
-                                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
-                
-                                                    return (
-                                                        <Link
-                                                            key={`${index}-${idx}`}
-                                                            to={link.path}
-                                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
-                                                        >
-                                                            {link.label}
-                                                        </Link>
-                                                    );
-                                                });
-                                            })
-                                    }
+                    {
+                        path
+                            .filter(el => el.name === "الركن الإعلامي")
+                            .flatMap((el, index) => {
+                                return el.links.map((link, idx) => {
+                                    const isActive =
+                                        link.path === '/'
+                                            ? location.pathname === '/'
+                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
+
+                                    return (
+                                        <Link
+                                            key={`${index}-${idx}`}
+                                            to={link.path}
+                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    );
+                                });
+                            })
+                    }
 
                 </div>
 
@@ -103,11 +103,13 @@ export default function DetailsInfograph() {
                         <h5 className=' m-0' id={styles.h5info}>{formattedDate}</h5>
                         <div className='d-flex justify-content-end' id={styles.newscontainer}>
                             <div className='d-flex flex-column align-items-end gap-3' style={{ overflow: 'hidden' }}>
-                                {detailinfo?.infoDesc?.split('\n').map((paragraph, index) => (
+                                {/* {detailinfo?.infoDesc?.split('\n').map((paragraph, index) => (
                                     <p id={styles.infoParagraph} key={index} style={{ textAlign: 'justify' }}>
                                         {paragraph}
                                     </p>
-                                ))}
+                                ))} */}
+                                <p id={styles.infoParagraph} style={{ textAlign: 'justify' }} dangerouslySetInnerHTML={{ __html: detailinfo?.infoDesc }} />
+
                                 <div className='col-12 d-flex justify-content-center align-items-center '>
                                     <img
                                         src={`${pathimg}/Infograph/${detailinfo?.infoPhoto}`}

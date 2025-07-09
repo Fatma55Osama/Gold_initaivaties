@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 export default function About() {
   const { allabout, setallabout } = useAbout()
   console.log("allabout", allabout);
+  const shortText = allabout?.[0]?.aboutText.split(/\s+/).slice(0, 77).join(' ') + '.';
+
   return (
     <div className='aboutsection'>
 
@@ -20,8 +22,8 @@ export default function About() {
           data-aos-offset="5" data-aos-delay={400}>
 
           <Link to={'/about'} className="text-wrapper-30">المبادرة في سطور</Link>
-          <Link to={'/about'} className='element-4 nav-link'>
-            {allabout?.[0]?.aboutText}
+          <Link to={'/about'} className='element-4 justifyText nav-link'>
+          <div dangerouslySetInnerHTML={{ __html: shortText }} />
           </Link>
 
         </div>

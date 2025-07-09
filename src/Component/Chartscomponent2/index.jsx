@@ -42,11 +42,43 @@ export default function Chartscomponent2(props) {
 
     const options = {
         responsive: true,
-        plugins: {
-            legend: { position: 'top' },
-            // title: { display: true, text: 'الرسم البياني للمؤشرات' },
+        maintainAspectRatio: false,
+        layout: {
+            padding: {
+                top: 20,
+                bottom: 20
+            }
         },
+        plugins: {
+            // title: {
+            //     display: true,
+            //     text: props.data.datasets[0]?.label?.split(' /n ') || '',
+            //     align: 'center',
+            //     padding: {
+            //         top: 10,
+            //         bottom: 30,
+            //     },
+            //     color: '#333',
+            //     font: {
+            //         size: 18,
+            //         weight: 'bold'
+            //     }
+            // },
+            legend: {
+                labels: {
+                    usePointStyle: true,
+                    pointStyle: 'circle',
+                    
+                    font: {
+                        size: 12,
+                    },
+                    padding: 20
+                },
+                position: 'top' // أو 'top' أو 'right' حسب ما تحبي
+            }
+        }
     };
+
 
     const chartMap = {
         line: <Line data={props.data} options={options} />,
@@ -56,7 +88,7 @@ export default function Chartscomponent2(props) {
         radar: <Radar data={props.data} options={options} />,
     };
     return (
-        <div className='col-7 my-3'>
+        <div className='col-6 my-3 ' style={{ height: '500px' }}>
             {chartMap[props.type] || chartMap.line}
         </div>)
 

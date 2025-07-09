@@ -3,6 +3,7 @@ import styles from './index.module.css'
 import { useNews, usepathes, usepathimg } from '../../Store';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { IoIosArrowRoundBack } from 'react-icons/io';
 
 export default function AllNews() {
     const { path } = usepathes()
@@ -27,8 +28,8 @@ export default function AllNews() {
     const [searchTerm, setSearchTerm] = useState('');
     const indexOfLastNews = currentPage * newsPerPage;
     const indexOfFirstNews = indexOfLastNews - newsPerPage;
-    const filteredNews = allnews.filter(news => 
-         normalizeArabic(news.title).includes(normalizeArabic(searchTerm))
+    const filteredNews = allnews.filter(news =>
+        normalizeArabic(news.title).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
     const filteredNewsPerPage = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
     const totalPages = Math.ceil(
@@ -57,7 +58,7 @@ export default function AllNews() {
                             <h2>الركن الإعلامي</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p >يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
+                                    <p className='justifyText'>يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
                                         هذا بالإضافة إلى التوعية المستمرة بأهمية المبادرة لتحسين الخصائص السكانية من خلال مجموعة من الإنفوجراف والرسائل التوعوية </p>
 
                                 </div>
@@ -129,11 +130,17 @@ export default function AllNews() {
                                     return (
                                         <div className='col-12 container d-flex  pb-2 ' id={styles.CRegtangle} key={el.newsId} >
                                             <div className='container text-end d-flex justify-content-end '>
-                                                <Link to={`/mediacorner/detailsnews/${el.newsId}`} className='col-12 container d-flex flex-column nav-link '>
-                                                    <h5>{el.title}</h5>
-                                                    <h6>{formattedDate}</h6>
-                                                    <p className={styles.p + " me-4 p-0"}>{shortText}</p>
-                                                    <Link className='nav-link' id={styles.span} to={`/mediacorner/detailsnews/${el.newsId}`}><span id={styles.span}>إقرأ المزيد</span></Link>
+                                                <Link className='col-12 container d-flex flex-column nav-link '>
+                                                   <Link className='nav-link ' to={`/mediacorner/detailsnews/${el.newsId}`} ><h5>{el.title}</h5></Link> 
+                                                    <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <h6>{formattedDate}</h6></Link>
+                                                    <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <p className={styles.p + " me-4 p-0"} dangerouslySetInnerHTML={{ __html: shortText }}/></Link>
+                                                   
+                                                    <Link to={`/mediacorner/detailsnews/${el.newsId}`}  className={styles.btnback + '  rounded-3 nav-link '}>
+
+                                                        <IoIosArrowRoundBack className={styles.iconarrow} />
+                                                        <button className='rounded-3 py-1 px-4' > إقرأ المزيد </button>
+                                                    </Link>
+                                                    {/* <Link className='nav-link' id={styles.span} to={`/mediacorner/detailsnews/${el.newsId}`}><span id={styles.span} > إقرأ المزيد</span></Link> */}
                                                 </Link>
                                             </div>
                                             <div className='col-12 container d-flex flex-column align-items-center  ' id={styles.NewsImg} >

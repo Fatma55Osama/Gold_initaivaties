@@ -28,8 +28,12 @@ export default function Alllightteam() {
     let indexofLastteam = currentPage * lightperpage
     let indexofFirsteam = indexofLastteam - lightperpage
     let filteredteam = Employees.filter((team) => {
-        return normalizeArabic(team.empName).includes(normalizeArabic(Searchterm))
-    }).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate))
+        const name = normalizeArabic(team.empName || '');
+        const gov = normalizeArabic(team.govName || '');
+        const search = normalizeArabic(Searchterm);
+
+        return name.includes(search) || gov.includes(search);
+    }).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate));
 
     let filteredteamPerPage = filteredteam.slice(indexofFirsteam, indexofLastteam)
     let totalpages = Math.ceil((Searchterm ? filteredteam.length : Employees.length) / lightperpage);
@@ -53,7 +57,7 @@ export default function Alllightteam() {
                             <h2>نماذج مضيئة </h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p >تهتم المبادرة بإعداد كوادر مدربة لتشغيل غرف المشورة بالوحدات والمستشفيات لنشر الوعي بأهمية الألف يوم الأولى من عمر الطفل. وفي هذا الصدد، فقد تم تدريب صفوة مختارة من أطباء الأسنان والصيادلة وأطباء العلاج الطبيعي والمثقفين الصحيين من وحدات الرعاية الصحية الأولية والمستشفيات. ويعرض هذا الجزء المتميزين من هذه الكوادر تكريماً لهم على الجهد المبذول.</p>
+                                    <p className={styles.justifyText}>تهتم المبادرة بإعداد كوادر مدربة لتشغيل غرف المشورة بالوحدات والمستشفيات لنشر الوعي بأهمية الألف يوم الأولى من عمر الطفل. وفي هذا الصدد، فقد تم تدريب صفوة مختارة من أطباء الأسنان والصيادلة وأطباء العلاج الطبيعي والمثقفين الصحيين من وحدات الرعاية الصحية الأولية والمستشفيات. ويعرض هذا الجزء المتميزين من هذه الكوادر تكريماً لهم على الجهد المبذول.</p>
 
                                 </div>
                             </div>
@@ -68,7 +72,7 @@ export default function Alllightteam() {
                     <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
 
                         <span style={{ marginRight: '8px', color: '#aaa' }}></span>
-                        <input type="text" value={Searchterm} onChange={handleSearch} placeholder="...بحث" className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
+                        <input type="text" value={Searchterm} onChange={handleSearch} placeholder="...بحث بالأسم /المحافظة" className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
                     </div>
 
                 </div>
@@ -81,7 +85,7 @@ export default function Alllightteam() {
             <div className=' col-12 d-flex flex-column align-items-end '>
                 <div className='container'>
 
-                    <div className={`${styles.cardContainer} col-12 mb-5`}>
+                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex justify-content-start`}>
                         {
                             (Searchterm ? filteredteamPerPage : currentPage).length === 0 ? (
                                 <div className=' text-center col-12'>
@@ -89,7 +93,7 @@ export default function Alllightteam() {
 
                                 </div>
                             ) :
-                               filteredteamPerPage.map((el, index) => {
+                                filteredteamPerPage.map((el, index) => {
                                     const formattedDate = el.honorDate?.split("T")[0].replace(/-/g, "/");
 
                                     return (

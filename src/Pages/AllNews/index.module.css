@@ -154,12 +154,12 @@ h6 {
   font-weight: 500;
   font-size: 16px;
   color: rgba(0, 0, 0, 1);
-    &:hover{
-  color: var(--purpleColor) !important;
-  text-decoration: underline;
-   text-decoration-thickness: 2px !important;
+  &:hover {
+    color: var(--purpleColor) !important;
+    text-decoration: underline;
+    text-decoration-thickness: 2px !important;
     text-underline-offset: 10px;
-}
+  }
 }
 #search {
   button {
@@ -167,21 +167,49 @@ h6 {
     color: white;
   }
 }
-.currentactive{
-   background-color: #724780 !important;
+.currentactive {
+  background-color: #724780 !important;
   color: white !important;
   border: none !important;
-  
 }
-.noncurrentactive{
+.noncurrentactive {
   color: #724780 !important;
-  border:1px solid #724780 !important;
+  border: 1px solid #724780 !important;
 }
 .activelink {
-    color:var(--purpleColor) !important;
-    text-decoration-color:var(--purpleColor) !important;
-    text-decoration-line: underline !important;
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 10px;
-    
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}
+.btnback {
+  transition: transform 0.3s ease;
+    width: 150px;
+
+  text-align: left;
+  button{
+  font-family: GE SS Two;
+  font-size: 14px !important;
   }
+  &:hover {
+    color: white !important;
+    background-color: var(--purpleColor);
+    border-radius: 8px;
+    width: 150px;
+    .iconarrow {
+      color: white !important;
+      transform: translateX(20px);
+    }
+  }
+}
+.iconarrow {
+  font-size: 40px !important;
+  font-weight: 1000 !important;
+  color: var(--purpleColor);
+  transition: transform 0.3s ease;
+}
+.justifyText {
+  text-align: justify;
+  line-height: 1.6;
+}

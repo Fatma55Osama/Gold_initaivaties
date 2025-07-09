@@ -1,6 +1,5 @@
 
 import styles from './index.module.css'
-import logo from '../../assets/rectangle-6.png'
 import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
@@ -70,7 +69,7 @@ export default function Messages() {
                             <h2>الركن الإعلامي</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p >يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
+                                    <p className='justifyText'>يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
                                         هذا بالإضافة إلى التوعية المستمرة بأهمية المبادرة لتحسين الخصائص السكانية من خلال مجموعة من الإنفوجراف والرسائل التوعوية </p>
 
                                 </div>

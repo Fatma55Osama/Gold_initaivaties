@@ -32,27 +32,28 @@
 
 @font-face {
   font-family: "Geist", sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+  src: url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 }
-:root{
-  --purpleColor:#724780;
-  --yellowColor:#c48d2b;
-  --fontyelowColor:#b58a35;
-  --grayColor:#d9d9d980;
-  --fontgrayColor:#00000080;
-
+:root {
+  --purpleColor: #724780;
+  --yellowColor: #c48d2b;
+  --fontyelowColor: #b58a35;
+  --grayColor: #d9d9d980;
+  --fontgrayColor: #00000080;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body,.App,.root{
+body,
+.App,
+.root {
   min-height: 100vh !important;
 }
 .topbtn {
   position: fixed;
-  bottom: 20px;   
+  bottom: 20px;
   right: 20px;
   padding: 0.75rem;
   border: none;
@@ -70,3 +71,97 @@ body,.App,.root{
   background-color: var(--yellowColor);
   color: white;
 } */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #reportPrint,
+  #reportPrint * {
+    visibility: visible;
+  }
+
+  #reportPrint {
+    position: static;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  table {
+    page-break-inside: auto;
+    border-collapse: collapse;
+    break-inside: auto;
+    width: 100%;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+      break-inside: avoid;
+  }
+  thead {
+    display: table-header-group !important;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+  .d-print-none {
+    display: none !important;
+  }
+
+  .d-print-block {
+    display: block !important;
+  }
+  /* .bgColor {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.54) 24.52%,
+      rgba(175, 229, 255, 0.54) 60.1%,
+      rgba(114, 71, 128, 0.54) 100%
+    ) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-size: 24px;
+    line-height: 43px;
+    font-family: "GE SS Two-Light", sans-serif;
+  }
+
+  .textSection h3 {
+    color: #724780;
+    font-family: "GE SS Two-Light", sans-serif;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .textSection h4 {
+    color: #fcd535;
+    text-align: center;
+  }
+
+  .textSection h5 {
+    text-align: center !important;
+  }
+
+  .logodiv1 img {
+    width: 100px !important;
+    height: 160px !important;
+  }
+
+  .motherbaby img {
+    width: 180px !important;
+    height: 260px !important;
+  } */
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block;
+  }
+}
+@page {
+  size: A4;
+  margin: 20mm;
+}

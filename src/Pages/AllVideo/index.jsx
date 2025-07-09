@@ -1,6 +1,6 @@
 
 import styles from './index.module.css'
-import logo from '../../assets/rectangle-6.png'
+
 import { create } from "zustand";
 import AOS from 'aos';
 import HomePage from '../..//Pages/HomePage'
@@ -71,7 +71,7 @@ export default function AllVideo() {
                             <h2>الركن الإعلامي</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
-                                    <p >يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
+                                    <p className='justifyText'>يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
                                         هذا بالإضافة إلى التوعية المستمرة بأهمية المبادرة لتحسين الخصائص السكانية من خلال مجموعة من الإنفوجراف والرسائل التوعوية </p>
 
                                 </div>
@@ -122,7 +122,7 @@ export default function AllVideo() {
                     <div className=' flex-column mt-5 '>
                         <h3 id={styles.h3}>مكتبة الفيديو</h3>
                     </div>
-                    <div className='d-flex flex-row-reverse flex-wrap justify-content-end'>
+                    <div className='d-flex flex-row-reverse flex-wrap justify-content-start'>
                         {
                             (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
                                 <div className=' text-center col-12'>

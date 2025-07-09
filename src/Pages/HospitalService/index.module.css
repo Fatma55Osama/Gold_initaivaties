@@ -34,4 +34,8 @@
     font-size: 20px;
     transition: transform 0.3s ease;
   }
+  .justifyText {
+  text-align: justify;
+  line-height: 2;
+}
 }

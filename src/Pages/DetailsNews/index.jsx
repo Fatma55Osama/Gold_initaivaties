@@ -96,11 +96,13 @@ export default function DetailsNews() {
 
             </header>
 
-            <div className=' flex-column mt-5 '>
+            <div className=' container  mt-5 '>
                 <h3 id={styles.h3news}>الأخبار</h3>
             </div>
             <div className='col-12' id={styles.details}>
-                <div className='container py-5 mt-5'>
+                
+                <div className='container py-1 mt-3'>
+                    
                     <div className='text-end d-flex flex-column gap-3'>
                         <div>{ }</div>
                         <h4>{detailnew?.title}</h4>
@@ -115,11 +117,10 @@ export default function DetailsNews() {
                                     style={{ float: 'left', marginRight: '15px', marginBottom: '10px' }}
                                 />
 
-                                {detailnew?.newsText?.split('\n').map((paragraph, index) => (
-                                    <p id={styles.newsParagraph} key={index} style={{ textAlign: 'justify' }}>
-                                        {paragraph}
-                                    </p>
-                                ))}
+                                
+                                    {/* <p id={styles.newsParagraph} key={index} style={{ textAlign: 'justify' }}  dangerouslySetInnerHTML={{ __html: detailnew?.newsText }}/> */}
+                                       
+                                    <p id={styles.newsParagraph}  style={{ textAlign: 'justify' }}  dangerouslySetInnerHTML={{ __html: detailnew?.newsText }}/>
                             </div>
                             {/* <p><img id={styles.newsImg} width={285} height={291} src={`/src/assets/Upfiles/News/${detailnew?.smallPhoto}`} alt="" />{detailnew?.newsText}</p> */}
                         </div>
