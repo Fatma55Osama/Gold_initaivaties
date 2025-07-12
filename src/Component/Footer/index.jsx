@@ -127,10 +127,13 @@ export default function Footer() {
                   <span>
                     تليفون :{contactfooter[0]?.mobileNum}</span>
                 </div>
-                <div className='col-lg-8 d-flex justify-content-between' id={styles.parts}>
-                  <span className={styles.margenstart}> {contactfooter[0]?.address}&nbsp;&nbsp; {contactfooter[0]?.location}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
-                  <span>
-                  {contactfooter[0]?.email} :  البريد الإلكتروني <MdEmail style={{ fontSize: "24px" }} /></span>
+                <div className='col-lg-9 d-flex justify-content-between' id={styles.parts}>
+                  <a href= {contactfooter[0]?.location}  target='_blank' className='nav-link'> 
+                  
+                  
+                  <span className={styles.margenstart}> {contactfooter[0]?.address}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
+                  </a>
+                  <span>{contactfooter[0]?.email} :  البريد الإلكتروني <MdEmail style={{ fontSize: "24px" }} /></span>
 
                 </div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './index.module.css'
 import { Bar, Doughnut, Line, Pie, Radar } from 'react-chartjs-2';
 import {
@@ -68,7 +68,7 @@ export default function Chartscomponent2(props) {
                 labels: {
                     usePointStyle: true,
                     pointStyle: 'circle',
-                    
+
                     font: {
                         size: 12,
                     },
@@ -78,17 +78,22 @@ export default function Chartscomponent2(props) {
             }
         }
     };
-
-
+    const chartRef = useRef(null);
+    useEffect(() => {
+        if (props.onRenderAsImage && chartRef.current) {
+            const base64 = chartRef.current.toBase64Image();
+            props.onRenderAsImage(base64, props.name || '');
+        }
+    }, [props.data]);
     const chartMap = {
-        line: <Line data={props.data} options={options} />,
-        bar: <Bar data={props.data} options={options} />,
-        pie: <Pie data={props.data} options={options} />,
-        doughnut: <Doughnut data={props.data} options={options} />,
-        radar: <Radar data={props.data} options={options} />,
+        line: <Line data={props.data} ref={chartRef} options={options} />,
+        bar: <Bar data={props.data} ref={chartRef} options={options} />,
+        pie: <Pie data={props.data} ref={chartRef} options={options} />,
+        doughnut: <Doughnut data={props.data} ref={chartRef} options={options} />,
+        radar: <Radar data={props.data} ref={chartRef} options={options} />,
     };
     return (
-        <div className='col-6 my-3 ' style={{ height: '500px' }}>
+        <div className={`col-6 my-3 `} style={{ height: '500px', width: `${props.width}` }}>
             {chartMap[props.type] || chartMap.line}
         </div>)
 

@@ -90,7 +90,7 @@ body,
     overflow: visible !important;
   }
 
-  table {
+  /* table {
     page-break-inside: auto;
     border-collapse: collapse;
     break-inside: auto;
@@ -115,7 +115,7 @@ body,
 
   .d-print-block {
     display: block !important;
-  }
+  } */
   /* .bgColor {
     background: linear-gradient(
       90deg,
@@ -155,13 +155,18 @@ body,
     width: 180px !important;
     height: 260px !important;
   } */
-  .avoid-break {
+  /* .avoid-break {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     display: block;
-  }
+  } */
 }
 @page {
   size: A4;
   margin: 20mm;
+}
+canvas {
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+  /* transform: perspective(800px) rotateX(5deg); */
+  border-radius: 10px;
 }

@@ -8,11 +8,11 @@ import TablesData from '../../Component/TablesData'
 export default function Indicators() {
 
     const chartTypes = [
-        { value: 'line', label: 'Line (خطي)' },
         { value: 'bar', label: 'Bar (أعمدة)' },
+        { value: 'line', label: 'Line (خطي)' },
         { value: 'pie', label: 'Pie (دائري)' },
+        // { value: 'radar', label: 'Radar (رادار)' },
         { value: 'doughnut', label: 'Doughnut (دونات)' },
-        { value: 'radar', label: 'Radar (رادار)' },
     ];
     const [selectedIndicator, setSelectedIndicator] = useState('');
     const [fromYear, setFromYear] = useState('');
@@ -34,7 +34,7 @@ export default function Indicators() {
         top5: false,
         bottom5: false,
     });
-    const [chartType, setChartType] = useState('line');
+    const [chartType, setChartType] = useState('bar');
     const handeltypeservicechange = (value) => {
         setTypeService(value)
         const match = vindicatorr.find(i => i.mashoraDesc === value)
@@ -180,8 +180,8 @@ export default function Indicators() {
             datasets: [{
                 label: `${selectedIndicator} - أعلى 5 محافظات`,
                 data: top5.map(i => i[1]),
-                borderColor: '#D72638',
-                backgroundColor: '#FF4D4D33', // شفاف
+                borderColor: '#1e7e34',
+                backgroundColor: '#28a74533', // شفاف
                 borderWidth: 2,
             }],
         };
@@ -201,8 +201,8 @@ export default function Indicators() {
             datasets: [{
                 label: `${selectedIndicator} - أقل 5 محافظات`,
                 data: bottom5.map(i => i[1]),
-                borderColor: '#1e7e34',
-                backgroundColor: '#28a74533',
+                borderColor: '#D72638',
+                backgroundColor: '#FF4D4D33',
                 borderWidth: 2,
             }],
         };
@@ -378,14 +378,14 @@ export default function Indicators() {
                     /* يوجد على الأقل فلتر واحد مفعَّل → نعرض الرسومات المحددة */
                     <>
                         {filters.top5 && <Chartscomponent2 data={chartTop5} type={chartType} />}
-                        {filters.top5 && <TablesData name="اسم المحافظة" bgColor="#D72638"
+                        {filters.top5 && <TablesData name="اسم المحافظة" bgColor="#1e7e34"
                             data={chartTop5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartTop5.datasets[0].data[i]
                             }))} />
                         }
                         {filters.bottom5 && <Chartscomponent2 data={chartBottom5} type={chartType} />}
-                        {filters.bottom5 && <TablesData name="اسم المحافظة"  bgColor="#1e7e34"
+                        {filters.bottom5 && <TablesData name="اسم المحافظة"  bgColor="#D72638"
                             data={chartBottom5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartBottom5.datasets[0].data[i]
