@@ -14,3 +14,9 @@
 // }
 
 
+@media print {
+  .page-break-start {
+    page-break-before: always;
+    break-before: page;
+  }
+}

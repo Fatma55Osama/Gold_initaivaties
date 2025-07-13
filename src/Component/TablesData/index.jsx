@@ -3,7 +3,7 @@ import styles from './index.module.css'
 
 export default function TablesData(props) {
   return (
-    <div className='col-12 col-md-5  my-4'>
+    <div className={`col-12 col-md-5  my-4`}style={{width: props.width}}>
       <div className={styles.tableWrapper}>
         <table
           className={`${styles.customTable} table text-center`}

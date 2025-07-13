@@ -397,36 +397,7 @@ export default function PrintReport() {
                                                                     مبادرة "الألف يوم الذهبية لتنمية الأسرة المصرية" هي إحدى المبادرات الهامة لبناء الإنسان المصري حيث تهدف إلى الاهتمام بتحسين الخصائص السكانية لأفراد الأسرة المصرية وتنمية الطفولة المبكرة وخاصة في فترة الألف يوم الذهبية الأولي من العمر نظرا لأهميتها القصوى. وهي واحدة من مبادرات المبادرة الرئاسية "100 مليون صحة". وقد أطلق المبادرة معالي الأستاذ الدكتور/ خالد عبد الغفار –وزير الصحة والسكان- في احتفالية بالعاصمة الإدارية الجديدة يوم 22 أغسطس 2023.
                                                                 </div>
                                                             </div>
-                                                            {/* <table className="table table-bordered text-center">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>اسم المحافظة</th>
-                                                                <th>نوع الخدمة</th>
-                                                                <th>التاريخ</th>
-                                                                <th>عددهم</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {filteredData.map((el, index) => (
-                                                                <tr key={index}>
-                                                                    <td>{index + 1}</td>
-                                                                    <td>{el.govName}</td>
-                                                                    <td>{el.mashoraDesc}</td>
-                                                                    <td>{el.indDate}</td>
-                                                                    <td>{el.indValue || '0'}</td>
-                                                                </tr>
-                                                            ))}
-                                                        </tbody>
-                                                    </table>
 
-                                                    <div className="d-print-none" style={{ width: '100%', height: '220px' }}>
-                                                        <ChartBar data={filteredData} onRenderAsImage={setChartImg} />
-                                                    </div>
-
-                                                    <div className="d-none d-print-block mt-3">
-                                                        {chartImg && <img src={chartImg} alt="Graph" style={{ width: '100%', height: '220px' }} />}
-                                                    </div> */}
                                                         </>
 
                                                     }
@@ -442,16 +413,30 @@ export default function PrintReport() {
 
                                     </div>
                                 </div>
-                                <div className="container page-break col-12 mb-5 " dir="rtl" style={{
+                                <div className="container page-break col-12 mb-5 page-break-start " dir="rtl" style={{
                                     border: '5px solid #724780',
                                     padding: '20px',
                                     marginBottom: '30px',
                                     borderRadius: '10px'
                                 }} id={styles.bordercontan}>
-                                    <div>
+                                    {/* <div className='d-flex flex-column'>
                                         <h5>توزيع المؤشرات وفقاً لتاريخ البيان</h5>
-                                        <div className='d-flex flex-wrap justify-content-between align-items-center'>
-                                            {filters.byGov && <TablesData name="التاريخ " bgColor="#724780"
+                                        <div className='d-flex justify-content-between align-items-center'>
+                                            {filters.byGov && <TablesData name="التاريخ " bgColor="#724780"  width="50%"
+                                                data={chartByGov.labels.map((label, i) => ({
+                                                    govName: label,
+                                                    indValue: chartByGov.datasets[0].data[i]
+                                                }))} />
+                                            }
+                                            {filters.byGov && <Chartscomponent2 data={chartByGov} type={chartType} onRenderAsImage={(img) => handleChartImage(img, 'Gov')} width="500px" name="Gov" />}
+
+                                        </div>
+                                    </div> */}
+
+                                    <div className='mt-3' >
+                                        <h5 className='mt-4'>توزيع المؤشرات وفقاً لتاريخ البيان </h5>
+                                        <div className='d-flex justify-content-between align-items-center'>
+                                            {filters.byGov && <TablesData name="التاريخ " bgColor="#724780" width="50%"
                                                 data={chartByGov.labels.map((label, i) => ({
                                                     govName: label,
                                                     indValue: chartByGov.datasets[0].data[i]
@@ -461,10 +446,11 @@ export default function PrintReport() {
 
                                         </div>
                                     </div>
+
                                     <div className='mt-3' style={{ borderTop: '5px solid #724780' }}>
                                         <h5 className='mt-4'>توزيع المؤشرات وفقاً للمحافظات </h5>
-                                        <div className='d-flex flex-wrap justify-content-between align-items-center'>
-                                            {filters.byDate && <TablesData name="اسم المحافظة " bgColor="#7CC7EB"
+                                        <div className='d-flex justify-content-between align-items-center'>
+                                            {filters.byDate && <TablesData name="اسم المحافظة " bgColor="#7CC7EB" width="50%"
                                                 data={chartByDate.labels.map((label, i) => ({
                                                     govName: label,
                                                     indValue: chartByDate.datasets[0].data[i]

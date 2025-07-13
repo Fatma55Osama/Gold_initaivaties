@@ -1,101 +1,117 @@
-import React, { useEffect, useRef } from 'react'
-import styles from './index.module.css'
-import { Bar, Doughnut, Line, Pie, Radar } from 'react-chartjs-2';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    PointElement,
-    LineElement,
-    ArcElement, // Pie & Doughnut
-    RadialLinearScale, // Radar
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+import React, { useEffect } from 'react';
+import Plot from 'react-plotly.js';
+
 export default function Chartscomponent2(props) {
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        BarElement,
-        PointElement,
-        LineElement,
-        ArcElement,
-        RadialLinearScale,
-        Title,
-        Tooltip,
-        Legend
-    );
+    const labels = props.data.labels;
+    const values = props.data.datasets[0]?.data || [];
+    const labelText = props.data.datasets[0]?.label || '';
+    const customColors = [
+        '#724780', '#CBA15F', '#AFE5FF', '#AA99CC', '#FFD6A5',
+        '#FF9AA2', '#B5EAD7', '#FFDAC1', '#E2F0CB', '#C7CEEA'
+    ];
 
-    // const data = {
-    //     labels: ['يناير', 'فبراير', 'مارس', 'أبريل'],
-    //     datasets: [
-    //         {
-    //             label: 'المبيعات',
-    //             data: [100, 200, 150, 300],
-    //             borderColor: 'rgb(75, 192, 192)',
-    //             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-    //         },
-    //     ],
-    // };
-
-    const options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        layout: {
-            padding: {
-                top: 20,
-                bottom: 20
-            }
-        },
-        plugins: {
-            // title: {
-            //     display: true,
-            //     text: props.data.datasets[0]?.label?.split(' /n ') || '',
-            //     align: 'center',
-            //     padding: {
-            //         top: 10,
-            //         bottom: 30,
-            //     },
-            //     color: '#333',
-            //     font: {
-            //         size: 18,
-            //         weight: 'bold'
-            //     }
-            // },
-            legend: {
-                labels: {
-                    usePointStyle: true,
-                    pointStyle: 'circle',
-
-                    font: {
-                        size: 12,
-                    },
-                    padding: 20
-                },
-                position: 'top' // أو 'top' أو 'right' حسب ما تحبي
-            }
-        }
-    };
-    const chartRef = useRef(null);
-    useEffect(() => {
-        if (props.onRenderAsImage && chartRef.current) {
-            const base64 = chartRef.current.toBase64Image();
-            props.onRenderAsImage(base64, props.name || '');
-        }
-    }, [props.data]);
     const chartMap = {
-        line: <Line data={props.data} ref={chartRef} options={options} />,
-        bar: <Bar data={props.data} ref={chartRef} options={options} />,
-        pie: <Pie data={props.data} ref={chartRef} options={options} />,
-        doughnut: <Doughnut data={props.data} ref={chartRef} options={options} />,
-        radar: <Radar data={props.data} ref={chartRef} options={options} />,
+        bar: (
+            <Plot
+                data={[{
+                    type: 'bar',
+                    x: labels,
+                    y: values,
+                    marker: {
+                        color: labels.map((_, i) => customColors[i % customColors.length])
+                    }
+                }]}
+                layout={{
+                    title: labelText,
+                    width: 500,
+                    height: 500,
+                    scene: {
+                        xaxis: { title: 'الفئات' },
+                        yaxis: { title: 'القيم' },
+                    }
+                }}
+                config={{ displayModeBar: false }}
+            />
+        ),
+
+        pie: (
+            <Plot
+                data={[{
+                    type: 'pie',
+                    labels: labels,
+                    values: values,
+                    marker: {
+                        colors: labels.map((_, i) => customColors[i % customColors.length])
+                    },
+                    hole: 0.3,
+                }]}
+                layout={{
+                    title: labelText,
+                    width: 500,
+                    height: 500,
+                }}
+                config={{ displayModeBar: false }}
+            />
+        ),
+
+
+        doughnut: (
+            <Plot
+                data={[{
+                    type: 'pie',
+                    labels: labels,
+                    values: values,
+                    hole: 0.5,
+                    marker: {
+                        colors: labels.map((_, i) => customColors[i % customColors.length])
+                    }
+                }]}
+                layout={{
+                    title: labelText,
+                    width: 500,
+                    height: 500,
+                }}
+                config={{ displayModeBar: false }}
+            />
+        ),
+
+
+        line: (
+            <Plot
+                data={[{
+                    type: 'scatter3d',
+                    mode: 'lines+markers',
+                    x: labels,
+                    y: values,
+                    z: values.map((_, i) => i + 1),
+                    marker: {
+                        size: 5,
+                        color: labels.map((_, i) => customColors[i % customColors.length]),
+                    },
+                    line: {
+                        color: '#724780',
+                        width: 3,
+                    }
+                }]}
+                layout={{
+                    title: labelText,
+                    width: 500,
+                    height: 500,
+                    scene: {
+                        xaxis: { title: 'X' },
+                        yaxis: { title: 'Y' },
+                        zaxis: { title: 'Z' },
+                    },
+                }}
+                config={{ displayModeBar: false }}
+            />
+        ),
+
     };
+
     return (
-        <div className={`col-6 my-3 `} style={{ height: '500px', width: `${props.width}` }}>
-            {chartMap[props.type] || chartMap.line}
-        </div>)
-
-
+        <div className={`col-6 my-3`} style={{ height: '500px', width: `${props.width}` }}>
+            {chartMap[props.type] || chartMap.bar}
+        </div>
+    );
 }

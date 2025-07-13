@@ -172,6 +172,7 @@ export default function Indicators() {
         filtered.forEach(i => {
             grouped[i.govName] = (grouped[i.govName] || 0) + i.indValue;
         });
+        
         const top5 = Object.entries(grouped)
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5);
@@ -378,14 +379,14 @@ export default function Indicators() {
                     /* يوجد على الأقل فلتر واحد مفعَّل → نعرض الرسومات المحددة */
                     <>
                         {filters.top5 && <Chartscomponent2 data={chartTop5} type={chartType} />}
-                        {filters.top5 && <TablesData name="اسم المحافظة" bgColor="#1e7e34"
+                        {filters.top5 && <TablesData name="اسم المحافظة" bgColor="#724780"
                             data={chartTop5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartTop5.datasets[0].data[i]
                             }))} />
                         }
                         {filters.bottom5 && <Chartscomponent2 data={chartBottom5} type={chartType} />}
-                        {filters.bottom5 && <TablesData name="اسم المحافظة"  bgColor="#D72638"
+                        {filters.bottom5 && <TablesData name="اسم المحافظة"  bgColor="#724780"
                             data={chartBottom5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartBottom5.datasets[0].data[i]
@@ -399,7 +400,7 @@ export default function Indicators() {
                             }))} />
                         }
                         {filters.byDate && <Chartscomponent2 data={chartByDate} type={chartType} />}
-                        {filters.byDate && <TablesData name="اسم المحافظة " bgColor="#7CC7EB"
+                        {filters.byDate && <TablesData name="اسم المحافظة " bgColor="#724780"
                             data={chartByDate.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartByDate.datasets[0].data[i]
