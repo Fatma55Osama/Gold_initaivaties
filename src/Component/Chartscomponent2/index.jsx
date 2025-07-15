@@ -22,7 +22,15 @@ export default function Chartscomponent2(props) {
                     }
                 }]}
                 layout={{
-                    title: labelText,
+                    title: {
+                        text:`${props.title} - ${props.selectedIndicator}`,
+                        font: {
+                            size: 12,
+                            color: '#333'
+                        },
+                        x: 0.5,
+                        xanchor: 'center'
+                    },
                     width: 500,
                     height: 500,
                     scene: {
@@ -46,7 +54,15 @@ export default function Chartscomponent2(props) {
                     hole: 0.3,
                 }]}
                 layout={{
-                    title: labelText,
+                    title: {
+                        text:`${props.title} - ${props.selectedIndicator}`,
+                        font: {
+                            size: 12,
+                            color: '#333'
+                        },
+                        x: 0.5,
+                        xanchor: 'center'
+                    },
                     width: 500,
                     height: 500,
                 }}
@@ -67,8 +83,15 @@ export default function Chartscomponent2(props) {
                     }
                 }]}
                 layout={{
-                    title: labelText,
-                    width: 500,
+                    title: {
+                        text: `${props.title} - ${props.selectedIndicator}`,
+                        font: {
+                            size: 12,
+                            color: '#333'
+                        },
+                        x: 0.5,
+                        xanchor: 'center'
+                    }, width: 500,
                     height: 500,
                 }}
                 config={{ displayModeBar: false }}
@@ -94,7 +117,15 @@ export default function Chartscomponent2(props) {
                     }
                 }]}
                 layout={{
-                    title: labelText,
+                    title: {
+                        text: `${props.title} - ${props.selectedIndicator}`,
+                        font: {
+                            size: 12,
+                            color: '#333'
+                        },
+                        x: 0.5,
+                        xanchor: 'center'
+                    },
                     width: 500,
                     height: 500,
                     scene: {

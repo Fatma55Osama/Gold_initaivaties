@@ -378,28 +378,28 @@ export default function Indicators() {
                 ) : (
                     /* يوجد على الأقل فلتر واحد مفعَّل → نعرض الرسومات المحددة */
                     <>
-                        {filters.top5 && <Chartscomponent2 data={chartTop5} type={chartType} />}
+                        {filters.top5 && <Chartscomponent2 data={chartTop5} title={'أعلى 5 محافظات'} selectedIndicator={selectedIndicator} type={chartType} />}
                         {filters.top5 && <TablesData name="اسم المحافظة" bgColor="#724780"
                             data={chartTop5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartTop5.datasets[0].data[i]
                             }))} />
                         }
-                        {filters.bottom5 && <Chartscomponent2 data={chartBottom5} type={chartType} />}
+                        {filters.bottom5 && <Chartscomponent2 data={chartBottom5} title={' أقل 5 محافظات'} selectedIndicator={selectedIndicator} type={chartType} />}
                         {filters.bottom5 && <TablesData name="اسم المحافظة"  bgColor="#724780"
                             data={chartBottom5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartBottom5.datasets[0].data[i]
                             }))} />
                         }
-                        {filters.byGov && <Chartscomponent2 data={chartByGov} type={chartType} />}
+                        {filters.byGov && <Chartscomponent2 data={chartByGov} title={' توزيع المؤشرات وفقاً لتاريخ البيان'} selectedIndicator={selectedIndicator} type={chartType} />}
                         {filters.byGov && <TablesData name="التاريخ " bgColor="#724780"
                             data={chartByGov.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartByGov.datasets[0].data[i]
                             }))} />
                         }
-                        {filters.byDate && <Chartscomponent2 data={chartByDate} type={chartType} />}
+                        {filters.byDate && <Chartscomponent2 data={chartByDate} title={'  توزيع المؤشرات وفقاً تاريخ للمحافظات '} selectedIndicator={selectedIndicator} type={chartType} />}
                         {filters.byDate && <TablesData name="اسم المحافظة " bgColor="#724780"
                             data={chartByDate.labels.map((label, i) => ({
                                 govName: label,

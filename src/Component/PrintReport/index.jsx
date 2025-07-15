@@ -350,7 +350,7 @@ export default function PrintReport() {
 
                                     <div className=''>
                                         {selectedIndicator && (
-                                            <span className="text-center">المؤشر المختار: {selectedIndicator}</span>
+                                            <span className="text-center">  {selectedIndicator}</span>
                                         )}
 
                                         {filteredData.length > 0 ? (
