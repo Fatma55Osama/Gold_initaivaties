@@ -31,7 +31,6 @@
       /*vertical-align:top;*/
     }
     #regtangle {
- 
       border-top: 2px solid #cba15f;
       background-color: rgba(217, 217, 217, 0.3);
 
@@ -103,4 +102,63 @@ img {
 .justifyText {
   text-align: justify;
   line-height: 1.6;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #About {
+    min-height: 370px;
+    #AboutLogo {
+      height: 370px;
+    }
+  }
+  #bgColor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    h2 {
+      font-size: 35px !important;
+    }
+    p {
+      font-size: 16px !important;
+    }
+  }
+  #sectionBaby {
+    height: auto !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  #About {
+    min-height: 500px;
+    #AboutLogo {
+      height: 500px;
+      width: 100%;
+    }
+  }
+  #sectionBaby {
+    height: auto !important;
+  }
+  #sectionBabywrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  #cardbaby {
+    width: 100px;
+    height: 136px;
+    box-shadow: 7px 8px 1px #d9d9d9;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    h3 {
+      font-size: 10px !important;
+    }
+  }
+  #regtangle {
+    height: auto !important;
+    p{
+      font-size: 16px !important;
+    }
+  }
 }

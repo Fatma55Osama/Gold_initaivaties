@@ -20,8 +20,14 @@ import { FiArrowUpCircle } from 'react-icons/fi';
 import Report from './Component/Reports';
 import Report2 from './Component/Report2';
 import PrintReport from './Component/PrintReport';
+import { getDomain, getPathImg } from './configLoader';
+import Questions from './Pages/Questions';
 
 export default function App() {
+    useEffect(() => {
+    console.log("🔥 API Domain:", getDomain());
+    console.log("🔥 Image Path:", getPathImg());
+  }, []);
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -56,7 +62,7 @@ export default function App() {
           <Route path='report' element={<Report />} />
           <Route path="/print" element={<Report2 />} />
           <Route path="/printreport" element={<PrintReport />} />
-
+          <Route path='/question' element={<Questions/>}/>
         </Route>
         <Route path='/'>
           <Route path='*' element={<h1>404 Not Found</h1>} />

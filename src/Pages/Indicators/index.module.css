@@ -73,7 +73,7 @@
   left: 0.5rem;
   transform: translateY(-50%);
   pointer-events: none;
-  font-size: 1.5rem !important;
+  /* font-size: 1.5rem !important; */
   color: black;
   }
 }
@@ -94,4 +94,81 @@
 .purpleCheck ,input[type="checkbox"]:checked {
    accent-color: #724780;
    cursor: pointer;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #About {
+    min-height: 370px;
+    #AboutLogo {
+      height: 370px;
+    }
+  }
+  #bgColor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    h2 {
+      font-size: 35px !important;
+    }
+    p {
+      font-size: 16px !important;
+    }
+  }
+.customarrow2{
+  margin-right: -3%;
+}
+}
+@media screen and (max-width: 767px) {
+  #About {
+    min-height: 500px;
+    #AboutLogo {
+      height: 500px;
+      width: 100%;
+    }
+  }
+ 
+  
+
+   #regtangle {
+    height: auto !important;
+    p{
+      font-size: 16px !important;
+    }
+  }
+    #indecator label,
+  #indecator span {
+    font-size: 14px !important;
+  }
+
+  #indecator select {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+
+  .customarrow,
+  .customarrow2 {
+    font-size: 1.2rem !important;
+  }
+  .customarrow2{
+  margin-right: -7%;
+}
+  .customarrow{
+    left: 0 !important;
+   font-weight: 400 !important;
+  }
+
+  #indecator .mb-4,
+  #indecator .d-flex.align-items-center {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  #indecator .mb-4 select {
+    width: 100% !important;
+  }
+
+  #indecator .d-flex.flex-column.gap-3.mt-4 {
+    gap: 1rem !important;
+  }
 }

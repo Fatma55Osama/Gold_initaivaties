@@ -10,6 +10,7 @@ import { FaFilePdf } from 'react-icons/fa';
 import Modalpdf from '../../Component/Modalpdf';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { getPathImg } from '../../configLoader';
 //const myImg = () => {
 //    return (
 //        <div className='col-12 ' >
@@ -21,9 +22,8 @@ import { useLocation } from 'react-router-dom';
 
 export default function AboutIndex() {
     const { allabout, setallabout } = useAbout()
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
     const location = useLocation();
-
     useEffect(() => {
         if (location.state?.targetSection) {
             scroller.scrollTo(location.state.targetSection, {
@@ -37,8 +37,8 @@ export default function AboutIndex() {
         { label: "آليات التنفيذ", to: "section7" },
         { label: "محاور المبادرة", to: "section1" },
         { label: "الهيكل التنظيمي", to: "section2" },
-        { label: "كلمة وزير الصحة", to: "section3" },
         { label: "كلمة رئيس المبادرة", to: "section4" },
+        { label: "كلمة وزير الصحة", to: "section3" },
         { label: "المبادرة في سطور", to: "section5" },
     ];
     const { openModal, modalindex, closeModal } = useModal()
@@ -49,18 +49,19 @@ export default function AboutIndex() {
         if (!str) return '';
         return str.replace(/<[^>]*>/g, '');
     }
+
     return (
         <div className='col-12' id={styles.parentalldiv}>
             <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
-                    <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
+                <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
+                    <div className='container text-end d-flex  justify-content-end '>
+                        <div className='col-md-9 mt-3 mt-md-0  d-flex flex-column justify-content-center gap-3 pb-3'>
                             <h2>عن المبادرة</h2>
                             <div className='col-12  ' id={styles.regtangle}>
-                                <div className='container '>
+                                <div className='container  '>
                                     <p className={styles.justifyText} >مبادرة "الألف يوم الذهبية لتنمية الأسرة المصرية" هي إحدى المبادرات الهامة لبناء الإنسان المصري حيث تهدف إلى الاهتمام بتحسين الخصائص السكانية لأفراد الأسرة المصرية وتنمية الطفولة المبكرة وخاصة في فترة الألف يوم الذهبية الأولي من العمر نظرا لأهميتها القصوى. وهي واحدة من مبادرات المبادرة الرئاسية "100 مليون صحة". وقد أطلق المبادرة معالي الأستاذ الدكتور/ خالد عبد الغفار –وزير الصحة والسكان- في احتفالية بالعاصمة الإدارية الجديدة يوم 22 أغسطس 2023.</p>
 
                                 </div>
@@ -69,7 +70,7 @@ export default function AboutIndex() {
                     </div>
                 </div>
             </div>
-            <header className='d-flex justify-content-center gap-5  container justify-content-between mt-5 align-items-center'>
+            <header className=' d-none d-md-flex  justify-content-center gap-lg-5   container justify-content-between mt-5 align-items-center'id={styles.headercontain}>
                 {navLinks.map((link, index) => (
                     <Link
                         key={index}
@@ -89,17 +90,19 @@ export default function AboutIndex() {
                     <h3>المبادرة في سطور</h3>
                 </div>
                 <div className='col-12  d-flex   justify-content-between ' id={styles.CRegtangle}  >
-                    <div className='d-flex container justify-content-between'>
-                        <div className=' col-3 align-items-start container d-flex flex-column justify-content-start mt-4' >
+                    <div className='d-flex container pt-lg-3 flex-lg-row justify-content-between flex-column flex-md-column'>
+                        <div className=' col-lg-3 align-items-center align-lg-items-start justify-content-lg-start container d-flex flex-column  mt-4' >
                             <div className='' id={styles.LinesImg}>
-                                <img src={`${pathimg}/About/${allabout?.[0]?.aboutImg}`} alt="" />
+                                {allabout?.[0]?.aboutImg && (
+                                    <img src={`${pathimg}/About/${allabout[0].aboutImg}`} alt="" />
+                                )}
                             </div>
                         </div>
 
                         <div className=' text-end  d-flex justify-content-center align-items-center '>
-                            <div className='col-12 container d-flex flex-column justify-content-center py-2 '>
+                            <div className='col-11 container d-flex flex-column justify-content-center py-2 ' id={styles.widthscreantab}>
                                 {/* <p>{allabout?.[0]?.aboutText}</p> */}
-                                <div className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.aboutText }} />
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.aboutText }} id={styles.paragraphtext}/>
                                 {/* <p>{stripHtmlTags(allabout?.[0]?.aboutText)}</p> */}
                             </div>
 
@@ -115,17 +118,17 @@ export default function AboutIndex() {
                 <div className='col-12 container d-flex flex-column pb-3'>
                     <h3>كلمة وزير الصحة</h3>
                 </div>
-                <div className='col-12  d-flex  py-3 ' id={styles.CRegtangle}  >
-                    <div className='container d-flex'>
-                        <div className=' col-3 container d-flex flex-column justify-content-center align-items-end' >
+                <div className='col-12   d-flex  py-3 ' id={styles.CRegtangle}  >
+                    <div className='container pt-lg-3 d-flex flex-lg-row flex-md-column flex-column gap-md-3 gap-lg-0'>
+                        <div className='  col-lg-3 align-items-center align-lg-items-start justify-content-lg-start container d-flex flex-column justify-content-center align-items-end' >
                             <div className='d-flex justify-content-center   flex-column  ' id={styles.MinisterImg}>
                                 <img src={`${pathimg}/About/${allabout?.[0]?.ministerImg}`} alt="" />
                             </div>
                         </div>
 
                         <div className=' text-end d-flex justify-content-center align-items-center  '>
-                            <div className='col-12 container d-flex flex-column justify-content-center  '>
-                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.ministerWord }} />
+                            <div className='col-12 container d-flex flex-column justify-content-center  ' id={styles.widthscreantab}>
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.ministerWord }}  id={styles.paragraphtext}/>
                             </div>
 
                         </div>
@@ -143,8 +146,8 @@ export default function AboutIndex() {
                 <div className='col-12  d-flex   ' id={styles.CRegtangle}  >
                     {/* <div className='col-12 container d-flex flex-column pb-3 ' id={styles.PresImg} >
                     </div> */}
-                    <div className='d-flex container'>
-                        <div className=' col-3 container d-flex flex-column justify-content-center align-items-end' >
+                    <div className='d-flex container pt-lg-3 flex-lg-row flex-column flex-md-column gap-md-3 gap-lg-0'>
+                        <div className=' col-lg-3 align-items-center align-lg-items-start justify-content-lg-start  container d-flex flex-column justify-content-center align-items-end' >
                             <div className='d-flex justify-content-center  flex-column ' id={styles.PresImg}>
                                 <img src={`${pathimg}/About/${allabout?.[0]?.chairmanImg}`} alt="" />
                             </div>
@@ -154,8 +157,8 @@ export default function AboutIndex() {
 
 
                         <div className=' text-end d-flex justify-content-center align-items-center  '>
-                            <div className='col-12 container d-flex flex-column justify-content-center '>
-                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.chairmanWord }} />
+                            <div className='col-12 container d-flex flex-column justify-content-center ' id={styles.widthscreantab}>
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.chairmanWord }}  id={styles.paragraphtext}/>
 
                             </div>
 
@@ -178,14 +181,14 @@ export default function AboutIndex() {
                     <h3>الهيكل التنظيمي للمبادرة</h3>
                 </div>
                 <div className='col-12  d-flex align-items-end pb-4' id={styles.CRegtangle}  >
-                    <div className='container d-flex justify-content-between col-12'>
+                    <div className='container d-flex flex-column flex-md-row justify-content-between col-12 '>
                         <div className=' d-flex justify-content-center align-items-end flex-column   ' id={styles.StructImg} >
                             <img src={structer} alt="" />
                         </div>
 
                         <div className=' text-end d-flex flex-column justify-content-end align-items-end '>
-                            <div className='col-12 container d-flex flex-column pb-5'>
-                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.structureText }} />
+                            <div className='col-12 container d-flex flex-column pb-5' id={styles.widthscreantab}>
+                                <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.structureText }}  id={styles.paragraphtext}/>
 
 
                             </div>
@@ -210,8 +213,8 @@ export default function AboutIndex() {
                     <h3>محاور المبادرة</h3>
                 </div>
                 <div className='col-12   d-flex align-items-start pb-5 justify-content-between mt-4 ' id={styles.CRegtangle}  >
-                    <div className='container d-flex'>
-                        <div className='d-flex'>
+                    <div className='container d-flex flex-wrap flex-md-nowrap'>
+                        <div className='d-flex  flex-wrap flex-md-nowrap flex-lg-row flex-md-column gap-md-3 gap-lg-0'>
                             <div className='col-12  container d-flex flex-column pb-5 mt-4 justify-content-between' id={styles.BgPillar3} >
                                 <div className=' col-12 container d-flex flex-column pb-5 mt-4 justify-content-between  ' id={styles.Pillar3} >
 
@@ -231,8 +234,8 @@ export default function AboutIndex() {
 
 
 
-                        <div className='container text-end d-flex justify-content-end '>
-                            <div className=' col-12 container d-flex flex-column pb-2 mt-4 justify-content-between' dir={"rtl"}>
+                        <div className=' container text-end d-flex justify-content-end '>
+                            <div className=' col-12  d-flex flex-column pb-2 mt-4 justify-content-between' dir={"rtl"}>
                                 <Accordion defaultActiveKey="1" id={styles.accordion}>
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header id={styles.accordionheader}> <h5>المحور الأول: {allabout?.[0]?.pillar1}</h5></Accordion.Header>
@@ -285,22 +288,22 @@ export default function AboutIndex() {
                 <div className='col-12  d-flex align-items-end pb-4' id={styles.CRegtangle}  >
 
 
-                    <div className='container text-end d-flex justify-content-end  mt-4'>
+                    <div className='container text-end d-flex justify-content-end  mt-4'  id={styles.widthscreantab}>
                         <div className='col-12  d-flex flex-column align-items-end justify-content-end pb-5'>
-                            <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.mechanisms }} />
+                            <p  className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.mechanisms }} id={styles.paragraphtext} />
 
                             {/* <button
-                                className="px-2 py-2 mt-3 align-self-end d-flex align-items-center gap-2" id={styles.custompurpleoutline}
-                                onClick={openModalpdf}
+                                classNlick={openModalpdf}
                             >
                                 <FaFilePdf /> عرض الملف 
                             </button> */}
                             {/* <div onClick={openModalpdf} className={  ' px-3 d-flex justify-content-end align-items-center  rounded-3 '} id={styles.custompurpleoutline}>
-
+ame="px-2 py-2 mt-3 align-self-end d-flex align-items-center gap-2" id={styles.custompurpleoutline}
+                                onC
                                 <FaFilePdf  />
                                 <button className='rounded-3  py-1 px-4'> عرض الملف  </button>
                             </div> */}
-                            <div onClick={openModalpdf} className={styles.btnback + ' px-1 rounded-3 d-flex align-items-center'}>
+                            <div onClick={openModalpdf} className={styles.btnback + ' px-1 rounded-3  d-flex flex-row align-items-center'}>
 
                                 <FaFilePdf className={styles.iconfile} />
                                 <button className='rounded-3 py-1 px-4'> عرض الملف   </button>

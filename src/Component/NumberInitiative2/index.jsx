@@ -8,6 +8,7 @@ import { FreeMode, Pagination, Autoplay, Navigation } from 'swiper/modules';
 import { useinitiativenumber } from '../../Store'
 import 'swiper/css/navigation'
 import 'swiper/css';
+import './index.scss'
 export default function NumberInitiative2() {
     const { allinitivenumber } = useinitiativenumber()
     const [filterednumber, setFilterednumber] = useState([])
@@ -15,7 +16,7 @@ export default function NumberInitiative2() {
     useEffect(() => {
         let copyfilterednumber = [...allinitivenumber]
             .filter((el) => el.onMainPage)
-        
+
         setFilterednumber(copyfilterednumber)
     }, [allinitivenumber])
 
@@ -28,17 +29,24 @@ export default function NumberInitiative2() {
                     data-aos="fade-up"
                     data-aos-offset="100"
                     data-aos-delay={50}
-                    slidesPerView={3}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        }
+                    }}
                     spaceBetween={30}
                     loop={true}
                     freeMode={true}
                     navigation={true}
-                    modules={[FreeMode, Navigation, Autoplay]}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false
                     }}
-                    className={styles.mySwiperr + " mySwiper  col-12 d-flex justify-content-between align-items-center gap-5"}
+                    modules={[FreeMode, Navigation, Autoplay]}
+                    className={styles.mySwiperr + " mySwiper col-12 d-flex justify-content-between align-items-center gap-5"}
                 >
                     {
                         filterednumber?.map((el) => (

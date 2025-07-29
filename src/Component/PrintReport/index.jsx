@@ -9,9 +9,10 @@ import styles from './index.module.css'
 import Chartscomponent2 from '../Chartscomponent2';
 import TablesData from '../TablesData';
 import './index.scss'
+import { getDomain } from '../../configLoader';
 export default function PrintReport() {
     const { vindicatorr, setvindicator } = usevindicator();
-    const { domain } = usedomain();
+    const  domain  = getDomain();
     const [selectedIndicator, setSelectedIndicator] = useState('');
     const [chartImg, setChartImg] = useState('');
 
@@ -333,15 +334,15 @@ export default function PrintReport() {
                         </div>
                         {/* <SectionContainHeader /> */}
                         {selectedIndicator && (
-                            <div className='col-12 container d-flex justify-content-start align-items-end  mt-4 '>
+                            <div className='col-12  d-flex justify-content-end align-items-end  mt-4 '>
 
-                                <button className='px-4 stat-card col-3  py-1 rounded-3'>إجماليات</button>
+                                <button className='px-4 stat-card col-2 me-2  py-1 rounded-3'>إجماليات</button>
                             </div>
                         )}
 
                         {selectedIndicator && (
-                            <div>
-                                <div className="container page-break col-12 mb-5 " dir="rtl" style={{
+                            <div className='px-2'>
+                                <div className=" page-break col-12 mb-5 " dir="rtl" style={{
                                     border: '5px solid #724780',
                                     padding: '20px',
                                     marginBottom: '30px',
@@ -359,9 +360,9 @@ export default function PrintReport() {
                                                     {(selectedIndicator || city) &&
                                                         <>
                                                             <div className='col-12 mt-3 d-flex justify-content-between'>
-                                                                <button className='stat-card  px-5 rounded-3 py-1 d-flex flex-column' >عدد المؤشرات <span>{[...new Set(vindicatorr.map(item => item.indName))].length}</span></button>
-                                                                <button className='stat-card  px-5 rounded-3 py-1 d-flex flex-column'>عدد المحافظات <span>{[...new Set(vindicatorr.map(item => item.govName))].length}</span></button>
-                                                                <button className='stat-card  px-5 rounded-3 py-1 d-flex flex-column'>عدد المشورات <span>{[...new Set(vindicatorr.map(item => item.mashoraDesc))].length}</span></button>
+                                                                <button className='stat-card  px-4 rounded-3 py-1 d-flex flex-column' >عدد المؤشرات <span>{[...new Set(vindicatorr.map(item => item.indName))].length}</span></button>
+                                                                <button className='stat-card  px-4 rounded-3 py-1 d-flex flex-column'>عدد المحافظات <span>{[...new Set(vindicatorr.map(item => item.govName))].length}</span></button>
+                                                                <button className='stat-card  px-4 rounded-3 py-1 d-flex flex-column'>عدد المشورات <span>{[...new Set(vindicatorr.map(item => item.mashoraDesc))].length}</span></button>
                                                             </div>
                                                             <div className='d-flex flex-wrap justify-content-between mt-4 chatshidden'>
                                                                 {filters.top5 && <Chartscomponent2 data={chartTop5} type={chartType} onRenderAsImage={(img) => handleChartImage(img, 'top5')} width="500px" name="top5" />}
@@ -380,7 +381,7 @@ export default function PrintReport() {
                                                             </div> */}
 
                                                             <div className='d-flex flex-column '>
-                                                                <div className='col-12 container d-flex justify-content-start align-items-end  mt-4 '>
+                                                                <div className='col-12  d-flex justify-content-start align-items-end  mt-4 '>
 
                                                                     <button className='px-4 stat-card   col-4  py-1 rounded-3'>عن المبادرة</button>
                                                                 </div>
@@ -413,7 +414,7 @@ export default function PrintReport() {
 
                                     </div>
                                 </div>
-                                <div className="container page-break col-12 mb-5 page-break-start " dir="rtl" style={{
+                                <div className=" page-break col-12 mb-5 page-break-start " dir="rtl" style={{
                                     border: '5px solid #724780',
                                     padding: '20px',
                                     marginBottom: '30px',
@@ -435,7 +436,7 @@ export default function PrintReport() {
 
                                     <div className='mt-3' >
                                         <h5 className='mt-4'>توزيع المؤشرات وفقاً لتاريخ البيان </h5>
-                                        <div className='d-flex justify-content-between align-items-center'>
+                                        <div className='d-flex flex-wrap justify-content-between align-items-center'>
                                             {filters.byGov && <TablesData name="التاريخ " bgColor="#724780" width="50%"
                                                 data={chartByGov.labels.map((label, i) => ({
                                                     govName: label,
@@ -449,7 +450,7 @@ export default function PrintReport() {
 
                                     <div className='mt-3' style={{ borderTop: '5px solid #724780' }}>
                                         <h5 className='mt-4'>توزيع المؤشرات وفقاً للمحافظات </h5>
-                                        <div className='d-flex justify-content-between align-items-center'>
+                                        <div className='d-flex flex-wrap justify-content-between align-items-center'>
                                             {filters.byDate && <TablesData name="اسم المحافظة " bgColor="#7CC7EB" width="50%"
                                                 data={chartByDate.labels.map((label, i) => ({
                                                     govName: label,

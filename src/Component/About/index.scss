@@ -40,7 +40,7 @@
   height: 96px;
   letter-spacing: -0.2px;
   line-height: 26px;
-  margin-bottom: -149px;
+  margin-bottom: -100px;
   margin-top: -1px;
   width: 491px;
   text-decoration: none;
@@ -62,10 +62,25 @@
   text-align: justify;
   line-height: 1.4;
 }
-span {
-}
+
 @media screen and (max-width: 992px) and (min-width: 768px) {
   .aboutsection {
-    margin-top: 75% !important;
+    // margin-top: 75% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .div-3 {
+    padding: 40px 0px 344px 00px;
+  }
+  .element-4 {
+    width: 300px;
+    padding: 0 0 0 20px !important;
+    p{
+      font-size: 15px !important;
+    }
+  }
+  .text-wrapper-30 {
+      width: 300px;
+      font-size: 32px;
   }
 }

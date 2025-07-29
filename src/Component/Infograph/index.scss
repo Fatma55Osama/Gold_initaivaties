@@ -25,7 +25,7 @@
 
 .infograph-grid {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   gap: 24px;
   justify-content: flex-end;
 }
@@ -41,7 +41,7 @@
 
 .infograph-img {
   width: 100%;
-  height: auto;
+  height: 340px;
   object-fit: cover;
   border: 8px solid black;
   border-radius: 20px;
@@ -58,23 +58,78 @@
 }
 
 @media (max-width: 768px) {
+  // .infograph-grid {
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+
+  // .infograph-item {
+  //   width: 100%;
+  //   max-width: 90%;
+  // }
+
+  // .section-title {
+  //   font-size: 24px;
+  //   margin-bottom: 16px;
+  // }
   .infograph-grid {
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
+    gap: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   .infograph-item {
-    width: 100%;
-    max-width: 90%;
+    width: 90%;
+    max-width: 100%;
   }
-
+.infograph-text {
+  font-size: 14px !important;
+}
   .section-title {
     font-size: 24px;
     margin-bottom: 16px;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 769px) {
-.infograph-item {
-  width: 100%;
+  // .infograph-item {
+  //   width: 100%;
+  // }
+  .infograph-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .infograph-item {
+    width: 45%;
+  }
 }
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .infograph-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .infograph-item {
+    width: 47%;
+  }
+
+  .section-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+    .infograph-grid {
+  
+    // align-items: center;
+    gap: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
 }

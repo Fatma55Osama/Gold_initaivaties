@@ -51,9 +51,9 @@ export default function ServiceComponent() {
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
+                <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
                     <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
+                        <div className='col-md-9 d-flex flex-column gap-3 pb-3'>
                             <h2>خدمات المبادرة</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
@@ -66,7 +66,7 @@ export default function ServiceComponent() {
                 </div>
             </div>
             <div className='col-12 text-center py-3 align-items-center justify-content-center' id={styles.sectionBaby}>
-                <div className='container col-12 text-center d-flex align-items-center mt-4  justify-content-between gap-4 ' dir="rtl" id={styles.sectionBabywrap}>
+                <div className='container flex-wrap flex-md-wrap flex-lg-nowrap col-12 text-center d-flex align-items-center mt-4  justify-content-between gap-4 ' dir="rtl" id={styles.sectionBabywrap}>
                      {
                         Baby.map((el, index) => {
                             const isCurrent = location.pathname === `/Services/${el.mashoraId}`;

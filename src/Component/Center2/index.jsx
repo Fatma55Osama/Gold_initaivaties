@@ -283,7 +283,7 @@ export default function Center2() {
             </div>
           </div>
 
-          <div className='   d-flex flex-column justify-content-start gap-3 mt-5 mt-md-2 mt-lg-5 textcenterdiv'>
+          <div className='   d-flex flex-column justify-content-start gap-md-3 mt-2 mt-md-2 mt-lg-5 textcenterdiv'>
             <h2 className='text-wrapper-53'>مراكز المبادرة</h2>
             {/* <p className="p">
               محافظات المرحلة الأولي (من 23 أغسطس 2023-31 مارس 2024):

@@ -54,9 +54,12 @@
       font-size: 17px;
       font-weight: 500;
       font-family: GE SS Two;
+        word-break: break-word; /* ✅ يكسر الكلمة الطويلة */
+      overflow-wrap: break-word;
       .iconcontact {
         color: var(--purpleColor);
         margin: 7px;
+        flex-shrink: 0;
       }
     }
   }
@@ -79,3 +82,25 @@
    text-decoration-thickness: 2px !important;
     text-underline-offset: 10px;
 }}
+@media screen and (max-width: 768px) {
+  #contact {
+    .container {
+      justify-content: center !important;
+    }
+
+    ul {
+      align-items: center !important;
+    }
+
+    ul li {
+      /* flex-direction: column;
+      text-align: center; */
+      font-size: 13px;
+    }
+
+    .iconcontact {
+      margin: 10px 0 0 0 !important;
+      font-size: 18px !important;
+    }
+  }
+}

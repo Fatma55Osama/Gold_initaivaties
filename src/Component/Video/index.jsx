@@ -3,10 +3,11 @@ import './index.scss';
 import logovideo from '../../assets/Frame.png';
 import { usepathimg, useVedio } from '../../Store';
 import { Link } from 'react-router-dom';
+import { getPathImg } from '../../configLoader';
 
 export default function Video() {
   const { allvedio } = useVedio();
-  const { pathimg } = usepathimg();
+  const  pathimg  = getPathImg();
 
   const [filterVedio, setFilterVedio] = useState([]);
 

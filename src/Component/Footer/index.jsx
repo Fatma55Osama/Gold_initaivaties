@@ -20,6 +20,7 @@ import pr4hover from '../../assets/wheelchair 3 (2).png'
 import pr3hover from '../../assets/wheelchair 3 (3).png'
 import pr5hover from '../../assets/wheelchair 3 (4).png'
 import { getAllData } from '../../Data/Repo/dataRepo';
+import { getDomain } from '../../configLoader';
 export default function Footer() {
   const imageMap = {
     'مشورة الإعاقة والدمج': { img: pr9, hoverimg: pr9hover },
@@ -32,9 +33,10 @@ export default function Footer() {
   };
 
   const [Baby, setBaby] = useState([]);
-  const { domain } = usedomain()
+  const  domain  = getDomain()
   const { allservice, setservice } = useServicemain()
   const { contactfooter, setcontactfooter } = usecontactfooter()
+  console.log("domain",domain)
   useEffect(() => {
     const merged = allservice
       .filter(item => imageMap[item.mashoraDesc])
@@ -60,7 +62,7 @@ export default function Footer() {
     <div className={styles.parentfooter + " col-12"}>
       <div className='container d-flex flex-column justify-content-end text-end py-5 '>
 
-        <div className='d-flex justify-content-between  gap-3 text-end'>
+        <div className='d-none d-md-flex justify-content-between  gap-3 text-end flex-wrap flex-md-nowrap'>
 
           <ul className='d-flex flex-column align-items-end gap-3'>
             <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/contactus'}>أرقام التواصل</Link>
@@ -121,13 +123,13 @@ export default function Footer() {
         <div className='mt-5 d-flex flex-column justify-content-between align-items-center gap-5'>
           {
             contactfooter.length > 0 && (
-              <div className='col-12 d-flex justify-content-between' id={styles.footerdiv}>
-                <div className='col-lg-4 d-flex justify-content-between' id={styles.parts}>
+              <div className='col-12 d-flex flex-column flex-lg-row gap-4 gap-md-4 gap-lg-0 justify-content-between px-lg-5' id={styles.footerdiv}>
+                <div className='col-lg-4  d-flex flex-column flex-lg-row  justify-content-between' id={styles.parts}>
                   {/* <span className='d-flex gap-3 align-items-center'>{contactfooter[0]?.email}  <span>©</span> </span> */}
                   <span>
                     تليفون :{contactfooter[0]?.mobileNum}</span>
                 </div>
-                <div className='col-lg-9 d-flex justify-content-between' id={styles.parts}>
+                <div className='col-lg-9 d-flex flex-column flex-lg-row gap-4 gap-md-4 gap-lg-0 justify-content-between' id={styles.parts}>
                   <a href= {contactfooter[0]?.location}  target='_blank' className='nav-link'> 
                   
                   

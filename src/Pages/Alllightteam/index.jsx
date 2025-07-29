@@ -4,6 +4,7 @@ import styles from './index.module.css'
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { useallActiveEmployees, usepathimg } from '../../Store';
 import { useState } from 'react';
+import { getPathImg } from '../../configLoader';
 
 
 export default function Alllightteam() {
@@ -19,7 +20,7 @@ export default function Alllightteam() {
             .trim()
             .toLowerCase();
     }
-    const { pathimg } = usepathimg()
+    const  pathimg  = getPathImg()
 
     const { Employees } = useallActiveEmployees()
     const [Searchterm, setSearchterm] = useState('')
@@ -51,9 +52,9 @@ export default function Alllightteam() {
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
+                <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
                     <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
+                        <div className='col-md-9 d-flex flex-column gap-3 pb-3'>
                             <h2>نماذج مضيئة </h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
@@ -65,7 +66,7 @@ export default function Alllightteam() {
                     </div>
                 </div>
             </div>
-            <header className=' col-12 mb-4 d-flex justify-content-between align-items-center mt-5   container  '>
+            <header className=' col-12 mb-4 d-flex flex-column-reverse flex-md-row justify-content-between align-items-md-center mt-5   container  '>
 
                 <div className='d-flex align-items-center  justify-content-between gap-3' id={styles.search}>
                     <button className='py-0 px-4 border-0'>بحث</button>
@@ -76,7 +77,7 @@ export default function Alllightteam() {
                     </div>
 
                 </div>
-                <div className=' d-flex flex-column pb-3 align-items-end mt-3'>
+                <div className=' d-flex flex-column pb-3 align-items-end mt-3' id={styles.lightteam}>
                     <h3> نماذج مضيئة</h3>
                 </div>
 
@@ -85,7 +86,7 @@ export default function Alllightteam() {
             <div className=' col-12 d-flex flex-column align-items-end '>
                 <div className='container'>
 
-                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex justify-content-start`}>
+                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex  justify-content-md-start`}>
                         {
                             (Searchterm ? filteredteamPerPage : currentPage).length === 0 ? (
                                 <div className=' text-center col-12'>
@@ -98,15 +99,16 @@ export default function Alllightteam() {
 
                                     return (
                                         <div key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} data-aos="fade-up"
+                                        data-aos-offset="0" data-aos-delay={100}
                                         >
-                                            <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
+                                            <div className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1"}>
                                                 <div className={styles.imgCard}>
                                                     <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
                                                 </div>
                                                 <span className={styles.Cardtitle}>
                                                     {el.empName}
                                                 </span>
-                                                <div className={styles.textCard + " text-end col-7 px-2 py-3"}>
+                                                <div className={styles.textCard + " text-end col-9 px-2 py-3"}>
                                                     <p>المحافظة: {el.govName}</p>
                                                     <p className='lh-base'>الوظيفة: {el.empJob}</p>
                                                     <p>تاريخ التكريم:{formattedDate}</p>

@@ -70,7 +70,8 @@ p {
   max-height: 90%;
   background-color: #ffffff;
   background-image: url(../../assets//OLO2E30.png);
-  width: 1440px;
+  min-width: 100%;
+  max-width: 90%;
   opacity: 0.9;
   margin-top: 30px;
   /* overflow: hidden; */
@@ -96,7 +97,7 @@ p {
   }
 }
 
-@media screen and (max-width: 992px) and (min-width: 768px) {
+/* @media screen and (max-width: 992px) and (min-width: 768px) {
   #cardbaby {
     width: 120px;
     height: 146px;
@@ -165,5 +166,78 @@ p {
     h3 {
       font-size: 10px;
     }
+  }
+} */
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  #vedioandinfo {
+    flex-direction: column !important;
+  }
+  #cardbaby {
+    width: 120px;
+    height: 146px;
+  }
+  #cardbaby img {
+    width: 55px;
+    height: 55px;
+  }
+  #cardbaby h3 {
+    font-size: 12px;
+  }
+  #sectionBabywrap {
+    display: flex !important;
+    flex-wrap: wrap;
+    margin-inline-start: auto;
+  }
+  #sectionBaby {
+    height: 380px; /*380*/
+  }
+  #msg p {
+    font-size: 30px;
+    text-align: center !important;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  #cardbaby {
+    width: 146px;
+    height: 156px;
+  }
+  #msg p {
+    font-size: 26px;
+    text-align: center !important;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  #vedioandinfo {
+    flex-direction: column !important;
+  }
+
+  #sectionBabywrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  #cardbaby {
+    width: 100px;
+    height: 136px;
+    box-shadow: 7px 8px 1px #d9d9d9;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    h3 {
+      font-size: 10px !important;
+    }
+  }
+  #sectionBaby {
+    height: 520px !important;  /* 580*/
+  }
+}
+@media screen and (max-width: 374px) and (min-width: 320px) {
+  #sectionBaby {
+    height: 670px !important;
   }
 }

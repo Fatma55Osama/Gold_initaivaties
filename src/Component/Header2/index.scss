@@ -1,0 +1,91 @@
+// .accordion-button {
+//   background: none !important;
+//   border: none !important;
+//   box-shadow: none !important;
+//   padding: 0 !important;
+//   margin: 0 !important;
+//    display: flex;
+//   flex-direction: row-reverse;
+//   width: 50% !important;
+// }
+
+// .accordion-button:not(.collapsed)::after {
+//   transform: rotate(180deg);
+// }
+
+// .accordion-button::after {
+//   margin-left: auto;
+//   margin-right: 0px;
+//   transform: rotate(-90deg);
+//   width: 60px ;
+//   height: 60px;
+// }
+// .accordion-button:not(.collapsed) {
+//   color: black !important;
+//   background-color: transparent !important;
+//   box-shadow: none !important;
+//   display: flex;
+//   flex-direction: row-reverse;
+//   justify-content: flex-end !important;
+// }
+// .accordion-button.collapsed::after {
+//   transform: rotate(0deg); 
+// }
+
+
+// .bg-transparent{
+//     display: flex;
+ 
+//   justify-content: flex-end !important;
+// }
+// .accordion-body{
+//   display: flex !important;
+//   flex-direction: column !important;
+//   gap: 20px !important;
+// }
+.mediaAccordion .accordion-button {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 50% !important;
+}
+
+.mediaAccordion .accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+.mediaAccordion .accordion-button::after {
+  margin-left: auto;
+  margin-right: 0px;
+  transform: rotate(-90deg);
+//   width: 60px;
+//   height: 60px;
+}
+
+.mediaAccordion .accordion-button:not(.collapsed) {
+  color: black !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end !important;
+}
+
+.mediaAccordion .accordion-button.collapsed::after {
+  transform: rotate(0deg);
+}
+
+.mediaAccordion .bg-transparent {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.mediaAccordion .accordion-body {
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  gap: 20px !important;
+}

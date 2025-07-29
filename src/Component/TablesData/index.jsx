@@ -3,10 +3,11 @@ import styles from './index.module.css'
 
 export default function TablesData(props) {
   return (
-    <div className={`col-12 col-md-5  my-4`}style={{width: props.width}}>
+    
+    <div className={`col-12 col-lg-5  my-4`} id={styles.widthtable}>
       <div className={styles.tableWrapper}>
         <table
-          className={`${styles.customTable} table text-center`}
+          className={`${styles.customTable}  text-center`}
           
         >
           <thead>

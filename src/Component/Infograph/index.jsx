@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './index.scss';
 import { useInfograph, usepathimg } from '../../Store';
 import { Link } from 'react-router-dom';
+import { getPathImg } from '../../configLoader';
 
 export default function Infograph() {
   const { infograph } = useInfograph();
-  const { pathimg } = usepathimg();
+  const  pathimg  = getPathImg();
   const [filterinfo, setfilterinfo] = useState([]);
 
   useEffect(() => {

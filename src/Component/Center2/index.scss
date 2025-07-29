@@ -317,3 +317,38 @@
     text-align: start !important;
   }
 }
+@media screen and (max-width: 767px) {
+  .divmap {
+    margin-left: 0%;
+    margin-top: 7%;
+    width: 100%;
+  }
+  .center2overlap {
+    position: relative;
+    min-height: 650px;
+    max-height: 90%;
+  }
+
+  .isolation-mode {
+    width: 100%;
+    object-fit: cover;
+  }
+  .textcenterdiv {
+    // width: 500px !important;
+    position: absolute;
+    right: 0;
+    top: 0 !important;
+  }
+  .text-wrapper-53 {
+    text-align: start !important;
+  }
+  .egyptlogo {
+    display: none;
+  }
+  .message-box.show {
+    width: 240px;
+    span {
+      font-size: 14px;
+    }
+  }
+}

@@ -22,8 +22,12 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* الأفضل من fill */
+    object-fit: cover;
     border-radius: 10px;
+  }
+
+  @media (max-width: 576px) {
+    height: 200px;
   }
 }
 
@@ -55,51 +59,33 @@
 }
 
 #phdiv {
-  /* width: 364px;
-  text-align: center;
-  direction: rtl;
-  cursor: pointer;
-  height: 450px; */
-   width: 100%;
+  width: 100%;
   max-width: 320px;
-  /* height: 450px; */
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: center;
-  direction: rtl;
-  cursor: pointer;
-  flex: 1 1 calc(33.333% - 20px); /* خلي 3 ألبومات في السطر */
+  flex: 1 1 calc(33.333% - 20px);
   margin: 10px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  text-align: center;
+
+  @media (max-width: 992px) {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  @media (max-width: 576px) {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
   #h55 {
-    color: #000000;
-    font-family: GE SS Two;
-    font-weight: 500;
-    font-size: 22px;
-    /* line-height: 100%; */
-    /* letter-spacing: 0%; */
-    /* vertical-align: top; */
-    /* flex-wrap: wrap; */
+    font-size: 20px;
     text-align: center !important;
-    /* margin: 50px 30px 4px 30px; */
-    margin-right: 0 !important;
   }
 
   #h66 {
-    font-family: GE SS Two;
-    font-weight: 300;
-    font-size: 14px;
-    /* line-height: 100%; */
-    /* letter-spacing: 0%;*/
-    color: #c48d2b;
-    /* vertical-align: top; */
-    /* flex-wrap: wrap; */
+    font-size: 13px;
     text-align: center !important;
-    /* margin: 20px 30px 4px 30px; */
-    margin-right: 0 !important;
   }
 }
 
@@ -210,6 +196,20 @@ p {
       width: 900px;
       height: 600px;
       object-fit: fill;
+      @media (max-width: 1024px) {
+        width: 90vw;
+        height: auto;
+      }
+
+      @media (max-width: 768px) {
+        width: 95vw;
+        height: auto;
+      }
+
+      @media (max-width: 480px) {
+        width: 100%;
+        height: auto;
+      }
     }
 
     /* overflow-y: auto; */
@@ -232,4 +232,16 @@ p {
   text-decoration-line: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 10px;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .album img {
+    width: 48%;
+  }
+}
+
+/* ✅ موبايل: صورة واحدة */
+@media (max-width: 767px) {
+  .album img {
+    width: 90%;
+  }
 }

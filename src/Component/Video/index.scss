@@ -81,7 +81,7 @@
   }
 
   .video-description {
-    font-size: 14px;
+    font-size: 14px !important;
   }
 
   .play-icon-circle {
@@ -92,6 +92,9 @@
   .play-icon {
     width: 30px;
     height: 30px;
+  }
+  .video-container {
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 769px) {

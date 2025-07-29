@@ -1,3 +1,4 @@
+import { show_commonQuestion } from "../API/show_commonQuestion"
 import { show_single_service } from "../API/show_single_service"
 import { show_singleinfograph } from "../API/show_singleinfograph"
 import { show_singleNew } from "../API/show_singleNew"
@@ -61,7 +62,10 @@ export const getAllData = {
     get_storecontact: async (domain) => {
         return await storecontact(domain)
     },
-      get_store_vindicator: async (domain) => {
+    get_store_vindicator: async (domain) => {
         return await store_vindicator(domain)
+    },
+     get_show_commonQuestion: async (domain) => {
+        return await show_commonQuestion(domain)
     }
 }

@@ -4,10 +4,11 @@ import { usedomain, usevindicator } from '../../Store';
 import { getAllData } from '../../Data/Repo/dataRepo';
 import { IoPrint } from 'react-icons/io5';
 import printJS from 'print-js';           // ← 1) استيراد print-js
+import { getDomain } from '../../configLoader';
 
 export default function Report() {
   const { vindicatorr, setvindicator } = usevindicator();
-  const { domain } = usedomain();
+  const  domain  = getDomain();
   const [selectedIndicator, setSelectedIndicator] = useState('');
 
   useEffect(() => {

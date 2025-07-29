@@ -8,8 +8,10 @@ import { ToastContainer } from 'react-toastify'
 import { Bounce, toast } from 'react-toastify'
 import { postopinion } from '../../Data/API/postopinion'
 import { Link, useLocation } from 'react-router-dom'
+import { getDomain } from '../../configLoader'
+import ContactComponent from '../../Component/ContactComponent'
 export default function Opinion() {
-    const { domain } = usedomain()
+    const  domain  = getDomain()
     const { path } = usepathes()
     const location = useLocation()
     const validationSchema = Yup.object({
@@ -38,7 +40,8 @@ export default function Opinion() {
     // }
     return (
         <div>
-            <div className='col-12 position-relative ' id={styles.About}>
+            <ContactComponent/>
+            {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
@@ -88,7 +91,7 @@ export default function Opinion() {
                 </div>
 
 
-            </header>
+            </header> */}
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -102,7 +105,7 @@ export default function Opinion() {
                 theme="light"
                 transition={Bounce}
             />
-            <div className={`${styles.opinion}  p-5 mt-2 rounded`}>
+            <div className={`${styles.opinion}  p-md-5 py-5 mt-2 rounded`}>
                 <Formik
                     validationSchema={validationSchema}
                     initialValues={{ name: "", email: "", phone: "", opinion: "" }}
@@ -112,7 +115,7 @@ export default function Opinion() {
                         {/* <h2 className='text-end p-0 m-0'>رأيك يهمنا</h2> */}
 
 
-                        <div className='form-group text-end'>
+                        <div className='form-group text-end d-flex flex-column gap-2'>
                             <label htmlFor="name">الاسم</label>
                             <Field type="text" dir="rtl" name="name" placeholder="اكتب اسمك" className="form-control" id={styles.input} />
                             <ErrorMessage name="name" component="div" className='text-danger small mt-1' />

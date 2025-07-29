@@ -9,6 +9,7 @@ export default function Chartscomponent2(props) {
         '#724780', '#CBA15F', '#AFE5FF', '#AA99CC', '#FFD6A5',
         '#FF9AA2', '#B5EAD7', '#FFDAC1', '#E2F0CB', '#C7CEEA'
     ];
+    
 
     const chartMap = {
         bar: (
@@ -102,7 +103,7 @@ export default function Chartscomponent2(props) {
         line: (
             <Plot
                 data={[{
-                    type: 'scatter3d',
+                    type: 'scatter',
                     mode: 'lines+markers',
                     x: labels,
                     y: values,
@@ -127,6 +128,7 @@ export default function Chartscomponent2(props) {
                         xanchor: 'center'
                     },
                     width: 500,
+                    
                     height: 500,
                     scene: {
                         xaxis: { title: 'X' },
@@ -141,7 +143,7 @@ export default function Chartscomponent2(props) {
     };
 
     return (
-        <div className={`col-6 my-3`} style={{ height: '500px', width: `${props.width}` }}>
+        <div className={`col-lg-6 my-3`} style={{ height: '500px', width: `${props.width}` }}>
             {chartMap[props.type] || chartMap.bar}
         </div>
     );

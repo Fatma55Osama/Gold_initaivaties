@@ -53,12 +53,17 @@
         .margenstart{
             margin-left: 110px;
         }
-        #parts{
+        /* #parts{
             width: 100%;
-        }
+        } */
        
     }
      #footerbottom{
             width: 100%;
         }
+  }
+  @media screen and (max-width: 767px) {
+    #footerbottom{
+        font-size: 14px;
+    }
   }

@@ -11,7 +11,7 @@ export default function Interlocuter() {
       <div className='container d-flex flex-column text-center justify-content-evenly '>
         <h2>محاور المبادرة</h2>
         {about && (
-          <div className='col-12 d-flex justify-content-between gap-4'>
+          <div className='col-12 d-flex flex-column flex-md-row  justify-content-between gap-4'>
             <Link to="/about" state={{ targetSection: 'section1' }} className='nav-link container d-flex' id={styles.imgbg1} data-aos="fade-up"
               data-aos-offset="5" data-aos-delay={400} >
               <div className=' col-12 my-2' id={styles.border}>

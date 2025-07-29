@@ -2,10 +2,11 @@ import React from 'react'
 import styles from './index.module.css'
 import { useModalpdf, usepathimg } from '../../Store'
 import { IoMdCloseCircle } from 'react-icons/io'
+import { getPathImg } from '../../configLoader'
 
 export default function Modalpdf(props) {
     const { closeModalpdf } = useModalpdf()
-    const { pathimg } = usepathimg()
+    const pathimg  = getPathImg()
 
     return (
         <div

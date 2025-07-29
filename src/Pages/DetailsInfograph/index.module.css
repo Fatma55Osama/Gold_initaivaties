@@ -37,7 +37,6 @@
 
       border-top: 2px solid #cba15f;
       min-height: 157px;
-      
     }
   }
 }
@@ -67,13 +66,13 @@
 #newscontainer {
   overflow: hidden;
   #infoParagraph {
-        color: rgba(0, 0, 0, 0.5);
-        font-family: "GE SS Two-Light";
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 30px;
-        vertical-align: middle;
-      }
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "GE SS Two-Light";
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    vertical-align: middle;
+  }
 }
 #h3info {
   color: #000000;
@@ -84,7 +83,8 @@
   letter-spacing: 0%;
   text-align: right;
   vertical-align: top;
-  margin-right: 100px !important;
+  /* margin-right: 100px !important; */
+  padding-right:110px ;
   /* direction:rtl; */
 }
 
@@ -96,10 +96,60 @@
   height: auto;
 }
 .activelink {
-    color:var(--purpleColor) !important;
-    text-decoration-color:var(--purpleColor) !important;
-    text-decoration-line: underline !important;
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 10px;
-    
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}
+@media (max-width: 768px) {
+  #h3info {
+    margin-right: 0px !important;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-right: 15px;
   }
+
+  #detailsinfo {
+    padding: 0 1rem;
+  }
+
+  #newscontainer {
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  #newscontainer img {
+    width: 100% !important;
+    height: auto !important;
+    margin: 10px 0 !important;
+  }
+
+  #infoParagraph {
+    p {
+      text-align: justify;
+      font-size: 15px;
+      line-height: 28px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  #h3info {
+    font-size: 1.3rem;
+    margin-right: 0 !important;
+  }
+
+  #infoParagraph {
+    font-size: 14px;
+    line-height: 26px;
+  }
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  #newscontainer img {
+    width: 70% !important;
+    height: auto !important;
+    margin: 10px 0 !important;
+  }
+
+}

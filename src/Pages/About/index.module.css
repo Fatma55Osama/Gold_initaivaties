@@ -328,3 +328,136 @@ button{
     color:white ;
   }
 }
+/* 📱 الهواتف المحمولة */
+@media screen and (max-width: 767px) {
+   #About{
+    min-height: 500px;
+    #AboutLogo{
+      height: 0px;
+    }
+  }
+  
+  #LinesImg,
+  #MinisterImg,
+  #PresImg,
+  #StructImg {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 20px;
+  }
+
+  #CRegtangle,
+  #Lines {
+    flex-direction: column !important;
+    padding: 10px 0 !important;
+      p{
+      font-size: 15px !important;
+
+    }
+  }
+
+  #About #AboutLogo {
+    width: 100% !important;
+    height: 200px !important;
+  }
+
+  .sectionlink {
+    font-size: 14px !important;
+    margin: 0 5px !important;
+  }
+
+  h3 {
+    font-size: 24px !important;
+  }
+
+  p,
+  #accorddescription {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    
+  }
+ #accorddescription {
+  margin: 0 !important;
+ }
+  #bgColor {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .accordion-button h5 {
+    font-size: 12px !important;
+    margin: 0 !important;
+  }
+  .btnback{
+   display: flex !important;
+
+  }
+#bgColor{
+  h2{
+    font-size: 35px !important;
+  }
+}
+
+}
+
+/* 🧾 التابلت */
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #About{
+    min-height: 370px;
+    #AboutLogo{
+      height: 370px;
+    }
+  }
+  /* #LinesImg,
+  #MinisterImg,
+  #PresImg
+ {
+    width: 100% !important;
+    height: auto !important;
+  } */
+
+  #CRegtangle,
+  #Lines {
+    flex-direction: column !important;
+    padding: 20px 0 !important;
+  }
+
+  .sectionlink {
+    font-size: 14px !important;
+    margin: 0 0px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  p,
+  #accorddescription {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .accordion-button h5 {
+    font-size: 18px !important;
+  }
+  #paragraphtext{
+    font-size: 14px !important;
+    p{
+      font-size: 14px !important;
+    }
+  }
+ 
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+.justifyText{
+
+
+}
+#headercontain{
+  gap: 8px !important;
+}
+#widthscreantab{
+  width: 90%;
+}
+}

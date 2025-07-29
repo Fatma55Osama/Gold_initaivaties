@@ -7,11 +7,12 @@ import { usedetailsservice, usedomain, useModalpdf, useServicemain } from '../..
 import { getAllData } from '../../Data/Repo/dataRepo'
 import Modalpdf from '../../Component/Modalpdf'
 import { FaFilePdf } from 'react-icons/fa'
+import { getDomain } from '../../configLoader'
 export default function HospitalService() {
     const parmas = useParams()
     const navigate = useNavigate()
     let id = parmas.id
-    const { domain } = usedomain()
+    const  domain  = getDomain()
     const { modalpdf, openModalpdf, closeModalpdf } = useModalpdf()
     const { allservice, setservice } = useServicemain()
 
@@ -34,7 +35,7 @@ export default function HospitalService() {
             <ServiceComponent />
             <div className={" col-12 container d-flex flex-column gap-4 pb-3 align-items-end  mt-5 mb-5 " + styles.containerhospital}>
                 <h2> {detailservice[0]?.mashoraDesc} </h2>
-                <div className='col-12 d-flex  justify-content-end my-3 gap-3'>
+                <div className='col-12 d-flex  justify-content-end my-3 gap-3' >
                     {/* <img onClick={openModalpdf} src={pdfimg} alt="PDF" width={30} height={30} /> */}
                     <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: detailservice[0]?.servDesc }}/>
                 </div>

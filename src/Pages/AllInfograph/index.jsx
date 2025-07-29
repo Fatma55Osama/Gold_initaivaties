@@ -3,6 +3,8 @@ import { useInfograph, usepathes, usepathimg } from '../../Store';
 import styles from './index.module.css'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react';
+import { getPathImg } from '../../configLoader';
+import MediaComponent from '../../Component/MediaComponent';
 
 
 export default function AllInfograph() {
@@ -10,7 +12,7 @@ export default function AllInfograph() {
     const [currentPage, setCurrentPage] = useState(1);
     const infoPerPage = 4; // عدد الأخبار في كل صفحة
     const [searchTerm, setSearchTerm] = useState('');
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
     const { path } = usepathes()
     const location = useLocation()
     function normalizeArabic(text) {
@@ -28,7 +30,7 @@ export default function AllInfograph() {
     const indexOfLastinfo = currentPage * infoPerPage;
     const indexOfFirstinfo = indexOfLastinfo - infoPerPage;
     const filteredinfo = infograph?.filter(info =>
-       normalizeArabic(info.infoTitle).includes(normalizeArabic(searchTerm))).sort((a, b) => {
+        normalizeArabic(info.infoTitle).includes(normalizeArabic(searchTerm))).sort((a, b) => {
 
             if (a.orderView !== b.orderView) {
                 return b.orderView - a.orderView;
@@ -62,7 +64,7 @@ export default function AllInfograph() {
     ];
     return (
         <div className='col-12'>
-            <div className='col-12 position-relative ' id={styles.Aboutinfo}>
+            {/* <div className='col-12 position-relative ' id={styles.Aboutinfo}>
                 <div className='col-12 ' id={styles.AboutLogoinfo}>
 
                 </div>
@@ -114,7 +116,9 @@ export default function AllInfograph() {
                 </div>
 
 
-            </header>
+            </header> */}
+              <MediaComponent searchTerm={searchTerm}
+                            handleSearch={handleSearch} />
             {/*---------------------- Start مكتبة الفيديو-------------------------*/}
             <div className=' col-12  d-flex flex-column container  '>
                 <div className=' col-12  d-flex flex-column pb-3 align-items-end mt-5'>

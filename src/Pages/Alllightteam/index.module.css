@@ -254,3 +254,124 @@
   text-align: justify;
   line-height: 1.6;
 }
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #About {
+    min-height: 370px;
+    #AboutLogo {
+      height: 370px;
+    }
+  }
+  #bgColor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    h2 {
+      font-size: 35px !important;
+    }
+    p {
+      font-size: 16px !important;
+    }
+  }
+    #cardslid {
+    width: 340px !important;
+  }
+  .textCard {
+    /* width: 100%;
+    background-color: rgba(217, 217, 217, 1);
+    padding: 10px 16px; */
+
+    p {
+      font-size: 12px !important;
+      /* line-height: 1.5;
+      margin-bottom: 6px;
+      text-align: right; */
+    }
+  }
+
+}
+@media screen and (max-width: 767px) {
+  #About {
+    min-height: 500px;
+    #AboutLogo {
+      height: 500px;
+      width: 100%;
+    }
+  }
+ 
+  
+
+   #regtangle {
+    height: auto !important;
+    p{
+      font-size: 16px !important;
+    }
+  }
+  header.container {
+    flex-direction: column;
+    align-items: flex-end !important;
+    gap: 1rem;
+    text-align: end;
+  }
+
+  #search {
+    /* width: 100%;
+    flex-direction: column;
+    align-items: stretch !important; */
+    gap: 0.5rem !important;
+  }
+
+  #search .input-container {
+    /* width: 100%; */
+  }
+
+  .cardContainer {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    gap: 25px;
+  }
+
+  #cardslid {
+     width: 350px !important;
+  height: 350px !important;
+
+  }
+
+  .card {
+
+  width: 100%;
+  height: 100%;
+    gap: 0.5rem;
+    padding: 22px 0;
+  }
+
+  .card .imgCard {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card .Cardtitle {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .card .textCard {
+    width: 90% !important;
+    padding: 10px !important;
+  }
+
+  .card .textCard p {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+
+  .noncurrentactive,
+  .currentactive {
+    padding: 5px 10px !important;
+    font-size: 13px !important;
+  }
+  #lightteam{
+    width: 100%;
+  }
+}

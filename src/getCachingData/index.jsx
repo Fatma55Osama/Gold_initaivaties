@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useAbout, useallActiveEmployees, useAwarnessMsg, usedomain, useGovs, useImportantlink, useInfograph, useinitiativenumber, useNews, useServicemain, useVedio } from '../Store'
 import { getAllData } from '../Data/Repo/dataRepo'
+import { getDomain } from '../configLoader'
 
 export default function Employeeloader() {
-  const { domain } = usedomain()
+  const  domain  = getDomain()
   const { setInfograph } = useInfograph()
   const { setImportantlink } = useImportantlink()
   const { setallEmployees } = useallActiveEmployees()

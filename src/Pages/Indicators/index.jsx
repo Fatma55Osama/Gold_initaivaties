@@ -5,6 +5,7 @@ import { getAllData } from '../../Data/Repo/dataRepo'
 import Chartscomponent2 from '../../Component/Chartscomponent2'
 import { IoIosArrowRoundBack, IoMdArrowDropdown } from 'react-icons/io'
 import TablesData from '../../Component/TablesData'
+import { getDomain } from '../../configLoader'
 export default function Indicators() {
 
     const chartTypes = [
@@ -26,7 +27,7 @@ export default function Indicators() {
     // const [bottom5, setBottom5] = useState(false);
     const { vindicatorr, setvindicator, groupBy,
         setGroupBy, } = usevindicator()
-    const { domain } = usedomain()
+    const  domain  =getDomain()
     const [filters, setFilters] = useState({
 
         byGov: false,
@@ -72,6 +73,7 @@ export default function Indicators() {
     }, [])
 
     const filtered = useMemo(() => {
+        if (!Array.isArray(vindicatorr)) return [];
         return vindicatorr.filter(item => {
             const byIndicator = selectedIndicator ? item.indName === selectedIndicator : true;
             const byService = typeService ? item.mashoraDesc === typeService : true;
@@ -119,21 +121,7 @@ export default function Indicators() {
         };
     }, [filtered]);
 
-    // 2. توزيع حسب التاريخ (خط واحد)
-    // const chartByDate = useMemo(() => {
-    //     return {
-    //         labels: filtered.map(i => `${i.monthDesc} ${i.indYear}`),
-    //         datasets: [{
-    //             label: filtered[0]?.indName || 'عدد الحالات',
-    //             data: filtered.map(i => i.indValue),
-    //             borderColor: '#AFE5FF',
-    //             backgroundColor: '#AFE5FF83',
-    //             tension: 0.4,
-    //             pointRadius: 5,
-    //             pointHoverRadius: 6,
-    //         }],
-    //     };
-    // }, [filtered]);
+  
 
     const chartByDate = useMemo(() => {
         const grouped = {};
@@ -172,7 +160,7 @@ export default function Indicators() {
         filtered.forEach(i => {
             grouped[i.govName] = (grouped[i.govName] || 0) + i.indValue;
         });
-        
+
         const top5 = Object.entries(grouped)
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5);
@@ -216,9 +204,9 @@ export default function Indicators() {
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
+                <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
                     <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
+                        <div className='col-md-9 d-flex flex-column gap-3 pb-3'>
                             <h2>مؤشرات المبادرة</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
@@ -234,7 +222,7 @@ export default function Indicators() {
                 <div className='col-12 container d-flex flex-column p-4 rounded' style={{ direction: 'rtl' }} id={styles.indecator}>
                     <div className='mb-4 d-flex align-items-center gap-2  ' id={styles.customselect}>
                         <label className='fs-5 fw-bold'>نوع الخدمة:</label>
-                        <select className={`px-5 py-1 me-5 rounded ${selectedIndicator === '' ? 'text-secondary' : 'text-dark'}`} value={typeService} onChange={(e) => handeltypeservicechange(e.target.value)}>
+                        <select className={`px-5 py-1 me-md-5 me-2 rounded ${selectedIndicator === '' ? 'text-secondary' : 'text-dark'}`} value={typeService} onChange={(e) => handeltypeservicechange(e.target.value)}>
                             <option className='text-secondary'>اختار نوع الخدمة</option>
                             {[...new Set(vindicatorr.map(i => i.mashoraDesc))].map((type, index) => (
                                 <option key={index} value={type}>{type}</option>
@@ -244,7 +232,7 @@ export default function Indicators() {
                     </div>
                     <div className='mb-4 d-flex align-items-center gap-2  ' id={styles.customselect}>
                         <label className='fs-5 fw-bold'>إسم المؤشر:</label>
-                        <select className={`px-5 py-1 me-5 rounded col-6 ${selectedIndicator === '' ? 'text-secondary' : 'text-dark'}`} value={selectedIndicator} onChange={(e) => setSelectedIndicator(e.target.value)}>
+                        <select className={`px-5 py-1 me-md-5 me-2 rounded col-8 col-md-6 ${selectedIndicator === '' ? 'text-secondary' : 'text-dark'}`} value={selectedIndicator} onChange={(e) => setSelectedIndicator(e.target.value)}>
                             <option>اختار اسم المؤشر</option>
                             {[...new Set(
                                 vindicatorr
@@ -264,7 +252,7 @@ export default function Indicators() {
 
                         {/* من سنة */}
                         <div className={`position-relative`}>
-                            <select className={`px-4 py-1 w-auto me-5 rounded ${selectedIndicator === '' ? 'text-secondary' : 'text-dark'}`} value={fromYear} onChange={(e) => setFromYear(e.target.value)}>
+                            <select className={`px-4 py-1 w-auto me-md-5 rounded ${selectedIndicator === '' ? 'text-secondary' : 'text-dark'}`} value={fromYear} onChange={(e) => setFromYear(e.target.value)}>
                                 <option>سنة</option>
                                 {[...new Set(vindicatorr.map(i => i.indYear))].map((year, index) => (
                                     <option key={index} value={year}>{year}</option>
@@ -307,7 +295,7 @@ export default function Indicators() {
                             </div>
                         ))}
                     </div>
-                    <div className="mb-3 mt-5 position-relative d-flex col-12" style={{ maxWidth: '300px' }}>
+                    <div className="mb-3 mt-5 position-relative d-flex align-items-center col-12" style={{ maxWidth: '300px' }}>
                         <label className="fw-bold d-block mb-2 col-6 ">نوع الرسم البياني:</label>
 
                         <div className={`position-relative ${styles.customselect}`}>
@@ -333,27 +321,10 @@ export default function Indicators() {
                 </div>
 
             </div>
-            {/*            
-      <div className='col-12 container p-4 rounded' style={{ direction: 'rtl' }}>
-        <div className='mb-4 d-flex align-items-center gap-2'>
-          <label className='fs-5 fw-bold'>تجميع حسب:</label>
-          <select
-            className='form-select w-auto'
-            value={groupBy}
-            onChange={(e) => setGroupBy(e.target.value)}
-          >
-            <option value="indicator">اسم المؤشر</option>
-            <option value="gov">المحافظة</option>
-            <option value="month">تاريخ البيان</option>
-          </select>
-        </div>
-      </div> */}
+            
 
-            <div className='container'>
-                {/* <MyChartComponent rawData={vindicatorr} /> */}
-                {/* <Chartscomponent2 data={chartData} /> */}
-            </div>
-            <div className="container mb-5 d-flex flex-wrap justify-content-between gap-4 align-items-center">
+          
+            <div className="container flex-lg-row flex-column-reverse mb-5 d-flex flex-wrap justify-content-between gap-4 align-items-center">
                 {(typeService === '' || selectedIndicator === '') ? (
                     /* الخطوة الأولى: لم يُحدَّد نوع الخدمة أو اسم المؤشر */
                     <div className="col-12 text-center d-flex justify-content-center align-items-center">
@@ -364,29 +335,29 @@ export default function Indicators() {
                 ) : filtered.length === 0 ? (
                     /* لا توجد بيانات بعد الفلترة */
                     <div className="col-12 text-center d-flex justify-content-center align-items-center">
-                        <p className="text-center fs-4 text-danger">
+                        <p className="text-center fs-md-4 text-danger">
                             لا توجد بيانات متاحة بناءً على الاختيارات الحالية.
                         </p>
                     </div>
                 ) : !Object.values(filters).some(v => v) ? (
                     /* ✅ كل الـ checkboxes غير مفعّلة → لا نعرض شيئًا */
                     <div className="col-12 text-center d-flex justify-content-center align-items-center">
-                        <p className="text-center fs-4 text-secondary">
+                        <p className="text-center fs-md-4 text-secondary">
                             قم بتفعيل أحد الفلاتر لعرض الرسم البياني.
                         </p>
                     </div>
                 ) : (
                     /* يوجد على الأقل فلتر واحد مفعَّل → نعرض الرسومات المحددة */
                     <>
-                        {filters.top5 && <Chartscomponent2 data={chartTop5} title={'أعلى 5 محافظات'} selectedIndicator={selectedIndicator} type={chartType} />}
+                        {filters.top5 && <Chartscomponent2 data={chartTop5} name="top5" title={'أعلى 5 محافظات'} selectedIndicator={selectedIndicator} type={chartType} />}
                         {filters.top5 && <TablesData name="اسم المحافظة" bgColor="#724780"
                             data={chartTop5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartTop5.datasets[0].data[i]
                             }))} />
                         }
-                        {filters.bottom5 && <Chartscomponent2 data={chartBottom5} title={' أقل 5 محافظات'} selectedIndicator={selectedIndicator} type={chartType} />}
-                        {filters.bottom5 && <TablesData name="اسم المحافظة"  bgColor="#724780"
+                        {filters.bottom5 && <Chartscomponent2 data={chartBottom5} name="bottom5" title={' أقل 5 محافظات'} selectedIndicator={selectedIndicator} type={chartType} />}
+                        {filters.bottom5 && <TablesData name="اسم المحافظة" bgColor="#724780"
                             data={chartBottom5.labels.map((label, i) => ({
                                 govName: label,
                                 indValue: chartBottom5.datasets[0].data[i]

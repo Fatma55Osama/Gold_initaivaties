@@ -35,7 +35,29 @@
     transition: transform 0.3s ease;
   }
   .justifyText {
-  text-align: justify;
-  line-height: 2;
+    text-align: justify;
+    line-height: 2;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+.containerhospital{
+  h2{
+    font-size: 32px !important;
+  }
+  p{
+    font-size: 15px !important;
+  }
+}
+}
+@media screen and (max-width: 767px) {
+  .containerhospital{
+   text-align: right !important;
+  h2{
+    font-size: 22px !important;
+    width: 100%;
+  }
+  p{
+    font-size: 14px !important;
+  }
 }
 }

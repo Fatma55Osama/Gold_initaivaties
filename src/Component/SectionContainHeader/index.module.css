@@ -23,7 +23,7 @@
     align-self: center;
   }
 }
-@media screen and (max-width: 992px) and (min-width: 768px) {
+/* @media screen and (max-width: 992px) and (min-width: 768px) {
   #logodiv1 {
     img {
       width: 250px;
@@ -79,5 +79,47 @@
         line-height: 16px;
       }
     }
+  }
+} */
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .logodiv1 img {
+    width: 250px;
+    height: 150px;
+  }
+  .motherbaby img {
+    width: 180px;
+    height: 260px;
+  }
+  .bgColor .textSection h5 {
+    text-align: center !important;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .logodiv1 img {
+    width: 260px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logodiv1 img {
+    width: 100px;
+    height: 100px;
+  }
+  .motherbaby img {
+    width: 65px;
+    height: 185px;
+  }
+  .bgColor .textSection h3 {
+    font-size: 14px;
+  }
+  .bgColor .textSection h4 {
+    font-size: 14px;
+  }
+  .bgColor .textSection h5 {
+    text-align: center !important;
+    font-size: 11px !important;
+    line-height: 16px;
   }
 }

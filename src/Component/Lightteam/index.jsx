@@ -3,15 +3,23 @@ import styles from './index.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 import { useallActiveEmployees, usepathimg } from '../../Store';
+import { getPathImg } from '../../configLoader';
 
 export default function Lightteam() {
     const { Employees } = useallActiveEmployees()
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
     const [filteremployess, setFilteremployess] = useState([])
     useEffect(() => {
-        let copyfilteremploy = Employees.filter((el) => { return el.onMainPage }).sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate))
-        setFilteremployess(copyfilteremploy)
+        if (!Array.isArray(Employees)) {
+            console.warn('Employees is not an array:', Employees);
+            return;
+        }
 
+        const filtered = Employees
+            .filter(el => el.onMainPage)
+            .sort((a, b) => new Date(b.honorDate) - new Date(a.honorDate));
+
+        setFilteremployess(filtered);
     }, [Employees])
     return (
         <div className={styles.lighteam}>
@@ -34,14 +42,14 @@ export default function Lightteam() {
                         const formattedDate = el.honorDate?.split("T")[0].replace(/-/g, "/");
                         return (
                             <SwiperSlide key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} >
-                                <div className={styles.card + " d-flex flex-column justify-content-center align-items-center gap-1"}>
+                                <div className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1"}>
                                     <div className={styles.imgCard}>
                                         <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
                                     </div>
                                     <span className={styles.Cardtitle}>
                                         {el.empName}
                                     </span>
-                                    <div className={styles.textCard + " text-end col-7 col-md-8 col-lg-7 px-4 py-3"}>
+                                    <div className={styles.textCard + " text-end col-10 col-md-8 col-lg-7 px-4 py-md-3"}>
                                         <p>المحافظة: {el.govName}</p>
                                         <p>الوظيفة: {el.empJob}</p>
                                         <p>تاريخ التكريم: {formattedDate}</p>

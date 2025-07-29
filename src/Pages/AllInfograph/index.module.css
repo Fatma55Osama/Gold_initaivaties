@@ -198,3 +198,21 @@ h3 {
     text-underline-offset: 10px;
     
   }
+    @media (max-width: 768px) {
+     #phdivinfo{
+      width: 300px !important;
+     }
+     #Imginfo{
+      width: 100%;
+     }
+     #Titleinfo{
+      height: 80px;
+        #infoTitle{
+          margin: 20px 7px;
+        }
+     }
+    }
+
+@media screen and (max-width: 992px) and (min-width: 768px) {}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {}

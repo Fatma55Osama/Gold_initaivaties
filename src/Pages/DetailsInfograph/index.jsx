@@ -4,16 +4,18 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { getAllData } from '../../Data/Repo/dataRepo';
 import { usedetailsinfo, usedomain, usepathes, usepathimg } from '../../Store';
+import { getDomain, getPathImg } from '../../configLoader';
+import MediaComponent from '../../Component/MediaComponent';
 export default function DetailsInfograph() {
 
     const { path } = usepathes()
     const location = useLocation()
     const { detailinfo, setdetailsinfo } = usedetailsinfo()
 
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
 
 
-    const { domain } = usedomain()
+    const domain = getDomain()
     const params = useParams();
     let id = params.id;
     const formattedDate = new Date(detailinfo.publicationDate).toLocaleDateString('ar-EG', {
@@ -30,7 +32,7 @@ export default function DetailsInfograph() {
     }, [])
     return (
         <div className='col-12' id={styles.parentalldiv}>
-            <div className='col-12 position-relative ' id={styles.About}>
+            {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
@@ -50,19 +52,7 @@ export default function DetailsInfograph() {
                 </div>
             </div>
             <header className=' col-12  d-flex justify-content-end mt-5   container  '>
-                {/* <div className=' d-flex align-items-center '>
-                       <button>بحث</button>
-                       <IoMdArrowDropdown />
-                       <input type="text" />
-                   </div> */}
-                {/* <div className='d-flex bg-danger align-items-center gap-3' id={styles.search}>
-                    <button className='py-0 px-4 border-0'>بحث</button>
-                    <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
-
-                        <span style={{ marginRight: '8px', color: '#aaa' }}><IoMdArrowDropdown style={{ color: "black" }} /></span>
-                        <input type="text" placeholder="...بحث" className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
-                    </div>
-                </div> */}
+              
 
                 <div className='d-flex col-8  gap-4 justify-content-between align-items-center '>
                     {
@@ -91,9 +81,9 @@ export default function DetailsInfograph() {
                 </div>
 
 
-            </header>
-
-            <div className=' flex-column mt-5 '>
+            </header> */}
+            <MediaComponent none="d-none"  align="align-items-end"/>
+            <div className='  d-flex align-items-end justify-content-center flex-column mt-5 '>
                 <h3 id={styles.h3info}>الإنفوجراف</h3>
             </div>
             <div className='col-12' id={styles.detailsinfo}>

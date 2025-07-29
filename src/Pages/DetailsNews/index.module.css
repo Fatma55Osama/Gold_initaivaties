@@ -37,7 +37,6 @@
 
       border-top: 2px solid #cba15f;
       min-height: 157px;
-      
     }
   }
 }
@@ -67,13 +66,13 @@
 #newscontainer {
   overflow: hidden;
   #newsParagraph {
-        color: rgba(0, 0, 0, 0.5);
-        font-family: "GE SS Two-Light";
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 30px;
-        vertical-align: middle;
-      }
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "GE SS Two-Light";
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    vertical-align: middle;
+  }
 }
 #h3news {
   color: #000000;
@@ -96,10 +95,17 @@
   height: auto;
 }
 .activelink {
-    color:var(--purpleColor) !important;
-    text-decoration-color:var(--purpleColor) !important;
-    text-decoration-line: underline !important;
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 10px;
-    
+  color: var(--purpleColor) !important;
+  text-decoration-color: var(--purpleColor) !important;
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 10px;
+}
+@media (max-width: 768px) {
+  #colimgtitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+}

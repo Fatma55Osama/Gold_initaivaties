@@ -4,12 +4,14 @@ import { useNews, usepathes, usepathimg } from '../../Store';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
+import { getPathImg } from '../../configLoader';
+import MediaComponent from '../../Component/MediaComponent';
 
 export default function AllNews() {
     const { path } = usepathes()
     const location = useLocation()
 
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
     function normalizeArabic(text) {
         return text
             .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
@@ -28,7 +30,7 @@ export default function AllNews() {
     const [searchTerm, setSearchTerm] = useState('');
     const indexOfLastNews = currentPage * newsPerPage;
     const indexOfFirstNews = indexOfLastNews - newsPerPage;
-    const filteredNews = allnews.filter(news =>
+    const filteredNews = allnews?.filter(news =>
         normalizeArabic(news.title).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
     const filteredNewsPerPage = filteredNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -48,13 +50,13 @@ export default function AllNews() {
     };
     return (
         <div className='col-12' id={styles.parentalldiv}>
-            <div className='col-12 position-relative ' id={styles.About}>
+            {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
+                <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
                     <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
+                        <div className='col-md-9 d-flex flex-column gap-3 pb-3'>
                             <h2>الركن الإعلامي</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
@@ -67,7 +69,7 @@ export default function AllNews() {
                     </div>
                 </div>
             </div>
-            <header className=' col-12 d-flex justify-content-between align-items-center mt-5   container  '>
+            <header className=' col-12 d-flex flex-column-reverse  flex-lg-row justify-content-between align-items-lg-center mt-5 gap-4 gap-lg-0  container  '>
 
                 <div className='d-flex align-items-center gap-3' id={styles.search}>
                     <button className='py-0 px-4 border-0'>بحث</button>
@@ -78,7 +80,7 @@ export default function AllNews() {
                     </div>
                 </div>
 
-                <div className='d-flex   gap-4 justify-content-between align-items-center '>
+                <div className='d-none d-md-flex  gap-4 justify-content-between align-items-center '>
 
                     {
                         path
@@ -106,7 +108,9 @@ export default function AllNews() {
                 </div>
 
 
-            </header>
+            </header> */}
+            <MediaComponent searchTerm={searchTerm}
+                handleSearch={handleSearch} />
             {/*---------------------- Start الأخبار-------------------------*/}
 
             <div className='col-12 container d-flex flex-column'>
@@ -128,14 +132,14 @@ export default function AllNews() {
                                     });
                                     const shortText = el.newsText.split(/\s+/).slice(0, 30).join(' ') + '...';
                                     return (
-                                        <div className='col-12 container d-flex  pb-2 ' id={styles.CRegtangle} key={el.newsId} >
+                                        <div className='col-12 container d-flex  flex-md-row  pb-2 ' id={styles.CRegtangle} key={el.newsId} >
                                             <div className='container text-end d-flex justify-content-end '>
                                                 <Link className='col-12 container d-flex flex-column nav-link '>
-                                                   <Link className='nav-link ' to={`/mediacorner/detailsnews/${el.newsId}`} ><h5>{el.title}</h5></Link> 
+                                                    <Link className='nav-link ' to={`/mediacorner/detailsnews/${el.newsId}`} ><h5>{el.title}</h5></Link>
                                                     <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <h6>{formattedDate}</h6></Link>
-                                                    <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <p className={styles.p + " me-4 p-0"} dangerouslySetInnerHTML={{ __html: shortText }}/></Link>
-                                                   
-                                                    <Link to={`/mediacorner/detailsnews/${el.newsId}`}  className={styles.btnback + '  rounded-3 nav-link '}>
+                                                    <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <p className={styles.p + " me-4 p-0"} dangerouslySetInnerHTML={{ __html: shortText }} /></Link>
+
+                                                    <Link to={`/mediacorner/detailsnews/${el.newsId}`} className={styles.btnback + '  rounded-3 nav-link '}>
 
                                                         <IoIosArrowRoundBack className={styles.iconarrow} />
                                                         <button className='rounded-3 py-1 px-4' > إقرأ المزيد </button>

@@ -8,6 +8,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { useAwarnessMsg, usepathes } from '../../Store';
 import { useState } from 'react';
+import MediaComponent from '../../Component/MediaComponent';
 
 export default function Messages() {
     const { allawarness } = useAwarnessMsg()
@@ -59,7 +60,7 @@ export default function Messages() {
 
     return (
         <div className='col-12' id={styles.parentalldiv}>
-            <div className='col-12 position-relative ' id={styles.About}>
+            {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
@@ -112,7 +113,9 @@ export default function Messages() {
                 </div>
 
 
-            </header>
+            </header> */}
+            <MediaComponent searchTerm={searchTerm}
+                                        handleSearch={handleSearch} />
             {/*---------------------- Start الرسائل التوعوية-------------------------*/}
             <div className='col-12 mb-5  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                 <div className='col-11 d-flex  flex-column pb-3 align-items-end'>

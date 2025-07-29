@@ -5,7 +5,7 @@ import { useAbout } from '../../Store'
 import { Link } from 'react-router-dom'
 export default function About() {
   const { allabout, setallabout } = useAbout()
-  console.log("allabout", allabout);
+
   const shortText = allabout?.[0]?.aboutText.split(/\s+/).slice(0, 77).join(' ') + '.';
 
   return (

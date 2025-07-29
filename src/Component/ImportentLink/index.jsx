@@ -7,12 +7,13 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import './index.scss'
+import { getPathImg } from '../../configLoader';
 export default function ImportentLink() {
   const { importantlink } = useImportantlink()
-  const { pathimg } = usepathimg()
+  const pathimg = getPathImg()
   const [filterImportant, setfilterImportant] = useState([])
   useEffect(() => {
-    let copyfilterImportant = importantlink.sort((a, b) => (a.linkOrder ?? Infinity) - (b.linkOrder ?? Infinity));
+    let copyfilterImportant = importantlink?.sort((a, b) => (a.linkOrder ?? Infinity) - (b.linkOrder ?? Infinity));
     setfilterImportant(copyfilterImportant)
   }, [importantlink])
   return (
@@ -62,7 +63,7 @@ export default function ImportentLink() {
                   <SwiperSlide key={el.linkId}>
 
                     <a rel="noopener noreferrer" href={el.linkURL} target='_blank' className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-                      <img src={`${pathimg}/Links/${el.linkImage}`}  alt="" />
+                      <img src={`${pathimg}/Links/${el.linkImage}`} alt="" />
                     </a>
                   </SwiperSlide>
                 )

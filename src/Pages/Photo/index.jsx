@@ -2,7 +2,6 @@
 import styles from './index.module.css'
 import { IoMdArrowDropdown, IoMdClose, IoMdCloseCircle } from 'react-icons/io';
 import { Link, useLocation } from 'react-router-dom';
-import reyse from '../../assets/Upfiles/Video/president.png'
 import { usedomain, usepathes, usepathimg, usePhotoo } from '../../Store';
 import { useEffect, useState } from 'react';
 import { getAllData } from '../../Data/Repo/dataRepo';
@@ -11,6 +10,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { getDomain, getPathImg } from '../../configLoader';
+import MediaComponent from '../../Component/MediaComponent';
 
 export default function Photo() {
     const { path } = usepathes()
@@ -28,12 +29,12 @@ export default function Photo() {
             .trim()
             .toLowerCase();
     }
-  
+
     const { allphoto, setallphoto } = usePhotoo()
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
 
     const [filterphoto, setfilterphoto] = useState([])
-    const { domain } = usedomain()
+    const domain = getDomain()
     useEffect(() => {
         getAllData.get_all_photo(domain).then((res) => {
             setallphoto(res)
@@ -95,7 +96,7 @@ export default function Photo() {
     };
     return (
         <div className='col-12'>
-            <div className='col-12 position-relative ' id={styles.About}>
+            {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
@@ -148,7 +149,10 @@ export default function Photo() {
                 </div>
 
 
-            </header>
+            </header> */}
+            <MediaComponent searchTerm={searchTerm}
+                handleSearch={handleSearch} />
+
             {/*---------------------- Start ألبوم الصور-------------------------*/}
             <div className='col-12 ' id={styles.Lines}>
                 <div className='col-12 container'>
@@ -158,7 +162,7 @@ export default function Photo() {
                     <div className='  pb-4 d-flex   ' id={styles.CRegtangle}  >
                         {/**هنا هنعمل الmap */}
 
-                        <div className='d-flex flex-wrap justify-content-start gap-4 align-items-start col-12 pt-4 pe-4'>
+                        <div className='d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-md-start gap-4 align-items-center align-items-md-start col-12 pt-4 pe-4'>
                             {
                                 filteredNewsPerPage.length === 0 ? (
                                     <div className=' text-center col-12'>
@@ -171,7 +175,7 @@ export default function Photo() {
                                         year: 'numeric',
                                     });
                                     return (
-                                        <div onClick={() => openAlbum(el.albumId)} id={styles.phdiv} key={el.albumId}>
+                                        <div onClick={() => openAlbum(el.albumId)}  className="mx-auto" id={styles.phdiv} key={el.albumId}>
                                             <div id={styles.Img}>
                                                 <img src={`${pathimg}/Photo/${el.coverPhoto}`} alt="" />
                                             </div>
@@ -188,11 +192,11 @@ export default function Photo() {
                         {/* </div>*/}
                         {isModalOpen && (
                             <div className={styles.modal}>
-                                <div className='d-flex justify-content-start align-items-start my-3 mx-4'>
+                                <div className='d-flex justify-content-start align-items-start my-2 mx-4'>
 
                                     {/* <button className={styles.button2 + ' bg-danger'} ><IoMdClose className={styles.iconclose} /></button> */}
-                                                                <IoMdCloseCircle onClick={closeModal}id={styles.iconarrowclose} />
-                                    
+                                    <IoMdCloseCircle onClick={closeModal} id={styles.iconarrowclose} />
+
                                 </div>
                                 {/* <div>
                                     {selectedAlbumPhotos.map(photo => (

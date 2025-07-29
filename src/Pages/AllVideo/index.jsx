@@ -10,6 +10,8 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import { usepathes, usepathimg, useVedio } from '../../Store';
 import iconvedio from '../../assets/Frame.png'
 import { useState } from 'react';
+import { getPathImg } from '../../configLoader';
+import MediaComponent from '../../Component/MediaComponent';
 export default function AllVideo() {
     const { path } = usepathes()
 
@@ -57,11 +59,11 @@ export default function AllVideo() {
         { label: "ألبومات الصور", to: "/Photo" },
         { label: "أخبار المبادرة", to: "/mediacorner" },
     ];
-    const { pathimg } = usepathimg()
+    const pathimg = getPathImg()
 
     return (
         <div className='col-12'>
-            <div className='col-12 position-relative ' id={styles.About}>
+            {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
@@ -114,7 +116,9 @@ export default function AllVideo() {
                 </div>
 
 
-            </header>
+            </header> */}
+            <MediaComponent searchTerm={searchTerm}
+                handleSearch={handleSearch} />
             {/*---------------------- Start مكتبة الفيديو-------------------------*/}
             <div className=' col-12  d-flex flex-column   '>
 
@@ -138,7 +142,7 @@ export default function AllVideo() {
                                 const shortText = el.vedioTitle.split(/\s+/).slice(0, 90).join(' ') + '...';
 
                                 return (
-                                    <div key={el.vedioId} className='  flex-column  col-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
+                                    <div key={el.vedioId} className='  flex-column col-12  col-md-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                                         <div className='  d-flex  flex-column ' id={styles.CRegtangle}  >
                                             <div className=' text-wrap flex-column ' id={styles.phdiv}>
                                                 <div className=' flex-column position-relative' id={styles.imgrayse} >

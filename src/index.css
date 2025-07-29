@@ -170,3 +170,26 @@ canvas {
   /* transform: perspective(800px) rotateX(5deg); */
   border-radius: 10px;
 }
+.loader-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.loader-spinner-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.centered-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px; /* حجم اللوجو */
+  height: 70px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}

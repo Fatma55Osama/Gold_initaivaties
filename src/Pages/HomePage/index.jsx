@@ -63,22 +63,7 @@ export default function HomePage() {
     setFilterawarness(copyfilterAwarness)
   }, [allawarness])
   const { allservice, setservice } = useServicemain()
-  // useEffect(() => {
-  //   const mergedData = originalBabyData.map(baby => {
-  //     const match = allservice.find(apiItem =>
-  //       apiItem.mashoraDesc?.trim().toLowerCase() === baby.title?.trim().toLowerCase()
-  //     );
-  //     return {
-  //       ...baby,
-  //       mashoraId: match?.mashoraId || null,
-  //       servDesc: match?.servDesc || '',
-  //       mashoraFile: match?.mashoraFile || null,
-  //       mashoraDesc: match?.mashoraDesc || baby.title, // ده هو اللي هيظهر في الواجهة
-  //     };
-  //   });
 
-  //   setBaby(mergedData);
-  // }, [allservice]);
   useEffect(() => {
     const merged = allservice
       .filter(item => imageMap[item.mashoraDesc])

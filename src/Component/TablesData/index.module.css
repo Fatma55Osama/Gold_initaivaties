@@ -7,9 +7,9 @@
 }
 
 .customTable {
-
   border-collapse: separate;
   border-spacing: 0 10px;
+  width: 100%;
   /* border: 2px solid transparent; */
 }
 
@@ -39,4 +39,27 @@
   border-top: 1px solid #eee;
   font-weight: 500;
   color: #333;
+}
+@media (max-width: 768px) {
+  #widthtable{
+    width: 100% !important;
+  }
+  .tableWrapper{
+    width: 100% !important;
+  }
+  .customTable{
+    /* width: 200px  !important; */
+  }
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+ #widthtable{
+    width: 100% !important;
+  }
+  .tableWrapper{
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
 }

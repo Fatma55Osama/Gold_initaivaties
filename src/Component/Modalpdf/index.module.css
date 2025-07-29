@@ -17,3 +17,9 @@
     color:white;
   }
 }
+@media screen and (max-width: 767px) {
+  iframe{
+    width: 310px !important;
+
+  }
+}

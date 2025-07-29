@@ -5,10 +5,11 @@ import { usedomain, usevindicator } from '../../Store';
 import { getAllData } from '../../Data/Repo/dataRepo';
 import { IoPrint } from 'react-icons/io5';
 import ChartBar from '../ChartBar';
+import { getDomain } from '../../configLoader';
 
 export default function Report2() {
     const { vindicatorr, setvindicator } = usevindicator();
-    const { domain } = usedomain();
+    const  domain  = getDomain();
     const [selectedIndicator, setSelectedIndicator] = useState('');
     const [chartImg, setChartImg] = useState('');
 

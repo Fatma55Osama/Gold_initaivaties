@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { getDomain, getPathImg } from "../configLoader";
 
 export const usepathes = create(() => ({
   // path: [
@@ -19,6 +20,7 @@ export const usepathes = create(() => ({
       name: "تواصل معنا",
       mainPath: "/contactus",
       links: [
+        { label: "الأسئلة الشائعة", path: "/question" },
         { label: "رأيك يهمنا", path: "/opinion" },
         { label: "تواصل معنا", path: "/contactus" },
       ],
@@ -71,7 +73,7 @@ export const usepathes = create(() => ({
 //   setphoto: (photo) => set(() => ({ dataphotos: photo })),
 // }));
 export const usedomain = create(() => ({
-  domain: "https://localhost:7220",
+  domain: getDomain(),
 }));
 export const useallActiveEmployees = create((set) => ({
   Employees: [
@@ -147,7 +149,7 @@ export const usedetailsservice = create((set) => ({
   setdetailsservice: (val) => set(() => ({ detailservice: val })),
 }));
 export const usepathimg = create(() => ({
-  pathimg: "/src/assets/Upfiles",
+  pathimg:getPathImg(),
 }));
 export const usecontactfooter = create((set) => ({
   contactfooter: [],
@@ -158,4 +160,8 @@ export const usevindicator = create((set) => ({
   setvindicator: (value) => set(() => ({ vindicatorr: value })),
   groupBy: "indicator", // أو 'gov' أو 'month'
   setGroupBy: (value) => set({ groupBy: value }),
+}));
+export const usecommonquestion = create((set) => ({
+ commonquestion: {},
+  setcommonquestion: (val) => set(() => ({ commonquestion: val })),
 }));
