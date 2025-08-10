@@ -84,6 +84,12 @@
   }
 
 }
+#search {
+  button {
+    background-color: #724780;
+    color: white;
+  }
+}
 @media screen and (max-width: 767px) {
   #About {
     min-height: 500px;

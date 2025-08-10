@@ -33,10 +33,10 @@ export default function Footer() {
   };
 
   const [Baby, setBaby] = useState([]);
-  const  domain  = getDomain()
+  const domain = getDomain()
   const { allservice, setservice } = useServicemain()
   const { contactfooter, setcontactfooter } = usecontactfooter()
-  console.log("domain",domain)
+  console.log("domain", domain)
   useEffect(() => {
     const merged = allservice
       .filter(item => imageMap[item.mashoraDesc])
@@ -68,7 +68,9 @@ export default function Footer() {
             <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/contactus'}>أرقام التواصل</Link>
             {/* <li id={styles.li} className='d-flex align-items-center'>إسأل/ إستشر</li>
             <li id={styles.li} className='d-flex align-items-center'>أسئلة شائعة</li> */}
-            <Link id={styles.li} className='d-flex align-items-center nav-link'>رأيك يهمنا</Link>
+            <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/opinion'}>رأيك يهمنا</Link>
+            <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/question'}>الأسئلة الشائعة</Link>
+
           </ul>
           <ul className='d-flex flex-column align-items-end gap-3'>
             <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/mediacorner'}>الأخبار</Link>
@@ -130,10 +132,10 @@ export default function Footer() {
                     تليفون :{contactfooter[0]?.mobileNum}</span>
                 </div>
                 <div className='col-lg-9 d-flex flex-column flex-lg-row gap-4 gap-md-4 gap-lg-0 justify-content-between' id={styles.parts}>
-                  <a href= {contactfooter[0]?.location}  target='_blank' className='nav-link'> 
-                  
-                  
-                  <span className={styles.margenstart}> {contactfooter[0]?.address}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
+                  <a href={contactfooter[0]?.location} target='_blank' className='nav-link'>
+
+
+                    <span className={styles.margenstart}> {contactfooter[0]?.address}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
                   </a>
                   <span>{contactfooter[0]?.email} :  البريد الإلكتروني <MdEmail style={{ fontSize: "24px" }} /></span>
 

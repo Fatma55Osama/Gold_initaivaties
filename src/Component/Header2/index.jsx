@@ -13,6 +13,10 @@ import Accordion from 'react-bootstrap/Accordion';
 import './index.scss'
 import { getAllData } from '../../Data/Repo/dataRepo'
 import { getDomain } from '../../configLoader'
+import { FaXTwitter } from "react-icons/fa6";
+import { BsPersonCircle } from "react-icons/bs";
+
+
 export default function Header2() {
     const { path } = usepathes()
     const [activePath, setActivePath] = useState()
@@ -39,24 +43,28 @@ export default function Header2() {
                 <div className={styles.part1 + "  px-4 d-flex justify-content-between py-2 px-md-3"}>
                     <div className='d-none d-md-flex align-items-center gap-2 gap-md-4 '>
                         {/* <IoSearch className={styles.icon} /> */}
-                        <div className='d-flex gap-2 gap-md-3'>
+                        <div className='d-flex align-items-center gap-2 gap-md-3'>
+
+                            <Link to={'/login'}><BsPersonCircle className={styles.icon} /></Link>
+
                             <a href="https://www.facebook.com/share/16iwfH8UVT/?mibextid=qi2Omg" target='_blank'>
 
-                                <FaFacebook className={styles.icon} />
+                                <FaFacebook className={styles.icon} title='فيسبوك' />
                             </a>
                             <a href="https://instagram.com/mohpegypt?igshid=1t65jqxaoiwqb" target='_blank'>
 
-                                <PiInstagramLogoFill className={styles.icon} />
+                                <PiInstagramLogoFill className={styles.icon} title='انستجرام' />
                             </a>
 
 
                             <a href="https://www.youtube.com/channel/UCzEGfjELHCOQxgPr0dll1pA?pbjreload=10" target='_blank'>
 
-                                <FaYoutube className={styles.icon} />
+                                <FaYoutube className={styles.icon} title='يوتيوب' />
                             </a>
                             <a href="https://x.com/mohpegypt" target='_blank'>
 
-                                <AiFillTwitterCircle className={styles.icon} />
+                                <FaXTwitter className={styles.icon} title='تويتر' />
+
                             </a>
                         </div>
                     </div>
@@ -132,7 +140,7 @@ export default function Header2() {
                                         : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`)
                                 );
 
-                                if (el.name === "الركن الإعلامي") {
+                                if (el.name === "الركن الإعلامي" || el.name ===  "تواصل معنا") {
                                     return (
                                         <Accordion key={index} className={`w-100 mb-2 border-0 mediaAccordion ${styles.mediaAccordion}`} alwaysOpen>
                                             <Accordion.Item eventKey="0" className="border-0">
@@ -184,27 +192,34 @@ export default function Header2() {
                         {/* <IoSearch className={styles.icon} /> */}
                         <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
 
+                            <Link to={'/login'} className=' d-flex justify-content-center align-items-center'>
+                                <BsPersonCircle className={styles.icon} />
+                            </Link>
+                        </div>
+                        <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
+
                             <a href="https://www.facebook.com/share/16iwfH8UVT/?mibextid=qi2Omg" target='_blank' className=' d-flex justify-content-center align-items-center'>
 
-                                <FaFacebook className={styles.icon} />
-                            </a>                        </div>
+                                <FaFacebook className={styles.icon} title='فيسبوك' />
+                            </a>
+                        </div>
                         <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
 
                             <a href="https://instagram.com/mohpegypt?igshid=1t65jqxaoiwqb" target='_blank' className=' d-flex justify-content-center align-items-center'>
 
-                                <PiInstagramLogoFill className={styles.icon} />
+                                <PiInstagramLogoFill className={styles.icon} title='انستجرام' />
                             </a>                        </div>
                         <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
 
                             <a href="https://www.youtube.com/channel/UCzEGfjELHCOQxgPr0dll1pA?pbjreload=10" target='_blank' className=' d-flex justify-content-center align-items-center'>
 
-                                <FaYoutube className={styles.icon} />
+                                <FaYoutube className={styles.icon} title='يوتيوب' />
                             </a>                        </div>
                         <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
 
                             <a href="https://x.com/mohpegypt" target='_blank' className=' d-flex justify-content-center align-items-center'>
 
-                                <AiFillTwitterCircle className={styles.icon} />
+                                <FaXTwitter className={styles.icon} title='تويتر' />
                             </a>                        </div>
 
                     </div>

@@ -130,7 +130,7 @@ export default function AllNews() {
                                         month: 'long',
                                         year: 'numeric',
                                     });
-                                    const shortText = el.newsText.split(/\s+/).slice(0, 30).join(' ') + '...';
+                                    const shortText = el.newsTextOne.split(/\s+/).slice(0, 30).join(' ') + '...';
                                     return (
                                         <div className='col-12 container d-flex  flex-md-row  pb-2 ' id={styles.CRegtangle} key={el.newsId} >
                                             <div className='container text-end d-flex justify-content-end '>

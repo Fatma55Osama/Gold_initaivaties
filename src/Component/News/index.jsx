@@ -19,9 +19,9 @@ export default function News() {
         <div className='col-12 d-flex flex-column justify-content-center align-items-center' id='newesdection'>
             <div className="overlap-22  d-flex flex-column justify-content-between mt-5 col-md-12">
                 <div className="text-wrapper-44  mb-md-5 mb-lg-0">أخر الأخبار</div>
-                <div className='all news mt-5 mt-md-0 col-12 d-flex justify-content-center flex-column align-items-center'>
+                <div className='all news mt-5 mt-md-5 col-12 d-flex justify-content-center flex-column align-items-center'>
 
-                    <div className='part1 col-12 col-md-12 flex-column flex-md-row-reverse col-lg-9 d-flex justify-content-between '>
+                    <div className='part1 col-12 col-md-12 flex-column flex-md-row-reverse col-lg-9 d-flex justify-content-center '>
                         {
                             filternews.slice(0, 2).map((el, index) => {
                                 const formattedDate = new Date(el.publishDate).toLocaleDateString('ar-EG', {
@@ -49,7 +49,7 @@ export default function News() {
 
 
                     </div>
-                    <div className='part2 col-12 col-md-12 flex-column flex-md-row-reverse col-lg-9 d-flex justify-content-between '>
+                    <div className='part2 col-12 col-md-12 flex-column flex-md-row-reverse col-lg-9 d-flex justify-content-center '>
                         {
                             filternews.slice(2, 4).map((el, index) => {
                                 const formattedDate = new Date(el.publishDate).toLocaleDateString('ar-EG', {

@@ -3,20 +3,22 @@ import styles from './index.module.css'
 import { IoMdArrowDropdown, IoMdClose, IoMdCloseCircle } from 'react-icons/io';
 import { Link, useLocation } from 'react-router-dom';
 import { usedomain, usepathes, usepathimg, usePhotoo } from '../../Store';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getAllData } from '../../Data/Repo/dataRepo';
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { getDomain, getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
 
 export default function Photo() {
-    const { path } = usepathes()
+    const [selectedAlbumInfo, setSelectedAlbumInfo] = useState(null);
+    const prevRef = useRef(null)
+    const nextRef = useRef(null)
 
-    const location = useLocation()
     function normalizeArabic(text) {
         return text
             .replace(/[أإآا]/g, 'ا')  // تطبيع الألف
@@ -37,6 +39,8 @@ export default function Photo() {
     const domain = getDomain()
     useEffect(() => {
         getAllData.get_all_photo(domain).then((res) => {
+            console.log("all photo from API", res); // ← هنا نعرف الحقيقة
+
             setallphoto(res)
         })
     }, [domain]);
@@ -63,8 +67,10 @@ export default function Photo() {
 
     const openAlbum = (albumId) => {
         const photosInAlbum = allphoto.filter(photo => photo.albumId === albumId);
+        const albumInfo = filterphoto.find(album => album.albumId === albumId);
         setSelectedAlbumPhotos(photosInAlbum);
-        setIsModalOpen(true);
+        setSelectedAlbumInfo(albumInfo);
+        setIsModalOpen(true)
     };
 
     const closeModal = () => {
@@ -94,6 +100,7 @@ export default function Photo() {
         setSearchTerm(e.target.value);
         setCurrentPage(1);
     };
+    console.log("selectalpom,", selectedAlbumPhotos)
     return (
         <div className='col-12'>
             {/* <div className='col-12 position-relative ' id={styles.About}>
@@ -175,7 +182,7 @@ export default function Photo() {
                                         year: 'numeric',
                                     });
                                     return (
-                                        <div onClick={() => openAlbum(el.albumId)}  className="mx-auto" id={styles.phdiv} key={el.albumId}>
+                                        <div onClick={() => { openAlbum(el.albumId) }} className="mx-auto" id={styles.phdiv} key={el.albumId} data-aos="fade-up" data-aos-offset="20" data-aos-delay={`${index * 80}`}>
                                             <div id={styles.Img}>
                                                 <img src={`${pathimg}/Photo/${el.coverPhoto}`} alt="" />
                                             </div>
@@ -198,19 +205,47 @@ export default function Photo() {
                                     <IoMdCloseCircle onClick={closeModal} id={styles.iconarrowclose} />
 
                                 </div>
+                                <div className='d-flex justify-content-between'>
+                                    <div className='col-3'> {/* 3 من 12 = 25% */}
+                                        {selectedAlbumInfo && <h4 className='text-center text-[#724780] font-bold text-lg mb-3'>{selectedAlbumInfo.albumTitle}</h4>}
+                                    </div>
+                                    <div className='col-9 container border-3 border-end pe-2'> {/* 9 من 12 = 75% */}
+                                        <Swiper className={styles.slider + " mySwiper "} navigation={{
+                                            prevEl: prevRef.current,
+                                            nextEl: nextRef.current,
+                                        }}
+                                            autoplay={{
+                                                delay: 5000,     // ← كل 5 ثواني
+                                                disableOnInteraction: false, // ← بيكمل حتى لو المستخدم ضغط
+                                            }}
+                                            onBeforeInit={(swiper) => {
+                                                // نربط المراجع يدويًا هنا
+                                                swiper.params.navigation.prevEl = prevRef.current
+                                                swiper.params.navigation.nextEl = nextRef.current
+                                            }} modules={[Navigation, Autoplay]}>
+                                            {Array.isArray(selectedAlbumPhotos) && selectedAlbumPhotos?.map(photo => (
+                                                <SwiperSlide key={photo.id}>
+                                                    <img src={`${pathimg}/Photo/${photo.photo}`} className='rounded-3 shadow' alt={photo.photoAltText} />
+                                                </SwiperSlide>
+                                            ))}
+                                            <div ref={prevRef} className="custom-prev  position-absolute top-50 start-0 translate-middle-y z-3 cursor-pointer px-2">
+                                                <AiFillCaretLeft className="fs-1 text-white" />
+                                            </div>
+                                            <div ref={nextRef} className="custom-next position-absolute top-50 end-0 translate-middle-y z-3 cursor-pointer px-2">
+                                                <AiFillCaretRight className="fs-1 text-white" />
+                                            </div>
+                                        </Swiper>
+
+
+                                    </div>
+                                </div>
                                 {/* <div>
                                     {selectedAlbumPhotos.map(photo => (
                                         <img key={photo.id} src={`/src/assets/Upfiles/Photo/${photo.photo}`} alt="" />
                                     ))}
                                 </div> */}
-                                <Swiper className={styles.slider + " mySwiper"} navigation={true} modules={[Navigation]}>
-                                    {selectedAlbumPhotos.map(photo => (
-                                        <SwiperSlide key={photo.id}>
-                                            <img src={`${pathimg}/Photo/${photo.photo}`} alt="" />
-                                        </SwiperSlide>
-                                    ))}
 
-                                </Swiper>
+
                             </div>
                         )}
                     </div>

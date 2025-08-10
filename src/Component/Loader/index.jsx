@@ -1,14 +1,16 @@
 import React from 'react'
-import { TailSpin } from 'react-loader-spinner'
+import { ClipLoader } from 'react-spinners';
+// import { TailSpin } from 'react-loader-spinner'
 import logo from '../../assets//rectangle-6.png'
 export default function Loader() {
-   return (
+  return (
     <div className="loader-container">
       <div className="loader-spinner-wrapper">
-        <TailSpin
-          visible={true}
+        <ClipLoader
           height="100"
+          loading={true}
           width="100"
+          size={180}
           color="#724780"
           ariaLabel="tail-spin-loading"
         />

@@ -7,19 +7,11 @@ import { usedetailsnew, usedomain, usepathes, usepathimg } from '../../Store';
 import { getDomain, getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
 export default function DetailsNews() {
-    const navLinks = [
-        { label: "الرسائل التوعوية", to: "/messages" },
-        { label: "قائمة الإنفوجراف", to: "/infograph" },
-        { label: "مكتبة الفيديو", to: "/video" },
-        { label: "ألبومات الصور", to: "/Photo" },
-        { label: "أخبار المبادرة", to: "/mediacorner" },
-    ];
-    const { path } = usepathes()
-    const location = useLocation()
+
     const { detailnew, setdetailsnew } = usedetailsnew()
     const pathimg = getPathImg()
 
-    const  domain  = getDomain()
+    const domain = getDomain()
     const params = useParams();
     let id = params.id;
     const formattedDate = new Date(detailnew.publishDate).toLocaleDateString('ar-EG', {
@@ -85,33 +77,39 @@ export default function DetailsNews() {
 
 
             </header> */}
-            <MediaComponent none="d-none"  align="align-items-end"/>
+            <MediaComponent none="d-none" align="align-items-end" />
 
             <div className=' container  mt-5 '>
                 <h3 id={styles.h3news}>الأخبار</h3>
             </div>
             <div className='col-12' id={styles.details}>
-                
+
                 <div className='container py-1 mt-3'>
-                    
+
                     <div className='text-end d-flex flex-column gap-3'>
                         <div>{ }</div>
                         <h4>{detailnew?.title}</h4>
                         <h5 className=' m-0' id={styles.h5new}>{formattedDate}</h5>
-                        <div className='d-flex justify-content-end' id={styles.newscontainer}>
-                            <div style={{ overflow: 'hidden' }} id={styles.colimgtitle}>
+                        <div className='d-flex flex-column justify-content-end' id={styles.newscontainer}>
+                            <div style={{ overflow: 'hidden' }} className='d-flex flex-column' id={styles.colimgtitle}>
+                                <p id={styles.newsParagraph} style={{ textAlign: 'justify' }} dangerouslySetInnerHTML={{ __html: detailnew?.newsTextOne }} />
+
                                 <img
                                     src={`${pathimg}/News/${detailnew?.largPhoto}`}
                                     alt=""
-                                    width={285}
-                                    height={291}
-                                    style={{ float: 'left', marginRight: '15px', marginBottom: '10px' }}
+
+                                    height={400}
+                                    style={{ marginRight: '15px', marginBottom: '10px' }}
                                 />
 
-                                
-                                    {/* <p id={styles.newsParagraph} key={index} style={{ textAlign: 'justify' }}  dangerouslySetInnerHTML={{ __html: detailnew?.newsText }}/> */}
-                                       
-                                    <p id={styles.newsParagraph}  style={{ textAlign: 'justify' }}  dangerouslySetInnerHTML={{ __html: detailnew?.newsText }}/>
+                                <p id={styles.newsParagraph} className='py-5' style={{ textAlign: 'justify' }} dangerouslySetInnerHTML={{ __html: detailnew?.newsTextTwo }} />
+                                <div className='d-flex  justify-content-end gap-2 mb-5'>
+                                    <p style={{ textAlign: 'justify' , fontSize:"15px"}}  dangerouslySetInnerHTML={{ __html: detailnew?.newsSource }} />
+                                    <h5 className=' m-0 pt-2' id={styles.h5new}>  / المصدر   </h5>
+
+                                </div>
+                                {/* <p id={styles.newsParagraph} key={index} style={{ textAlign: 'justify' }}  dangerouslySetInnerHTML={{ __html: detailnew?.newsText }}/> */}
+
                             </div>
                             {/* <p><img id={styles.newsImg} width={285} height={291} src={`/src/assets/Upfiles/News/${detailnew?.smallPhoto}`} alt="" />{detailnew?.newsText}</p> */}
                         </div>

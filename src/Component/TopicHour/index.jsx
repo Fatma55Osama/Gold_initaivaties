@@ -25,7 +25,7 @@ export default function TopicHour() {
     </div>
 
     {filteredhour.map((el, index) => {
-      const shortText = el.newsText.split(/\s+/).slice(0, 80).join(' ') + '...';
+      const shortText = el.newsTextOne?.split(/\s+/).slice(0, 80).join(' ') + '...';
       return (
         <div
           key={el.newsId ?? index}

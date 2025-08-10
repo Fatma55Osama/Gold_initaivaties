@@ -1,0 +1,46 @@
+#form {
+  button {
+    background-color: var(--purpleColor);
+    color: white;
+  }
+  #input {
+    resize: none;
+    outline: none;
+    &::placeholder {
+      opacity: 30%;
+    }
+    .form-control:focus {
+      border-color: var(--purpleColor) !important;
+      box-shadow: 0 0 0 0.25rem var(--purpleColor) !important;
+    }
+  }
+}
+.profileCard {
+  background-color: #f8f9fa;
+  direction: rtl;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+}
+
+.label {
+  font-weight: 600;
+  color: #666;
+}
+
+.value {
+  color: #000;
+}

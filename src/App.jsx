@@ -22,9 +22,16 @@ import Report2 from './Component/Report2';
 import PrintReport from './Component/PrintReport';
 import { getDomain, getPathImg } from './configLoader';
 import Questions from './Pages/Questions';
+import DetailsLightTeam from './Pages/DetailsLightTeam';
+import JoinTeams from './Pages/JoinTeams';
+import Register from './Pages/Register';
+import Login from './Pages/Login';
+import ForgotPassword from './Pages/ForgetPassword';
+import ConsultationNew from './Pages/ConsultationNew';
+import ConsultationOld from './Pages/ConsultationOld';
 
 export default function App() {
-    useEffect(() => {
+  useEffect(() => {
     console.log("🔥 API Domain:", getDomain());
     console.log("🔥 Image Path:", getPathImg());
   }, []);
@@ -55,14 +62,22 @@ export default function App() {
           <Route path='video' element={<AllVideo />} />
           <Route path='/mediacorner/detailsnews/:id' element={<DetailsNews />} />
           <Route path='/infograph/detailsinfograph/:id' element={<DetailsInfograph />} />
+          <Route path='/lightteam/detailslightteam/:id' element={<DetailsLightTeam />} />
           <Route path='infograph' element={<AllInfograph />} />
           <Route path='messages' element={<Messages />} />
-          <Route path='lightteam' element={<Alllightteam />} />
-          <Route path='opinion' element={<Opinion />} />
+          <Route path='lightteam' opinion element={<Alllightteam />} />
+          <Route path='/opinion' element={<Opinion />} />
+          <Route path='/jointeams' element={<JoinTeams />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/forgetpassword' element={<ForgotPassword />} />
+          <Route path='/consultationnew' element={<ConsultationNew />} />
+          <Route path='/consultationold' element={<ConsultationOld />} />
+
           <Route path='report' element={<Report />} />
           <Route path="/print" element={<Report2 />} />
           <Route path="/printreport" element={<PrintReport />} />
-          <Route path='/question' element={<Questions/>}/>
+          <Route path='/question' element={<Questions />} />
         </Route>
         <Route path='/'>
           <Route path='*' element={<h1>404 Not Found</h1>} />

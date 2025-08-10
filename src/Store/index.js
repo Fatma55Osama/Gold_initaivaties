@@ -20,6 +20,15 @@ export const usepathes = create(() => ({
       name: "تواصل معنا",
       mainPath: "/contactus",
       links: [
+        { label: " الأستشارات السابقة  ", path: "/consultationold" },
+        { label: " استشارة جديدة ", path: "/consultationnew" },
+        { label: "نسيت كلمة", path: "/forgetpassword" },
+        { label: "مستخدم جديد", path: "/register" },
+
+        { label: "تسجيل الدخول", path: "/login" },
+        { label: " صفحتي الشخصية  ", path: "/consultationnew" },
+
+        { label: " انضم لفريقنا", path: "/jointeams" },
         { label: "الأسئلة الشائعة", path: "/question" },
         { label: "رأيك يهمنا", path: "/opinion" },
         { label: "تواصل معنا", path: "/contactus" },
@@ -149,7 +158,7 @@ export const usedetailsservice = create((set) => ({
   setdetailsservice: (val) => set(() => ({ detailservice: val })),
 }));
 export const usepathimg = create(() => ({
-  pathimg:getPathImg(),
+  pathimg: getPathImg(),
 }));
 export const usecontactfooter = create((set) => ({
   contactfooter: [],
@@ -162,6 +171,20 @@ export const usevindicator = create((set) => ({
   setGroupBy: (value) => set({ groupBy: value }),
 }));
 export const usecommonquestion = create((set) => ({
- commonquestion: {},
+  commonquestion: {},
   setcommonquestion: (val) => set(() => ({ commonquestion: val })),
+}));
+export const useModalvedio = create((set) => ({
+  modalvedio: false,
+  openModalvedio: () => set(() => ({ modalvedio: true })),
+  closeModalvedio: () => set(() => ({ modalvedio: false })),
+}));
+export const usePlay = create((set) => ({
+  isplaying: false,
+  setIsplaying: () => set(() => ({ isplaying: true })),
+}));
+
+export const usedetailslight = create((set) => ({
+  lightTeam: {},
+  setlightTeam: (val) => set(() => ({ lightTeam: val })),
 }));

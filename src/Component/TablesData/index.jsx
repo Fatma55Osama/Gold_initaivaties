@@ -12,7 +12,7 @@ export default function TablesData(props) {
         >
           <thead>
             <tr>
-              <th style={{backgroundColor: props.bgColor}}>القيمة</th>
+              <th style={{backgroundColor: props.bgColor}}>العدد</th>
               <th style={{backgroundColor: props.bgColor}}>{props.name}</th>
             </tr>
           </thead>

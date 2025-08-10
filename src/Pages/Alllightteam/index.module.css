@@ -206,6 +206,8 @@
   width: 350px !important;
   height: 330px;
   /* margin-inline-start: auto; */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
 }
 
 .card {
@@ -226,6 +228,8 @@
   }
   .textCard {
     background-color: rgba(217, 217, 217, 1);
+     height: 40%;
+    width: 80%;
     p {
       font-family: "GE SS Two-Medium";
       font-size: 12px;

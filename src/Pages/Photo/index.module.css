@@ -9,7 +9,7 @@
 }
 #iconarrowclose {
   font-size: 30px;
-  color: white;
+  color: rgb(255, 0, 0);
 }
 
 #Img {
@@ -183,18 +183,17 @@ p {
   left: 0;
   top: 0;
   position: fixed;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.806);
-  img {
-    width: 900px;
-    height: 600px;
-  }
+  z-index: 1000;
+  background-color: aliceblue;
+
+  /* background-color: rgba(0, 0, 0, 0.806); */
+ 
   .slider {
     /* background: #fff; */
     padding: 20px;
     img {
-      width: 900px;
-      height: 600px;
+      width:100%;
+      height: 550px;
       object-fit: fill;
       @media (max-width: 1024px) {
         width: 90vw;
@@ -216,6 +215,7 @@ p {
     border-radius: 10px;
   }
 }
+
 .button2 {
   border-radius: 50% !important;
   width: 30px;

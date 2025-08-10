@@ -1,0 +1,17 @@
+#form {
+  button {
+    background-color: var(--purpleColor);
+    color: white;
+  }
+  #input {
+    resize: none;
+    outline: none;
+    &::placeholder {
+      opacity: 30%;
+    }
+    .form-control:focus {
+      border-color: var(--purpleColor) !important;
+      box-shadow: 0 0 0 0.25rem var(--purpleColor) !important;
+    }
+  }
+}

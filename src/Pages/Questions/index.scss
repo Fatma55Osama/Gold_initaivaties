@@ -8,7 +8,7 @@
   padding: 20px;
   border-radius: 12px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
   .question-title {
     font-size: 18px;
@@ -31,8 +31,18 @@
 .bg-gray {
   background-color: #f2f2f2;
 }
+.currentactive {
+  background-color: #724780 !important;
+  color: white !important;
+  border: none !important;
+}
+.noncurrentactive {
+  color: #724780 !important;
+  border: 1px solid #724780 !important;
+}
+
 @media screen and (max-width: 768px) {
-  .question-answer{
+  .question-answer {
     font-size: 14px !important;
   }
 }

@@ -180,16 +180,14 @@ canvas {
 
 .loader-spinner-wrapper {
   position: relative;
-  width: 100px;
-  height: 100px;
 }
 
 .centered-logo {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 70px; /* حجم اللوجو */
-  height: 70px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 2;
 }

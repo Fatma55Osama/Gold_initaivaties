@@ -24,6 +24,7 @@ export default function ImportentLink() {
         <h2>روابط هامة</h2>
         <div className=' col-12 '>
           <Swiper
+            // direction='rtl'
             slidesPerView={4}
             spaceBetween={30}
             loop={true}

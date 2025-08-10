@@ -91,7 +91,7 @@ export default function AboutIndex() {
                 </div>
                 <div className='col-12  d-flex   justify-content-between ' id={styles.CRegtangle}  >
                     <div className='d-flex container pt-lg-3 flex-lg-row justify-content-between flex-column flex-md-column'>
-                        <div className=' col-lg-3 align-items-center align-lg-items-start justify-content-lg-start container d-flex flex-column  mt-4' >
+                        <div className=' col-lg-3 align-items-center align-lg-items-start justify-content-lg-start container d-flex flex-column  mt-0' >
                             <div className='' id={styles.LinesImg}>
                                 {allabout?.[0]?.aboutImg && (
                                     <img src={`${pathimg}/About/${allabout[0].aboutImg}`} alt="" />

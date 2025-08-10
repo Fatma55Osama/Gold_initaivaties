@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 import { useallActiveEmployees, usepathimg } from '../../Store';
 import { getPathImg } from '../../configLoader';
+import { Link } from 'react-router-dom';
 
 export default function Lightteam() {
     const { Employees } = useallActiveEmployees()
@@ -35,14 +36,14 @@ export default function Lightteam() {
                 } : false}
                 loop={filteremployess.length > 3}
                 modules={[FreeMode, Pagination, Autoplay]}
-                className={`${styles.mySwiper} mySwiper `} id={styles.mySwiper}
+                className={`${styles.mySwiper} mySwiper d-flex flex-row-reverse`} id={styles.mySwiper}
             >
                 {
                     filteremployess.slice(0, 6).map((el, index) => {
                         const formattedDate = el.honorDate?.split("T")[0].replace(/-/g, "/");
                         return (
-                            <SwiperSlide key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} >
-                                <div className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1"}>
+                            <SwiperSlide key={el.govId} className='d-flex  justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} >
+                                <Link to={`/lightteam/detailslightteam/${el.govId}`} className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1 nav-link"}>
                                     <div className={styles.imgCard}>
                                         <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
                                     </div>
@@ -54,7 +55,7 @@ export default function Lightteam() {
                                         <p>الوظيفة: {el.empJob}</p>
                                         <p>تاريخ التكريم: {formattedDate}</p>
                                     </div>
-                                </div>
+                                </Link>
                             </SwiperSlide>
                         );
                     })

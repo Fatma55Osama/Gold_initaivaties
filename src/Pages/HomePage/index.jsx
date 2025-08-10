@@ -31,7 +31,10 @@ import pr3hover from '../../assets/wheelchair 3 (3).png'
 import pr5hover from '../../assets/wheelchair 3 (4).png'
 import { useAwarnessMsg, useServicemain } from '../../Store'
 import { Link } from 'react-router-dom'
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import Loader from '../../Component/Loader'
 // import Center2 from '../../Component/Center2'
 
 export default function HomePage() {
@@ -59,7 +62,7 @@ export default function HomePage() {
 
   const [Baby, setBaby] = useState([]);
   useEffect(() => {
-    let copyfilterAwarness = ([...allawarness].sort((a, b) => b.orderView - a.orderView)).slice(0,1); 
+    let copyfilterAwarness = ([...allawarness].sort((a, b) => b.orderView - a.orderView))
     setFilterawarness(copyfilterAwarness)
   }, [allawarness])
   const { allservice, setservice } = useServicemain()
@@ -81,7 +84,6 @@ export default function HomePage() {
         <div className='' id={styles.imgparent}>
 
           <div>
-
             <SectionContainHeader />
           </div>
           <div className='col-12 text-center py-3 align-items-center justify-content-center' id={styles.sectionBaby}>
@@ -109,7 +111,7 @@ export default function HomePage() {
         <Center2 />
         <Lightteam />
         <NumberInitiative2 />
-        <div className='col-12 container  d-flex justify-content-between align-items-center'id={styles.vedioandinfo}>
+        <div className='col-12 container  d-flex justify-content-between align-items-center' id={styles.vedioandinfo}>
           <Video />
           <Infograph />
         </div>
@@ -118,15 +120,25 @@ export default function HomePage() {
           <div className='container col-12 d-flex  align-items-center'>
             <div className='col-12 container d-flex flex-column align-items-end   '>
               <h2>رسائل توعوية</h2>
-              {
-                filterAwarness.map((el, index) => {
-                  return (
-                    <div key={el.msgId} className=' col-12 container d-flex flex-column align-items-center '>
-                      <p>"{el.msgText}"</p>
-                    </div>
-                  )
-                })
-              }
+              <Swiper
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false
+                }}
+                loop={true}
+                modules={[Autoplay]}
+                className="col-12 text-center"
+              >
+                {
+                  filterAwarness.map((el) => (
+                    <SwiperSlide key={el.msgId}>
+                      <div className='d-flex flex-column align-items-center'>
+                        <p>"{el.msgText}"</p>
+                      </div>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
 
             </div>
           </div>

@@ -6,7 +6,7 @@ export const show_commonQuestion=async(domain)=>{
         final=res.data
 
     }).catch((err)=>{
-       console.log("Error fetching photos:", err)
+       console.log("Error fetching show_commonQuestion:", err)
     })
     return final
 }

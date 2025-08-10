@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.css'
 import { usepathes } from '../../Store'
 import { Link } from 'react-router-dom'
-export default function ContactComponent() {
+export default function ContactComponent(props) {
     const { path } = usepathes()
 
     return (
@@ -26,16 +26,22 @@ export default function ContactComponent() {
                     </div>
                 </div>
             </div>
-            <header className=' col-12 d-flex justify-content-end mt-5   container  '>
+            <header className={` col-12 d-flex align-items-center mt-5   container  ${props.none === "d-none" ? " justify-content-end" : "justify--between"} ${props.hidden == "d-flex" ? " d-none" : "d-flex"} ${props.hiddenheader == "d-none" ?"d-none":"d-flex"}`}>
 
+                <div className={`align-items-center gap-3 ${props.none === "d-none" ? "d-none justify-content-end" : "d-flex justify-content-between"}`} id={styles.search}>                    <button className='py-0 px-4 border-0'>بحث</button>
+                    <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
 
+                        <span style={{ marginRight: '8px', color: '#aaa' }}></span>
+                        <input type="text" placeholder="...بحث" value={props.searchTerm} onChange={props.handleSearch} className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
+                    </div>
+               content </div>
                 <div className='d-flex mb-2 gap-3 gap-md-4 justify-content-between align-items-center '>
 
                     {
-                        path
+                        props.showLimited ? (path
                             .filter(el => el.name === "تواصل معنا")
                             .flatMap((el, index) => {
-                                return el.links.map((link, idx) => {
+                                return el.links.slice(0, 2).map((link, idx) => {
                                     const isActive =
                                         link.path === '/'
                                             ? location.pathname === '/'
@@ -52,12 +58,34 @@ export default function ContactComponent() {
                                         </Link>
                                     );
                                 });
-                            })
+                            })) : (path
+                                .filter(el => el.name === "تواصل معنا")
+                                .flatMap((el, index) => {
+                                    return el.links.slice(5,).map((link, idx) => {
+                                        const isActive =
+                                            link.path === '/'
+                                                ? location.pathname === '/'
+                                                : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
+
+
+                                        return (
+                                            <Link
+                                                key={`${index}-${idx}`}
+                                                to={link.path}
+                                                className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        );
+                                    });
+                                }))
+
                     }
                 </div>
 
 
             </header>
+
         </div>
     )
 }

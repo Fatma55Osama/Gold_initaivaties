@@ -1,0 +1,35 @@
+#form {
+  button {
+    background-color: var(--purpleColor);
+    color: white;
+  }
+  #input {
+    resize: none;
+    outline: none;
+    &::placeholder {
+      opacity: 30%;
+    }
+    .form-control:focus {
+      border-color: var(--purpleColor) !important;
+      box-shadow: 0 0 0 0.25rem var(--purpleColor) !important;
+    }
+  }
+}
+.dropdown {
+  appearance: none; 
+  padding-right: 1rem; /* مساحة للسهم */
+   position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  transform: translateY(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #888; /* لون السهم */
+}

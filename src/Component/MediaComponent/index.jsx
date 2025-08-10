@@ -4,14 +4,7 @@ import styles from './index.module.css'
 import { Link } from 'react-router-dom';
 export default function MediaComponent(props) {
   const { path } = usepathes()
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  // const [searchTerm, setSearchTerm] = useState('');
-
-  // const handleSearch = (e) => {
-  //   setSearchTerm(e.target.value);
-  //   setCurrentPage(1);
-  // };
+ 
   return (
     <div>
       <div className='col-12 position-relative ' id={styles.About}>

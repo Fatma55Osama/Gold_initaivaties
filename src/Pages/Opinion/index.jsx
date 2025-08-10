@@ -11,7 +11,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { getDomain } from '../../configLoader'
 import ContactComponent from '../../Component/ContactComponent'
 export default function Opinion() {
-    const  domain  = getDomain()
+    const domain = getDomain()
     const { path } = usepathes()
     const location = useLocation()
     const validationSchema = Yup.object({
@@ -24,12 +24,17 @@ export default function Opinion() {
     const hadleSubmit = (values, { resetForm }) => {
         console.log(values);
         postopinion(domain, values).then((res) => {
-            toast.success('تم ارسال رأيك بنجاح')
-            resetForm();
-        }).catch((err) => {
-            console.log(err)
-            toast.error('حدث خطأ أثناء إرسال رأيك');
+            if (res.status === 200 || res.status === 201) {
+                toast.success('تم ارسال رأيك بنجاح');
+                resetForm();
+            } else {
+                toast.error('حدث خطأ أثناء إرسال رأيك');
+            }
         })
+            .catch((err) => {
+                console.error(err);
+                toast.error('حدث خطأ أثناء إرسال رأيك');
+            })
     }
     // {
 
@@ -40,7 +45,7 @@ export default function Opinion() {
     // }
     return (
         <div>
-            <ContactComponent/>
+            <ContactComponent none="d-none" />
             {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 

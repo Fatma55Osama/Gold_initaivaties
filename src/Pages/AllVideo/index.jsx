@@ -7,13 +7,16 @@ import HomePage from '../..//Pages/HomePage'
 import { Element } from 'react-scroll'
 import { Link, useLocation } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io';
-import { usepathes, usepathimg, useVedio } from '../../Store';
+import { useModalvedio, usepathes, usepathimg, usePlay, useVedio } from '../../Store';
 import iconvedio from '../../assets/Frame.png'
 import { useState } from 'react';
 import { getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
+import ModalVedio from '../../Component/ModalVedio';
 export default function AllVideo() {
     const { path } = usepathes()
+    const { isplaying, setIsplaying } = usePlay()
+    const {modalvedio,openModalvedio,closeModalvedio } = useModalvedio()
 
     const location = useLocation()
     function normalizeArabic(text) {
@@ -28,6 +31,7 @@ export default function AllVideo() {
             .trim()
             .toLowerCase();
     }
+    const [selectedVedio, setSelectedVedio] = useState(null);
     const { allvedio, setallvedio } = useVedio()
     const [currentPage, setCurrentPage] = useState(1);
     const vedioPerPage = 4; // عدد الأخبار في كل صفحة
@@ -35,7 +39,7 @@ export default function AllVideo() {
     const indexOfLastvedio = currentPage * vedioPerPage;
     const indexOfFirstvedio = indexOfLastvedio - vedioPerPage;
     const filteredvedio = allvedio?.filter(vedio =>
-       normalizeArabic(vedio.vedioTitle).includes(normalizeArabic(searchTerm))
+        normalizeArabic(vedio.vedioTitle).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
     const filteredNewsPerPage = filteredvedio.slice(indexOfFirstvedio, indexOfLastvedio);
     const totalPages = Math.ceil(
@@ -144,29 +148,38 @@ export default function AllVideo() {
                                 return (
                                     <div key={el.vedioId} className='  flex-column col-12  col-md-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                                         <div className='  d-flex  flex-column ' id={styles.CRegtangle}  >
-                                            <div className=' text-wrap flex-column ' id={styles.phdiv}>
-                                                <div className=' flex-column position-relative' id={styles.imgrayse} >
-                                                    <img src={`${pathimg}/Video/${el.vCoverPhoto}`} className='' alt="" />
-                                                </div>
-                                                <div className='  position-absolute  col-10 d-flex justify-content-center' id={styles.iconvedio}>
-                                                    <a
-                                                        href={el.vedioURL}
-                                                        rel="noopener noreferrer"
-                                                        target="_blank"
-                                                    >
+                                            {
+                                                !isplaying && (
+                                                    <div className=' text-wrap flex-column ' id={styles.phdiv}>
+                                                        <div className=' flex-column position-relative' id={styles.imgrayse} >
+                                                            <img src={`${pathimg}/Video/${el.vCoverPhoto}`} className='' alt="" />
+                                                        </div>
+                                                        <div className='  position-absolute  col-10 d-flex justify-content-center' onClick={()=> {openModalvedio(true); setSelectedVedio(el)}}  id={styles.iconvedio}>
+                                                            {/* <a
+                                                                href={el.vedioURL}
+                                                                rel="noopener noreferrer"
+                                                                target="_blank"
+                                                            >
 
-                                                        <img src={iconvedio} width={50} className='' alt="" />
-                                                    </a>
-                                                </div>
-                                                <div className=' text-wrap mt-3 ' >
-                                                    <h5>{shortText}</h5>
-                                                    <h6>{formattedDate}</h6>
-                                                </div>
-                                            </div>
+                                                              
+                                                            </a> */}
+                                                              <img src={iconvedio} width={50} className='' alt="" />
+                                                        </div>
+                                                        <div className=' text-wrap mt-3 ' >
+                                                            <h5>{shortText}</h5>
+                                                            <h6>{formattedDate}</h6>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
+
                                         </div>
                                     </div>
                                 )
                             })
+                        }
+                        {
+                            modalvedio && ( <ModalVedio vedioURL={selectedVedio.vedioURL} vedioTitle={selectedVedio.vedioTitle}/>)
                         }
                         {/* <div className=' flex-column' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                             <div className='   d-flex  flex-column ' id={styles.CRegtangle}  >

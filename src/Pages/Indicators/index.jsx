@@ -13,7 +13,7 @@ export default function Indicators() {
         { value: 'line', label: 'Line (خطي)' },
         { value: 'pie', label: 'Pie (دائري)' },
         // { value: 'radar', label: 'Radar (رادار)' },
-        { value: 'doughnut', label: 'Doughnut (دونات)' },
+        // { value: 'doughnut', label: 'Doughnut (دونات)' },
     ];
     const [selectedIndicator, setSelectedIndicator] = useState('');
     const [fromYear, setFromYear] = useState('');

@@ -86,7 +86,7 @@ export default function Alllightteam() {
             <div className=' col-12 d-flex flex-column align-items-end '>
                 <div className='container'>
 
-                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex  justify-content-md-start`}>
+                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex  justify-content-lg-between justify-content-md-start`}>
                         {
                             (Searchterm ? filteredteamPerPage : currentPage).length === 0 ? (
                                 <div className=' text-center col-12'>
@@ -101,7 +101,7 @@ export default function Alllightteam() {
                                         <div key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} data-aos="fade-up"
                                         data-aos-offset="0" data-aos-delay={100}
                                         >
-                                            <div className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1"}>
+                                            <Link  to={`/lightteam/detailslightteam/${el.govId}`} className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1 nav-link"}>
                                                 <div className={styles.imgCard}>
                                                     <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
                                                 </div>
@@ -111,9 +111,9 @@ export default function Alllightteam() {
                                                 <div className={styles.textCard + " text-end col-9 px-2 py-3"}>
                                                     <p>المحافظة: {el.govName}</p>
                                                     <p className='lh-base'>الوظيفة: {el.empJob}</p>
-                                                    <p>تاريخ التكريم:{formattedDate}</p>
+                                                    <p>تاريخ التكريم: {formattedDate}</p>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         </div>
                                     )
                                 })

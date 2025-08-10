@@ -9,7 +9,24 @@ export default function Chartscomponent2(props) {
         '#724780', '#CBA15F', '#AFE5FF', '#AA99CC', '#FFD6A5',
         '#FF9AA2', '#B5EAD7', '#FFDAC1', '#E2F0CB', '#C7CEEA'
     ];
-    
+    function wrapText(text, maxChars = 90) {
+        const words = text.split(' ');
+        let lines = [];
+        let currentLine = '';
+
+        words.forEach(word => {
+            if ((currentLine + word).length < maxChars) {
+                currentLine += word + ' ';
+            } else {
+                lines.push(currentLine.trim());
+                currentLine = word + ' ';
+            }
+        });
+
+        if (currentLine) lines.push(currentLine.trim());
+
+        return lines.join('<br>');
+    }
 
     const chartMap = {
         bar: (
@@ -24,9 +41,9 @@ export default function Chartscomponent2(props) {
                 }]}
                 layout={{
                     title: {
-                        text:`${props.title} - ${props.selectedIndicator}`,
+                        text: wrapText(`${props.title} - ${props.selectedIndicator}`),
                         font: {
-                            size: 12,
+                            size: 15,
                             color: '#333'
                         },
                         x: 0.5,
@@ -56,9 +73,9 @@ export default function Chartscomponent2(props) {
                 }]}
                 layout={{
                     title: {
-                        text:`${props.title} - ${props.selectedIndicator}`,
+                       text: wrapText(`${props.title} - ${props.selectedIndicator}`),
                         font: {
-                            size: 12,
+                            size: 15,
                             color: '#333'
                         },
                         x: 0.5,
@@ -85,9 +102,9 @@ export default function Chartscomponent2(props) {
                 }]}
                 layout={{
                     title: {
-                        text: `${props.title} - ${props.selectedIndicator}`,
+                       text: wrapText(`${props.title} - ${props.selectedIndicator}`), 
                         font: {
-                            size: 12,
+                            size: 15,
                             color: '#333'
                         },
                         x: 0.5,
@@ -119,16 +136,16 @@ export default function Chartscomponent2(props) {
                 }]}
                 layout={{
                     title: {
-                        text: `${props.title} - ${props.selectedIndicator}`,
+                        text: wrapText(`${props.title} - ${props.selectedIndicator}`),
                         font: {
-                            size: 12,
+                            size: 15,
                             color: '#333'
                         },
                         x: 0.5,
                         xanchor: 'center'
                     },
                     width: 500,
-                    
+
                     height: 500,
                     scene: {
                         xaxis: { title: 'X' },

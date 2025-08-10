@@ -12,6 +12,7 @@
 #cardslid {
   width: 380px !important;
   height: 330px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .card {
   width: 100%;
@@ -63,6 +64,12 @@
 #mySwiper {
   max-width: 1200px !important;
   min-width: 50%;
+  display: flex;
+  flex-direction: row-reverse !important;
+}
+#mySwiper > div {
+  display: flex !important;
+  flex-direction: row-reverse !important;
 }
 @media screen and (max-width: 992px) and (min-width: 768px) {
   #cardslid {
@@ -101,7 +108,8 @@
   #cardslid {
     width: 90% !important;
     max-width: 300px;
-    height: auto;
+    /* height: auto; */
+    border: 1px solid rgba(0, 0, 0, 0.1);
     margin: auto;
   }
 
