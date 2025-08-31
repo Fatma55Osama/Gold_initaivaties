@@ -56,7 +56,7 @@ export default function AboutIndex() {
                 <div className='col-12 ' id={styles.AboutLogo}>
 
                 </div>
-                <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
+                <div className='col-12 position-absolute d-flex align-items-center justify-content-center ' id={styles.bgColor}>
                     <div className='container text-end d-flex  justify-content-end '>
                         <div className='col-md-9 mt-3 mt-md-0  d-flex flex-column justify-content-center gap-3 pb-3'>
                             <h2>عن المبادرة</h2>
@@ -122,7 +122,7 @@ export default function AboutIndex() {
                     <div className='container pt-lg-3 d-flex flex-lg-row flex-md-column flex-column gap-md-3 gap-lg-0'>
                         <div className='  col-lg-3 align-items-center align-lg-items-start justify-content-lg-start container d-flex flex-column justify-content-center align-items-end' >
                             <div className='d-flex justify-content-center   flex-column  ' id={styles.MinisterImg}>
-                                <img src={`${pathimg}/About/${allabout?.[0]?.ministerImg}`} alt="" />
+                                <img src={`${pathimg}/About/${allabout?.[0]?.ministerImg}`} alt={allabout?.[0]?.ministerImgAltText} />
                             </div>
                         </div>
 
@@ -149,7 +149,7 @@ export default function AboutIndex() {
                     <div className='d-flex container pt-lg-3 flex-lg-row flex-column flex-md-column gap-md-3 gap-lg-0'>
                         <div className=' col-lg-3 align-items-center align-lg-items-start justify-content-lg-start  container d-flex flex-column justify-content-center align-items-end' >
                             <div className='d-flex justify-content-center  flex-column ' id={styles.PresImg}>
-                                <img src={`${pathimg}/About/${allabout?.[0]?.chairmanImg}`} alt="" />
+                                <img src={`${pathimg}/About/${allabout?.[0]?.chairmanImg}`} alt={allabout?.[0]?.chairmanImgAltText} />
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@ export default function AboutIndex() {
                 </div>
             </div>
             {
-                modalindex && (<ModalAbout img={`${pathimg}/About/${allabout?.[0]?.structureImg}`} />)
+                modalindex && (<ModalAbout img={`${pathimg}/About/${allabout?.[0]?.structureImg}`} alt={allabout?.[0]?.structureImgAltText} />)
             }
             {/* ---------------------- End الهيكل التنظيمي------------------------- */}
 

@@ -1,7 +1,9 @@
 import { show_commonQuestion } from "../API/show_commonQuestion"
+import { show_consultationold } from "../API/show_consultationold"
 import { show_single_service } from "../API/show_single_service"
 import { show_singleinfograph } from "../API/show_singleinfograph"
 import { show_singleNew } from "../API/show_singleNew"
+import { show_singleTeam } from "../API/show_singleTeam"
 import { store_about } from "../API/store_about"
 import { store_awarnessmsg } from "../API/store_awarnessmsg"
 import { store_employess } from "../API/store_employess"
@@ -11,6 +13,7 @@ import { store_Infograph } from "../API/store_Infograph"
 import { store_initiativenumber } from "../API/store_initiativenumber"
 import { store_newes } from "../API/store_newes"
 import { store_photo } from "../API/store_photo"
+import { store_profileuser } from "../API/store_profileuser"
 import { store_servicemains } from "../API/store_servicemains"
 import { store_vedio } from "../API/store_vedio"
 import { store_vindicator } from "../API/store_vindicator"
@@ -67,5 +70,14 @@ export const getAllData = {
     },
      get_show_commonQuestion: async (domain) => {
         return await show_commonQuestion(domain)
-    }
+    },
+    get_show_consultationold:async(domain,token)=>{
+        return await show_consultationold(domain,token)
+    },
+    get_store_profileData: async (domain,token) => {
+        return await store_profileuser(domain,token)
+    },
+     get_show_singleTeam:async(domain,id)=>{
+        return await show_singleTeam(domain,id)
+    },
 }

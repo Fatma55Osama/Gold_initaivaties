@@ -28,8 +28,12 @@ export default function PaginationComponent(props) {
                         color: '#724780',
                     },
                     '& .Mui-selected': {
-                        backgroundColor: '#724780',
-                        color: 'black',
+                        backgroundColor: '#724780 !important', 
+                        color: '#fff',
+                        opacity: 1, 
+                        '&:hover': {
+                            backgroundColor: '#5b3666 !important',
+                        },
                     },
                 }}
                 renderItem={(item) => (

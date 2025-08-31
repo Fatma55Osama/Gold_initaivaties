@@ -25,7 +25,7 @@ export default function ImportentLink() {
         <div className=' col-12 '>
           <Swiper
             // direction='rtl'
-            slidesPerView={4}
+            slidesPerView="auto"
             spaceBetween={30}
             loop={true}
             freeMode={true}

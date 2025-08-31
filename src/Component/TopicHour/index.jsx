@@ -41,7 +41,7 @@ export default function TopicHour() {
             className="col-12 col-lg-8 nav-link d-flex flex-column gap-3 py-4"
             id={styles.spaceparagraph}
           >
-            <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: shortText }} />
+            <p  className={styles.justifyText + " fs-4 "} id={styles.topicparagraph} dangerouslySetInnerHTML={{ __html: shortText }} />
           </Link>
         </div>
       );

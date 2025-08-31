@@ -1,139 +1,3 @@
-/* #Lines {
-    min-height: 250px;
-    max-height: 100%;
-    vertical-align: central;
-    margin-top: 50px;
-    margin-bottom: 50px;
-} */
-
-/* #LinesImg {
-    background-image: url(../../assets//rectangle-6.png);
-    background-size: cover;
-    border: none;
-    object-fit:cover;
-    width: 268px;
-    height: 156px;
-    top: 575px;
-    left: 92px;
-} */
-/* #PresImg {
-    background-image: url(../../assets//DrAbla.png);
-    background-size: cover;
-    border: none;
-    width: 268px;
-    height: 176px;
-    top: 833px;
-    left: 92px;
-} */
-/* 
-#MinisterImg {
-    background-image: url(../../assets//DrKhaled.png);
-    background-size: cover;
-    border: none;
-    width: 268px;
-    height: 179px;
-    top: 1103px;
-    left: 92px;
-}
-
-#StructImg {
-    background-image: url(../../assets//Structure.png);
-    background-size: cover;
-    border: none;
-    width: 266px;
-    height: 167px;
-    top: 1380px;
-    left: 94px;
-}
-
-#BgPillar1 {
-    background-image: url(../../assets//Pillars.png);
-    background-size: cover;
-    border: none;
-    width: 124px;
-    height: 124px;
-    top: 1671px;
-    left: 380px;
-}
-
-#Pillar1 {
-    background-image: url(../../assets//parents.png);
-    background-size: cover;
-    border: none;
-    width: 65px;
-    height: 65px;
-    top: 1701px;
-    left: 409px;
-}
-
-#BgPillar2 {
-    background-image: url(../../assets//Pillars.png);
-    background-size: cover;
-    border: none;
-    width: 124px;
-    height: 124px;
-    top: 1671px;
-    left: 249px;
-} */
-
-/* #Pillar2 {
-    background-image: url(../../assets//pediatrics.png);
-    background-size: cover;
-    border: none;
-    width: 65px;
-    height: 65px;
-    top: 1701px;
-    left: 278px;
-} */
-/* #BgPillar3 {
-    background-image: url(../../assets//Pillars.png);
-    background-size: cover;
-    border: none;
-    width: 124px;
-    height: 124px;
-    top: 1671px;
-    left: 119px;
-} */
-
-/* #Pillar3 {
-    background-image: url(../../assets//pregnant.png);
-    background-size: cover;
-    border: none;
-    width: 65px;
-    height: 65px;
-    top: 1701px;
-    left: 148px;
-} */
-
-/* h3 {
-    color: #000000;
-   
-    vertical-align: middle;
-    font-family: GE SS Two;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: right;
-    vertical-align: middle;
-} */
-/* p {
-    color: rgba(0, 0, 0, 0.5);
-    font-family: "GE SS Two-Light";
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 30px;
-    vertical-align: middle;
-} */
-/* 
-#CRegtangle {
-    background-color: rgba(217, 217, 217, 0.3);
-    height: 200px;
-    background-size: cover;
-    width: 1440px;
-    border: none;
-    vertical-align:middle;
-} */
 
 #About {
   min-height: 304px;
@@ -170,7 +34,7 @@
     #regtangle {
       background-color: rgba(217, 217, 217, 0.3);; /* rgba(217, 217, 217, 0.3);*/
       border-top: 2px solid #cba15f;
-      height: 157px;
+      min-height: 157px;
       p {
         color: rgba(0, 0, 0, 0.5);
         font-family: "GE SS Two-Light";
@@ -203,8 +67,8 @@
   gap: 1rem;
 }
 #cardslid {
-  width: 350px !important;
-  height: 330px;
+  width: 360px !important;
+  height: 360px;
   /* margin-inline-start: auto; */
     border: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -232,7 +96,7 @@
     width: 80%;
     p {
       font-family: "GE SS Two-Medium";
-      font-size: 12px;
+      font-size: 12px !important;
       font-weight: 500;
       line-height: 4px;
     }
@@ -241,7 +105,7 @@
     font-family: "GE SS Two-Medium";
     font-size: 16px;
     font-weight: 700;
-    width: 150px;
+    /* width: 200px; */
     text-align: center;
   }
 }
@@ -333,6 +197,7 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center;
+    align-content: center;
     gap: 25px;
   }
 

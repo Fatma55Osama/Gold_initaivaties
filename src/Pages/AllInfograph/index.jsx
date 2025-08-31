@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react';
 import { getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
+import PaginationComponent from '../../Component/PaginationComponent';
 
 
 export default function AllInfograph() {
@@ -117,8 +118,8 @@ export default function AllInfograph() {
 
 
             </header> */}
-              <MediaComponent searchTerm={searchTerm}
-                            handleSearch={handleSearch} />
+            <MediaComponent searchTerm={searchTerm}
+                handleSearch={handleSearch} />
             {/*---------------------- Start مكتبة الفيديو-------------------------*/}
             <div className=' col-12  d-flex flex-column container  '>
                 <div className=' col-12  d-flex flex-column pb-3 align-items-end mt-5'>
@@ -137,14 +138,14 @@ export default function AllInfograph() {
                                 month: 'long',
                                 year: 'numeric',
                             });
-                            const shortText = el.infoTitle.split(/\s+/).slice(0, 12).join(' ') + '...';
+                            const shortText = el.infoTitle.split(/\s+/).slice(0, 10).join(' ') + '...';
 
                             return (
                                 <div key={el.infoId} className='' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                                     <div className='   d-flex  flex-column  ' id={styles.CRegtangleinfo}  >
                                         <Link to={`/infograph/detailsinfograph/${el.infoId}`} className=' text-wrap flex-column nav-link' id={styles.phdivinfo}>
                                             <div className='   flex-column '  >
-                                                <img src={`${pathimg}/Infograph/${el.infoPhoto}`} id={styles.Imginfo} alt="" />
+                                                <img src={`${pathimg}/Infograph/${el.infoPhoto}`} id={styles.Imginfo} alt={el.infoPhotoAltText} />
                                             </div>
                                             <div className=' text-wrap  ' id={styles.Titleinfo}>
                                                 <h5 id={styles.infoTitle}>{shortText} </h5>
@@ -163,7 +164,7 @@ export default function AllInfograph() {
             </div>
             {/* ---------------------- End مكتبة الفيديو------------------------- */}
 
-            <div className="d-flex justify-content-center my-3">
+            {/* <div className="d-flex justify-content-center my-3">
                 <div className="d-flex justify-content-center my-3" dir="rtl">
                     {Array.from({ length: totalPages }, (_, i) => {
                         const pageNum = i + 1;
@@ -179,8 +180,16 @@ export default function AllInfograph() {
                         );
                     })}
                 </div>
-            </div>
-
+            </div> */}
+            {(searchTerm ? filteredNewsPerPage.length : infograph.length) > 0 && (
+                <div className='py-5'>
+                    <PaginationComponent
+                        current={currentPage}
+                        handle={paginate}
+                        total={totalPages}
+                    />
+                </div>
+            )}
         </div >
 
 

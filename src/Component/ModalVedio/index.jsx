@@ -17,9 +17,9 @@ export default function ModalVedio(props) {
             <div className=' d-flex justify-content-end '>
                 <IoMdCloseCircle onClick={() => closeModalvedio()} id={styles.iconarrowclose} />
             </div>
-            <div className='col-12 mb-5 d-flex justify-content-between align-items-center '>
-                <div className='col-6 ms-4 '>
-                    <div onClick={(e) => e.stopPropagation()} className={styles.contentModal2 + " d-flex flex-row align-items-center"}>
+            <div className='col-12 mb-5 d-flex flex-md-row flex-column-reverse justify-content-between align-items-center '>
+                <div className='col-md-6 col-12 ms-md-4 px-md-0 px-2 '>
+                    <div onClick={(e) => e.stopPropagation()} className={ styles.contentModal2 + " d-flex flex-row align-items-center"}>
                         {props?.vedioURL && getYoutubeId(props.vedioURL) && (
                             <iframe
                                 src={`https://www.youtube.com/embed/${getYoutubeId(props.vedioURL)}`}
@@ -33,7 +33,7 @@ export default function ModalVedio(props) {
                         )}
                     </div>
                 </div>
-                 <div className='col-6 text-end px-5' id={styles.h5}>
+                 <div className='col-md-6 col-12 text-end px-md-5 px-2' id={styles.h5vediotitle}>
                        <h5>{props.vedioTitle}</h5>
                  </div>
             </div>

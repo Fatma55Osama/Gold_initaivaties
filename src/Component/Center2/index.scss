@@ -170,8 +170,9 @@
   color: rgba(156, 153, 153, 1);
   direction: rtl;
   font-family: "GE SS-Medium", Helvetica;
-  font-size: 31px;
+  font-size: 31px !important;
   font-weight: 500;
+
   // left: 228px;
   letter-spacing: 0;
   line-height: normal;
@@ -344,6 +345,9 @@
   }
   .egyptlogo {
     display: none;
+  }
+  .p {
+    font-size: 20px !important;
   }
   .message-box.show {
     width: 240px;

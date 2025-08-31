@@ -1,34 +1,79 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom'; // لو بتستخدمي React Router
+import { Link, useNavigate } from 'react-router-dom'; // لو بتستخدمي React Router
 import styles from './index.module.css'; // نفس ملف CSS المستخدم في Register
 import ContactComponent from '../../Component/ContactComponent';
+import { postlogin } from '../../Data/API/postlogin';
+import { getDomain } from '../../configLoader';
+import { ToastContainer } from 'react-toastify'
+
+import { Bounce, toast } from 'react-toastify'
 
 export default function Login() {
+    const domain = getDomain()
+    const navigate = useNavigate()
     const validationSchema = Yup.object({
-        phone: Yup.string().required('رقم الهاتف مطلوب').matches(/^01[0-9]{9}$/, 'رقم الهاتف يجب أن يكون 11 رقم ويبدأ بـ 01'),
-
+        // phone: Yup.string().required('رقم الهاتف مطلوب').matches(/^01[0-9]{9}$/, 'رقم الهاتف يجب أن يكون 11 رقم ويبدأ بـ 01'),
+        username: Yup.string().required('اسم المستخدم مطلوب'),
         password: Yup.string().required('كلمة المرور مطلوبة'),
     });
 
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, { resetForm }) => {
         console.log(values);
-        // هنا تضيفي كود تسجيل الدخول
+        postlogin(domain, values).then((res) => {
+            if (res?.status === 200 || res?.status === 201) {
+                toast.success('تم تسجيل الدخول بنجاح');
+                resetForm()
+                const token = res.data.token;
+                console.log('Token:', res.data.token);
+                sessionStorage.setItem("token", res.data.regesterId)
+                // sessionStorage.setItem("token", res.data.token)
+
+                setTimeout(() => {
+                    navigate('/consultationnew')
+
+                }, 2000)
+            } else {
+                toast.error('تعذر تسجيل الدخول، تأكد من بياناتك وحاول مرة أخرى');
+            }
+        }).catch((err) => {
+            console.log(err);
+            const errorMsg = err.response?.data || "حدث خطأ أثناء تسجيل الدخول، حاول مرة أخرى لاحقًا";
+            if (err.response?.data) {
+                toast.error(errorMsg);
+            } else {
+                toast.error(errorMsg);
+            }
+        });
+
     };
 
     return (
         <div>
-                <ContactComponent none="d-none" hiddenheader="d-none" />
+            <ContactComponent none="d-none" hiddenheader="d-none" />
             <div className={`${styles.opinion} p-md-5 py-5 mt-2 rounded`}>
-
+                <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                    transition={Bounce}
+                />
                 <Formik
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={{ username: '', password: '' }}
                     validationSchema={validationSchema}
                     onSubmit={handleSubmit}
                 >
+
                     <Form className="d-flex container flex-column gap-4" id={styles.form}>
-                        <div className="form-group text-end d-flex flex-column gap-2">
+                        {/* <div className="form-group text-end d-flex flex-column gap-2">
                             <label htmlFor="phone">رقم الهاتف</label>
                             <Field
                                 type="text"
@@ -39,7 +84,22 @@ export default function Login() {
                                 id={styles.input}
                             />
                             <ErrorMessage name="phone" component="div" className="text-danger small mt-1" />
+                        </div> */}
+
+                        <h3 className='text-end'>تسجيل الدخول </h3>
+                        <div className="form-group text-end d-flex flex-column gap-2">
+                            <label htmlFor="username">اسم المستخدم</label>
+                            <Field
+                                type="text"
+                                dir="rtl"
+                                name="username"
+                                placeholder="ادخل اسم المستخدم"
+                                className="form-control"
+                                id={styles.input}
+                            />
+                            <ErrorMessage name="username" component="div" className="text-danger small mt-1" />
                         </div>
+
 
                         <div className="form-group text-end d-flex flex-column gap-2">
                             <label htmlFor="password">كلمة المرور</label>
@@ -65,7 +125,7 @@ export default function Login() {
                             <Link to="/register" className="text-decoration-none text-primary">
                                 مستخدم جديد؟ سجل علي البوابة الآن
                             </Link>
-                           
+
                         </div>
                     </Form>
                 </Formik>

@@ -33,7 +33,7 @@
     #regtangle {
       background-color: rgba(217, 217, 217, 0.3); /* rgba(217, 217, 217, 0.3);*/
       border-top: 2px solid #cba15f;
-      height: 157px;
+      min-height: 157px;
       p {
         color: rgba(0, 0, 0, 0.5);
         font-family: "GE SS Two-Light";
@@ -57,12 +57,13 @@
   font-weight: 500;
   font-size: 16px;
   color: rgba(0, 0, 0, 1);
-    &:hover{
-  color: var(--purpleColor) !important;
-  text-decoration: underline;
-   text-decoration-thickness: 2px !important;
+  &:hover {
+    color: var(--purpleColor) !important;
+    text-decoration: underline;
+    text-decoration-thickness: 2px !important;
     text-underline-offset: 10px;
-}}
+  }
+}
 @media screen and (min-width: 768px) and (max-width: 992px) {
   #About {
     min-height: 370px;
@@ -82,7 +83,6 @@
       font-size: 16px !important;
     }
   }
-
 }
 #search {
   button {
@@ -98,12 +98,15 @@
       width: 100%;
     }
   }
- 
-  
+
   #regtangle {
     height: auto !important;
+    p {
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+    }
   }
-  .sectionlink{
-    font-size: 14px !important;
-  }
+}
+.sectionlink {
+  font-size: 14px !important;
 }

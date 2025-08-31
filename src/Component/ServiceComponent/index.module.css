@@ -34,7 +34,7 @@
       border-top: 2px solid #cba15f;
       background-color: rgba(217, 217, 217, 0.3);
 
-      height: 157px;
+      min-height: 157px;
       p {
         color: rgba(0, 0, 0, 0.5);
         font-family: "GE SS Two-Light";

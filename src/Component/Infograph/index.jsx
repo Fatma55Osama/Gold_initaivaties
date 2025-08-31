@@ -35,7 +35,7 @@ export default function Infograph() {
                 <img
                   className="infograph-img"
                   src={`${pathimg}/Infograph/${el.infoPhoto}`}
-                  alt="infograph"
+                  alt={el.infoPhotoAltText}
                 />
                 <p className="infograph-text"  dangerouslySetInnerHTML={{ __html: shortText }} />
               </Link>

@@ -21,6 +21,7 @@ import pr3hover from '../../assets/wheelchair 3 (3).png'
 import pr5hover from '../../assets/wheelchair 3 (4).png'
 import { getAllData } from '../../Data/Repo/dataRepo';
 import { getDomain } from '../../configLoader';
+import pdf from '../../assets/سياسة الخصوصية.pdf'
 export default function Footer() {
   const imageMap = {
     'مشورة الإعاقة والدمج': { img: pr9, hoverimg: pr9hover },
@@ -70,6 +71,8 @@ export default function Footer() {
             <li id={styles.li} className='d-flex align-items-center'>أسئلة شائعة</li> */}
             <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/opinion'}>رأيك يهمنا</Link>
             <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/question'}>الأسئلة الشائعة</Link>
+            <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/jointeams'}> انضم لفريقنا</Link>
+            <Link id={styles.li} className='d-flex align-items-center nav-link' to={'/consultationnew'}> صفحتي الشخصية</Link>
 
           </ul>
           <ul className='d-flex flex-column align-items-end gap-3'>
@@ -147,10 +150,17 @@ export default function Footer() {
 
 
           <div className='col-12 d-flex justify-content-center align-items-center'>
-            <div className='col-lg-8 d-flex flex-column align-items-center ' id={styles.footerbottom}>
-              <span>سياسة حقوق النسخ - إخلاء المسؤولية - سياسة الخصوصية - الشروط و الأحكام - إمكانية الوصول -  اتصل بنا</span>
-              <hr className='col-7' />
-              <span>حقوق الطبع و النشر 2025 جميع الحقوق محفوظة لمبادرة الألف يوم الذهبية لتنمية الأسرة المصرية - جمهورية مصر العربية</span>
+            <div className='col-lg-9 d-flex flex-column align-items-center ' id={styles.footerbottom}>
+              {/* <span>سياسة حقوق النسخ - إخلاء المسؤولية - سياسة الخصوصية - الشروط و الأحكام - إمكانية الوصول -  اتصل بنا</span>
+              <hr className='col-7' /> */}
+
+              <span className='d-flex flex-row align-items-center gap-1 flex-nowrap'>  
+                حقوق الطبع و النشر 2025 جميع الحقوق محفوظة لمبادرة الألف يوم الذهبية لتنمية الأسرة المصرية - جمهورية مصر العربية
+
+               </span>
+                <a href={pdf} className='nav-link' target='_blank'>
+                سياسة الخصوصية -
+                </a> 
             </div>
           </div>
         </div>

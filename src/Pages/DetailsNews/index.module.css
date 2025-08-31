@@ -102,11 +102,11 @@
   text-decoration-thickness: 2px !important;
   text-underline-offset: 10px;
 }
-#colimgtitle{
-  img{
+#colimgtitle {
+  img {
     width: 100%;
+    height: 530px;
     object-fit: fill;
-    
   }
 }
 @media (max-width: 768px) {
@@ -115,5 +115,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    img {
+      height: 400px;
+    }
+  }
+  #newsParagraph {
+    p {
+      font-size: 14px !important;
+    }
+  }
+  #source {
+    p {
+      font-size: 14px !important;
+    }
   }
 }

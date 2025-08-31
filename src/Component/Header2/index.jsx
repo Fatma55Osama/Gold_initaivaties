@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
-import { IoMenu, IoSearch } from 'react-icons/io5'
+import { IoLogOutOutline, IoMenu, IoSearch } from 'react-icons/io5'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 import { ImLinkedin } from 'react-icons/im'
 import { AiFillTwitterCircle } from 'react-icons/ai'
@@ -15,7 +15,7 @@ import { getAllData } from '../../Data/Repo/dataRepo'
 import { getDomain } from '../../configLoader'
 import { FaXTwitter } from "react-icons/fa6";
 import { BsPersonCircle } from "react-icons/bs";
-
+import { MdLogout } from "react-icons/md";
 
 export default function Header2() {
     const { path } = usepathes()
@@ -24,7 +24,7 @@ export default function Header2() {
     const location = useLocation()
     const { contactfooter, setcontactfooter } = usecontactfooter()
     const domain = getDomain()
-
+    const token = sessionStorage.getItem('token')
     useEffect(() => {
         setActivePath(location.pathname)
         getAllData.get_storecontact(domain).then((res) => {
@@ -40,12 +40,20 @@ export default function Header2() {
     return (
         <div className='col-12  align-items-start d-flex justify-content-start'>
             <div className='col-12 col-md-11 col-lg-8 ' id={styles.halfheader}>
-                <div className={styles.part1 + "  px-4 d-flex justify-content-between py-2 px-md-3"}>
+                <div className={styles.part1 + "  px-2 d-flex align-items-center justify-content-between py-2 px-md-3"}>
                     <div className='d-none d-md-flex align-items-center gap-2 gap-md-4 '>
                         {/* <IoSearch className={styles.icon} /> */}
-                        <div className='d-flex align-items-center gap-2 gap-md-3'>
+                        <div className='d-flex align-items-center  gap-2 gap-md-3'>
 
-                            <Link to={'/login'}><BsPersonCircle className={styles.icon} /></Link>
+
+                            {
+                                !token ? (<Link to={'/login'} onClick={() => setShowMobileMenu(false)} className=' d-flex justify-content-center align-items-center'>
+                                    <BsPersonCircle className={styles.icon} title='تسجيل الدخول' />
+                                </Link>) : (<Link onClick={() => { setShowMobileMenu(false); sessionStorage.clear() }} className=' d-flex justify-content-center align-items-center'>
+                                    <MdLogout className={styles.icon} title='تسجيل الخروج' />
+                                </Link>)
+                            }
+                            {/* <Link to={'/login'}><BsPersonCircle className={styles.icon} title='تسجيل دخول' /></Link> */}
 
                             <a href="https://www.facebook.com/share/16iwfH8UVT/?mibextid=qi2Omg" target='_blank'>
 
@@ -68,6 +76,7 @@ export default function Header2() {
                             </a>
                         </div>
                     </div>
+
                     <a href={contactfooter[0]?.location} className={' nav-link'} target='_blank' >
 
 
@@ -140,7 +149,7 @@ export default function Header2() {
                                         : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`)
                                 );
 
-                                if (el.name === "الركن الإعلامي" || el.name ===  "تواصل معنا") {
+                                if (el.name === "الركن الإعلامي") {
                                     return (
                                         <Accordion key={index} className={`w-100 mb-2 border-0 mediaAccordion ${styles.mediaAccordion}`} alwaysOpen>
                                             <Accordion.Item eventKey="0" className="border-0">
@@ -153,6 +162,37 @@ export default function Header2() {
                                                 <Accordion.Body className="d-flex flex-column-reverse align-items-end gap-3  pt-4 pe-1">
                                                     {
                                                         el.links.map((sub, subIndex) => {
+                                                            const subIsActive = location.pathname === sub.path || location.pathname.startsWith(`${sub.path}/`)
+                                                            return (
+                                                                <Link
+                                                                    key={subIndex}
+                                                                    to={sub.path}
+                                                                    className={` nav-link  ${styles.linkfont} ${subIsActive ? styles.activelink : ""}`}
+                                                                    onClick={() => setShowMobileMenu(false)}
+                                                                >
+                                                                    {sub.label}
+                                                                </Link>
+                                                            )
+                                                        })
+                                                    }
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
+                                    )
+                                }
+                                if (el.name === "تواصل معنا") {
+                                    return (
+                                        <Accordion key={index} className={`w-100 mb-2 border-0 mediaAccordion ${styles.mediaAccordion}`} alwaysOpen>
+                                            <Accordion.Item eventKey="0" className="border-0">
+                                                <Accordion.Header className={`w-100 p-0 m-0 bg-transparent border-0`}>
+                                                    <div className="w-100 d-flex flex-row-reverse justify-content-between align-items-center">
+                                                        <span className={`${styles.linkfont}`}>{el.name} <span className="accordion-icon" /></span>
+
+                                                    </div>
+                                                </Accordion.Header>
+                                                <Accordion.Body className="d-flex flex-column-reverse align-items-end gap-3  pt-4 pe-1">
+                                                    {
+                                                        el.links.slice(5,).map((sub, subIndex) => {
                                                             const subIsActive = location.pathname === sub.path || location.pathname.startsWith(`${sub.path}/`)
                                                             return (
                                                                 <Link
@@ -191,10 +231,16 @@ export default function Header2() {
                     <div className=' col-12 d-flex align-items-center gap-2 gap-md-4 mt-2 justify-content-center '>
                         {/* <IoSearch className={styles.icon} /> */}
                         <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
-
-                            <Link to={'/login'} className=' d-flex justify-content-center align-items-center'>
-                                <BsPersonCircle className={styles.icon} />
-                            </Link>
+                            {
+                                !token ? (<Link to={'/login'} onClick={() => setShowMobileMenu(false)} className=' d-flex justify-content-center align-items-center'>
+                                    <BsPersonCircle className={styles.icon} title='تسجيل الدخول' />
+                                </Link>) : (<Link onClick={() => { setShowMobileMenu(false); sessionStorage.clear() }} className=' d-flex justify-content-center align-items-center'>
+                                    <MdLogout className={styles.icon} title='تسجيل الخروج' />
+                                </Link>)
+                            }
+                            {/* <Link to={'/login'} onClick={() => setShowMobileMenu(false)} className=' d-flex justify-content-center align-items-center'>
+                                <BsPersonCircle className={styles.icon} title='تسجيل دخول' />
+                            </Link> */}
                         </div>
                         <div className={styles.cycleicon + " d-flex justify-content-center align-items-center"}>
 

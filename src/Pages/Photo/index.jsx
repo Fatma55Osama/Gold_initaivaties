@@ -13,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { getDomain, getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
+import PaginationComponent from '../../Component/PaginationComponent';
 
 export default function Photo() {
     const [selectedAlbumInfo, setSelectedAlbumInfo] = useState(null);
@@ -66,7 +67,7 @@ export default function Photo() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openAlbum = (albumId) => {
-        const photosInAlbum = allphoto.filter(photo => photo.albumId === albumId);
+        const photosInAlbum = allphoto.filter(photo => photo.albumId === albumId).sort((a, b) => (b.orderView ?? 0) - (a.orderView ?? 0));;
         const albumInfo = filterphoto.find(album => album.albumId === albumId);
         setSelectedAlbumPhotos(photosInAlbum);
         setSelectedAlbumInfo(albumInfo);
@@ -100,6 +101,21 @@ export default function Photo() {
         setSearchTerm(e.target.value);
         setCurrentPage(1);
     };
+    useEffect(() => {
+        if (isModalOpen) {
+            // امنع السكرول في الخلفية
+            document.body.style.overflow = "hidden";
+        } else {
+            // رجع الوضع الطبيعي
+            document.body.style.overflow = "auto";
+        }
+
+        // تنظيف لما الكومبوننت يتشال
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isModalOpen]);
+
     console.log("selectalpom,", selectedAlbumPhotos)
     return (
         <div className='col-12'>
@@ -169,7 +185,7 @@ export default function Photo() {
                     <div className='  pb-4 d-flex   ' id={styles.CRegtangle}  >
                         {/**هنا هنعمل الmap */}
 
-                        <div className='d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-md-start gap-4 align-items-center align-items-md-start col-12 pt-4 pe-4'>
+                        <div className='d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-md-start gap-4 align-items-center align-items-md-start col-12 pt-4 px-4'>
                             {
                                 filteredNewsPerPage.length === 0 ? (
                                     <div className=' text-center col-12'>
@@ -184,9 +200,9 @@ export default function Photo() {
                                     return (
                                         <div onClick={() => { openAlbum(el.albumId) }} className="mx-auto" id={styles.phdiv} key={el.albumId} data-aos="fade-up" data-aos-offset="20" data-aos-delay={`${index * 80}`}>
                                             <div id={styles.Img}>
-                                                <img src={`${pathimg}/Photo/${el.coverPhoto}`} alt="" />
+                                                <img src={`${pathimg}/Photo/${el.coverPhoto}`} alt={el.coverPhotoAltText} />
                                             </div>
-                                            <div className='mt-3'>
+                                            <div className='mt-3' id={styles.albumtext}>
                                                 <h5 id={styles.h55}>{el.albumTitle}</h5>
                                                 <h6 id={styles.h66}>{formattedDate}</h6>
                                             </div>
@@ -205,11 +221,12 @@ export default function Photo() {
                                     <IoMdCloseCircle onClick={closeModal} id={styles.iconarrowclose} />
 
                                 </div>
-                                <div className='d-flex justify-content-between'>
-                                    <div className='col-3'> {/* 3 من 12 = 25% */}
-                                        {selectedAlbumInfo && <h4 className='text-center text-[#724780] font-bold text-lg mb-3'>{selectedAlbumInfo.albumTitle}</h4>}
+                                <div className='d-flex justify-content-between' id={styles.contentmodalphoto}>
+                                    <div className='col-md-5 px-1'> {/* 3 من 12 = 25% */}
+                                        {selectedAlbumInfo && <h5 className='text-center text-[#724780] font-bold text-lg mb-3' id={styles.albumTitle}>{selectedAlbumInfo.albumTitle}</h5>}
+                                        {selectedAlbumInfo && <p id={styles.albumText}>{selectedAlbumInfo.albumText}</p>}
                                     </div>
-                                    <div className='col-9 container border-3 border-end pe-2'> {/* 9 من 12 = 75% */}
+                                    <div className='col-md-7 container border-0 border-end pe-2'> {/* 9 من 12 = 75% */}
                                         <Swiper className={styles.slider + " mySwiper "} navigation={{
                                             prevEl: prevRef.current,
                                             nextEl: nextRef.current,
@@ -254,7 +271,7 @@ export default function Photo() {
             </div>
 
             {/* ---------------------- End ألبوم الصور------------------------- */}
-
+            {/* 
             <div className="d-flex justify-content-center my-3" dir="rtl">
                 {Array.from({ length: totalPages }, (_, i) => {
                     const pageNum = i + 1;
@@ -269,8 +286,16 @@ export default function Photo() {
                         </button>
                     );
                 })}
-            </div>
-
+            </div> */}
+            {(searchTerm ? filteredNewsPerPage.length : allphoto.length) > 0 && (
+                <div className='py-5'>
+                    <PaginationComponent
+                        current={currentPage}
+                        handle={paginate}
+                        total={totalPages}
+                    />
+                </div>
+            )}
         </div >
 
 

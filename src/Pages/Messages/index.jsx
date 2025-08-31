@@ -9,6 +9,7 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import { useAwarnessMsg, usepathes } from '../../Store';
 import { useState } from 'react';
 import MediaComponent from '../../Component/MediaComponent';
+import PaginationComponent from '../../Component/PaginationComponent';
 
 export default function Messages() {
     const { allawarness } = useAwarnessMsg()
@@ -28,12 +29,12 @@ export default function Messages() {
             .toLowerCase();
     }
     const [currentPage, setCurrentPage] = useState(1);
-    const awarnessPerPage = 10; // عدد الأخبار في كل صفحة
+    const awarnessPerPage = 5; // عدد الأخبار في كل صفحة
     const [searchTerm, setSearchTerm] = useState('');
     const indexOfLastawarness = currentPage * awarnessPerPage;
     const indexOfFirstawarness = indexOfLastawarness - awarnessPerPage;
     const filteredawarness = allawarness?.filter(awarness =>
-       normalizeArabic(awarness.msgText).includes(normalizeArabic(searchTerm))
+        normalizeArabic(awarness.msgText).includes(normalizeArabic(searchTerm))
     ).sort((a, b) => b.orderView - a.orderView);
     const filteredNewsPerPage = filteredawarness.slice(indexOfFirstawarness, indexOfLastawarness);
     const totalPages = Math.ceil(
@@ -115,7 +116,7 @@ export default function Messages() {
 
             </header> */}
             <MediaComponent searchTerm={searchTerm}
-                                        handleSearch={handleSearch} />
+                handleSearch={handleSearch} />
             {/*---------------------- Start الرسائل التوعوية-------------------------*/}
             <div className='col-12 mb-5  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                 <div className='col-11 d-flex  flex-column pb-3 align-items-end'>
@@ -175,7 +176,7 @@ export default function Messages() {
 
                 </div>
             </div> */}
-            <div className="d-flex justify-content-center my-3" dir="rtl">
+            {/* <div className="d-flex justify-content-center my-3" dir="rtl">
                 {Array.from({ length: totalPages }, (_, i) => {
                     const pageNum = i + 1;
                     const arabicNum = pageNum.toLocaleString('ar-EG');
@@ -189,7 +190,16 @@ export default function Messages() {
                         </button>
                     );
                 })}
-            </div>
+            </div> */}
+            {(searchTerm ? filteredNewsPerPage.length : allawarness.length) > 0 && (
+                <div className='py-5'>
+                    <PaginationComponent
+                        current={currentPage}
+                        handle={paginate}
+                        total={totalPages}
+                    />
+                </div>
+            )}
         </div >
 
 

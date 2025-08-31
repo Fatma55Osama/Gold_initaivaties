@@ -10,16 +10,43 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  overflow-y: auto;
 }
 #iconarrowclose {
   font-size: 23px;
   color: red;
   margin-right: 20px;
 }
-#h5 {
+#h5vediotitle {
   h5 {
-    font-size: 27px;
+    font-size: 18px;
     text-align: justify !important;
     line-height: 1.7;
+    direction: rtl;
   }
+}
+@media screen and (max-width: 1024px) and (min-width: 992px) {
+#h5vediotitle {
+  h5 {
+    font-size: 13px !important;
+  }
+}
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+#h5vediotitle {
+  h5 {
+    font-size: 12px !important;
+  }
+}
+}
+@media screen and (max-width: 767px) {
+#h5vediotitle {
+  margin-top: 15px;
+  h5 {
+    font-size: 11px !important;
+  }
+}
+.contentModal2 iframe{
+  width: 100% !important;
+}
 }

@@ -5,6 +5,7 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import { useallActiveEmployees, usepathimg } from '../../Store';
 import { useState } from 'react';
 import { getPathImg } from '../../configLoader';
+import PaginationComponent from '../../Component/PaginationComponent';
 
 
 export default function Alllightteam() {
@@ -20,7 +21,7 @@ export default function Alllightteam() {
             .trim()
             .toLowerCase();
     }
-    const  pathimg  = getPathImg()
+    const pathimg = getPathImg()
 
     const { Employees } = useallActiveEmployees()
     const [Searchterm, setSearchterm] = useState('')
@@ -86,9 +87,9 @@ export default function Alllightteam() {
             <div className=' col-12 d-flex flex-column align-items-end '>
                 <div className='container'>
 
-                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex  justify-content-lg-between justify-content-md-start`}>
+                    <div className={`${styles.cardContainer} col-12 mb-5 d-flex  justify-content-lg-start justify-content-md-start`}>
                         {
-                            (Searchterm ? filteredteamPerPage : currentPage).length === 0 ? (
+                            (Searchterm ? filteredteamPerPage : filteredteam).length === 0 ? (
                                 <div className=' text-center col-12'>
                                     <p style={{ textAlign: 'center', marginTop: '20px' }}>لا يوجد نتائج مطابقة للبحث</p>
 
@@ -98,14 +99,14 @@ export default function Alllightteam() {
                                     const formattedDate = el.honorDate?.split("T")[0].replace(/-/g, "/");
 
                                     return (
-                                        <div key={el.govId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} data-aos="fade-up"
-                                        data-aos-offset="0" data-aos-delay={100}
+                                        <div key={el.empId} className='d-flex justify-content-center align-items-center bg-white gap-2' id={styles.cardslid} data-aos="fade-up"
+                                            data-aos-offset="0" data-aos-delay={100}
                                         >
-                                            <Link  to={`/lightteam/detailslightteam/${el.govId}`} className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1 nav-link"}>
+                                            <Link to={`/lightteam/detailslightteam/${el.empId}`} className={styles.card + " d-flex flex-column justify-content-between align-items-center gap-1 nav-link"}>
                                                 <div className={styles.imgCard}>
-                                                    <img src={`${pathimg}/Employees/${el.empImage}`} alt="" />
+                                                    <img src={`${pathimg}/Employees/${el.empImage}`} alt={el.empImageAltText} />
                                                 </div>
-                                                <span className={styles.Cardtitle}>
+                                                <span className={styles.Cardtitle + " col-11"}>
                                                     {el.empName}
                                                 </span>
                                                 <div className={styles.textCard + " text-end col-9 px-2 py-3"}>
@@ -121,7 +122,7 @@ export default function Alllightteam() {
 
 
                     </div>
-                    <div className=" d-flex justify-content-center my-3" dir="rtl">
+                    {/* <div className=" d-flex justify-content-center my-3" dir="rtl">
                         {Array.from({ length: totalpages }, (_, i) => {
                             const pageNum = i + 1;
                             const arabicNum = pageNum.toLocaleString('ar-EG');
@@ -135,7 +136,16 @@ export default function Alllightteam() {
                                 </button>
                             );
                         })}
-                    </div>
+                    </div> */}
+                    {(Searchterm ? filteredteamPerPage.length : Employees.length) > 0 && (
+                        <div className='py-5'>
+                            <PaginationComponent
+                                current={currentPage}
+                                handle={paginate}
+                                total={totalpages}
+                            />
+                        </div>
+                    )}
                 </div>
 
             </div>

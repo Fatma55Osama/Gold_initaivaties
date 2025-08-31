@@ -328,21 +328,21 @@ export default function Indicators() {
                 {(typeService === '' || selectedIndicator === '') ? (
                     /* الخطوة الأولى: لم يُحدَّد نوع الخدمة أو اسم المؤشر */
                     <div className="col-12 text-center d-flex justify-content-center align-items-center">
-                        <p className="text-center fs-4 text-secondary">
+                        <p className="text-center fs-6 text-secondary">
                             يرجى اختيار نوع الخدمة واسم المؤشر لعرض الرسومات البيانية.
                         </p>
                     </div>
                 ) : filtered.length === 0 ? (
                     /* لا توجد بيانات بعد الفلترة */
                     <div className="col-12 text-center d-flex justify-content-center align-items-center">
-                        <p className="text-center fs-md-4 text-danger">
+                        <p className="text-center fs-md-6 text-danger">
                             لا توجد بيانات متاحة بناءً على الاختيارات الحالية.
                         </p>
                     </div>
                 ) : !Object.values(filters).some(v => v) ? (
                     /* ✅ كل الـ checkboxes غير مفعّلة → لا نعرض شيئًا */
                     <div className="col-12 text-center d-flex justify-content-center align-items-center">
-                        <p className="text-center fs-md-4 text-secondary">
+                        <p className="text-center fs-md-6 text-secondary">
                             قم بتفعيل أحد الفلاتر لعرض الرسم البياني.
                         </p>
                     </div>

@@ -4,7 +4,7 @@ import styles from './index.module.css'
 import { Link } from 'react-router-dom';
 export default function MediaComponent(props) {
   const { path } = usepathes()
- 
+
   return (
     <div>
       <div className='col-12 position-relative ' id={styles.About}>
@@ -26,11 +26,10 @@ export default function MediaComponent(props) {
           </div>
         </div>
       </div>
-      <header className={`col-12 d-flex flex-column-reverse flex-lg-row ${
-    props.align === "align-items-end"
-      ? "justify-content-end align-items-end"
-      : "justify-content-between align-items-lg-center"
-  } mt-5 gap-4 gap-lg-0 container`}>
+      <header className={`col-12 d-flex flex-column-reverse flex-lg-row ${props.align === "align-items-end"
+          ? "justify-content-end align-items-end"
+          : "justify-content-between align-items-lg-center"
+        } mt-5 gap-4 gap-lg-0 container`}>
 
         <div className={` ${props.none} d-flex align-items-center gap-3`} id={styles.search}>
           <button className='py-0 px-4 border-0'>بحث</button>

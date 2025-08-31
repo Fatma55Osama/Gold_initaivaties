@@ -61,6 +61,7 @@
     font-size: 15px;
     line-height: 100%;
     letter-spacing: 0%;
+    color: #cba15f;
   }
 }
 #newscontainer {
@@ -84,7 +85,7 @@
   text-align: right;
   vertical-align: top;
   /* margin-right: 100px !important; */
-  padding-right:110px ;
+  padding-right: 110px;
   /* direction:rtl; */
 }
 
@@ -128,7 +129,7 @@
   #infoParagraph {
     p {
       text-align: justify;
-      font-size: 15px;
+      font-size: 14px !important;
       line-height: 28px;
     }
   }
@@ -141,7 +142,7 @@
   }
 
   #infoParagraph {
-    font-size: 14px;
+    font-size: 14px !important;
     line-height: 26px;
   }
 }
@@ -151,5 +152,4 @@
     height: auto !important;
     margin: 10px 0 !important;
   }
-
 }

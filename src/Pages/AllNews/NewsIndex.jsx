@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
+import PaginationComponent from '../../Component/PaginationComponent';
 
 export default function AllNews() {
     const { path } = usepathes()
@@ -135,8 +136,8 @@ export default function AllNews() {
                                         <div className='col-12 container d-flex  flex-md-row  pb-2 ' id={styles.CRegtangle} key={el.newsId} >
                                             <div className='container text-end d-flex justify-content-end '>
                                                 <Link className='col-12 container d-flex flex-column nav-link '>
-                                                    <Link className='nav-link ' to={`/mediacorner/detailsnews/${el.newsId}`} ><h5>{el.title}</h5></Link>
-                                                    <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <h6>{formattedDate}</h6></Link>
+                                                    <Link className='nav-link ' to={`/mediacorner/detailsnews/${el.newsId}`} ><h5 className=" me-4 p-0">{el.title}</h5></Link>
+                                                    <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <h6 className=" me-4 p-0">{formattedDate}</h6></Link>
                                                     <Link className='nav-link' to={`/mediacorner/detailsnews/${el.newsId}`}> <p className={styles.p + " me-4 p-0"} dangerouslySetInnerHTML={{ __html: shortText }} /></Link>
 
                                                     <Link to={`/mediacorner/detailsnews/${el.newsId}`} className={styles.btnback + '  rounded-3 nav-link '}>
@@ -148,7 +149,7 @@ export default function AllNews() {
                                                 </Link>
                                             </div>
                                             <div className='col-12 container d-flex flex-column align-items-center  ' id={styles.NewsImg} >
-                                                <img src={`${pathimg}/News/${el.smallPhoto}`} className='' alt="" id={styles.NewsImg} />
+                                                <img src={`${pathimg}/News/${el.smallPhoto}`} className='' alt={el.smallPhotoAltText} id={styles.NewsImg} />
                                             </div>
                                         </div>
                                     )
@@ -163,7 +164,7 @@ export default function AllNews() {
 
             </div>
 
-            <div className="d-flex justify-content-center my-3" dir="rtl">
+            {/* <div className="d-flex justify-content-center my-3" dir="rtl">
                 {Array.from({ length: totalPages }, (_, i) => {
                     const pageNum = i + 1;
                     const arabicNum = pageNum.toLocaleString('ar-EG');
@@ -177,7 +178,16 @@ export default function AllNews() {
                         </button>
                     );
                 })}
-            </div>
+            </div> */}
+            {(searchTerm ? filteredNewsPerPage.length : allnews.length) > 0 && (
+                <div className='py-5'>
+                    <PaginationComponent
+                        current={currentPage}
+                        handle={paginate}
+                        total={totalPages}
+                    />
+                </div>
+            )}
 
             {/* ---------------------- End الأخبار------------------------- */}
 

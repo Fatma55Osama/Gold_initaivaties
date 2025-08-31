@@ -3,25 +3,55 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './index.module.css'; // نفس ملف التنسيق المستخدم في باقي الصفحات
 import ContactComponent from '../../Component/ContactComponent';
+import { getDomain } from '../../configLoader';
+import { postforgetpassword } from '../../Data/API/postforgetpassword';
+import { ToastContainer } from 'react-toastify'
+
+import { Bounce, toast } from 'react-toastify'
+import NewPassword from '../../Component/NewPassword.jsx';
 
 export default function ForgotPassword() {
     const [submitted, setSubmitted] = useState(false);
+    const domain = getDomain()
 
     const validationSchema = Yup.object({
-        phone: Yup.string().required('رقم الهاتف مطلوب').matches(/^01[0-9]{9}$/, 'رقم الهاتف يجب أن يكون 11 رقم ويبدأ بـ 01'),
+        email: Yup.string().required('البريد الإلكتروني مطلوب').email('البريد الإلكتروني غير صالح'),
 
     });
 
     const handleSubmit = (values) => {
-        console.log('إرسال رابط إعادة تعيين كلمة المرور إلى:', values.email);
         // هنا تضيفي كود الإرسال الحقيقي
-        setSubmitted(true);
+        postforgetpassword(domain, values).then((res) => {
+            console.log(res)
+            if (res?.status === 200 || res?.status === 201) {
+                toast.success('تم إرسال رابط إعادة تعيين كلمة المرور بنجاح');
+                setSubmitted(true);
+            } else {
+                toast.success('إرسال رابط إعادة تعيين كلمة المرور إلى الإيميل');
+                setSubmitted(true);
+            }
+        }).catch((err) => {
+            console.error(err);
+            toast.error(err.response.data || 'حدث خطأ أثناء إرسال الرابط، حاول مرة أخرى');
+        });
     };
 
     return (
         <div>
-            <ContactComponent none="d-none" hiddenheader="d-none"/>
-
+            <ContactComponent none="d-none" hiddenheader="d-none" />
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
             <div className={`${styles.opinion} p-md-5 py-5 mt-2 rounded`}>
                 {!submitted ? (
                     <Formik
@@ -31,16 +61,16 @@ export default function ForgotPassword() {
                     >
                         <Form className="d-flex container flex-column gap-4" id={styles.form}>
                             <div className="form-group text-end d-flex flex-column gap-2">
-                                <label htmlFor="phone">رقم الهاتف</label>
+                                <label htmlFor="email">البريد الإلكتروني</label>
                                 <Field
-                                    type="phone"
+                                    type="email"
                                     dir="rtl"
-                                    name="phone"
-                                    placeholder="أدخل رقم هاتفك"
+                                    name="email"
+                                    placeholder="أدخل بريدك الإلكتروني"
                                     className="form-control"
                                     id={styles.input}
                                 />
-                                <ErrorMessage name="text" component="div" className="text-danger small mt-1" />
+                                <ErrorMessage name="email" component="div" className="text-danger small mt-1" />
                             </div>
 
                             <div className="text-end">
@@ -49,9 +79,7 @@ export default function ForgotPassword() {
                         </Form>
                     </Formik>
                 ) : (
-                    <div className="text-center">
-                        <h5 className="text-success">تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.</h5>
-                    </div>
+                    <NewPassword />
                 )}
             </div>
         </div>

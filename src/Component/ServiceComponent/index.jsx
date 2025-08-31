@@ -76,7 +76,7 @@ export default function ServiceComponent() {
                                     data-aos-offset="5" data-aos-delay={`${index * 100}`} id={styles.cardbaby} onMouseEnter={() => setHoverimgMouse(index)} onMouseLeave={() => setHoverimgMouse(null)} >
 
                                     <img src={isHovering || isCurrent ? el.hoverimg : el.img} width={70} height={70} style={{ objectFit: "contain" }} alt="" />
-                                    <h3 className={`${isCurrent ? styles.active : null} text-center`} >{el.mashoraDesc}</h3>
+                                    <h3 className={`${isCurrent ? styles.active : null} text-center text-white`} >{el.mashoraDesc}</h3>
 
                                 </Link>
                             )

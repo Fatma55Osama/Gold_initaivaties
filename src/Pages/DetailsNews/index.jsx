@@ -96,16 +96,16 @@ export default function DetailsNews() {
 
                                 <img
                                     src={`${pathimg}/News/${detailnew?.largPhoto}`}
-                                    alt=""
+                                    alt={detailnew?.largPhotoAltText}
 
-                                    height={400}
+                                  
                                     style={{ marginRight: '15px', marginBottom: '10px' }}
                                 />
 
                                 <p id={styles.newsParagraph} className='py-5' style={{ textAlign: 'justify' }} dangerouslySetInnerHTML={{ __html: detailnew?.newsTextTwo }} />
-                                <div className='d-flex  justify-content-end gap-2 mb-5'>
-                                    <p style={{ textAlign: 'justify' , fontSize:"15px"}}  dangerouslySetInnerHTML={{ __html: detailnew?.newsSource }} />
-                                    <h5 className=' m-0 pt-2' id={styles.h5new}>  / المصدر   </h5>
+                                <div className='d-flex col-12  justify-content-end  gap-2 mb-5' id={styles.source}>
+                                    <p style={{ textAlign: 'justify' , fontSize:"15px"}} className='mt-1 mt-md-0' dangerouslySetInnerHTML={{ __html: detailnew?.newsSource }} />
+                                    <h5 className=' m-0 pt-1' id={styles.h5new}>  / المصدر   </h5>
 
                                 </div>
                                 {/* <p id={styles.newsParagraph} key={index} style={{ textAlign: 'justify' }}  dangerouslySetInnerHTML={{ __html: detailnew?.newsText }}/> */}

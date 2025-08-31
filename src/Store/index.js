@@ -188,3 +188,12 @@ export const usedetailslight = create((set) => ({
   lightTeam: {},
   setlightTeam: (val) => set(() => ({ lightTeam: val })),
 }));
+
+export const usedetailconsultationold = create((set) => ({
+  consultationold: [],
+  setdetailsconsultation: (val) => set(() => ({ consultationold: val })),
+}));
+export const useprofileData = create((set) => ({
+  profileData: {},
+  setProfileData: (val) => set(() => ({ profileData: val })),
+}));

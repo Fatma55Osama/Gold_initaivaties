@@ -94,7 +94,7 @@ export default function HomePage() {
                     data-aos-offset="5" data-aos-delay={`${index * 100}`} id={styles.cardbaby} onMouseEnter={() => setHoverimgMouse(index)} onMouseLeave={() => setHoverimgMouse(null)} >
 
                     <img src={hoverimgMouse == index ? el.hoverimg : el.img} width={70} height={70} style={{ objectFit: "contain" }} alt="" />
-                    <h3 className='text-center'>{el.mashoraDesc}</h3>
+                    <h3 className='text-center text-white'>{el.mashoraDesc}</h3>
 
                   </Link>
 
@@ -133,7 +133,7 @@ export default function HomePage() {
                   filterAwarness.map((el) => (
                     <SwiperSlide key={el.msgId}>
                       <div className='d-flex flex-column align-items-center'>
-                        <p>"{el.msgText}"</p>
+                        <p className='fs-2'>"{el.msgText}"</p>
                       </div>
                     </SwiperSlide>
                   ))

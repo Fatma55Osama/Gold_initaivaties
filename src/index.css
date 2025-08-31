@@ -191,3 +191,7 @@ canvas {
   transform: translate(-50%, -50%);
   z-index: 2;
 }
+.swiperHomeTeam .swiper-wrapper {
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+}

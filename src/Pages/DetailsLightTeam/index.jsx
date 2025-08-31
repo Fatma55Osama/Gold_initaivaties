@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getDomain, getPathImg } from '../../configLoader';
 import { usedetailslight, usePlay } from '../../Store';
@@ -6,6 +6,7 @@ import styles from './index.module.css'
 import doctor from '../../assets/doctor.png'
 import iconvedio from '../../assets/Frame.png'
 import { IoMdCloseCircle } from 'react-icons/io';
+import { getAllData } from '../../Data/Repo/dataRepo';
 
 export default function DetailsLightTeam() {
     const domain = getDomain()
@@ -22,6 +23,29 @@ export default function DetailsLightTeam() {
         const match = url.match(regex);
         return match ? match[1] : null;
     }
+
+    useEffect(() => {
+        getAllData.get_show_singleTeam(domain, id).then((res) => {
+            setlightTeam(res)
+            console.log("lightTeam", res)
+        })
+
+    }, [id])
+    useEffect(() => {
+        if (modalindex) {
+            // امنع السكرول في الخلفية
+            document.body.style.overflow = "hidden";
+        } else {
+            // رجع الوضع الطبيعي
+            document.body.style.overflow = "auto";
+        }
+
+        // تنظيف لما الكومبوننت يتشال
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [modalindex]);
+
     return (
         <div className='col-12'>
             <div className='col-12 position-relative ' id={styles.About}>
@@ -42,65 +66,84 @@ export default function DetailsLightTeam() {
                     </div>
                 </div>
             </div>
-            <div className='py-5  d-flex justify-content-between container'>
-                <div className='col-5'>
-                    <div className={styles.imgCard}>
-                        <img src={doctor} alt="" />
+            <div className='py-5   d-flex flex-column flex-md-column justify-content-between container'>
+                <div className='d-flex flex-md-row flex-column col-12'>
+                    <div className='col-md-5' id={styles.parentimgCard}>
+                        <div className={styles.imgCard}>
+                            <img src={`${pathimg}/Employees/${lightTeam?.empImage}`} alt={lightTeam?.empImageAltText} />
+                        </div>
+                    </div> 
+
+                      <div className=' col-md-7 d-flex flex-column gap-5' id={styles.textltr}>
+                    <h6> الأسم / <span className='text-black'>{lightTeam?.empName}</span></h6>
+                    <h6> الوظيفة / <span className='text-black'>{lightTeam?.empJob}</span></h6>
+                    <h6> الإدارة / <span className='text-black'>{lightTeam?.empFacilityUnit}</span></h6>
+                    <h6> تاريخ التكريم / <span className='text-black'>{lightTeam?.honorDate?.split("T")[0].split("-").reverse().join("-")}</span></h6>
+                    <h6> المحافظة  / <span className='text-black'>{lightTeam?.govName}</span></h6>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
 
-                <div className=' col-7 d-flex flex-column gap-5'>
-                    <h6> الأسم / <span className='text-black'>سيبتيس</span></h6>
-                    <h6> الوظيفة / <span className='text-black'>سيبتيس</span></h6>
-                    <h6> تاريخ التكريم / <span className='text-black'>سيبتيس</span></h6>
-                    <h6> نبذة عن المكرم / <span className='text-black'>سيبتيس</span></h6>
+
+                <div className=' col-md-12 d-flex flex-column gap-5 mt-5' id={styles.textltr}>
+                    {/* <h6> الأسم / <span className='text-black'>{lightTeam?.empName}</span></h6>
+                    <h6> الوظيفة / <span className='text-black'>{lightTeam?.empJob}</span></h6>
+                    <h6> الإدارة / <span className='text-black'>{lightTeam?.empFacilityUnit}</span></h6>
+                    <h6> تاريخ التكريم / <span className='text-black'>{lightTeam?.honorDate?.split("T")[0].split("-").reverse().join("-")}</span></h6>
+                    <h6> المحافظة  / <span className='text-black'>{lightTeam?.govName}</span></h6> */}
+                    <h6> نبذة عن المكرم / <span className='text-black'>{lightTeam?.empText}</span></h6>
 
                 </div>
             </div>
-            <div className='d-flex justify-content-center'>
-                {
-                    !isplaying && (
-                        <div className=' mt-3 mb-5 pb-5 col-8'>
-                            <div className=' text-wrap flex-column d-flex justify-content-center align-items-center py-4' id={styles.phdiv} onClick={() => setModalindex(true)}>
-                                <div className=' flex-column position-relative' id={styles.imgrayse} >
-                                    <img src={doctor} className='object-fit-contain' alt="" />
+            {
+                lightTeam?.empVid && (
+                    <div className='d-flex justify-content-center'>
+                        {
+                            !isplaying && (
+                                <div className=' mt-3 mb-5 pb-5 col-11 col-md-8'>
+                                    <div className=' text-wrap flex-column d-flex justify-content-center align-items-center py-4' id={styles.phdiv} onClick={() => setModalindex(true)}>
+                                        <div className=' flex-column position-relative' id={styles.imgrayse} >
+                                            <img src={`${pathimg}/Employees/${lightTeam?.empImage}`} className='object-fit-contain' alt={lightTeam?.empImageAltText} />
+                                        </div>
+                                        <div className='  position-absolute  col-10 d-flex justify-content-center align-items-center' >
+
+                                            <img src={iconvedio} width={50} className='object-fit-contain' id={styles.iconvedio} alt="" />
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div className='  position-absolute  col-10 d-flex justify-content-center align-items-center' >
+                            )
 
-                                    <img src={iconvedio} width={50} className='object-fit-contain' id={styles.iconvedio} alt="" />
-                                </div>
-
-                            </div>
-                        </div>
-                    )
-
-                }
-            </div>
+                        }
+                    </div>
+                )}
             {
                 modalindex && (
                     <div className={styles.modalindex}>
-                        <div className='d-flex justify-content-end align-items-end my-2 mx-4'>
+                        <div className='d-flex justify-content-end align-items-end my-2 mx-1 mx-md-4'>
 
                             {/* <button className={styles.button2 + ' bg-danger'} ><IoMdClose className={styles.iconclose} /></button> */}
                             <IoMdCloseCircle onClick={() => setModalindex(false)} id={styles.iconarrowclose} />
 
                         </div>
-                        <div className='col-12 d-flex justify-content-center align-items-center  '>
-                            <div onClick={(e) => e.stopPropagation()} className={styles.contentModal2 + " d-flex flex-row align-items-center col-8"}>
+                        <div className='col-12 h-75 d-flex justify-content-center align-items-center  '>
+                            <div onClick={(e) => e.stopPropagation()} className={styles.contentModal2 + " d-flex flex-row align-items-center col-12 col-md-8"}>
                                 {(
-                                    <iframe
-                                        src={`https://www.youtube.com/embed/https://www.youtube.com/watch?v=JafM749Qolw&t=4s`}
-                                        width='100%'
-                                        height="550"
-                                        className='rounded-3'
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <div className={styles.videoWrapper}>
+                                        <iframe
+                                            src={`https://www.youtube.com/embed/${getYoutubeId(lightTeam?.empVid)}`}
+                                            className="rounded-3"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        ></iframe>
+                                    </div>
                                 )}
                             </div>
                         </div>
-                       
+
                     </div>
                 )
             }

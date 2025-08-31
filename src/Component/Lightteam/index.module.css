@@ -37,7 +37,7 @@
     bottom: 0 !important;
     p {
       font-family: "GE SS Two-Medium";
-      font-size: 12px;
+      font-size: 12px !important;
       font-weight: 500;
       line-height: 20px;
       margin-bottom: 0.2rem;
@@ -55,11 +55,13 @@
     display: flex;
     justify-content: space-around;
   } */
-.swiper,
+.swiper {
+  width: 100%;
+}
 .swiper-slide {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #mySwiper {
   max-width: 1200px !important;
@@ -70,11 +72,21 @@
 #mySwiper > div {
   display: flex !important;
   flex-direction: row-reverse !important;
+  justify-content: center;
 }
+.mySwiper .swiper-wrapper {
+  
+  justify-content: center !important;
+}
+
 @media screen and (max-width: 992px) and (min-width: 768px) {
   #cardslid {
-    width: 350px !important;
+    width: 100% !important;
+    max-width: 350px;
+    /* height: auto; */
+    margin: 10px;
   }
+ 
   .textCard {
     /* width: 100%;
     background-color: rgba(217, 217, 217, 1);
@@ -160,8 +172,8 @@
   #cardslid {
     width: 100% !important;
     max-width: 300px;
-    height: auto;
-    margin: auto;
+    /* height: auto; */
+    margin: 10px;
   }
 
   .card {

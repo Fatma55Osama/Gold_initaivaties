@@ -74,6 +74,7 @@ export default function Register() {
                 >
                     <Form className='d-flex container flex-column gap-4' id={styles.form}>
 
+                        <h3 className='text-end'>  إنشاء حساب جديد </h3>
 
                         <div className='form-group text-end d-flex flex-column gap-2'>
                             <label htmlFor="username"  > الاسم ثلاثي</label>
@@ -100,8 +101,8 @@ export default function Register() {
                         </div>
 
 
-                        <div className='from-group text-end d-flex  justify-content-between '>
-                            <div className='col-4 d-flex justify-content-end position-relative' >
+                        <div className='from-group text-end d-flex flex-column-reverse flex-md-row gap-5 gap-md-0 justify-content-between '>
+                            <div className='col-md-4 d-flex justify-content-end position-relative' >
                                 <Field
                                     as="select"
                                     name="qualification"
@@ -124,7 +125,7 @@ export default function Register() {
                                 <ErrorMessage name="qualification" component="div" className='text-danger small mt-1' />
 
                             </div>
-                            <div className='d-flex align-items-center gap-3'>
+                            <div className='d-flex align-items-center justify-content-end gap-3'>
                                 <label className='me-3 d-flex align-items-center gap-1'>
                                     <span>يعمل</span>
                                     <Field type="radio" value="يعمل" name="statework" />

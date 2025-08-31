@@ -289,7 +289,7 @@ export default function Center2() {
               محافظات المرحلة الأولي (من 23 أغسطس 2023-31 مارس 2024):
             </p> */}
             <div className='col-12 d-flex justify-content-end  ' id='parentp'>
-              <p className="p ">
+              <p className="p col-lg-12">
                 " تم تغطية ٨٥% من محافظات الجمهورية
                 وجاري الاستكمال"
               </p>

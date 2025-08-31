@@ -9,12 +9,13 @@
     font-weight: 500;
     font-family: "GE SS-Medium";
   }
-  p {
-    font-size: 20px;
+  p{
+     font-size: 20px !important;
     font-family: "GE SS-Medium", sans-serif;
     font-weight: 200;
     line-height: 43px;
     direction: rtl;
+
   }
 
   img {

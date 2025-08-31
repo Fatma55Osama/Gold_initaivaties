@@ -3,6 +3,9 @@
     background-color: var(--purpleColor);
     color: white;
   }
+   h3{
+    color: var(--purpleColor);
+  }
   #input {
     resize: none;
     outline: none;

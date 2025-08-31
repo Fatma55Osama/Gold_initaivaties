@@ -9,14 +9,15 @@ import { Link, useLocation } from 'react-router-dom'
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { useModalvedio, usepathes, usepathimg, usePlay, useVedio } from '../../Store';
 import iconvedio from '../../assets/Frame.png'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getPathImg } from '../../configLoader';
 import MediaComponent from '../../Component/MediaComponent';
 import ModalVedio from '../../Component/ModalVedio';
+import PaginationComponent from '../../Component/PaginationComponent';
 export default function AllVideo() {
     const { path } = usepathes()
     const { isplaying, setIsplaying } = usePlay()
-    const {modalvedio,openModalvedio,closeModalvedio } = useModalvedio()
+    const { modalvedio, openModalvedio, closeModalvedio } = useModalvedio()
 
     const location = useLocation()
     function normalizeArabic(text) {
@@ -64,6 +65,20 @@ export default function AllVideo() {
         { label: "أخبار المبادرة", to: "/mediacorner" },
     ];
     const pathimg = getPathImg()
+    useEffect(() => {
+        if (modalvedio) {
+            // امنع السكرول في الخلفية
+            document.body.style.overflow = "hidden";
+        } else {
+            // رجع الوضع الطبيعي
+            document.body.style.overflow = "auto";
+        }
+
+        // تنظيف لما الكومبوننت يتشال
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [modalvedio]);
 
     return (
         <div className='col-12'>
@@ -143,8 +158,9 @@ export default function AllVideo() {
                                     month: 'long',
                                     year: 'numeric',
                                 });
-                                const shortText = el.vedioTitle.split(/\s+/).slice(0, 90).join(' ') + '...';
-
+                                const shortText = el.vedioTitle.length > 100
+                                    ? el.vedioTitle.substring(0, 430) + '...'
+                                    : el.vedioTitle;
                                 return (
                                     <div key={el.vedioId} className='  flex-column col-12  col-md-6  ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                                         <div className='  d-flex  flex-column ' id={styles.CRegtangle}  >
@@ -152,9 +168,9 @@ export default function AllVideo() {
                                                 !isplaying && (
                                                     <div className=' text-wrap flex-column ' id={styles.phdiv}>
                                                         <div className=' flex-column position-relative' id={styles.imgrayse} >
-                                                            <img src={`${pathimg}/Video/${el.vCoverPhoto}`} className='' alt="" />
+                                                            <img src={`${pathimg}/Video/${el.vCoverPhoto}`} className='' alt={el.vCoverPhotoAltText} />
                                                         </div>
-                                                        <div className='  position-absolute  col-10 d-flex justify-content-center' onClick={()=> {openModalvedio(true); setSelectedVedio(el)}}  id={styles.iconvedio}>
+                                                        <div className='  position-absolute  col-10 d-flex justify-content-center' onClick={() => { openModalvedio(true); setSelectedVedio(el) }} id={styles.iconvedio}>
                                                             {/* <a
                                                                 href={el.vedioURL}
                                                                 rel="noopener noreferrer"
@@ -163,9 +179,9 @@ export default function AllVideo() {
 
                                                               
                                                             </a> */}
-                                                              <img src={iconvedio} width={50} className='' alt="" />
+                                                            <img src={iconvedio} width={50} className='' alt="" />
                                                         </div>
-                                                        <div className=' text-wrap mt-3 ' >
+                                                        <div className=' text-wrap mt-3 ' id={styles.textvedio}>
                                                             <h5>{shortText}</h5>
                                                             <h6>{formattedDate}</h6>
                                                         </div>
@@ -179,7 +195,7 @@ export default function AllVideo() {
                             })
                         }
                         {
-                            modalvedio && ( <ModalVedio vedioURL={selectedVedio.vedioURL} vedioTitle={selectedVedio.vedioTitle}/>)
+                            modalvedio && (<ModalVedio vedioURL={selectedVedio.vedioURL} vedioTitle={selectedVedio.vedioTitle} />)
                         }
                         {/* <div className=' flex-column' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
                             <div className='   d-flex  flex-column ' id={styles.CRegtangle}  >
@@ -211,7 +227,7 @@ export default function AllVideo() {
                 </div>
             </div>
             {/* ---------------------- End مكتبة الفيديو------------------------- */}
-            <div className="d-flex justify-content-center my-3" dir="rtl">
+            {/* <div className="d-flex justify-content-center my-3" dir="rtl">
                 {Array.from({ length: totalPages }, (_, i) => {
                     const pageNum = i + 1;
                     const arabicNum = pageNum.toLocaleString('ar-EG');
@@ -225,7 +241,16 @@ export default function AllVideo() {
                         </button>
                     );
                 })}
-            </div>
+            </div> */}
+            {(searchTerm ? filteredNewsPerPage.length : allvedio.length) > 0 && (
+                <div className='py-5'>
+                    <PaginationComponent
+                        current={currentPage}
+                        handle={paginate}
+                        total={totalPages}
+                    />
+                </div>
+            )}
 
 
         </div >

@@ -96,6 +96,26 @@ p {
     color: #d9d9d9;
   }
 }
+#vedioandinfo {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  gap: 30px;
+  align-items: start;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
+}
+
+#video-container, 
+#infograph-section {
+  width: 100%;
+}
 
 /* @media screen and (max-width: 992px) and (min-width: 768px) {
   #cardbaby {
@@ -168,6 +188,7 @@ p {
     }
   }
 } */
+ 
 @media screen and (max-width: 992px) and (min-width: 768px) {
   #vedioandinfo {
     flex-direction: column !important;

@@ -5,7 +5,7 @@
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 }
 
 .video-card {
@@ -95,6 +95,7 @@
   }
   .video-container {
     margin-bottom: 0;
+    padding: 0;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 769px) {

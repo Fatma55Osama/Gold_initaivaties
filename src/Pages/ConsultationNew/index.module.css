@@ -44,3 +44,7 @@
 .value {
   color: #000;
 }
+#btnlog{
+  
+    background-color: var(--purpleColor);
+  }

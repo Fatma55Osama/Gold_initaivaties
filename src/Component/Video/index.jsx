@@ -31,7 +31,7 @@ export default function Video() {
             <div className="video-image-wrapper">
               <img
                 className="video-thumbnail"
-                alt="video thumbnail"
+                alt={el.vCoverPhotoAltText}
                 src={`${pathimg}/Video/${el.vCoverPhoto}`}
               />
 

@@ -103,7 +103,7 @@ export default function DetailsInfograph() {
                                 <div className='col-12 d-flex justify-content-center align-items-center '>
                                     <img
                                         src={`${pathimg}/Infograph/${detailinfo?.infoPhoto}`}
-                                        alt=""
+                                        alt={detailinfo?.infoPhotoAltText}
                                         width={550}
                                         height={661}
                                         style={{ float: 'left', marginRight: '15px', marginBottom: '10px' }}

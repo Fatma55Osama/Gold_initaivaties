@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Plot from 'react-plotly.js';
+import styles from './index.module.css'
 
 export default function Chartscomponent2(props) {
     const labels = props.data.labels;
@@ -9,6 +10,7 @@ export default function Chartscomponent2(props) {
         '#724780', '#CBA15F', '#AFE5FF', '#AA99CC', '#FFD6A5',
         '#FF9AA2', '#B5EAD7', '#FFDAC1', '#E2F0CB', '#C7CEEA'
     ];
+
     function wrapText(text, maxChars = 90) {
         const words = text.split(' ');
         let lines = [];
@@ -28,6 +30,23 @@ export default function Chartscomponent2(props) {
         return lines.join('<br>');
     }
 
+    const commonLayout = {
+        title: {
+            text: wrapText(`${props.title} - ${props.selectedIndicator}`),
+            font: {
+                size: 15,
+                color: '#333'
+            },
+            x: 0.5,
+            xanchor: 'center'
+        },
+        autosize: true,
+        margin: { t: 50, r: 20, l: 40, b: 40 }
+    };
+
+    const commonConfig = { displayModeBar: false, responsive: true };
+    const commonStyle = { width: "100%", height: "100%" };
+
     const chartMap = {
         bar: (
             <Plot
@@ -40,23 +59,13 @@ export default function Chartscomponent2(props) {
                     }
                 }]}
                 layout={{
-                    title: {
-                        text: wrapText(`${props.title} - ${props.selectedIndicator}`),
-                        font: {
-                            size: 15,
-                            color: '#333'
-                        },
-                        x: 0.5,
-                        xanchor: 'center'
-                    },
-                    width: 500,
-                    height: 500,
-                    scene: {
-                        xaxis: { title: 'الفئات' },
-                        yaxis: { title: 'القيم' },
-                    }
+                    ...commonLayout,
+                    xaxis: { title: 'الفئات' },
+                    yaxis: { title: 'القيم' }
                 }}
-                config={{ displayModeBar: false }}
+                config={commonConfig}
+                useResizeHandler={true}
+                style={commonStyle}
             />
         ),
 
@@ -71,23 +80,12 @@ export default function Chartscomponent2(props) {
                     },
                     hole: 0.3,
                 }]}
-                layout={{
-                    title: {
-                       text: wrapText(`${props.title} - ${props.selectedIndicator}`),
-                        font: {
-                            size: 15,
-                            color: '#333'
-                        },
-                        x: 0.5,
-                        xanchor: 'center'
-                    },
-                    width: 500,
-                    height: 500,
-                }}
-                config={{ displayModeBar: false }}
+                layout={commonLayout}
+                config={commonConfig}
+                useResizeHandler={true}
+                style={commonStyle}
             />
         ),
-
 
         doughnut: (
             <Plot
@@ -100,22 +98,12 @@ export default function Chartscomponent2(props) {
                         colors: labels.map((_, i) => customColors[i % customColors.length])
                     }
                 }]}
-                layout={{
-                    title: {
-                       text: wrapText(`${props.title} - ${props.selectedIndicator}`), 
-                        font: {
-                            size: 15,
-                            color: '#333'
-                        },
-                        x: 0.5,
-                        xanchor: 'center'
-                    }, width: 500,
-                    height: 500,
-                }}
-                config={{ displayModeBar: false }}
+                layout={commonLayout}
+                config={commonConfig}
+                useResizeHandler={true}
+                style={commonStyle}
             />
         ),
-
 
         line: (
             <Plot
@@ -135,32 +123,20 @@ export default function Chartscomponent2(props) {
                     }
                 }]}
                 layout={{
-                    title: {
-                        text: wrapText(`${props.title} - ${props.selectedIndicator}`),
-                        font: {
-                            size: 15,
-                            color: '#333'
-                        },
-                        x: 0.5,
-                        xanchor: 'center'
-                    },
-                    width: 500,
-
-                    height: 500,
-                    scene: {
-                        xaxis: { title: 'X' },
-                        yaxis: { title: 'Y' },
-                        zaxis: { title: 'Z' },
-                    },
+                    ...commonLayout,
+                    xaxis: { title: 'X' },
+                    yaxis: { title: 'Y' },
+                    zaxis: { title: 'Z' },
                 }}
-                config={{ displayModeBar: false }}
+                config={commonConfig}
+                useResizeHandler={true}
+                style={commonStyle}
             />
         ),
-
     };
 
     return (
-        <div className={`col-lg-6 my-3`} style={{ height: '500px', width: `${props.width}` }}>
+        <div className={`col-lg-6 my-3 ${styles.chartimg}`} style={{ width: props.width || "100%" }}>
             {chartMap[props.type] || chartMap.bar}
         </div>
     );
