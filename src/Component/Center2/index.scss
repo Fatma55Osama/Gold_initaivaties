@@ -8,6 +8,16 @@
   left: 0;
   top: 0;
 }
+.divmap {
+  position: relative;
+  width: 600px;   /* ثابت */
+  height: auto;
+}
+
+.vector1, .vector2, .vector3.vector4,.vector5,.vector6,.vector7,.vector8,.vector9,.vector10,.vector11,.vector12,.vector13,.vector14,.vector15,.vector16,.vector17.vector18,.vector19,.vector20,.vector21,.vector22 {
+  position: absolute;
+  transform: translate(-50%, -50%); /* يخلي النقطة مظبوطة من النص */
+}
 
 .overlap-group {
   height: 600px;
@@ -105,7 +115,7 @@
 .vector16 {
   /*دمياط*/
   left: 57%;
-  bottom: 79.5%;
+  bottom: 78.5%;
 }
 .vector17 {
   /*الشرقية*/
@@ -125,7 +135,7 @@
 .vector20 {
   /*كفر الشيخ*/
   left: 50%;
-  bottom: 79%;
+  bottom: 78%;
 }
 .vector21 {
   /*القليوبية*/
@@ -270,7 +280,7 @@
   right: 0;
   z-index: 1;
 }
-@media screen and (max-width: 992px) and (min-width: 768px) {
+@media screen and (max-width: 1024px) and (min-width: 768px) {
   .center2overlap {
     position: relative;
     min-height: 650px;
@@ -293,6 +303,96 @@
   .text-wrapper-53 {
     text-align: start !important;
   }
+  .vector16 {
+    /*دمياط*/
+    left: 57%;
+    bottom: 77.5%;
+  }
+  .vector20 {
+  /*كفر الشيخ*/
+  left: 50%;
+  bottom:76%;
+}
+.vector19 {
+  /*الغربية*/
+  left: 51%;
+  bottom: 72%;
+}
+.vector18 {
+  /*المنوفية*/
+  left: 51%;
+  bottom: 69%;
+}
+.vector21 {
+  /*القليوبية*/
+  left: 53%;
+  bottom: 66%;
+}
+.vector5 {
+  /*القاهرة*/
+  left: 55%;
+  bottom: 63.5%;
+}
+.vector22 {
+  /*الدقهلية*/
+  left: 54.5%;
+  bottom: 73%;
+}
+.vector17 {
+  /*الشرقية*/
+  left: 57%;
+  bottom: 71%;
+}
+.vector12 {
+  /*الاسكندرية*/
+  left: 41.5%;
+  bottom: 71%;
+}
+.vector11 {
+  /*الفيوم*/
+  left: 48%;
+  bottom: 57%;
+}
+.vector7 {
+  /*بني سويف*/
+  left: 52%;
+  bottom: 53%;
+}
+.vector6 {
+  /*المنيا*/
+  left: 46%;
+  bottom:48%;
+}
+.vector15 {
+  /*أسيوط*/
+  left: 55%;
+  bottom: 38%;
+}
+.vector10 {
+  /*سوهاج*/
+  left: 59%;
+  bottom: 32%;
+}
+.vector9 {
+  /*قنا*/
+  left: 65%;
+  bottom: 27%;
+}
+.vector4 {
+  /*أسوان*/
+  left: 64%;
+  bottom: 10%;
+}
+.vector8 {
+  /*البحر الأحمر*/
+  left: 75%;
+  bottom: 12%;
+}
+.vector2 {
+  /*الجيزة*/
+  left: 36%;
+  bottom: 50%;
+}
 }
 @media screen and (max-width: 1024px) and (min-width: 769px) {
   .center2overlap {

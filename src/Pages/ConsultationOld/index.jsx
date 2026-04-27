@@ -47,7 +47,6 @@ export default function ConsultationOld() {
   useEffect(() => {
     getAllData.get_show_consultationold(domain, token).then((res) => {
       setdetailsconsultation(res)
-      console.log("deatilsconsultationold", res)
     })
   }, [])
   return (
@@ -69,15 +68,15 @@ export default function ConsultationOld() {
                   {Array.isArray(filteredconsulationPerPage) && filteredconsulationPerPage?.map((el, index) => (
                     <div key={index} className={`${styles.card} mb-3 p-3`}>
                       <h3>تفاصيل الاستشارة</h3>
-                      <div className={`${styles.item} d-flex flex-wrap`}>
-                        <strong>نص الاستشارة:</strong>
+                      <div className={`${styles.item} d-flex flex-wrap gap-1`}>
+                        <strong>نص الاستشارة :</strong>
                         <p>{el.questionText}</p>
                       </div>
-                      <div className={`${styles.item} d-flex flex-wrap`}>
-                        <strong>تاريخ الإرسال:</strong>
+                      <div className={`${styles.item} d-flex flex-wrap gap-1`}>
+                        <strong>تاريخ الإرسال :</strong>
                         <p>{new Date(el.entryDate).toLocaleDateString('ar-EG')}</p>
                       </div>
-                      <div className={`${styles.item} d-flex flex-wrap`}>
+                      <div className={`${styles.item} d-flex flex-wrap gap-1`}>
                         <strong>الرد:</strong>
                         <p>{el.qAnswerText || "لم يتم الرد بعد"}</p>
                       </div>
@@ -112,7 +111,7 @@ export default function ConsultationOld() {
           )
         ) : (
           <div className="text-center py-5 d-flex  flex-column align-items-center">
-            <h5 className="text-danger mb-3 text-center">⚠️ لا توجد استشارات سابقة، يمكنك إرسال استشارة الآن</h5>
+            <h5 className="text-danger mb-3 text-center"> لا توجد استشارات سابقة، يمكنك إرسال استشارة الآن</h5>
             <Link to={'/consultationnew'} id={styles.btnlog} className="btn text-white px-4">إرسال استشارة</Link>
           </div>
 

@@ -8,7 +8,6 @@ export const postConsultationNew = (domain, token, values) => {
         "entryDate": new Date().toISOString()
     }
     return axios.post(`${domain}/api/QuestionsControllerAPI/add-question`,data).then((res)=>{
-        console.log(res)
         return res
     }).catch((err)=>{
         console.log(err)

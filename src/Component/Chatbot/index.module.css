@@ -1,0 +1,278 @@
+.modalChatbot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 900;
+}
+
+.content {
+  position: absolute;
+  bottom: 100px;
+  right: 80px;
+  width: 400px;
+  height: 600px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden; /* تأمين الدورانات */
+}
+
+/* --- تنسيق الـ Header والـ Toggle الجديد --- */
+.headChat {
+  background-color: #fff;
+}
+
+.iconAi {
+  width: 30px;
+  height: 30px;
+  background-color: #002b44;
+  color: white;
+  font-size: 12px;
+}
+
+.texthead h1 {
+  font-size: 15px;
+  margin: 0;
+  direction: rtl !important;
+  text-align: right !important;
+  display: block;
+}
+.texthead strong {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+  color: red;
+  direction: rtl !important;
+  text-align: right !important;
+  display: block;
+}
+.toggleContainerHeader {
+  display: flex;
+  position: relative;
+  background-color: #f1f3f5;
+  border-radius: 12px;
+  padding: 2px;
+  width: 140px;
+  height: 26px;
+  border: 1px solid #e9ecef;
+  z-index: 1;
+  align-items: center;
+}
+
+.toggleBtnHeader {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s ease;
+  color: #6c757d;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none !important;
+}
+
+.activeBtnHeader {
+  color: #ffffff;
+}
+
+.toggleSliderHeader {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  width: calc(50% - 2px);
+  background-color: #002b44;
+  border-radius: 10px;
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 1;
+}
+
+.slideLeftHeader {
+  transform: translateX(0);
+}
+
+.slideRightHeader {
+  transform: translateX(100%);
+}
+
+.chatbodymassage {
+  overflow-y: auto;
+  height: 440px;
+  scrollbar-width: thin;
+}
+
+.leftBubble {
+  max-width: 70%;
+  background-color: #e9ecef;
+  font-size: 14px;
+}
+
+.rightBubble {
+  max-width: 70%;
+  background-color: #0d6efd;
+  color: white;
+  white-space: pre-wrap !important;
+  font-size: 14px;
+}
+
+.footerChat {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  padding: 5px;
+}
+
+.textareaChat {
+  width: 100%;
+  height: 60px;
+  max-height: 80px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  resize: none;
+  padding: 10px 85px 10px 10px;
+  border: 1px solid gainsboro;
+}
+
+.icons {
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 15px;
+  font-size: 20px;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.botActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-height: 25px;
+}
+
+.actionIcon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #002b44 !important; /* لون غامق واضح */
+  display: block !important; /* إجبار على الظهور */
+}
+
+.showMoreBtn {
+  cursor: pointer;
+  color: #0d6efd !important;
+  font-weight: bold;
+  font-size: 11px;
+  display: inline-block !important;
+}
+
+.showMoreBtn:hover {
+  text-decoration: underline;
+}
+
+/* تأكدي إن الـ Bubble مش مضغوطة */
+.leftBubble {
+  max-width: 85%; /* زودنا العرض شوية عشان الكلام يرتكز */
+  background-color: #f0f2f5;
+  color: #1c1e21;
+  position: relative;
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 768px) {
+  .content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .modalChatbot {
+    z-index: 1000;
+  }
+  .texthead h1 {
+    font-size: 7px !important;
+  }
+  .texthead strong {
+    font-size: 11px;
+  }
+  .chatbodymassage {
+    height: calc(100vh - 130px); /* هيدر + فوتَر */
+  }
+  @media (max-width: 992px) {
+    .textareaChat {
+      height: 55px;
+      font-size: 14px;
+    }
+    .texthead h1 {
+      font-size: 15px !important;
+    }
+  }
+
+  .icons {
+    gap: 10px;
+    font-size: 18px;
+    right: 10px;
+  }
+
+  .leftBubble,
+  .rightBubble {
+    max-width: 85%;
+    font-size: 13px;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+@media (max-width: 480px) {
+  .content {
+    width: 100%;
+    height: 100vh;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .headChat {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  /* .texthead h1 {
+    font-size: 14px;
+  } */
+  .modalChatbot {
+    z-index: 1000;
+  }
+
+  .textareaChat {
+    height: 45px;
+    font-size: 12px;
+  }
+
+  .icons {
+    font-size: 16px;
+  }
+}

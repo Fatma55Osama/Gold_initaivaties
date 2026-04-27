@@ -20,7 +20,6 @@ export default function ConsultationNew() {
     useEffect(() => {
         getAllData.get_show_consultationold(domain, token).then((res) => {
             setdetailsconsultation(res)
-            console.log("deatilsconsultationold", res)
         })
         getAllData.get_store_profileData(domain, token).then((res) => {
             setProfileData(res)
@@ -31,7 +30,6 @@ export default function ConsultationNew() {
         question: Yup.string().required('السؤال مطلوب'),
     });
     const handleSubmit = (values, { resetForm }) => {
-        console.log('تم إرسال السؤال:', values.question);
         postConsultationNew(domain, token, values).then((res) => {
             if (res?.status === 200 || res?.status === 201) {
                 toast.success('تم إرسال سؤالك  بنجاح، سنتواصل معك قريبًا'); resetForm();
@@ -116,7 +114,7 @@ export default function ConsultationNew() {
 
                 ) : (
                     <div className="text-center  d-flex flex-column align-items-center" >
-                        <h5 className="text-danger mb-3">⚠️ برجاء تسجيل الدخول  </h5>
+                        <h5 className="text-danger mb-3"> برجاء تسجيل الدخول  </h5>
                         <Link to={'/login'} className="btn text-white px-4"id={styles.btnlog}>تسجيل الدخول</Link>
                     </div>
                 )}

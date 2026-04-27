@@ -17,7 +17,6 @@ export default function ContactUs() {
     useEffect(() => {
         getAllData.get_storecontact(domain).then((res) => {
             setcontactfooter(res)
-            console.log("contactusfooter", res)
         }).catch((err) => {
             console.log(err)
         })

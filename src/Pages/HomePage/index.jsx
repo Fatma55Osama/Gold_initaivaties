@@ -11,9 +11,7 @@ import pr9 from '../../assets/wheelchair 2 (5).png'
 import News from '../../Component/News'
 import About from '../../Component/About'
 import Interlocuter from '../../Component/Interlocutor'
-import Center from '../../Component/Center'
 import Lightteam from '../../Component/Lightteam'
-import NumberInitiative from '../../Component/NumberInitiative'
 import NumberInitiative2 from '../../Component/NumberInitiative2'
 import Video from '../../Component/Video'
 import Infograph from '../../Component/Infograph'
@@ -35,7 +33,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import Loader from '../../Component/Loader'
-// import Center2 from '../../Component/Center2'
 
 export default function HomePage() {
   const [hoverimgMouse, setHoverimgMouse] = useState(null)
@@ -122,7 +119,7 @@ export default function HomePage() {
               <h2>رسائل توعوية</h2>
               <Swiper
                 autoplay={{
-                  delay: 4000,
+                  delay: 7000,
                   disableOnInteraction: false
                 }}
                 loop={true}
@@ -146,6 +143,10 @@ export default function HomePage() {
 
 
         <ImportentLink />
+      {/* <Link className='nav-link py-3' to={'meeting'}>
+      <h1>meeting</h1> 
+      </Link> */}
+
         {/* <Center2/> */}
       </div>
     </div>

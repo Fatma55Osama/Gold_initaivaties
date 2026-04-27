@@ -12,3 +12,7 @@
 // .swiper-wrapper {
 //   justify-content: flex-end;
 // }
+.importantLinksSwiper .swiper-pagination {
+  position: static !important;
+  margin-top: 10px;
+}

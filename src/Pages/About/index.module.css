@@ -433,7 +433,7 @@ button{
 
   p,
   #accorddescription {
-    font-size: 12px;
+    font-size: 14px !important;
     line-height: 1.7;
   }
 

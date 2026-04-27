@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './index.scss';
 import logovideo from '../../assets/Frame.png';
-import { usepathimg, useVedio } from '../../Store';
+import { useModalvedio, usepathimg, useVedio } from '../../Store';
 import { Link } from 'react-router-dom';
 import { getPathImg } from '../../configLoader';
+import ModalVedio from '../ModalVedio';
 
 export default function Video() {
   const { allvedio } = useVedio();
-  const  pathimg  = getPathImg();
+  const pathimg = getPathImg();
 
   const [filterVedio, setFilterVedio] = useState([]);
+  const { modalvedio, openModalvedio, closeModalvedio } = useModalvedio()
+  const [selectedVedio, setSelectedVedio] = useState(null);
+
 
   useEffect(() => {
     const copyfilterVedio = allvedio
@@ -31,26 +35,32 @@ export default function Video() {
             <div className="video-image-wrapper">
               <img
                 className="video-thumbnail"
-                alt={el.vCoverPhotoAltText}
+                alt={el.vCoverPhotoAltText || "فيديو توعوي عن المبادرة"}
                 src={`${pathimg}/Video/${el.vCoverPhoto}`}
               />
 
               <a
                 className="play-button"
-                href={el.vedioURL}
+
                 rel="noopener noreferrer"
-                target="_blank"
+                onClick={() => { openModalvedio(true); setSelectedVedio(el) }}
               >
                 <div className="play-icon-circle">
                   <img src={logovideo} alt="Play Icon" className="play-icon" />
                 </div>
               </a>
+              {/* <div className="play-icon-circle">
+                  <img src={logovideo} alt="Play Icon" className="play-icon" onClick={() => { openModalvedio(true); setSelectedVedio(el) }}/>
+                </div> */}
             </div>
 
             <p className="video-description">{shortText}</p>
           </div>
         );
       })}
+      {
+        modalvedio && (<ModalVedio vedioURL={selectedVedio.vedioURL} vedioTitle={selectedVedio.vedioTitle} />)
+      }
     </div>
   );
 }

@@ -7,7 +7,6 @@ export const postResetpassword = (domain, values) => {
         "newPassword": values.newPassword
     }
     return axios.post(`${domain}/api/RegestrationsControllerAPI/reset-password`, data).then((res) => {
-        console.log(res.data);
         return res.data;
     }).catch((err) => {
         console.log(err)

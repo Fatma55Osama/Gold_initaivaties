@@ -22,7 +22,6 @@ export default function Opinion() {
         opinion: Yup.string().required('رأيك  مطلوب')
     })
     const hadleSubmit = (values, { resetForm }) => {
-        console.log(values);
         postopinion(domain, values).then((res) => {
             if (res.status === 200 || res.status === 201) {
                 toast.success('تم ارسال رأيك بنجاح');

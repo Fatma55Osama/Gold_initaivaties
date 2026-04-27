@@ -27,7 +27,6 @@ export default function DetailsLightTeam() {
     useEffect(() => {
         getAllData.get_show_singleTeam(domain, id).then((res) => {
             setlightTeam(res)
-            console.log("lightTeam", res)
         })
 
     }, [id])

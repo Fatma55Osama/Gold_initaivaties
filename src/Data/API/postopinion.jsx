@@ -8,7 +8,6 @@ export const postopinion =  (domain, values) => {
         "opinionText": values.opinion
     }
      return axios.post(`${domain}/api/OpinionControllerAPI/Add`, data).then((res) => {
-        console.log(res)
         return res
     }).catch((err) => {
         console.log(err)

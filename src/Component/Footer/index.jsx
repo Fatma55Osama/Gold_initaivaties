@@ -37,7 +37,6 @@ export default function Footer() {
   const domain = getDomain()
   const { allservice, setservice } = useServicemain()
   const { contactfooter, setcontactfooter } = usecontactfooter()
-  console.log("domain", domain)
   useEffect(() => {
     const merged = allservice
       .filter(item => imageMap[item.mashoraDesc])
@@ -54,9 +53,7 @@ export default function Footer() {
   useEffect(() => {
     getAllData.get_storecontact(domain).then((res) => {
       setcontactfooter(res)
-      console.log("contactusfooter", res)
     }).catch((err) => {
-      console.log(err)
     })
   }, [])
   return (
@@ -129,13 +126,13 @@ export default function Footer() {
           {
             contactfooter.length > 0 && (
               <div className='col-12 d-flex flex-column flex-lg-row gap-4 gap-md-4 gap-lg-0 justify-content-between px-lg-5' id={styles.footerdiv}>
-                <div className='col-lg-4  d-flex flex-column flex-lg-row  justify-content-between' id={styles.parts}>
+                <div className='col-lg-5  d-flex flex-column flex-lg-row  justify-content-between' id={styles.parts}>
                   {/* <span className='d-flex gap-3 align-items-center'>{contactfooter[0]?.email}  <span>©</span> </span> */}
                   <span>
                     تليفون :{contactfooter[0]?.mobileNum}</span>
                 </div>
-                <div className='col-lg-9 d-flex flex-column flex-lg-row gap-4 gap-md-4 gap-lg-0 justify-content-between' id={styles.parts}>
-                  <a href={contactfooter[0]?.location} target='_blank' className='nav-link'>
+                <div className='col-lg-8 d-flex flex-column flex-lg-row gap-4 gap-md-4 gap-lg-0 justify-content-between' id={styles.parts}>
+                  <a  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactfooter[0]?.location)}`} target='_blank' className='nav-link'>
 
 
                     <span className={styles.margenstart}> {contactfooter[0]?.address}  <MdLocationPin style={{ fontSize: "24px" }} /></span>
@@ -155,7 +152,7 @@ export default function Footer() {
               <hr className='col-7' /> */}
 
               <span className='d-flex flex-row align-items-center gap-1 flex-nowrap'>  
-                حقوق الطبع و النشر 2025 جميع الحقوق محفوظة لمبادرة الألف يوم الذهبية لتنمية الأسرة المصرية - جمهورية مصر العربية
+                حقوق الطبع و النشر  {new Date().getFullYear()} جميع الحقوق محفوظة لمبادرة الألف يوم الذهبية لتنمية الأسرة المصرية - جمهورية مصر العربية
 
                </span>
                 <a href={pdf} className='nav-link' target='_blank'>

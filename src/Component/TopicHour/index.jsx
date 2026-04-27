@@ -10,12 +10,10 @@ export default function TopicHour() {
     const pathimg  = getPathImg()
 
     const { allnews } = useNews()
-    // console.log("allnews",allnews)
     useEffect(() => {
         const filteredhour = allnews.filter((el) => { return el.onClockTopic }).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate)).slice(0, 1);
 
         setFilterhour(filteredhour)
-        // console.log('filternews',filternews)
     }, [allnews])
    return (
   <div className={styles.TopicHour + " col-12 d-flex flex-column align-items-center"}>
@@ -33,7 +31,7 @@ export default function TopicHour() {
           id={styles.ordersection}
         >
           <div id={styles.bglogo} className="d-flex justify-content-center align-items-center mb-3 mb-lg-0">
-            <img src={`${pathimg}/News/${el.smallPhoto}`} alt="" />
+            <img src={`${pathimg}/News/${el.smallPhoto}`}  alt={el.smallPhotoAltText} />
           </div>
 
           <Link

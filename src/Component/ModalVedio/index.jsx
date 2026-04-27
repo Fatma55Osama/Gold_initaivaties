@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './index.module.css'
 import { useModalvedio, usePlay } from '../../Store'
 import { IoMdCloseCircle } from 'react-icons/io'
+import logo from '../../assets/rectangle-6.png'
 export default function ModalVedio(props) {
     const { isplaying, setIsplaying } = usePlay()
     const { modalvedio, openModalvedio, closeModalvedio } = useModalvedio()
@@ -14,7 +15,8 @@ export default function ModalVedio(props) {
     }
     return (
         <div className={styles.modalvedio}>
-            <div className=' d-flex justify-content-end '>
+            <div className=' d-flex justify-content-end align-items-center gap-5 '>
+                <img src={logo} className='ms-4' width={90} height={70} alt="" />
                 <IoMdCloseCircle onClick={() => closeModalvedio()} id={styles.iconarrowclose} />
             </div>
             <div className='col-12 mb-5 d-flex flex-md-row flex-column-reverse justify-content-between align-items-center '>

@@ -8,7 +8,6 @@ export const show_single_service=async(domain,id)=>{
         }
     }).then((res)=>{
         final=res.data
-        console.log("show_single_service",final)
 
     }).catch((err)=>{
        console.log(err)

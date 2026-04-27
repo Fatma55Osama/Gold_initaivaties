@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1000goldendays.mohp.gov.eg/sitemap.xml

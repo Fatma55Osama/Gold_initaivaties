@@ -14,7 +14,6 @@ const data = {
     "entryDate": new Date().toISOString()
 }
 return axios.post(`${domain}/api/RegestrationsControllerAPI`, data).then((res) => {
-    console.log('postregisteration', res)
     return res
 }).catch((err) => { console.log('postregisteration', err) 
     throw err

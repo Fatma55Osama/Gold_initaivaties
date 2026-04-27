@@ -51,7 +51,11 @@ export default function NumberInitiative2() {
                     {
                         filterednumber?.map((el) => (
                             <SwiperSlide key={el.initId} className='  d-flex flex-column justify-content-center align-items-center text-center'>
-                                <h3>{el.indNumber}</h3>
+                                
+                                <h3 className='d-flex gap-2'>
+                                   <span> {el.indUnit}</span>
+                                    <h3>{el.indNumber}</h3>
+                                </h3>
                                 <span>{el.indTitle}</span>
                             </SwiperSlide>
                         ))

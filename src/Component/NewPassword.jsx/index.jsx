@@ -19,7 +19,6 @@ export default function NewPassword() {
     const domain = getDomain()
 
     const handleSubmit = (values) => {
-        console.log('تم تقديم القيم:', values);
         postResetpassword(domain, values).then((res) => {
 
             toast.success('تم إعادة تعيين كلمة المرور بنجاح' || res.data?.message);

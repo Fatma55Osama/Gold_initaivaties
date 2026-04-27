@@ -21,7 +21,6 @@ export default function HospitalService() {
         if (!id) return;
         getAllData.get_show_single_service(domain, id).then((res) => {
             setdetailsservice(res)
-            console.log("detailservice", detailservice)
         })
     }, [id])
     useEffect(() => {

@@ -8,12 +8,10 @@ export default function News() {
     const [filternews, setFilternews] = useState([])
     const { allnews } = useNews()
     const  pathimg  = getPathImg()
-    // console.log("allnews",allnews)
     useEffect(() => {
         const filteredNew = allnews?.filter((el) => { return el.onMainPage }).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate)).slice(0, 4);
 
         setFilternews(filteredNew)
-        // console.log('filternews',filternews)
     }, [allnews])
     return (
         <div className='col-12 d-flex flex-column justify-content-center align-items-center' id='newesdection'>

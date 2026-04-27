@@ -1,0 +1,26 @@
+{
+  "name": "مبادرة الألف يوم الذهبية",
+  "short_name": "الألف يوم",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#724780",
+  "description": "مبادرة من وزارة الصحة والسكان لدعم صحة الأم والطفل خلال أول ألف يوم من الحياة.",
+  "icons": [
+    {
+      "src": "/src/assets/1000Logo-WNOvseAe-WNOvseAe.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/src/assets/1000Logo-WNOvseAe-WNOvseAe.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/src/assets/1000Logo-WNOvseAe-WNOvseAe.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}

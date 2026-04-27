@@ -24,15 +24,19 @@
 
 .item strong {
   display: block;
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
   color: #555;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: "GE SS Two-Light";
 }
 
 .item p {
   margin: 0;
-  font-size: 15px !important;
+  font-size: 16px !important;
   color: #333;
+  font-weight: 400 !important;
+  font-family: "GE SS Two-Light";
 }
 .profileCard {
   background-color: #f8f9fa;
@@ -67,9 +71,4 @@
 }
 #btnlog {
   background-color: var(--purpleColor);
-}
-  @media (max-width: 768px) {
-    
-  }
-@media screen and (max-width: 992px) and (min-width: 768px) {
 }

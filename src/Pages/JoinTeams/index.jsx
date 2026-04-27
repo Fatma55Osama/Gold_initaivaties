@@ -23,7 +23,6 @@ export default function JoinTeams() {
         jop: Yup.string().required("الوظيفة مطلوبة")
     })
     const hadleSubmit = (values, { resetForm }) => {
-        console.log(values);
         postJion_team(domain, values).then((res) => {
             if (res?.status === 200 || res?.status === 201) {
                 toast.success('تم إرسال طلب الانضمام بنجاح، سنتواصل معك قريبًا'); resetForm();

@@ -61,16 +61,52 @@ body,
   font-size: 60px;
   cursor: pointer;
   color: var(--yellowColor);
-  /* background-color: var(--purpleColor); */
-  z-index: 999;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  z-index: 100;
   transition: background 0.3s;
 }
-
-/* .topbtn:hover {
-  background-color: var(--yellowColor);
+.chatbot-icon {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
   color: white;
-} */
+}
+.chatbot-icon2{
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  padding: 0.75rem;
+   /* border: none; */
+   border-radius:50% ;
+    /* border: 5px solid var(--purpleColor); */
+}
+.bordchatbot {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 901;
+  /* background-color:var(--purpleColor); */
+background: linear-gradient(150deg, #F108FD 20.52%, #28B8E4 80%);
+}
+.mashoraonline{
+   width: 85px;
+  height: 85px;
+  position: fixed;
+  bottom: 160px;
+  right: 15px;
+  cursor: pointer;
+  object-fit: contain;
+  /* background-color: #86a7d1; */
+  border-radius:50% ;
+  
+}
 @media print {
   body * {
     visibility: hidden;
@@ -89,85 +125,13 @@ body,
     max-height: none !important;
     overflow: visible !important;
   }
-
-  /* table {
-    page-break-inside: auto;
-    border-collapse: collapse;
-    break-inside: auto;
-    width: 100%;
-  }
-
-  tr {
-    page-break-inside: avoid;
-    page-break-after: auto;
-      break-inside: avoid;
-  }
-  thead {
-    display: table-header-group !important;
-  }
-
-  tfoot {
-    display: table-footer-group;
-  }
-  .d-print-none {
-    display: none !important;
-  }
-
-  .d-print-block {
-    display: block !important;
-  } */
-  /* .bgColor {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.54) 24.52%,
-      rgba(175, 229, 255, 0.54) 60.1%,
-      rgba(114, 71, 128, 0.54) 100%
-    ) !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    font-size: 24px;
-    line-height: 43px;
-    font-family: "GE SS Two-Light", sans-serif;
-  }
-
-  .textSection h3 {
-    color: #724780;
-    font-family: "GE SS Two-Light", sans-serif;
-    font-size: 22px;
-    text-align: center;
-  }
-
-  .textSection h4 {
-    color: #fcd535;
-    text-align: center;
-  }
-
-  .textSection h5 {
-    text-align: center !important;
-  }
-
-  .logodiv1 img {
-    width: 100px !important;
-    height: 160px !important;
-  }
-
-  .motherbaby img {
-    width: 180px !important;
-    height: 260px !important;
-  } */
-  /* .avoid-break {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    display: block;
-  } */
 }
 @page {
   size: A4;
   margin: 20mm;
 }
 canvas {
-  box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
-  /* transform: perspective(800px) rotateX(5deg); */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 .loader-container {
@@ -176,6 +140,7 @@ canvas {
   justify-content: center;
   align-items: center;
   background: white;
+  z-index: 2000;
 }
 
 .loader-spinner-wrapper {
@@ -194,4 +159,56 @@ canvas {
 .swiperHomeTeam .swiper-wrapper {
   justify-content: space-evenly;
   flex-direction: row-reverse;
+}
+.react-calendar {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  padding: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  font-family: inherit;
+}
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.react-calendar__navigation button {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  padding: 6px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.react-calendar__navigation button:hover {
+  background: #f3f6ff;
+}
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  font-weight: 600;
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.react-calendar__tile {
+  border-radius: 10px;
+  padding: 10px 0;
+  transition: 0.2s;
+  color: #333;
+}
+
+.react-calendar__tile:hover {
+  background: #eef4ff;
+  transform: scale(1.05);
+}
+.react-calendar__tile--active {
+  background-color: #0d6efd !important;
+  color: white !important;
+  border-radius: 10px;
 }

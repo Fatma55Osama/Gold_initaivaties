@@ -53,7 +53,7 @@ export default function ImportentLink() {
                 spaceBetween: 30,
               }
             }}
-            className={styles.mySwipeerr + " mySwiper"}
+            className={styles.mySwipeerr + " mySwiper importantLinksSwiper"}
 
 
           >
@@ -63,8 +63,8 @@ export default function ImportentLink() {
                 return (
                   <SwiperSlide key={el.linkId}>
 
-                    <a rel="noopener noreferrer" href={el.linkURL} target='_blank' className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
-                      <img src={`${pathimg}/Links/${el.linkImage}`} alt="" />
+                    <a rel="noopener noreferrer" href={el.linkURL}  aria-label="الموقع الرسمي لمؤسسة " target='_blank' className={styles.carddiv + " d-flex justify-content-center align-items-center"}>
+                      <img src={`${pathimg}/Links/${el.linkImage}`}  alt="شعار المؤسسة"  />
                     </a>
                   </SwiperSlide>
                 )

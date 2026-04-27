@@ -22,61 +22,12 @@ export default function DetailsNews() {
     useEffect(() => {
         getAllData.get_show_singleNew(domain, id).then((res) => {
             setdetailsnew(res)
-            console.log("detailnew", detailnew)
         })
 
     }, [])
     return (
         <div className='col-12' id={styles.parentalldiv}>
-            {/* <div className='col-12 position-relative ' id={styles.About}>
-                <div className='col-12 ' id={styles.AboutLogo}>
-
-                </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
-                    <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
-                            <h2>الركن الإعلامي</h2>
-                            <div className='col-12  ' id={styles.regtangle}>
-                                <div className='container '>
-                                    <p >يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
-                                        هذا بالإضافة إلى التوعية المستمرة بأهمية المبادرة لتحسين الخصائص السكانية من خلال مجموعة من الإنفوجراف والرسائل التوعوية </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <header className=' col-12  d-flex justify-content-end mt-5   container  '>
-               
-
-                <div className='d-flex col-8  gap-4 justify-content-between align-items-center '>
-                    {
-                        path
-                            .filter(el => el.name === "الركن الإعلامي")
-                            .flatMap((el, index) => {
-                                return el.links.map((link, idx) => {
-                                    const isActive =
-                                        link.path === '/'
-                                            ? location.pathname === '/'
-                                            : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
-
-                                    return (
-                                        <Link
-                                            key={`${index}-${idx}`}
-                                            to={link.path}
-                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    );
-                                });
-                            })
-                    }
-                </div>
-
-
-            </header> */}
+   
             <MediaComponent none="d-none" align="align-items-end" />
 
             <div className=' container  mt-5 '>

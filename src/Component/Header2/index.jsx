@@ -30,7 +30,6 @@ export default function Header2() {
         getAllData.get_storecontact(domain).then((res) => {
             setcontactfooter(res)
         }).catch((err) => {
-            console.log(err)
         })
     }, [location])
 
@@ -77,7 +76,7 @@ export default function Header2() {
                         </div>
                     </div>
 
-                    <a href={contactfooter[0]?.location} className={' nav-link'} target='_blank' >
+                    <a  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactfooter[0]?.location)}`} className={' nav-link'} target='_blank' >
 
 
                         <span > <span id={styles.asema}> {contactfooter[0]?.address}</span>  <MdLocationPin className={styles.icon} /></span>
@@ -110,7 +109,7 @@ export default function Header2() {
                 {/* mobile view */}
                 <div className={`d-flex d-md-none justify-content-between align-items-center w-100 px-3 py-2`} >
                     <img src={logo} alt="Logo" style={{ height: 40 }} />
-                    <button id={styles.menuicon} onClick={() => setShowMobileMenu(true)} >
+                    <button id={styles.menuicon} aria-label="فتح القائمة" onClick={() => setShowMobileMenu(true)} >
                         <IoMenu className="text-black" />
                     </button>
                 </div>

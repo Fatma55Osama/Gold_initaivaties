@@ -8,7 +8,6 @@ export const show_singleNew=async(domain,id)=>{
         }
     }).then((res)=>{
         final=res.data
-        console.log("show_singleNew",final)
 
     }).catch((err)=>{
        console.log(err)

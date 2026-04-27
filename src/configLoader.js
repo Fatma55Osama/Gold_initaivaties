@@ -4,20 +4,22 @@ export async function loadConfig() {
   try {
     const res = await fetch(`/config.json?v=${Date.now()}`);
     config = await res.json();
-    console.log("✅ config loaded:", config);
   } catch (error) {
-    console.error("❌ Failed to load config.json", error);
     config = {
-      API_URL: "http://163.121.35.181:10026/api",
-      PATH_IMG: "http://163.121.35.181:10027/Upfiles",
+      API_URL: "https://localhost:7220",
+      PATH_IMG: "https://localhost:7220/Upfiles",
+       SITE_URL: "https://1000goldendays.mohp.gov.eg"
     };
   }
 }
 
 export function getDomain() {
-  return config?.API_URL || "http://163.121.35.181:10026/api";
+  return config?.API_URL || "https://localhost:7220";
 }
 
 export function getPathImg() {
-  return config?.PATH_IMG || "http://163.121.35.181:10027/Upfiles";
+  return config?.PATH_IMG || "https://localhost:7220/Upfiles";
+}
+export function getSiteUrl() {
+  return config?.SITE_URL || "https://1000goldendays.mohp.gov.eg";
 }

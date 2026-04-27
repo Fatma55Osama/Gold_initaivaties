@@ -100,7 +100,7 @@ export default function AboutIndex() {
                         </div>
 
                         <div className=' text-end  d-flex justify-content-center align-items-center '>
-                            <div className='col-11 container d-flex flex-column justify-content-center py-2 ' id={styles.widthscreantab}>
+                            <div className='col-12 container d-flex flex-column justify-content-center py-2 ' id={styles.widthscreantab}>
                                 {/* <p>{allabout?.[0]?.aboutText}</p> */}
                                 <p className={styles.justifyText} dangerouslySetInnerHTML={{ __html: allabout?.[0]?.aboutText }} id={styles.paragraphtext}/>
                                 {/* <p>{stripHtmlTags(allabout?.[0]?.aboutText)}</p> */}
@@ -146,7 +146,7 @@ export default function AboutIndex() {
                 <div className='col-12  d-flex   ' id={styles.CRegtangle}  >
                     {/* <div className='col-12 container d-flex flex-column pb-3 ' id={styles.PresImg} >
                     </div> */}
-                    <div className='d-flex container pt-lg-3 flex-lg-row flex-column flex-md-column gap-md-3 gap-lg-0'>
+                    <div className='d-flex container   pt-lg-4 flex-lg-row flex-column flex-md-column gap-md-3 gap-lg-0'>
                         <div className=' col-lg-3 align-items-center align-lg-items-start justify-content-lg-start  container d-flex flex-column justify-content-center align-items-end' >
                             <div className='d-flex justify-content-center  flex-column ' id={styles.PresImg}>
                                 <img src={`${pathimg}/About/${allabout?.[0]?.chairmanImg}`} alt={allabout?.[0]?.chairmanImgAltText} />
@@ -180,8 +180,8 @@ export default function AboutIndex() {
                 <div className='col-12 container d-flex flex-column pb-3'>
                     <h3>الهيكل التنظيمي للمبادرة</h3>
                 </div>
-                <div className='col-12  d-flex align-items-end pb-4' id={styles.CRegtangle}  >
-                    <div className='container d-flex flex-column flex-md-row justify-content-between col-12 '>
+                <div className='col-12 d-flex align-items-end pb-4' id={styles.CRegtangle}  >
+                    <div className='container mt-lg-4 mt-md-0 mt-0 d-flex flex-column flex-md-row justify-content-between col-12 '>
                         <div className=' d-flex justify-content-center align-items-end flex-column   ' id={styles.StructImg} >
                             <img src={structer} alt="" />
                         </div>

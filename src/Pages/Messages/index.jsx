@@ -61,60 +61,7 @@ export default function Messages() {
 
     return (
         <div className='col-12' id={styles.parentalldiv}>
-            {/* <div className='col-12 position-relative ' id={styles.About}>
-                <div className='col-12 ' id={styles.AboutLogo}>
-
-                </div>
-                <div className='col-12 position-absolute d-flex align-items-end ' id={styles.bgColor}>
-                    <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-9 d-flex flex-column gap-3 pb-3'>
-                            <h2>الركن الإعلامي</h2>
-                            <div className='col-12  ' id={styles.regtangle}>
-                                <div className='container '>
-                                    <p className='justifyText'>يعرض هذا الجزء أخبار المبادرة على الصعيدين الداخلي والخارجي، كما يعرض فيديوهات وألبومات صور لتوثيق الفعاليات والأنشطة التي تُنفذها المبادرة.
-                                        هذا بالإضافة إلى التوعية المستمرة بأهمية المبادرة لتحسين الخصائص السكانية من خلال مجموعة من الإنفوجراف والرسائل التوعوية </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <header className=' col-12 d-flex justify-content-between align-items-center mt-5   container  '>
-
-                <div className='d-flex align-items-center gap-3' id={styles.search}>
-                    <button className='py-0 px-4 border-0'>بحث</button>
-                    <div className="input-container" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(114, 71, 128, 1)', borderRadius: '4px', padding: '5px' }}>
-
-                        <span style={{ marginRight: '8px', color: '#aaa' }}></span>
-                        <input type="text" placeholder="...بحث" value={searchTerm} onChange={handleSearch} className='text-end' style={{ border: 'none', outline: 'none', flex: 1 }} />
-                    </div>
-                </div>
-
-                <div className='d-flex   gap-4 justify-content-between align-items-center '>
-                    {
-                        path
-                            .filter(el => el.name === "الركن الإعلامي")
-                            .flatMap((el, index) => {
-                                return el.links.map((link, idx) => {
-                                    const isActive = link.path === location.pathname;
-
-                                    return (
-                                        <Link
-                                            key={`${index}-${idx}`}
-                                            to={link.path}
-                                            className={`nav-link ${styles.sectionlink} ${isActive ? styles.activelink : ""}`}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    );
-                                });
-                            })
-                    }
-                </div>
-
-
-            </header> */}
+  
             <MediaComponent searchTerm={searchTerm}
                 handleSearch={handleSearch} />
             {/*---------------------- Start الرسائل التوعوية-------------------------*/}
@@ -143,54 +90,11 @@ export default function Messages() {
 
 
 
-                {/* <div className='col-12 container bg-success d-flex  pb-2 ' id={styles.CRegtangle}  >
-                    {
-                         (searchTerm ? filteredNewsPerPage : currentNews).length === 0 ? (
-                                <p style={{ textAlign: 'center', marginTop: '20px' }}>لا يوجد نتائج مطابقة للبحث</p>
-                            ) : ((searchTerm ? filteredNewsPerPage : currentNews)).map((el, index) => {
-                            return (
-                                <div className='container text-end d-flex justify-content-end '>
-                                    <div className='col-12 container d-flex flex-column gap-2 '>
-                                        <h7>   {el.msgText}  </h7>
-                                    </div>
-
-                                </div>
-                            )
-                        })
-                    }
-
-
-                </div> */}
+             
             </div>
 
-            {/* <div className='col-12 ' data-aos="fade-up" data-aos-offset="5" data-aos-delay="100" id={styles.Lines}>
-
-                <div className='col-12 container d-flex  pb-2 ' id={styles.CRegtangle}  >
-
-                    <div className='container text-end d-flex justify-content-end '>
-                        <div className='col-12 container d-flex flex-column gap-2 '>
-                            <h7>الرسالة التوعوية الثانية ------------ الرسالة التوعوية الثانية ----------- الرسالة التوعوية الثانية</h7>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div> */}
-            {/* <div className="d-flex justify-content-center my-3" dir="rtl">
-                {Array.from({ length: totalPages }, (_, i) => {
-                    const pageNum = i + 1;
-                    const arabicNum = pageNum.toLocaleString('ar-EG');
-                    return (
-                        <button
-                            key={pageNum}
-                            className={`btn mx-1 ${currentPage === pageNum ? styles.currentactive : styles.noncurrentactive}`}
-                            onClick={() => paginate(pageNum)}
-                        >
-                            {arabicNum}
-                        </button>
-                    );
-                })}
-            </div> */}
+         
+         
             {(searchTerm ? filteredNewsPerPage.length : allawarness.length) > 0 && (
                 <div className='py-5'>
                     <PaginationComponent

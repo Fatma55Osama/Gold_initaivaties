@@ -71,12 +71,12 @@
 }
 #mySwiper > div {
   display: flex !important;
-  flex-direction: row-reverse !important;
-  justify-content: center;
+  /* flex-direction: row-reverse !important;
+  justify-content: center; */
 }
 .mySwiper .swiper-wrapper {
-  
-  justify-content: center !important;
+  /* transition-timing-function: linear !important; */
+  /* justify-content: center !important; */
 }
 
 @media screen and (max-width: 992px) and (min-width: 768px) {
@@ -114,7 +114,7 @@
 } */
   .lighteam {
     padding-top: 30px;
-    margin-bottom: 0;
+    margin-bottom: -150px;
   }
 
   #cardslid {

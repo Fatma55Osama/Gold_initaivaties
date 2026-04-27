@@ -35,7 +35,8 @@ export default function Chartscomponent2(props) {
             text: wrapText(`${props.title} - ${props.selectedIndicator}`),
             font: {
                 size: 15,
-                color: '#333'
+                color: '#333',
+                family:"GE SS-Medium"
             },
             x: 0.5,
             xanchor: 'center'

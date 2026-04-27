@@ -14,11 +14,14 @@
       text-align: end;
       margin-right: 6%;
     }
-    h3 {
+    h3 > div {
       font-family: "Geist", sans-serif;
-      font-size: 50px;
+      font-size: 50px !important;
       font-weight: 600;
+      direction: rtl;
+      unicode-bidi: plaintext;
     }
+
     span {
       font-weight: 500;
       font-size: 16px;

@@ -24,7 +24,6 @@ export default function Register() {
 
     })
     const hadleSubmit = (values, { resetForm }) => {
-        console.log(values);
         postregisteration(domain, values).then((res) => {
             if (res?.status === 200 || res?.status === 201) {
                 toast.success('تم إنشاء الحساب بنجاح، يمكنك الآن تسجيل الدخول');

@@ -20,13 +20,11 @@ export default function Login() {
     });
 
     const handleSubmit = (values, { resetForm }) => {
-        console.log(values);
         postlogin(domain, values).then((res) => {
             if (res?.status === 200 || res?.status === 201) {
                 toast.success('تم تسجيل الدخول بنجاح');
                 resetForm()
                 const token = res.data.token;
-                console.log('Token:', res.data.token);
                 sessionStorage.setItem("token", res.data.regesterId)
                 // sessionStorage.setItem("token", res.data.token)
 
