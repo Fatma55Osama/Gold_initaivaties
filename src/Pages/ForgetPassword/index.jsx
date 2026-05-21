@@ -20,11 +20,10 @@ export default function ForgotPassword() {
     });
 
     const handleSubmit = (values) => {
-        // هنا تضيفي كود الإرسال الحقيقي
-        if (!values.email.endsWith("@gmail.com")) {
-            toast.error("مسموح فقط ببريد Gmail");
-            return;
-        }
+        // if (!values.email.endsWith("@gmail.com")) {
+        //     toast.error("مسموح فقط ببريد Gmail");
+        //     return;
+        // }
         postforgetpassword(domain, values).then((res) => {
             if (res?.status === 200 || res?.status === 201) {
                 toast.success('تم إرسال رابط إعادة تعيين كلمة المرور بنجاح');
@@ -34,8 +33,8 @@ export default function ForgotPassword() {
                 setSubmitted(true);
             }
         }).catch((err) => {
-            console.error(err);
-            toast.error(err.response.data || 'حدث خطأ أثناء إرسال الرابط وتأكد من صحة الإيميل، حاول مرة أخرى');
+            console.error(err.response.data);
+            toast.error('حدث خطأ أثناء إرسال الرابط وتأكد من صحة الإيميل، حاول مرة أخرى');
         });
     };
 

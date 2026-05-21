@@ -1,31 +1,35 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
 import styles from './index.module.css'
-import { postResetpassword } from '../../Data/API/postResetpassword';
+import { postVerifyOTP } from '../../Data/API/postVerifyOTP';
 import { getDomain } from '../../configLoader';
 import { ToastContainer } from 'react-toastify'
 
 import { Bounce, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
+import Changepassword from '../Changepassword';
 
 export default function NewPassword() {
+    const [verifyOTP,setVerifyOTP]=useState(false)
     const navigate = useNavigate();
     const validationSchema = Yup.object({
         email: Yup.string().email('البريد الإلكتروني غير صالح').required('مطلوب'),
         otp: Yup.array().of(Yup.string().length(1, 'يجب أن يكون الرقم مكونًا من رقم واحد')).required('مطلوب'),
-        newPassword: Yup.string().min(6, 'يجب أن تكون كلمة المرور 6 أحرف على الأقل').required('مطلوب'),
+        // newPassword: Yup.string().min(6, 'يجب أن تكون كلمة المرور 6 أحرف على الأقل').required('مطلوب'),
     })
     const domain = getDomain()
 
     const handleSubmit = (values) => {
-        postResetpassword(domain, values).then((res) => {
+        console.log("value" + values)
+        postVerifyOTP(domain, values).then((res) => {
 
-            toast.success('تم إعادة تعيين كلمة المرور بنجاح' || res.data?.message);
-            setTimeout(() => {
-                navigate('/login');
+            toast.success('تم التحقق من ال otp بنجاح' || res.data?.message);
+            setVerifyOTP(true)
+            // setTimeout(() => {
+            //     navigate('/login');
 
-            }, 2000)
+            // }, 2000)
 
 
         }).catch((err) => {
@@ -48,9 +52,10 @@ export default function NewPassword() {
                 theme="light"
                 transition={Bounce}
             />
-            <Formik
+            {
+                !verifyOTP?( <Formik
                 validationSchema={validationSchema}
-                initialValues={{ email: "", otp: Array(6).fill(''), newPassword: '' }}
+                initialValues={{ email: "", otp: Array(6).fill('') }}
                 onSubmit={handleSubmit}
             >
                 {({ values, setFieldValue }) => (
@@ -108,7 +113,7 @@ export default function NewPassword() {
 
                         </div>
 
-                        <div className="form-group text-end d-flex flex-column gap-2">
+                        {/* <div className="form-group text-end d-flex flex-column gap-2">
                             <label htmlFor="newPassword">كلمة المرور الجديدة</label>
                             <Field
                                 type="password"
@@ -119,13 +124,15 @@ export default function NewPassword() {
                                 id={styles.input}
                             />
                             <ErrorMessage name="newPassword" component="div" className="text-danger small mt-1" />
-                        </div>
+                        </div> */}
 
                         <button type="submit" className="btn btn-success mt-5 px-4">
                             تأكيد الرمز
                         </button>
                     </Form>
                 )}
-            </Formik></div>
+            </Formik>):<Changepassword/> 
+            }
+           </div>
     )
 }

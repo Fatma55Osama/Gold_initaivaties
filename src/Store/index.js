@@ -7,12 +7,13 @@ export const usepathes = create(() => ({
       name: "تواصل معنا",
       mainPath: "/contactus",
       links: [
+        { label: " مشورة اون لاين ", path: "/onlinemashora" },
         { label: " الأستشارات السابقة  ", path: "/consultationold" },
         { label: " استشارة جديدة ", path: "/consultationnew" },
         { label: "نسيت كلمة", path: "/forgetpassword" },
         { label: "مستخدم جديد", path: "/register" },
 
-        // { label: "تسجيل الدخول", path: "/login" },
+        // { label: "تسجيل الدخول", path: "/login" },ئ
         { label: " صفحتي الشخصية  ", path: "/consultationnew" },
 
         { label: " انضم لفريقنا", path: "/jointeams" },
@@ -23,7 +24,10 @@ export const usepathes = create(() => ({
     },
       {
       name: "تسجيل الدخول",
-      links: [{ label: "تسجيل الدخول", path: "/login" }],
+      links: [{ label: "تسجيل الدخول", path: "/login" },
+        
+      // { label: " صفحتي الشخصية  ", path: "/consultationnew" }
+    ],
     },
 
     {

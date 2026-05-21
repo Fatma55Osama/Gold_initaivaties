@@ -44,122 +44,193 @@ export default function Chatbot() {
     document.addEventListener("click", unlock);
   }, []);
 
-  const speakBotReply = (text, id) => {
+  // const speakBotReply = (text, id) => {
+  //   if (!isSoundOn || !text) return;
+
+  //   const synth = window.speechSynthesis;
+
+  //   synth.cancel();
+
+  //   text = text.replace(/[#*.:()]/g, "");
+
+  //   const utterance = new SpeechSynthesisUtterance(text);
+  //   const voices = synth.getVoices();
+  //   const arabicVoice = voices.find((v) => v.name.includes("Hoda"));
+
+  //   if (arabicVoice) {
+  //     utterance.voice = arabicVoice;
+  //     utterance.lang = "ar-EG";
+  //   }
+
+  //   utterance.onstart = () => {
+  //     setPlayingId(id);
+  //   };
+
+  //   utterance.onend = () => {
+  //     setPlayingId(null);
+  //   };
+
+  //   utterance.onerror = () => {
+  //     setPlayingId(null);
+  //   };
+
+  //   synth.speak(utterance);
+  // };
+  const speakBotReply = async (text, id) => {
     if (!isSoundOn || !text) return;
 
-    const synth = window.speechSynthesis;
-
-    synth.cancel();
-
-    text = text.replace(/[#*.:()]/g, "");
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voices = synth.getVoices();
-    const arabicVoice = voices.find((v) => v.name.includes("Hoda"));
-
-    if (arabicVoice) {
-      utterance.voice = arabicVoice;
-      utterance.lang = "ar-EG";
+    // وقف أي صوت شغال دلوقتي
+    if (currentUtteranceRef.current) {
+      currentUtteranceRef.current.pause();
+      currentUtteranceRef.current.src = "";
+      currentUtteranceRef.current = null;
     }
+    setPlayingId(null);
 
-    utterance.onstart = () => {
-      setPlayingId(id); 
-    };
+    // text = text.replace(/[#*.:()]/g, "");
+    text = text
+      .replace(/[#*.:()0-9٠-٩]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    setPlayingId(id);
 
-    utterance.onend = () => {
-      setPlayingId(null); 
-    };
+    try {
+      const res = await fetch(
+        "https://api.elevenlabs.io/v1/text-to-speech/meAbY2VpJkt1q46qk56T",
+        {
+          method: "POST",
+          headers: {
+            "xi-api-key": "sk_417d54848844363fc855b92e0f10796ad6e8607d95d88ec8",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+          }),
+        },
+      );
 
-    utterance.onerror = () => {
+      if (!res.ok) {
+        const err = await res.json();
+        console.error("ElevenLabs error:", err);
+        setPlayingId(null);
+        return;
+      }
+
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      currentUtteranceRef.current = audio;
+
+      audio.onended = () => {
+        setPlayingId(null);
+        URL.revokeObjectURL(url);
+        currentUtteranceRef.current = null;
+      };
+
+      audio.onerror = () => {
+        setPlayingId(null);
+        currentUtteranceRef.current = null;
+      };
+
+      audio.play();
+
+      console.log(res.status);
+    } catch (err) {
+      console.error(err);
       setPlayingId(null);
-    };
-
-    synth.speak(utterance);
+      currentUtteranceRef.current = null;
+    }
   };
 
-useEffect(() => {
-  const savedMessages = JSON.parse(localStorage.getItem("chat_messages")) || [];
-  const currentTime = new Date().getTime();
-  const maxAge = 24 * 60 * 60 * 1000; 
+  useEffect(() => {
+    const savedMessages =
+      JSON.parse(localStorage.getItem("chat_messages")) || [];
+    const currentTime = new Date().getTime();
+    const maxAge = 24 * 60 * 60 * 1000;
 
-  const filteredMessages = savedMessages.filter(msg => !msg.time || currentTime - msg.time < maxAge);
+    const filteredMessages = savedMessages.filter(
+      (msg) => !msg.time || currentTime - msg.time < maxAge,
+    );
 
-  const lastFiveMessages = filteredMessages.slice(-6);
+    const lastFiveMessages = filteredMessages.slice(-6);
 
-  setMessage(lastFiveMessages);
-}, []);
-
+    setMessage(lastFiveMessages);
+  }, []);
 
   useEffect(() => {
-  const messagesWithTime = message.map(msg => ({
-    ...msg,
-    time: msg.time || new Date().getTime(),
-  }));
+    const messagesWithTime = message.map((msg) => ({
+      ...msg,
+      time: msg.time || new Date().getTime(),
+    }));
 
+    const currentTime = new Date().getTime();
+    const maxAge = 24 * 60 * 60 * 1000;
+    const filteredMessages = messagesWithTime.filter(
+      (msg) => currentTime - msg.time < maxAge,
+    );
+    const lastFiveMessages = filteredMessages.slice(-5);
 
-  const currentTime = new Date().getTime();
-  const maxAge = 24 * 60 * 60 * 1000;
-  const filteredMessages = messagesWithTime.filter(msg => currentTime - msg.time < maxAge);
-  const lastFiveMessages = filteredMessages.slice(-5);
+    localStorage.setItem("chat_messages", JSON.stringify(lastFiveMessages));
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
 
-  localStorage.setItem("chat_messages", JSON.stringify(lastFiveMessages));
-  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-}, [message]);
+  const sendMessage = async (text = input) => {
+    if (isTyping || !text.trim()) return;
 
-const sendMessage = async (text = input) => {
-  if (isTyping || !text.trim()) return;
+    const userMessage = { sender: "user", text };
+    const updatedMessages = [...message, userMessage];
+    setMessage(updatedMessages);
+    setInput("");
+    setIsTyping(true);
 
-  const userMessage = { sender: "user", text };
-  const updatedMessages = [...message, userMessage];
-  setMessage(updatedMessages);
-  setInput("");
-  setIsTyping(true);
+    // نرسل آخر 6 رسائل كسياق
+    // const lastSixMessages = updatedMessages
+    //   .slice(-2)
+    //   .map(msg => ({ sender: msg.sender, text: msg.text }));
 
-  // نرسل آخر 6 رسائل كسياق
-  const lastSixMessages = updatedMessages
-    .slice(-2)
-    .map(msg => ({ sender: msg.sender, text: msg.text }));
+    try {
+      //   // إرسال مؤقت بدون سياق
+      //   let contextToSend = lastSixMessages;
 
-  try {
-    // إرسال مؤقت بدون سياق
-    let contextToSend = lastSixMessages;
+      // const independentKeywords = ["ضرر", "أضرار", "سن أكبر", "دواء", "مرض"];
+      // const isIndependent = independentKeywords.some(kw => text.includes(kw));
 
-   
-    // const independentKeywords = ["ضرر", "أضرار", "سن أكبر", "دواء", "مرض"];
-    // const isIndependent = independentKeywords.some(kw => text.includes(kw));
+      // if (isIndependent) {
+      //   contextToSend = []; // نبعت بدون سياق
+      // }
 
-    // if (isIndependent) {
-    //   contextToSend = []; // نبعت بدون سياق
-    // }
+      const res = await postChat(text, domain, []);
 
-    const res = await postChat(text, domain, contextToSend);
+      const { aiAnswer, fullDetails, isFollowUp } = res.data;
 
-    const { aiAnswer, fullDetails, isFollowUp } = res.data;
+      const botMessage = {
+        sender: "bot",
+        text: aiAnswer,
+        fullDetails,
+        id: Date.now(),
+      };
 
-    const botMessage = {
-      sender: "bot",
-      text: aiAnswer,
-      fullDetails,
-      id: Date.now()
-    };
+      setMessage((prev) => [...prev, botMessage]);
+      speakBotReply(aiAnswer, botMessage.id);
 
-    setMessage(prev => [...prev, botMessage]);
-    speakBotReply(aiAnswer, botMessage.id);
-
-    // تخزين الرسائل حسب نوع السؤال
-    if (!isFollowUp ) {
-      localStorage.setItem("chat_messages", JSON.stringify([userMessage, botMessage]));
-    } else {
-      localStorage.setItem("chat_messages", JSON.stringify(updatedMessages.slice(-6)));
+      // تخزين الرسائل حسب نوع السؤال
+      // if (!isFollowUp ) {
+      //   localStorage.setItem("chat_messages", JSON.stringify([userMessage, botMessage]));
+      // } else {
+      //   localStorage.setItem("chat_messages", JSON.stringify(updatedMessages.slice(-6)));
+      // }
+      localStorage.setItem(
+        "chat_messages",
+        JSON.stringify([userMessage, botMessage]),
+      );
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsTyping(false);
     }
-
-
-  } catch (err) {
-    console.error(err);
-  } finally {
-    setIsTyping(false);
-  }
-};
+  };
   const handelkeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -198,16 +269,24 @@ const sendMessage = async (text = input) => {
     recognition.start();
   };
 
+  // const toggleSound = () => {
+  //   const synth = window.speechSynthesis;
+
+  //   if (isSoundOn) {
+  //     synth.cancel();
+  //   }
+
+  //   setIsSoundOn((prev) => !prev);
+  // };
+
   const toggleSound = () => {
-    const synth = window.speechSynthesis;
-
-    if (isSoundOn) {
-      synth.cancel();
+    if (isSoundOn && currentUtteranceRef.current) {
+      currentUtteranceRef.current.pause();
+      currentUtteranceRef.current = null;
+      setPlayingId(null);
     }
-
     setIsSoundOn((prev) => !prev);
   };
-
   const showMoreDetails = (fullContent) => {
     const detailedMessage = {
       sender: "bot",
@@ -227,12 +306,11 @@ const sendMessage = async (text = input) => {
         }
       >
         <div className="headChat border-bottom p-2 d-flex flex-column justify-content-between align-items-end">
-           <IoMdClose
+          <IoMdClose
             onClick={closeModalChatbot}
             style={{ cursor: "pointer", fontSize: "20px" }}
           />
           <div className="d-flex  align-items-center gap-3">
-           
             <div
               className={`${styles.iconAi} rounded-5 d-flex justify-content-center align-items-center`}
             >
@@ -240,10 +318,12 @@ const sendMessage = async (text = input) => {
             </div>
             <div className={styles.texthead}>
               <h1>المساعد الذكي لمبادرة الألف يوم الذهبية</h1>
-              <strong className="">المعلومات المقدمه استرشادية، لمزيد من التفاصيل برجاء حجز مشورة اونلاين</strong>
+              <strong className="">
+                المعلومات المقدمه استرشادية، لمزيد من التفاصيل برجاء حجز مشورة
+                اونلاين
+              </strong>
             </div>
           </div>
-         
         </div>
 
         <div className="bodyChat flex-grow-1">

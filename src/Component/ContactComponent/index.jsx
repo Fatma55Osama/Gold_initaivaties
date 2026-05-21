@@ -44,7 +44,7 @@ export default function ContactComponent(props) {
                                 props.showLimited ? (path
                                     .filter(el => el.name === "تواصل معنا")
                                     .flatMap((el, index) => {
-                                        return el.links.slice(0, 2).map((link, idx) => {
+                                        return el.links.slice(0, 3).map((link, idx) => {
                                             const isActive =
                                                 link.path === '/'
                                                     ? location.pathname === '/'
@@ -64,7 +64,7 @@ export default function ContactComponent(props) {
                                     })) : (path
                                         .filter(el => el.name === "تواصل معنا")
                                         .flatMap((el, index) => {
-                                            return el.links.slice(4,).map((link, idx) => {
+                                            return el.links.slice(5,).map((link, idx) => {
                                                 const isActive =
                                                     link.path === '/'
                                                         ? location.pathname === '/'

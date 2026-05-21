@@ -31,7 +31,8 @@
 
 .modal {
   background: #fff;
-  width: 900px;
+  max-width:900px;
+  width: 90%;
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -60,7 +61,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 /* Cards */
@@ -173,3 +174,30 @@
 /* .cta:enabled:hover {
   background: #0b5ed7;
 } */
+ @media screen and (max-width: 992px) and (min-width: 768px) {
+  .modal{
+    width: 740px;
+
+  }  
+    .body {
+    grid-template-columns: 1fr;
+  }
+ }
+ @media (max-width: 768px) {
+  .modal {
+    padding: 15px;
+  }
+
+  .header h4 {
+    font-size: 16px;
+  }
+
+  .slot {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+}

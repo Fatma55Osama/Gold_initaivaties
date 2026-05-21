@@ -11,7 +11,8 @@ const data = {
     "currentJob": values.statework,
     "userName": values.username,
     "password": values.password,
-    "entryDate": new Date().toISOString()
+    "entryDate": new Date().toISOString(),
+    "sSn":values.sSn
 }
 return axios.post(`${domain}/api/RegestrationsControllerAPI`, data).then((res) => {
     return res

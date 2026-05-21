@@ -10,7 +10,7 @@ import 'animate.css';
 import { loadConfig } from './configLoader.js';
 import Loader from './Component/Loader/index.jsx';
 import { HelmetProvider } from 'react-helmet-async';
-
+import "react-toastify/dist/ReactToastify.css";
 const App = React.lazy(() => import('./App.jsx'));
 
 createRoot(document.getElementById('root')).render(<Loader />);

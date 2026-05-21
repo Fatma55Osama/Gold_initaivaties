@@ -33,10 +33,11 @@ import Chatbot from "./Component/Chatbot";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { useShallow } from "zustand/shallow";
-import { ToastContainer } from "react-toastify";
-import { Bounce, toast } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 import MashuoraOnline from "./Component/MashuoraOnline";
 import onlinemashora from "./assets/OnlineMashoura-png.png";
+import "react-toastify/dist/ReactToastify.css";
+import OnlineMashouraPage from "./Pages/OnlineMashoraPage";
 // const queryClient = new QueryClient({
 //   defaultOptions: {
 //     queries: {
@@ -72,12 +73,28 @@ export default function App() {
     if (token) {
       openModalmashora();
     } else {
-      toast.warning("يرجي تسجيل الدخول علي البوابة لإمكانيه حجز مشورة اونلاين");
-      navigate("/login");
+      toast.dismiss();
+      toast.info("يرجي تسجيل الدخول علي البوابة لإمكانيه حجز مشورة اونلاين");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     }
   };
   return (
-    // <QueryClientProvider client={queryClient}>
+    <>
+      {/* <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      pauseOnHover={false}
+      closeOnClick
+      draggable={false}
+      newestOnTop
+      style={{ zIndex: 1200 }}
+    /> */}
+    
+ 
+
     <div className="App d-flex flex-column">
       <Routes>
         <Route path="/" element={<MainLayout />}>
@@ -112,12 +129,26 @@ export default function App() {
           <Route path="/forgetpassword" element={<ForgotPassword />} />
           <Route path="/consultationnew" element={<ConsultationNew />} />
           <Route path="/consultationold" element={<ConsultationOld />} />
+          <Route path="/onlinemashora" element={<OnlineMashouraPage />} />
           <Route path="/question" element={<Questions />} />
           {/* <Route path='/meeting' element={<MargeMeeting/>}/> */}
         </Route>
         <Route path="*" element={<Errorpage />} />
       </Routes>
-
+      {/* <ToastContainer position="top-center" autoClose={2000}  /> */}
+        {/* <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      /> */}
       <div
         className="mashoraonline d-flex justify-content-center align-items-center  z-3"
         onClick={() => openmashoraonline(token)}
@@ -148,7 +179,7 @@ export default function App() {
       </div>
       {modalChatbot && <Chatbot />}
       {modalmashora && <MashuoraOnline />}
-      <ToastContainer
+      {/* <ToastContainer
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}
@@ -160,10 +191,11 @@ export default function App() {
         pauseOnHover
         theme="light"
         transition={Bounce}
-      />
+      /> */}
+
       <FiArrowUpCircle onClick={top} className="topbtn" />
     </div>
 
-    // </QueryClientProvider>
+  </>
   );
 }

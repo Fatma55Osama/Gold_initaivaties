@@ -1,3 +1,4 @@
+import { show_appointmentbyday } from "../API/show_appointmentbyday"
 import { show_commonQuestion } from "../API/show_commonQuestion"
 import { show_consultationold } from "../API/show_consultationold"
 import { show_single_service } from "../API/show_single_service"
@@ -7,6 +8,7 @@ import { show_singleTeam } from "../API/show_singleTeam"
 import { store_about } from "../API/store_about"
 import { store_awarnessmsg } from "../API/store_awarnessmsg"
 import { store_employess } from "../API/store_employess"
+import { store_GetDays } from "../API/store_GetDays"
 import { store_govs } from "../API/store_govs"
 import { store_Importantlink } from "../API/store_Importantlink"
 import { store_Infograph } from "../API/store_Infograph"
@@ -80,4 +82,11 @@ export const getAllData = {
      get_show_singleTeam:async(domain,id)=>{
         return await show_singleTeam(domain,id)
     },
+    get_store_getdays:async(domain)=>{
+        return await store_GetDays(domain)
+    },
+    get_show_appointmentbyday:async(domain,day)=>{
+        return await show_appointmentbyday(domain,day)
+    }
+    
 }
