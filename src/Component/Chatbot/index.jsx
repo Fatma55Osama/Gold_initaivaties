@@ -7,24 +7,31 @@ import { postChat } from "../../Data/API/postChat";
 import { useModalChatbot } from "../../Store";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
+import { BsRecordCircle } from "react-icons/bs";
+import { BiSolidDislike, BiSolidLike } from "react-icons/bi";
+import { postChatbotEvaluation } from "../../Data/API/postChatbotEvaluation";
+
 export default function Chatbot() {
   const [message, setMessage] = useState([]);
   const [input, setInput] = useState("");
-  const { closeModalChatbot } = useModalChatbot();
-  const [isSoundOn, setIsSoundOn] = useState(true);
-  const currentUtteranceRef = useRef(null);
-  const inputRef = useRef();
-  const domain = getDomain();
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(true);
   const [playingId, setPlayingId] = useState(null);
+
+  const inputRef = useRef();
+  const messagesEndRef = useRef(null);
+  const currentUtteranceRef = useRef(null);
+  const recognitionRef = useRef(null);
+
+  const { closeModalChatbot } = useModalChatbot();
+  const domain = getDomain();
 
   useEffect(() => {
     const synth = window.speechSynthesis;
 
     const loadVoices = () => {
-      const voices = synth.getVoices();
-      console.log("Voices:", voices);
+      synth.getVoices();
     };
 
     loadVoices();
@@ -44,54 +51,58 @@ export default function Chatbot() {
     document.addEventListener("click", unlock);
   }, []);
 
-  // const speakBotReply = (text, id) => {
-  //   if (!isSoundOn || !text) return;
+  useEffect(() => {
+    const savedMessages =
+      JSON.parse(localStorage.getItem("chat_messages")) || [];
 
-  //   const synth = window.speechSynthesis;
+    const currentTime = new Date().getTime();
+    const maxAge = 24 * 60 * 60 * 1000;
 
-  //   synth.cancel();
+    const filteredMessages = savedMessages.filter(
+      (msg) => !msg.time || currentTime - msg.time < maxAge,
+    );
 
-  //   text = text.replace(/[#*.:()]/g, "");
+    setMessage(filteredMessages.slice(-6));
+  }, []);
 
-  //   const utterance = new SpeechSynthesisUtterance(text);
-  //   const voices = synth.getVoices();
-  //   const arabicVoice = voices.find((v) => v.name.includes("Hoda"));
+  useEffect(() => {
+    const messagesWithTime = message.map((msg) => ({
+      ...msg,
+      time: msg.time || new Date().getTime(),
+    }));
 
-  //   if (arabicVoice) {
-  //     utterance.voice = arabicVoice;
-  //     utterance.lang = "ar-EG";
-  //   }
+    const currentTime = new Date().getTime();
+    const maxAge = 24 * 60 * 60 * 1000;
 
-  //   utterance.onstart = () => {
-  //     setPlayingId(id);
-  //   };
+    const filteredMessages = messagesWithTime
+      .filter((msg) => currentTime - msg.time < maxAge)
+      .slice(-5);
 
-  //   utterance.onend = () => {
-  //     setPlayingId(null);
-  //   };
+    localStorage.setItem("chat_messages", JSON.stringify(filteredMessages));
 
-  //   utterance.onerror = () => {
-  //     setPlayingId(null);
-  //   };
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [message]);
 
-  //   synth.speak(utterance);
-  // };
   const speakBotReply = async (text, id) => {
     if (!isSoundOn || !text) return;
 
-    // وقف أي صوت شغال دلوقتي
     if (currentUtteranceRef.current) {
       currentUtteranceRef.current.pause();
       currentUtteranceRef.current.src = "";
       currentUtteranceRef.current = null;
     }
+
     setPlayingId(null);
 
-    // text = text.replace(/[#*.:()]/g, "");
     text = text
       .replace(/[#*.:()0-9٠-٩]/g, "")
       .replace(/\s+/g, " ")
       .trim();
+
+    if (!text) return;
+
     setPlayingId(id);
 
     try {
@@ -106,7 +117,10 @@ export default function Chatbot() {
           body: JSON.stringify({
             text,
             model_id: "eleven_multilingual_v2",
-            voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+            voice_settings: {
+              stability: 0.5,
+              similarity_boost: 0.75,
+            },
           }),
         },
       );
@@ -120,7 +134,9 @@ export default function Chatbot() {
 
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
+
       const audio = new Audio(url);
+
       currentUtteranceRef.current = audio;
 
       audio.onended = () => {
@@ -129,14 +145,13 @@ export default function Chatbot() {
         currentUtteranceRef.current = null;
       };
 
-      audio.onerror = () => {
+      audio.onerror = (e) => {
+        console.error("Audio error:", e);
         setPlayingId(null);
         currentUtteranceRef.current = null;
       };
 
-      audio.play();
-
-      console.log(res.status);
+      await audio.play();
     } catch (err) {
       console.error(err);
       setPlayingId(null);
@@ -144,83 +159,37 @@ export default function Chatbot() {
     }
   };
 
-  useEffect(() => {
-    const savedMessages =
-      JSON.parse(localStorage.getItem("chat_messages")) || [];
-    const currentTime = new Date().getTime();
-    const maxAge = 24 * 60 * 60 * 1000;
-
-    const filteredMessages = savedMessages.filter(
-      (msg) => !msg.time || currentTime - msg.time < maxAge,
-    );
-
-    const lastFiveMessages = filteredMessages.slice(-6);
-
-    setMessage(lastFiveMessages);
-  }, []);
-
-  useEffect(() => {
-    const messagesWithTime = message.map((msg) => ({
-      ...msg,
-      time: msg.time || new Date().getTime(),
-    }));
-
-    const currentTime = new Date().getTime();
-    const maxAge = 24 * 60 * 60 * 1000;
-    const filteredMessages = messagesWithTime.filter(
-      (msg) => currentTime - msg.time < maxAge,
-    );
-    const lastFiveMessages = filteredMessages.slice(-5);
-
-    localStorage.setItem("chat_messages", JSON.stringify(lastFiveMessages));
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [message]);
-
   const sendMessage = async (text = input) => {
     if (isTyping || !text.trim()) return;
 
-    const userMessage = { sender: "user", text };
-    const updatedMessages = [...message, userMessage];
-    setMessage(updatedMessages);
+    const userMessage = {
+      sender: "user",
+      text,
+    };
+
+    setMessage((prev) => [...prev, userMessage]);
+
     setInput("");
     setIsTyping(true);
 
-    // نرسل آخر 6 رسائل كسياق
-    // const lastSixMessages = updatedMessages
-    //   .slice(-2)
-    //   .map(msg => ({ sender: msg.sender, text: msg.text }));
-
     try {
-      //   // إرسال مؤقت بدون سياق
-      //   let contextToSend = lastSixMessages;
+      const res = await postChat(text, domain);
 
-      // const independentKeywords = ["ضرر", "أضرار", "سن أكبر", "دواء", "مرض"];
-      // const isIndependent = independentKeywords.some(kw => text.includes(kw));
-
-      // if (isIndependent) {
-      //   contextToSend = []; // نبعت بدون سياق
-      // }
-
-      const res = await postChat(text, domain, []);
-
-      const { aiAnswer, fullDetails, isFollowUp } = res.data;
+      const { aiAnswer, fullDetails } = res.data;
 
       const botMessage = {
         sender: "bot",
         text: aiAnswer,
         fullDetails,
         id: Date.now(),
+        question: text,
+        evaluation: null,
       };
 
       setMessage((prev) => [...prev, botMessage]);
+
       speakBotReply(aiAnswer, botMessage.id);
 
-      // تخزين الرسائل حسب نوع السؤال
-      // if (!isFollowUp ) {
-      //   localStorage.setItem("chat_messages", JSON.stringify([userMessage, botMessage]));
-      // } else {
-      //   localStorage.setItem("chat_messages", JSON.stringify(updatedMessages.slice(-6)));
-      // }
       localStorage.setItem(
         "chat_messages",
         JSON.stringify([userMessage, botMessage]),
@@ -231,6 +200,7 @@ export default function Chatbot() {
       setIsTyping(false);
     }
   };
+
   const handelkeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -241,43 +211,127 @@ export default function Chatbot() {
   let sessionId = localStorage.getItem("chat_session_id");
 
   if (!sessionId) {
-    // sessionId = crypto.randomUUID();
     sessionId = uuidv4();
     localStorage.setItem("chat_session_id", sessionId);
-    console.log(sessionId);
   }
 
-  const startRecording = () => {
+  // const startRecording = async () => {
+  //   try {
+  //     await navigator.mediaDevices.getUserMedia({
+  //       audio: true,
+  //     });
+
+  //     const SpeechRecognition =
+  //       window.SpeechRecognition ||
+  //       window.webkitSpeechRecognition;
+
+  //     if (!SpeechRecognition) {
+  //       alert("المتصفح لا يدعم المايك");
+  //       return;
+  //     }
+
+  //     recognitionRef.current?.stop();
+
+  //     const recognition = new SpeechRecognition();
+
+  //     recognitionRef.current = recognition;
+
+  //     recognition.lang = "ar-EG";
+  //     recognition.interimResults = false;
+  //     recognition.maxAlternatives = 1;
+  //     recognition.continuous = false;
+
+  //     recognition.onstart = () => {
+  //       console.log("🎤 mic started");
+  //       setIsRecording(true);
+  //     };
+
+  //     recognition.onresult = (event) => {
+  //       const speechText =
+  //         event.results[0][0].transcript;
+
+  //       console.log("TEXT:", speechText);
+
+  //       setInput((prev) =>
+  //         prev ? prev + " " + speechText : speechText
+  //       );
+  //     };
+
+  //     recognition.onerror = (event) => {
+  //       console.log(
+  //         "❌ Speech recognition error:",
+  //         event.error
+  //       );
+
+  //       setIsRecording(false);
+  //     };
+
+  //     recognition.onend = () => {
+  //       console.log("🛑 mic ended");
+  //       setIsRecording(false);
+  //     };
+
+  //     recognition.start();
+  //   } catch (err) {
+  //     console.error("Mic permission error:", err);
+  //   }
+  // };
+
+const startRecording = async () => {
+  try {
+    await navigator.mediaDevices.getUserMedia({ audio: true });
+
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
+    if (!SpeechRecognition) return;
+
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+
     const recognition = new SpeechRecognition();
 
-    recognition.lang = "ar-EG";
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognitionRef.current = recognition;
 
-    recognition.onresult = (event) => {
-      const speechText = event.results[0][0].transcript;
-      setInput((prev) => (prev ? prev + " " + speechText : speechText));
+    recognition.lang = "ar-EG";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onstart = () => {
+      setIsRecording(true);
     };
 
-    recognition.onerror = (event) => {
-      console.error("Speech recognition error:", event.error);
+    recognition.onresult = (event) => {
+      let text = "";
+
+      for (
+        let i = event.resultIndex;
+        i < event.results.length;
+        i++
+      ) {
+        text += event.results[i][0].transcript;
+      }
+
+      setInput((prev) => (prev ? prev + " " + text : text));
+    };
+
+    recognition.onerror = (e) => {
+      console.log(e.error);
+      setIsRecording(false);
+    };
+
+    recognition.onend = () => {
+      if (isRecording) {
+        recognition.start();
+      }
     };
 
     recognition.start();
-  };
-
-  // const toggleSound = () => {
-  //   const synth = window.speechSynthesis;
-
-  //   if (isSoundOn) {
-  //     synth.cancel();
-  //   }
-
-  //   setIsSoundOn((prev) => !prev);
-  // };
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   const toggleSound = () => {
     if (isSoundOn && currentUtteranceRef.current) {
@@ -285,139 +339,207 @@ export default function Chatbot() {
       currentUtteranceRef.current = null;
       setPlayingId(null);
     }
+
     setIsSoundOn((prev) => !prev);
   };
-  const showMoreDetails = (fullContent) => {
-    const detailedMessage = {
-      sender: "bot",
-      text: fullContent,
-      isDetailedPart: true,
-    };
+const handleEvaluation = async (
+ question,
+ answer,
+ isCorrect,
+ id
+) => {
 
-    setMessage((prev) => [...prev, detailedMessage]);
-    speakBotReply(fullContent);
-  };
+ const data = {
+   question: question,
+   chatBotReply: answer,
+   isCorrect: isCorrect
+ };
 
+ console.log(data);
+
+ try {
+
+   await postChatbotEvaluation(
+     domain,
+     data
+   );
+
+   setMessage(prev =>
+     prev.map(msg =>
+       msg.id === id
+       ? {
+           ...msg,
+           evaluation:isCorrect
+         }
+       : msg
+     )
+   );
+
+ }
+ catch(err){
+
+   console.log(err);
+
+ }
+
+};
   return (
-    <div className={`${styles.modalChatbot}`}>
-      <div
-        className={
-          styles.content + " d-flex flex-column justify-content-between"
-        }
-      >
-        <div className="headChat border-bottom p-2 d-flex flex-column justify-content-between align-items-end">
-          <IoMdClose
-            onClick={closeModalChatbot}
-            style={{ cursor: "pointer", fontSize: "20px" }}
-          />
-          <div className="d-flex  align-items-center gap-3">
-            <div
-              className={`${styles.iconAi} rounded-5 d-flex justify-content-center align-items-center`}
+    <div className={styles.modalChatbot}>
+      <div className={styles.content}>
+        {/* ===== HEADER ===== */}
+
+        <div className={styles.headChat}>
+          <div className={styles.headerTop}>
+            <button
+              className={styles.closeBtn}
+              onClick={closeModalChatbot}
+              aria-label="إغلاق"
             >
-              <strong>AI</strong>
-            </div>
+              <IoMdClose />
+            </button>
+          </div>
+
+          <div className={styles.headerInfo}>
             <div className={styles.texthead}>
               <h1>المساعد الذكي لمبادرة الألف يوم الذهبية</h1>
-              <strong className="">
-                المعلومات المقدمه استرشادية، لمزيد من التفاصيل برجاء حجز مشورة
-                اونلاين
-              </strong>
+
+              <span>
+                المعلومات المقدمة استرشادية، لمزيد من التفاصيل برجاء حجز مشورة
+                أونلاين
+              </span>
+            </div>
+
+            <div className={styles.iconAi}>
+              <strong>AI</strong>
             </div>
           </div>
         </div>
 
-        <div className="bodyChat flex-grow-1">
-          <div className="border h-100" style={{ backgroundColor: "#f8f9fa" }}>
-            <div className={`${styles.chatbodymassage} p-3`}>
-              {message?.map((msg, index) => (
+        {/* ===== BODY ===== */}
+
+        <div className={styles.bodyChat}>
+          <div className={styles.chatbodymassage}>
+            {message?.map((msg, index) => (
+              <div
+                key={index}
+                className={`${styles.msgRow} ${
+                  msg.sender === "user" ? styles.msgRowUser : ""
+                }`}
+              >
                 <div
-                  key={index}
-                  className={`d-flex mb-2 ${
-                    msg.sender === "user" ? "justify-content-end" : ""
+                  className={`${styles.bubble} ${
+                    msg.sender === "user"
+                      ? styles.rightBubble
+                      : styles.leftBubble
                   }`}
                 >
-                  <div
-                    className={`p-2 rounded-3 text-wrap ${
-                      msg.sender === "user"
-                        ? styles.rightBubble
-                        : styles.leftBubble
-                    }`}
-                  >
-                    {msg.text}
+                  {msg.text}
 
-                    {msg.sender !== "user" && (
-                      <div className={styles.botActions}>
-                        <div className="d-flex align-items-center gap-2">
-                          {isSoundOn ? (
-                            <FaVolumeUp
-                              onClick={toggleSound}
-                              className={styles.actionIcon}
-                            />
-                          ) : (
-                            <FaVolumeMute
-                              onClick={toggleSound}
-                              className={styles.actionIcon}
-                            />
-                          )}
-                        </div>
-                        <IoIosRefresh
-                          onClick={() => {
-                            if (playingId !== msg.id) {
-                              speakBotReply(msg.text, msg.id);
+                  {msg.sender !== "user" && (
+                    <div className={styles.botActions}>
+                      <button
+                        className={styles.actionBtn}
+                        onClick={toggleSound}
+                      >
+                        {isSoundOn ? <FaVolumeUp /> : <FaVolumeMute />}
+                      </button>
+
+                      <button
+                        className={`${styles.actionBtn} ${
+                          playingId === msg.id ? styles.spinning : ""
+                        }`}
+                        onClick={() => {
+                          if (playingId !== msg.id) {
+                            speakBotReply(msg.text, msg.id);
+                          }
+                        }}
+                      >
+                        <IoIosRefresh />
+                      </button>
+
+                      <div className="d-flex gap-2">
+                        {msg.evaluation !== false && (
+                          <button
+                            className={`${styles.actionBtn}
+                           ${msg.evaluation === true ? styles.activeLike : ""}`}
+                            onClick={() =>
+                              handleEvaluation(
+                                msg.question,
+                                msg.text,
+                                true,
+                                msg.id,
+                              )
                             }
-                          }}
-                          className={`${styles.actionIcon} ${
-                            playingId === msg.id ? styles.loading : ""
-                          }`}
-                        />
-                        {/* <span
-                          className={styles.showMoreBtn}
-                          onClick={() => {
-                            if (msg.full_details) {
-                              showMoreDetails(
-                                msg.full_details
-                              );
-                            } else {
-                              alert(
-                                "عذراً، لا توجد تفاصيل إضافية لهذا الرد."
-                              );
+                          >
+                            <BiSolidLike />
+                          </button>
+                        )}
+
+                        {msg.evaluation !== true && (
+                          <button
+                            className={`${styles.actionBtn}
+                            ${msg.evaluation === false ? styles.activeDislike : ""}`}
+                            onClick={() =>
+                              handleEvaluation(
+                                msg.question,
+                                msg.text,
+                                false,
+                                msg.id,
+                              )
                             }
-                          }}
-                        >
-                          | عرض التفاصيل
-                        </span> */}
+                          >
+                            <BiSolidDislike />
+                          </button>
+                        )}
                       </div>
-                    )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {isTyping && (
+              <div className={styles.msgRow}>
+                <div className={`${styles.bubble} ${styles.leftBubble}`}>
+                  <div className={styles.typingDots}>
+                    <span />
+                    <span />
+                    <span />
                   </div>
                 </div>
-              ))}
+              </div>
+            )}
 
-              {isTyping && (
-                <div className="d-flex mb-2">
-                  <div className={`${styles.leftBubble} p-2 rounded-3`}>
-                    ...
-                  </div>
-                </div>
-              )}
-
-              <div ref={messagesEndRef} />
-            </div>
+            <div ref={messagesEndRef} />
           </div>
         </div>
 
-        <div className="footerChat position-relative d-flex justify-content-end ">
-          <textarea
-            ref={inputRef}
-            className={`${styles.textareaChat} col-12`}
-            value={input}
-            onKeyDown={handelkeyPress}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="اكتب رسالتك..."
-          />
+        {/* ===== FOOTER ===== */}
 
-          <div className={`${styles.icons} position-absolute`}>
-            <FaMicrophone onClick={startRecording} />
-            <IoMdSend onClick={() => sendMessage(input)} />
+        <div className={styles.footerChat}>
+          <div className={styles.inputRow}>
+            <button
+              className={`${styles.micBtn} ${
+                isRecording ? styles.micActive : ""
+              }`}
+              onClick={startRecording}
+            >
+              {isRecording ? <BsRecordCircle /> : <FaMicrophone />}
+            </button>
+
+            <textarea
+              ref={inputRef}
+              className={styles.textareaChat}
+              value={input}
+              onKeyDown={handelkeyPress}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder={isRecording ? "جاري الاستماع..." : "اكتب رسالتك..."}
+              rows={1}
+            />
+
+            <button className={styles.sendBtn} onClick={() => sendMessage()}>
+              <IoMdSend />
+            </button>
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ export default function Questions() {
   return (
     <div>
       <ContactComponent searchTerm={searchTerm}
-        handleSearch={handleSearch} />
+        handleSearch={handleSearch}  title="تواصل معنا"/>
 
 
       <div className="questions-page container py-5">

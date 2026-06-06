@@ -23,7 +23,7 @@ export default function ContactUs() {
     }, [])
     return (
         <div>
-            <ContactComponent none="d-none"/>
+            <ContactComponent none="d-none" title="تواصل معنا"/>
             {/* <div className='col-12 position-relative ' id={styles.About}>
                 <div className='col-12 ' id={styles.AboutLogo}>
 

@@ -4,7 +4,7 @@ import { usepathes } from '../../Store'
 import { Link } from 'react-router-dom'
 export default function ContactComponent(props) {
     const { path } = usepathes()
-
+const token = localStorage.getItem("token");
     return (
         <div>
             <div className='col-12 position-relative ' id={styles.About}>
@@ -14,7 +14,7 @@ export default function ContactComponent(props) {
                 <div className='col-12 position-absolute d-flex align-items-center ' id={styles.bgColor}>
                     <div className='container text-end d-flex justify-content-end '>
                         <div className='col-md-9 d-flex flex-column gap-3 pb-3'>
-                            <h2> تواصل معنا</h2>
+                            <h2> {props.title}</h2>
                             <div className='col-12  ' id={styles.regtangle}>
                                 <div className='container '>
                                     <p className='justifyText '>
@@ -42,9 +42,9 @@ export default function ContactComponent(props) {
 
                             {
                                 props.showLimited ? (path
-                                    .filter(el => el.name === "تواصل معنا")
+                                    .filter(el => el.name === "صفحتي الشخصية")
                                     .flatMap((el, index) => {
-                                        return el.links.slice(0, 3).map((link, idx) => {
+                                        return el.links.slice(0, 4).map((link, idx) => {
                                             const isActive =
                                                 link.path === '/'
                                                     ? location.pathname === '/'
@@ -64,7 +64,7 @@ export default function ContactComponent(props) {
                                     })) : (path
                                         .filter(el => el.name === "تواصل معنا")
                                         .flatMap((el, index) => {
-                                            return el.links.slice(5,).map((link, idx) => {
+                                            return el.links.slice(2,).map((link, idx) => {
                                                 const isActive =
                                                     link.path === '/'
                                                         ? location.pathname === '/'

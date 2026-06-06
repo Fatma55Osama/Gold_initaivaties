@@ -47,7 +47,7 @@ export default function ConsultationNew() {
 
     return (
         <div>
-            <ContactComponent none="d-none" hidden="d-none" showheadsm="d-flex" showLimited={true} />
+            <ContactComponent none="d-none" hidden="d-none" showheadsm="d-flex" showLimited={true} title="صفحتي الشخصية" />
             <ToastContainer
                 position="top-center"
                 autoClose={5000}

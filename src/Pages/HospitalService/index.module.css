@@ -38,6 +38,13 @@
     text-align: justify;
     line-height: 2;
   }
+  .bookingmashora{
+     color: #d0b101; 
+    font-size: 22px;
+    font-weight: 500;
+    font-family: "GE SS-Medium";
+    cursor: pointer;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
 .containerhospital{

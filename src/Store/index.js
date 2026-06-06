@@ -1,20 +1,23 @@
 import { create } from "zustand";
 import { getDomain, getPathImg, getSiteUrl } from "../configLoader";
+const token = localStorage.getItem("token");
+const isLoggedIn = !!token;
 
 export const usepathes = create(() => ({
+  
   path: [
     {
       name: "تواصل معنا",
       mainPath: "/contactus",
       links: [
-        { label: " مشورة اون لاين ", path: "/onlinemashora" },
-        { label: " الأستشارات السابقة  ", path: "/consultationold" },
-        { label: " استشارة جديدة ", path: "/consultationnew" },
+        // { label: " مشورة اون لاين ", path: "/onlinemashora" },
+        // { label: " الأستشارات السابقة  ", path: "/consultationold" },
+        // { label: " استشارة جديدة ", path: "/consultationnew" },
         { label: "نسيت كلمة", path: "/forgetpassword" },
         { label: "مستخدم جديد", path: "/register" },
 
         // { label: "تسجيل الدخول", path: "/login" },ئ
-        { label: " صفحتي الشخصية  ", path: "/consultationnew" },
+        // { label: " صفحتي الشخصية  ", path: "/consultationnew" },
 
         { label: " انضم لفريقنا", path: "/jointeams" },
         { label: "الأسئلة الشائعة", path: "/question" },
@@ -22,12 +25,22 @@ export const usepathes = create(() => ({
         { label: "تواصل معنا", path: "/contactus" },
       ],
     },
-      {
-      name: "تسجيل الدخول",
-      links: [{ label: "تسجيل الدخول", path: "/login" },
-        
-      // { label: " صفحتي الشخصية  ", path: "/consultationnew" }
-    ],
+    //   {
+    //   name: "تسجيل الدخول",
+    //   links: [{ label: "تسجيل الدخول", path: "/login" },
+
+    //   // { label: " صفحتي الشخصية  ", path: "/consultationnew" }
+    // ],
+    // },
+    {
+      name: "صفحتي الشخصية",
+      mainPath: "/consultationnew",
+
+      links: [
+        { label: " مشورة اون لاين ", path: "/onlinemashora" },
+        { label: " الأستشارات السابقة  ", path: "/consultationold" },
+        { label: " استشارة جديدة ", path: "/consultationnew" },
+      ],
     },
 
     {
@@ -133,14 +146,15 @@ export const useModalpdf = create((set) => ({
 }));
 export const useModalChatbot = create((set) => ({
   modalChatbot: false,
-  openModalChatbot:()=>set(() => ({ modalChatbot: true })),
-  closeModalChatbot:()=>set(() => ({ modalChatbot: false })),
-  toggleModalChatbot:()=>set((state)=>({modalChatbot:!state.modalChatbot}))
+  openModalChatbot: () => set(() => ({ modalChatbot: true })),
+  closeModalChatbot: () => set(() => ({ modalChatbot: false })),
+  toggleModalChatbot: () =>
+    set((state) => ({ modalChatbot: !state.modalChatbot })),
 }));
 export const usemodalmashora = create((set) => ({
- modalmashora: false,
-  openModalmashora:()=>set(() => ({ modalmashora: true })),
-  closeModalmashora:()=>set(() => ({ modalmashora: false })),
+  modalmashora: false,
+  openModalmashora: () => set(() => ({ modalmashora: true })),
+  closeModalmashora: () => set(() => ({ modalmashora: false })),
 }));
 export const usedetailsservice = create((set) => ({
   detailservice: {},
@@ -205,7 +219,7 @@ export const usedoctorsData = create((set) => ({
   setDoctorActive: (id, isActive) =>
     set((state) => ({
       doctors: state.doctors.map((doc) =>
-        doc.id === id ? { ...doc, active: isActive } : doc
+        doc.id === id ? { ...doc, active: isActive } : doc,
       ),
     })),
 }));

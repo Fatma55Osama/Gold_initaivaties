@@ -52,7 +52,7 @@ export default function ConsultationOld() {
   return (
     <div>
       <ContactComponent searchTerm={searchTerm}
-        handleSearch={handleSearch} hidden="d-none" showheadsm="d-flex" showLimited={true} />
+        handleSearch={handleSearch} hidden="d-none" showheadsm="d-flex" showLimited={true} title="صفحتي الشخصية"/>
       {
         token && consultationold.length>0 ? (
           (searchTerm ? filteredconsulationPerPage : currentPage).length === 0 ? (

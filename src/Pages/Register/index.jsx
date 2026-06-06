@@ -62,7 +62,7 @@ export default function Register() {
   };
   return (
     <div>
-      <ContactComponent none="d-none" hiddenheader="d-none" />
+      <ContactComponent none="d-none" hiddenheader="d-none"  title="تواصل معنا"/>
       <ToastContainer
         position="top-center"
         autoClose={5000}

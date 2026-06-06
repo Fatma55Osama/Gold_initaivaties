@@ -45,7 +45,7 @@ export default function JoinTeams() {
     // }
     return (
         <div>
-            <ContactComponent none="d-none" />
+            <ContactComponent none="d-none"  title="تواصل معنا"/>
 
             <ToastContainer
                 position="top-center"

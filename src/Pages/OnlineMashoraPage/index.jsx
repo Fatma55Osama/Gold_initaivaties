@@ -130,6 +130,7 @@ export default function OnlineMashouraPage() {
         hidden="d-none"
         showheadsm="d-flex"
         showLimited={true}
+         title="صفحتي الشخصية"
       />
       <ToastContainer
         position="top-center"

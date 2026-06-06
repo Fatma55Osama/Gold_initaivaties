@@ -15,8 +15,8 @@ import axios from "axios";
 //       throw err;
 //     });
 // };
-export const postChat = (userprompt, domain, contextMessages) => {
-  return axios.post(`${domain}/api/UploadPdf/ReplyToUser`, contextMessages, {
+export const postChat = (userprompt, domain) => {
+  return axios.post(`${domain}/api/UploadPdf/ReplyToUser`,null, {
     params: { ask: userprompt },
 
   }) .then((res) => {

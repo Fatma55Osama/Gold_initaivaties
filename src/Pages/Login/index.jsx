@@ -62,7 +62,7 @@ export default function Login() {
   }, []);
   return (
     <div>
-      <ContactComponent none="d-none" hiddenheader="d-none" />
+      <ContactComponent none="d-none" hiddenheader="d-none"  title="تواصل معنا" />
       <div className={`${styles.opinion} p-md-5 py-5 mt-2 rounded`}>
         <ToastContainer
           position="top-center"
